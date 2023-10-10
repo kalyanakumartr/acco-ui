@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -36,9 +37,11 @@ export class LoginComponent implements OnInit{
           if(result.status){
             console.log(result);
             this.loginForm.reset();
-            alert("login sucessful"); 
+            // alert("login sucessful"); 
+            Swal.fire("Success");
           }else{
-            alert("Invalid")
+            // alert("Invalid")
+            Swal.fire("Invalid");
           }
         })
       }
