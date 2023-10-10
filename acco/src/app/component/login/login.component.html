@@ -1,0 +1,53 @@
+<div class="outer">
+    <div class="container">
+        <div class="row"> 
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-2">
+                <!-- offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3 -->
+                <div class="panel border bg-white ">
+                    <div class="panel-heading">
+                        
+                        <h3 class="pt-3 font-weight-bold" style="color:#964B00">
+                            <span><img src="assets/index_logo.jpg" >  </span>
+                            Login </h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form  [formGroup]="loginForm"  (ngSubmit)="loginProcess()" >
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2" style="color:#964B00"></span>
+                                    <!-- <label style="color:#964B00">UserName</label> -->
+                                    <input formControlName="userName" type="text" placeholder="UserName">
+                                    <!-- placeholder="UserName" -->
+                                </div>
+                            </div>
+                            <small *ngIf="loginForm.controls['userName'].dirty && loginForm.hasError('required','userName')" class ="text-danger form-inline  mt-0">*username is required</small>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-lock p-2" style="color:#964B00"></span>
+                                    <!-- <label style="color:#964B00">Password</label> -->
+                                    <input formControlName="password" [type]="type" placeholder="Password">
+                                    <!-- placeholder="Password" -->
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}} " style="color:#964B00"></span>
+                                </div>
+                            </div>
+                            <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class ="text-danger form-inline ">*password is required</small>
+                            <div class="form-inline fr mt-4"> 
+                                <a  href="" id="forgot"   style="color:#964B00;">Forgot password?</a> 
+                            </div>
+                            <button [disabled]=loginForm.invalid type="submit" class="btn btn-outline btn-block mt-4 w-100" style="color:#964B00 ;background-color: #efc96a;" >Login</button>
+                            <div class="text-center pt-4 text-muted">Don't have an account? <a id="forgot"  routerLink="/signup" style="color:#964B00">Sign up</a> </div>
+                        </form>
+                    </div>
+                    <!-- <div class="mx-3 my-2 py-2 bordert">
+                        <div class="text-center py-3">
+                            <a href="https://wwww.facebook.com" target="_blank" class="px-2"> <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt=""> </a>
+                            <a href="https://www.google.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt=""> </a>
+                            <a href="https://www.github.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" alt=""> </a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

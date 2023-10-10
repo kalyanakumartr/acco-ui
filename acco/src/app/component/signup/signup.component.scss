@@ -1,0 +1,79 @@
+.outer{
+    height:100vh;
+    // background-image: linear-gradient(to top, #efc96a,white);
+}
+.panel{
+    background-image: linear-gradient(to top, #efc96a,white);
+    min-height:300px;
+    width:700px;
+    box-shadow: 20px 20px 80px rgb(218,218,218);
+    border-radius: 12px;
+    margin-top: 50px;
+}
+.panel-heading{
+    text-align: center;
+    margin-bottom: 10px;
+}
+#forget{
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration:none;
+}
+.form-inline label{
+    padding-left:5px;
+    margin:0;
+    cursor:pointer;
+}
+.btn{
+    margin-top:20px;
+    border-radius: 15px;
+   
+}
+.input-field{
+    border-radius: 5px;
+    padding:5px;
+    display:flex;
+    align-items: center;
+    cursor:pointer;
+    border:1px solid #ddd;
+    color:#efc96a
+}
+.input-field.error{
+    border:1px solod red;
+    color:red;
+}
+input[type='text'],input[type='password']{
+    border:none;
+    outline:none;
+    box-shadow: none;
+    width:100%
+}
+.fa-eye-slash.btn{
+    border:none;
+    outline:none;
+    box-shadow: none;
+}
+img{
+    width:40px;
+    height:40px;
+    object-fit: cover;
+    border-radius:50%;
+    position:relative
+}
+
+// .border{
+//     border-top: 1px solid #aaa;
+//     position: relative;
+// }
+// .bordert:after{
+//     content:"or connect with";
+//     position:absolute;
+//      top:-13px;
+//     left:33%;
+//     background-color: #fff;
+//     padding:0 8px;
+// }
