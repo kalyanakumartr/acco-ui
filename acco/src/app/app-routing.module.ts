@@ -5,6 +5,7 @@ import { ExcelcreateComponent } from './excelcreate/excelcreate.component';
 import { HomeComponent } from './component/home/home.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { FacitiliesComponent } from './component/facitilies/facitilies.component';
+import { HeaderComponent } from './admincomponent/header/header.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},  
   {path:'signup',component:SignupComponent},
   {path:'facitilies',component:FacitiliesComponent},
+  {path:'header',component:HeaderComponent},
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { HomeComponent } from './component/home/home.component';
 import { FacitiliesComponent } from './component/facitilies/facitilies.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './admincomponent/header/header.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     NavbarComponent,
     HomeComponent,
-    FacitiliesComponent
+    FacitiliesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

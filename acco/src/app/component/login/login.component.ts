@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit{
     }
 
     loginProcess(){
+      // Swal.fire("Success");
       if(this.loginForm.valid){
         this.authService.login(this.loginForm.value).subscribe(result=>{
           if(result.status){
