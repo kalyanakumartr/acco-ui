@@ -35,17 +35,21 @@ export class LoginComponent implements OnInit{
       // Swal.fire("Success");
       if(this.loginForm.valid){
         this.authService.login(this.loginForm.value).subscribe(result=>{
-          if(result.status){
-            console.log(result);
-            this.loginForm.reset();
+          if(result.accesstoken){
+            console.log(result.accesstoken);
+            
             // alert("login sucessful"); 
             Swal.fire("Success");
+            this.loginForm.reset();
+            this.router.navigate(["home"])
           }else{
             // alert("Invalid")
             Swal.fire("Invalid");
+            this.loginForm.reset();
           }
         })
       }
+    //   console.log("server");
     //   let bodyData = {
     //     "userName" : this.userName,
     //     "password" : this.password,

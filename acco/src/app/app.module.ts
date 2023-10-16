@@ -11,6 +11,7 @@ import { FacitiliesComponent } from './component/facitilies/facitilies.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './admincomponent/header/header.component';
+import { BookingComponent } from './admincomponent/booking/booking.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HeaderComponent } from './admincomponent/header/header.component';
     NavbarComponent,
     HomeComponent,
     FacitiliesComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
