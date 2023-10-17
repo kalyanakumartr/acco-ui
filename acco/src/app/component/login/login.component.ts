@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit{
             console.log(result.accesstoken);
             
             // alert("login sucessful"); 
-            Swal.fire("Success");
+            Swal.fire(result.message);
             this.loginForm.reset();
             this.router.navigate(["home"])
           }else{

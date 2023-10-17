@@ -45,15 +45,18 @@ reset(){
 bookProcess(){
   // Swal.fire("Success");
   if(this.bookingForm.valid){
-    this.bookingService.booking(this.bookingForm.value).subscribe((result: any)=>{
-      
-        console.log(result);
+    this.bookingService.booking(this.bookingForm.value).subscribe((result)=>{
+       if(result.message){
+
+         console.log(result.message);
         
         // alert("login sucessful"); 
-        Swal.fire(" Booking added Successfully");
+        Swal.fire(result.message);
         this.bookingForm.reset();
-        // this.router.navigate(["home"])
-     
+         this.router.navigate(["home"])
+      }else{
+        Swal.fire("Invalid");
+      }
     })
   }
 }
