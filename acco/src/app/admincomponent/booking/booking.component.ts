@@ -17,11 +17,22 @@ import { DatePipe } from '@angular/common';
 })
 export class BookingComponent implements OnInit{
   bookingForm!:FormGroup;
+  // maxDate:any
+  maxDate:any=this.datepipe.transform(new Date(),'YYYY-MM-dd | HH:mm')
  selectdate:any=this.datepipe.transform(new Date(),'YYYY-MM-dd | HH:mm');
+ 
  
 
   constructor(private datepipe:DatePipe,
-    private fb: FormBuilder,private http: HttpClient, private router: Router,private bookingService:BookingServiceService){}
+    private fb: FormBuilder,private http: HttpClient, private router: Router,private bookingService:BookingServiceService){
+    //   const current = new Date
+    //   this.maxDate={
+    //     year: current.getFullYear(),
+    //     month: current.getMonth() ,
+    //     day: current.getDate()+1,
+
+    //     };
+    }
   ngOnInit():void{
     this.bookingForm = this.fb.group({
       firstName: ['', Validators.required],

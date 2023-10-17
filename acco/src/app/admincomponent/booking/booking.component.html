@@ -93,7 +93,9 @@
             <label>To</label>
         </div>
         <div class="col-lg-3">
-            <input  formControlName="checkOut" type="datetime-local" name="fromto" placeholder="To" 
+            <input  formControlName="checkOut" type="datetime" name="fromto" placeholder="To" 
+            
+            [(ngModel)]="maxDate"
             >
         </div>
     
