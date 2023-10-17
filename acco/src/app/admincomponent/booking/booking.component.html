@@ -85,13 +85,16 @@
             <label>From</label>
         </div>
         <div class="col-lg-3">
-            <input formControlName="checkIn" type="datetime-local" name="city" placeholder="From" >
+            <input formControlName="checkIn" type="datetime" name="city" placeholder="From" 
+            [(ngModel)]="selectdate"
+            >
         </div>
         <div class="col-lg-3">
             <label>To</label>
         </div>
         <div class="col-lg-3">
-            <input  formControlName="checkOut" type="datetime-local" name="fromto" placeholder="To" >
+            <input  formControlName="checkOut" type="datetime-local" name="fromto" placeholder="To" 
+            >
         </div>
     
     </div>

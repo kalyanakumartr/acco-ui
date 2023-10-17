@@ -1,20 +1,27 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators ,FormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.scss']
+  styleUrls: ['./booking.component.scss'],
+  
 })
 export class BookingComponent implements OnInit{
   bookingForm!:FormGroup;
-  
-  constructor(private fb: FormBuilder,private http: HttpClient, private router: Router,private bookingService:BookingServiceService){}
+ selectdate:any=this.datepipe.transform(new Date(),'YYYY-MM-dd | HH:mm');
+ 
+
+  constructor(private datepipe:DatePipe,
+    private fb: FormBuilder,private http: HttpClient, private router: Router,private bookingService:BookingServiceService){}
   ngOnInit():void{
     this.bookingForm = this.fb.group({
       firstName: ['', Validators.required],
