@@ -24,7 +24,10 @@ export class BookingComponent implements OnInit{
  
 
   constructor(private datepipe:DatePipe,
-    private fb: FormBuilder,private http: HttpClient, private router: Router,private bookingService:BookingServiceService){
+    private fb: FormBuilder,
+    private http: HttpClient, 
+    private router: Router,
+    private bookingService:BookingServiceService){
     //   const current = new Date
     //   this.maxDate={
     //     year: current.getFullYear(),
