@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { DatePipe } from '@angular/common';
+import { RollComponent } from './admincomponent/roll/roll.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DatePipe } from '@angular/common';
     HomeComponent,
     FacitiliesComponent,
     HeaderComponent,
-    BookingComponent
+    BookingComponent,
+    RollComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,8 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+   
+    
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
