@@ -7,3 +7,15 @@
     height: 600px;
     text-align: center;
 }
+
+
+table {
+    width: 60%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 300px;
+  }
+  th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+  }
