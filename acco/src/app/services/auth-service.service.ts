@@ -12,9 +12,7 @@ export class AuthServiceService {
     login(data: any):Observable<any>{
       console.log("I am server");
       return this.http.post('http://localhost:3001/users/auth',data);
-      
     }
     
-    count=0;
   }
 
