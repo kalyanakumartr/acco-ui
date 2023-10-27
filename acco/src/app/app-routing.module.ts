@@ -7,9 +7,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { FacitiliesComponent } from './component/facitilies/facitilies.component';
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
-
-import { RoleComponent } from './admincomponent/role/role.component';
-import { TariffComponent } from './component/tariff/tariff.component';
+import { RollComponent } from './admincomponent/roll/roll.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -19,8 +17,7 @@ const routes: Routes = [
   {path:'facitilies',component:FacitiliesComponent},
   {path:'header',component:HeaderComponent},
   {path:'booking',component:BookingComponent},
-  {path:'role',component:RoleComponent},
-  {path:'tariff',component:TariffComponent},
+  {path:'roll',component:RollComponent},
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
