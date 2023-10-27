@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { DatePipe } from '@angular/common';
-import { RollComponent } from './admincomponent/roll/roll.component';
+import { TariffComponent } from './component/tariff/tariff.component';
+import { RoleComponent } from './admincomponent/role/role.component';
 
 import{MatTableModule} from '@angular/material/table';
 import{MatPaginatorModule} from '@angular/material/paginator';
@@ -32,8 +33,9 @@ import{MatSortModule} from '@angular/material/sort';
     HomeComponent,
     FacitiliesComponent,
     HeaderComponent,
-    BookingComponent,
-    RollComponent
+    BookingComponent,   
+    TariffComponent,
+    RoleComponent
   ],
   imports: [
     BrowserModule,
