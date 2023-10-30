@@ -1,22 +1,22 @@
 <app-header></app-header>
 <div class="outer">
     <div class="container">
-        <div class="card">
-            <div class="text-center">
+        <div class="card ">
+            <div class="text-center ">
                 <h1>BOOKING</h1>
     <form [formGroup]="bookingForm" (ngSubmit)="bookProcess()">
-                <div class="row">
+                <div class="row ">
                         <div class="col-lg-3">
                             <label>First Name</label>
                         </div>
                         <div class="col-lg-3">
-                            <input formControlName="firstName"type="text" name="firstName" placeholder="FirstName" >
+                            <input formControlName="firstname"type="text" name="firstName" placeholder="FirstName" >
                         </div>
                         <div class="col-lg-3">
                             <label>LastName</label>
                         </div>
                         <div class="col-lg-3">
-                            <input formControlName="lastName" type="text" name="lastName" placeholder="LastName" >
+                            <input formControlName="lastname" type="text" name="lastName" placeholder="LastName" >
                         </div>
     
                 </div>
@@ -31,7 +31,7 @@
                         <label>Phone Number</label>
                     </div>
                     <div class="col-lg-3">
-                        <input formControlName="phoneNumber"type="text" name="pnumber" placeholder="Phone Number" >
+                        <input formControlName="phonenumber"type="text" name="pnumber" placeholder="Phone Number" >
                     </div>
     
             </div>
@@ -85,7 +85,7 @@
             <label>From</label>
         </div>
         <div class="col-lg-3">
-            <input formControlName="checkIn" type="datetime-local" name="city" placeholder="From" 
+            <input formControlName="checkin" type="datetime-local" name="city" placeholder="From" 
            
             >
         </div>
@@ -93,7 +93,7 @@
             <label>To</label>
         </div>
         <div class="col-lg-3">
-            <input  formControlName="checkOut" type="datetime" name="fromto" placeholder="To" 
+            <input  formControlName="checkout" type="datetime-local" name="fromto" placeholder="To" 
             
             [(ngModel)]="maxDate"
             >
@@ -120,7 +120,7 @@
             <label>Room Type</label>
         </div>
         <div class="col-lg-3">
-            <select  formControlName="roomType" id="room_type_id" name="room_type_id"  errordiv="room_type_id1" 
+            <select  formControlName="roomtype" id="room_type_id" name="room_type_id"  errordiv="room_type_id1" 
             message="Select Room Type" class="roomtype" >	
                 <option value="12"  >Service Apartment</option>
              <option value="7"  >Business Center</option>

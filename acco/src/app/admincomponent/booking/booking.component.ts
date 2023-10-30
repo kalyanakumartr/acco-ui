@@ -38,21 +38,21 @@ export class BookingComponent implements OnInit{
     }
   ngOnInit():void{
     this.bookingForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      phonenumber: ['', Validators.required],
       address1: ['', Validators.required],
       address2: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
       pincode: ['', Validators.required],
-      checkIn: ['', Validators.required],
-      checkOut: ['', Validators.required],
+      checkin: ['', Validators.required],
+      checkout: ['', Validators.required],
      adult: ['', Validators.required],
      child: ['', Validators.required],
-     roomType:['', Validators.required],
+     roomtype:['', Validators.required],
     });
 
 }

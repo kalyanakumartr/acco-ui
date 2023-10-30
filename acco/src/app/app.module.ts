@@ -19,6 +19,7 @@ import{MatInputModule} from '@angular/material/input';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import{MatSortModule} from '@angular/material/sort';
 import { RoleComponent } from './admincomponent/role/role.component';
+import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RoleComponent } from './admincomponent/role/role.component';
     HeaderComponent,
     BookingComponent,
    
-    RoleComponent
+    RoleComponent,
+         RoomtypeComponent
   ],
   imports: [
     BrowserModule,

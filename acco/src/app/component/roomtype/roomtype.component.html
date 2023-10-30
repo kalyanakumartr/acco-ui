@@ -1,0 +1,314 @@
+<div class="outer">
+    <app-navbar></app-navbar>
+    <div class="container mt-0">
+        <div class="row ">
+            <div class="col-sm-6 mt-2">
+                <h2 style="color:#964B00; font-weight:bold ;">Room Availability</h2>
+            </div>
+        </div>
+        <div class="containertable table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="border-color: #964B00;" scope="col">No</th>
+                        <th style="border-color: #964B00;" scope="col">AccommodotionType</th>
+
+                        <th style="border-color: #964B00;" scope="col">Guests</th>
+
+                        <th style="border-color: #964B00;" scope="col">Family</th>
+                        <th style="border-color: #964B00;" scope="col">Price</th>
+                        <th style="border-color: #964B00;" scope="col">Roomsize</th>
+                        <th style="border-color: #964B00;" scope="col">SelectBed</th>
+                        <th style="border-color: #964B00;" scope="col">SelectRooms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="color: #964B00;">
+                        <th class="align-middle" style="border-color: #964B00;" scope="row">1</th>
+                        <td class="align-middle " style="border-color: #964B00;">2BHK
+                    <tr scope="col" style="border-color: #964B00;">Reccommended for 2 adults, and 1 child</tr>
+                    <div class="row">
+                        <div class="col">
+                            <tr scope="col">
+                                <h5>Bed room:1</h5>
+                            </tr>
+                            <img src="assets/hotelrooms1.jpg" style="width:150px;height:150px; ">
+                        </div>
+                        <div class="col">
+                            <tr scope="col">
+                                <h5>Bed room:2</h5>
+                            </tr>
+                            <img src="assets/hotelrooms2.jpg" style="width:150px;height:150px; ">
+                        </div>
+                    </div>
+
+
+                    </td>
+
+                    <td style="border-color: #964B00;" class="align-middle ">3</td>
+
+                    <td style="border-color: #964B00;" class="align-middle ">1</td>
+
+                    <td style="border-color: #964B00;" class="align-middle ">3500</td>
+                    <td style="border-color: #964B00;" class="align-middle ">600 sq.ft</td>
+
+                    <td style="border-color: #964B00; "class=" align-middle">
+
+                        <div class="row pl-2 ">
+
+                            <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+                            <label class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
+                            <div class="row pl-3">
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="inputnumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">150rs/person</P>
+                        
+                        <div class="row pl-2">
+                            <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                            <label class="pt-2" for="breakfast"> Breakfast</label>&nbsp;<div class="row">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus3()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">200Rs/person</P>
+                       
+                        <input class="mr-1" type="checkbox" id="AC" name="AC" value="AC">
+                        <label class="ml-1" for="AC"> AC</label>
+
+
+
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <button style="color:#efc96a; background-color: #964B00;" class="btn btn-outline"><i
+                                class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+
+                    </td>
+                    </tr>
+
+                    <tr>
+                        <th  class="align-middle" style="border-color: #964B00;" scope="row">2</th>
+                        <td style="border-color: #964B00;">3BHK
+                    <tr style="border-color: #964B00;" scope="col">Reccommended for 2 adults, and 1 child</tr>
+                    <div class="row">
+                        <div class="col-4">
+                            <tr scope="col">
+                                <h4>Bed room:1</h4>
+                            </tr>
+                            <img src="assets/hotelrooms1.jpg" style="width:120px;height:120px; ">
+                        </div>
+                        <div class="col-4">
+                            <tr scope="col">
+                                <h4>Bed room:2</h4>
+                            </tr>
+                            <img src="assets/hotelrooms2.jpg" style="width:120px;height:120px; ">
+                        </div>
+                        <div class="col-4">
+                            <tr scope="col">
+                                <h4>Bed room:3</h4>
+                            </tr>
+
+                            <img src="assets/rooms3.jpg" style="width:120px;height:120px; ">
+                        </div>
+
+                    </div>
+
+                    </td>
+
+                    <td style="border-color: #964B00;" class="align-middle">3</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">1</td>
+                    <td style="border-color: #964B00;" class="align-middle">4500</td>
+                    <td style="border-color: #964B00;" class="align-middle">900 sq.ft</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">
+                        <div class="row pl-2">
+
+                            <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+
+                            <label class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
+                            <div class="row pl-3">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus1()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="number">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus1()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">150rs/person</P>
+                       
+                        <div class="row pl-2">
+                            <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                            <label class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
+                            <div class="row">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus3()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">200Rs/person</P>
+                        
+                        <input class="mr-1"type="checkbox" id="AC" name="AC" value="AC">
+                        <label class="pt-1" for="AC"> AC</label>
+
+
+
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle">&nbsp;&nbsp;&nbsp; &nbsp;
+
+                        <button style="color:#efc96a; background-color: #964B00;" class="btn btn-outline"><i
+                                class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+
+
+                    </td>
+
+                    </tr>
+                    <tr>
+                        <th class="align-middle" style="border-color: #964B00;" scope="row">3</th>
+                        <td style="border-color: #964B00;">Splited room
+
+                    <tr style="border-color: #964B00;" scope="col">Reccommended for 2 adults, and 1 child</tr>
+                    <tr style="border-color: #964B00;" scope="col">
+                        <h4>Bed room:1 splited</h4>
+                    </tr>
+                    <tr style="border-color: #964B00;" scope="col">
+                        <h4>Bed room:2 splited</h4>
+                    </tr>
+                    <tr style="border-color: #964B00;" scope="col">
+                        <h4>Bed room:3 splited</h4>
+                    </tr>
+
+
+
+                    <br>
+                    <tr>common Kitchen and living room</tr>
+
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle">3</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">1</td>
+                    <td style="border-color: #964B00;" class="align-middle">1500</td>
+                    <td style="border-color: #964B00;" class="align-middle">300 sq.ft</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">
+                        <div class="row pl-2">
+
+                            <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+
+                            <label class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
+                            <div class="row pl-2">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus2()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="bednumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus2()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">150rs/person</P>
+                       
+                        <div class="row pl-3">
+                            <input class="mr-2" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                            <label class="pt-1" for="breakfast">Breakfast</label>&nbsp;
+                            <div class="row ">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus3()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">200Rs/person</P>
+                        
+                        <input class= "mr-1" type="checkbox" id="AC" name="AC" value="AC">
+                        <label  class= "pt-1" for="AC"> AC</label>
+
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle"> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <button style="color:#efc96a; background-color: #964B00;" class="btn btn-outline"><i
+                                class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+
+                    </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

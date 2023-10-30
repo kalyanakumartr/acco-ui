@@ -15,10 +15,10 @@ export class SignupComponent implements OnInit{
   constructor(private fb: FormBuilder,private http: HttpClient, private router: Router,private registerService:RegisterServiceService){}
   ngOnInit():void{
     this.signupForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      phonenumber: ['', Validators.required],
       address1: ['', Validators.required],
       address2: ['', Validators.required],
       city: ['', Validators.required],

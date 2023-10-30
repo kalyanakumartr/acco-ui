@@ -8,6 +8,7 @@ import { FacitiliesComponent } from './component/facitilies/facitilies.component
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { RoleComponent } from './admincomponent/role/role.component';
+import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'header',component:HeaderComponent},
   {path:'booking',component:BookingComponent},  
   {path:'role',component:RoleComponent},
+  {path:'roomtype',component:RoomtypeComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
