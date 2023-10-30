@@ -1,5 +1,9 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
  
- 
-  constructor(){}
+  modalForm!:FormGroup;
+  selectedValue: any = '';
+  constructor(private fb: FormBuilder,private http: HttpClient, private router: Router,){}
 
-  ngOnInit():void{}
+  ngOnInit():void{
+  this.modalForm = this.fb.group({
+    user: ['',],
+   
+    
+  });
+  }
+  modalProcess(){
+    this.selectedValue = this.modalForm.controls['user'].value;
+    console.log(this.selectedValue);
+    
+    if(this.selectedValue == 'NewUser'){
+      console.log("check");
+       this.modalForm.reset();
+     
+             this.router.navigate(["signup"]);
+    }else if(this.selectedValue=='ExistingUser'){
+      this.modalForm.reset();
+      this.router.navigate(["login"]);
+    }else{
+      Swal.fire("Please select value");
+    }
+  }
 }

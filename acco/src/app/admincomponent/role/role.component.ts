@@ -4,11 +4,11 @@ import { Role } from 'src/app/model/role.model';
 import { RoleService } from 'src/app/services/role.service';
 
 @Component({
-  selector: 'app-roll',
-  templateUrl: './roll.component.html',
-  styleUrls: ['./roll.component.scss'],
+  selector: 'app-role',
+  templateUrl: './role.component.html',
+  styleUrls: ['./role.component.scss'],
    })
-export class RollComponent implements OnInit {
+export class RoleComponent implements OnInit {
   role:Role[]=[];
 
   public displayedColumns =['roleid','rolename','shortname'];

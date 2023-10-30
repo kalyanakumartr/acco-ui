@@ -13,13 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { DatePipe } from '@angular/common';
-import { RollComponent } from './admincomponent/roll/roll.component';
-
 import{MatTableModule} from '@angular/material/table';
 import{MatPaginatorModule} from '@angular/material/paginator';
 import{MatInputModule} from '@angular/material/input';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import{MatSortModule} from '@angular/material/sort';
+import { RoleComponent } from './admincomponent/role/role.component';
 
 
 @NgModule({
@@ -33,7 +32,8 @@ import{MatSortModule} from '@angular/material/sort';
     FacitiliesComponent,
     HeaderComponent,
     BookingComponent,
-    RollComponent
+   
+    RoleComponent
   ],
   imports: [
     BrowserModule,
