@@ -11,11 +11,13 @@ export class RoleService {
 
   constructor(private httpClient : HttpClient) { }
 
-  API_URL=`${environment.roleapiUrl}`;
+  // API_URL=`${environment.roleapiUrl}`;
 
   getrole(): Observable<Role[]>{
     console.log("getrole check purpose");
-    return this.httpClient.get<Role[]>(`${environment.roleapiUrl}`);
+    // return this.httpClient.get<Role[]>(`${environment.roleapiUrl}`);
+    return this.httpClient.get<Role[]>(`${environment.baseURL}`);
+    
     
   }
 

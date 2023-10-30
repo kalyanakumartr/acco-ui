@@ -8,24 +8,28 @@ import { RoleService } from 'src/app/services/role.service';
   templateUrl: './role.component.html',
   styleUrls: ['./role.component.scss'],
    })
-export class RoleComponent implements OnInit {
-  role:Role[]=[];
 
-  public displayedColumns =['roleid','rolename','shortname'];
-  public dataSource=new MatTableDataSource<Role>();
-  constructor (private roleService : RoleService){}
-
-  ngOnInit(): void {
-      this.getrole()
-  }
-  
-  getrole(){
-    this.roleService.getrole()
-    .subscribe((res)=>{
-      console.log(res);
-      this.dataSource.data=res;
-    });
-      
+  export class RoleComponent implements OnInit {
+    role:Role[]=[];
+    public displayedColumns =['roleid','rolename','shortname','status'];
+    public dataSource=new MatTableDataSource<Role>();
+    constructor (private roleService:RoleService
+      ){
+        console.log("display",this.displayedColumns);
+        console.log("datasource",this.dataSource); 
+      }
+    ngOnInit(): void {
+        this.getrole()
     }
-  }
-
+      getrole(){
+      this.roleService.getrole()
+      // .subscribe((res)=>{
+        .subscribe((res)=>{
+        console.log(res);
+        this.dataSource.data=res;
+        console.log("datasource1",this.dataSource.data); 
+      });
+        
+      }
+    }
+  
