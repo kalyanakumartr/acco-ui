@@ -16,7 +16,7 @@ export class RoleService {
   getrole(): Observable<Role[]>{
     console.log("getrole check purpose");
     // return this.httpClient.get<Role[]>(`${environment.roleapiUrl}`);
-    return this.httpClient.get<Role[]>(`${environment.baseURL}`);
+    return this.httpClient.get<Role[]>(`${environment.roleapiURL}`);
     
     
   }

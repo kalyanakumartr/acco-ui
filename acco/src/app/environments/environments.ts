@@ -1,6 +1,9 @@
 export const environment={
 // roleapiUrl:'http://localhost:3001/users/getrole'
+authURL:'http://localhost:3001/users/auth',
+getuserURL:'http://localhost:3001/users/getuser',
 // baseURL:'assets/',
-baseURL:'http://192.168.0.5:3001/users/getrole'
+roleapiURL:'http://192.168.1.7:3001/users/getrole',
+
 //pls give ur ipconfig no
 };

@@ -45,7 +45,6 @@ import { RoomtypeComponent } from './component/roomtype/roomtype.component';
     MatSortModule,
     MatProgressSpinnerModule,
     AppRoutingModule,
-
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,

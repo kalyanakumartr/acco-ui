@@ -14,7 +14,7 @@ import { RoleService } from 'src/app/services/role.service';
   export class RoleComponent implements OnInit {
     
     role:Role[]=[];
-    public displayedColumns =['roleid','rolename','shortname'];
+    public displayedColumns =['roleid','rolename','shortname','status'];
     public dataSource=new MatTableDataSource<Role>();
     constructor (private roleService:RoleService
       ){
@@ -35,9 +35,9 @@ import { RoleService } from 'src/app/services/role.service';
 
       }
     ngOnInit(): void {
-        this.getrole()
+        this.showrole()
     }
-      getrole(){
+      showrole(){
       this.roleService.getrole()
       // .subscribe((res)=>{
         .subscribe((res)=>{

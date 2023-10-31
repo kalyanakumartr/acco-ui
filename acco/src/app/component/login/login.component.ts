@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Auth } from 'src/app/model/auth.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import Swal from 'sweetalert2';
 
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
+  auth:Auth[]=[];
   type:string = "password";
   isText: boolean = false;
   eyeIcon: string = 'fa-eye-slash';
@@ -34,14 +36,14 @@ export class LoginComponent implements OnInit{
     loginProcess(){
       // Swal.fire("Success");
       if(this.loginForm.valid){
-        this.authService.login(this.loginForm.value).subscribe(result=>{
+        this.authService.login(this.loginForm.value).subscribe(result=>{            
+            console.log(result.username);
           if(result.accesstoken){
             console.log(result.accesstoken);
-            
             // alert("login sucessful"); 
             Swal.fire(result.message);
             this.loginForm.reset();
-            this.router.navigate(["home"])
+            this.router.navigate(["home(result)"])
           }else{
             // alert("Invalid")
             Swal.fire("Invalid");
