@@ -14,14 +14,22 @@ import { LoginComponent } from '../login/login.component';
 
 export class NavbarComponent implements OnInit {
   userDetails:any;
+  loginData:any;
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
-    private getUserService:GetUserServiceService){}
+    private getUserService:GetUserServiceService,
+    private authService:AuthServiceService){
+      authService.apiData$.subscribe(data => this.loginData = data)
+    }
   ngOnInit():void{
   //   this.showUser();
    }
   logout(){
-    // localStorage.removeItem(accessToken);
+     localStorage.removeItem('accessToken');
+     this.router.navigate(["home"]) 
+     console.log("++","logout sucessfully")
+     
+    
 
    }
   //  showUser(){

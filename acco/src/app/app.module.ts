@@ -33,11 +33,10 @@ import { FooditemComponent } from './component/fooditem/fooditem.component';
     HomeComponent,
     FacitiliesComponent,
     HeaderComponent,
-    BookingComponent,
-   
+    BookingComponent,   
     RoleComponent,
-         RoomtypeComponent,
-         FooditemComponent
+    RoomtypeComponent,
+    FooditemComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit{
   auth:Auth[]=[];
+  loginData:any;
   type:string = "password";
   isText: boolean = false;
   eyeIcon: string = 'fa-eye-slash';
@@ -36,63 +37,33 @@ export class LoginComponent implements OnInit{
     loginProcess(){
       // Swal.fire("Success");
       if(this.loginForm.valid){
-        this.authService.login(this.loginForm.value).subscribe(result=>{            
+        this.authService.login(this.loginForm.value).subscribe(result=>{  
+          this.loginData=result;
+          this.authService.setData(this.loginData) 
+          console.log("++++",this.loginData)         
             console.log(result.username);
           if(result.accesstoken){
             console.log(result.accesstoken);
             // alert("login sucessful"); 
             Swal.fire(result.message);
             this.loginForm.reset();
-            this.router.navigate(["home(result)"])
-          }else{
+            this.router.navigate(["home"])
+          }
+          else{
             // alert("Invalid")
             Swal.fire("Invalid");
             this.loginForm.reset();
           }
+          
         })
-      }
-    //   console.log("server");
-    //   let bodyData = {
-    //     "userName" : this.userName,
-    //     "password" : this.password,
+        // {
+        //   Swal.fire("Incorrect Username / Password!");
+        //   this.loginForm.reset();
+        // }
         
-    //   };
-    //   this.http.post("http://localhost:3001/users/auth",bodyData).subscribe((resultData: any)=>
-    // {
-    //     console.log(resultData);
-    //     alert("Login Successfully")
-       
-    //   if(resultData){
-    //     alert('Login Succesful');
-    //           this.loginForm.reset()
-    //         this.router.navigate(["home"])
-    //   }
-    // });
-    // if(resultData){
-    //       alert('Login Succesful');
-    //       this.loginForm.reset()
-    //     this.router.navigate(["home"])
-    //     }else{
-    //       alert("user not found")
-    //     }
-    //   }
-      // ,err=>{
-      //   alert("Something went wrong")
-      // })
+        
+      }
+    
   }
-    //   this.http.get<any>("http://localhost:3001/users/auth")
-    // .subscribe(res=>{
-    //   const user = res.find((a:any)=>{
-    //     return a.userName === this.loginForm.value.userName && a.password === this.loginForm.value.password 
-    //   });
-    //   if(user){
-    //     alert('Login Succesful');
-    //     this.loginForm.reset()
-    //   this.router.navigate(["home"])
-    //   }else{
-    //     alert("user not found")
-    //   }
-    // },err=>{
-    //   alert("Something went wrong")
-    // })
+    
 }
