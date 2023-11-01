@@ -13,7 +13,7 @@ export class FooditemComponent implements OnInit{
 
 
   role:fooditem[]=[];
-    public displayedColumns =['fooditemid','fooditem','foodcategory','avilabletime','status'];
+    public displayedColumns =['fooditemid','fooditem','foodcategory','avilabletime','price','status'];
     public dataSource=new MatTableDataSource<fooditem>();
     constructor (private fooditemService:FooditemService
       ){
