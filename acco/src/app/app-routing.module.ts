@@ -9,6 +9,7 @@ import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
+import { FooditemComponent } from './component/fooditem/fooditem.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'facitilies',component:FacitiliesComponent},
   {path:'header',component:HeaderComponent},
   {path:'booking',component:BookingComponent},  
+  {path:'fooditem',component:FooditemComponent},  
   {path:'role',component:RoleComponent},
   {path:'roomtype',component:RoomtypeComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }

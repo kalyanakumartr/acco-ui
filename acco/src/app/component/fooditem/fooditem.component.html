@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<div class="outer">
+    <div class="container ">
+        <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Food Items</h4>
+        <div style="color: #964B00; ">
+
+            <table mat-table [dataSource]="dataSource">
+        
+                <ng-container matColumnDef="fooditemid">
+                  <th mat-header-cell *matHeaderCellDef> Food Item No </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    {{element.fooditemid}}</td>
+                </ng-container>
+              <ng-container matColumnDef="fooditem">
+                  <th mat-header-cell *matHeaderCellDef> Food Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.fooditem}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="foodcategory">
+                  <th mat-header-cell *matHeaderCellDef> Food Category </th>
+                  <td mat-cell *matCellDef="let element"> {{element.foodcategory}} </td>
+                </ng-container>
+                <ng-container matColumnDef="avilabletime">
+                    <th mat-header-cell *matHeaderCellDef> Food Avilable Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.avilabletime}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Food Price </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                  </ng-container>
+                
+              
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef> status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                
+              </table>
+              <div class="page">
+                <mat-paginator 
+                #paginator
+                  [pageSizeOptions]="[2,5,10]" 
+                  showFirstLastButtons
+                  >
+          </mat-paginator>
+
+
+
+
+        </div>
+    </div>
+</div>
