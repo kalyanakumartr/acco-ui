@@ -9,6 +9,7 @@ import { environment } from '../environments/environments';
 })
 export class AuthServiceService {
   
+  
   private apiData = new BehaviorSubject<any>(null);
   public apiData$ = this.apiData.asObservable();
 
@@ -21,9 +22,9 @@ export class AuthServiceService {
     
     
   // }
-  login(data: any):Observable<any>{
+  login(Auth: any):Observable<any>{
       console.log("I am server");
-      return this.http.post(`${environment.authURL}`,data);
+      return this.http.post(`${environment.authURL}`,Auth);
         
       };
 

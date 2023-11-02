@@ -1,10 +1,15 @@
 
+
 <div class="outer">
   <app-navbar></app-navbar>
+  
     <div class="container ">
+      
+      
         <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Food Items</h4>
+       
         <div style="color: #964B00; ">
-
+     
             <table mat-table [dataSource]="dataSource">
         
                 <ng-container matColumnDef="fooditemid">
@@ -42,7 +47,8 @@
               <div class="page">
                 <mat-paginator 
                 #paginator
-                  [pageSizeOptions]="[2,5,10]" 
+                  [pageSizeOptions]="[2,5,10]" aria-label="Select page"
+                  
                   showFirstLastButtons
                   >
           </mat-paginator>

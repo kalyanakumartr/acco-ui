@@ -12,7 +12,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  auth:Auth[]=[];
+  auth:Auth[]=[
+
+  ];
   loginData:any;
   type:string = "password";
   isText: boolean = false;
@@ -56,10 +58,10 @@ export class LoginComponent implements OnInit{
           }
           
         })
-        // {
-        //   Swal.fire("Incorrect Username / Password!");
-        //   this.loginForm.reset();
-        // }
+            {
+          Swal.fire("Incorrect Username / Password!");
+          this.loginForm.reset();
+        }
         
         
       }

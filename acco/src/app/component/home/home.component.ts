@@ -16,19 +16,17 @@ export class HomeComponent implements OnInit {
   modalForm!:FormGroup;
   selectedValue: any = '';
   
+  
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,
     
     ){}
 
-  ngOnInit():void{
-    
-    
-  this.modalForm = this.fb.group({
+  ngOnInit():void{   
+      this.modalForm = this.fb.group({
     user: ['',],
    
-    
-  });
+      });
   }
   modalProcess(){
     this.selectedValue = this.modalForm.controls['user'].value;
@@ -36,11 +34,13 @@ export class HomeComponent implements OnInit {
     
     if(this.selectedValue == 'NewUser'){
       console.log("check");
-       this.modalForm.reset();     
+          
              this.router.navigate(["signup"]);
+             this.modalForm.reset(); 
     }else if(this.selectedValue=='ExistingUser'){
-      this.modalForm.reset();
+      
       this.router.navigate(["login"]);
+      this.modalForm.reset();
     }else{
       Swal.fire("Please select value");
     }
