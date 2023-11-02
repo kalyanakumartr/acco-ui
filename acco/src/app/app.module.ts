@@ -21,6 +21,7 @@ import{MatSortModule} from '@angular/material/sort';
 import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
+import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { FooditemComponent } from './component/fooditem/fooditem.component';
     BookingComponent,   
     RoleComponent,
     RoomtypeComponent,
-    FooditemComponent
+    FooditemComponent,
+    PlacetovisitComponent
   ],
   imports: [
     BrowserModule,
