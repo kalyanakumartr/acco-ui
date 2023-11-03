@@ -1,17 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from "@angular/material/table";
+import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { fooditem } from 'src/app/model/fooditem.model';
 import { FooditemService } from 'src/app/services/fooditem.service';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-fooditem',
   templateUrl: './fooditem.component.html',
   styleUrls: ['./fooditem.component.scss'],
   
+  
 })
 export class FooditemComponent implements OnInit{
-
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'determinate';
+  value = 50
  
   role:fooditem[]=[];
     public displayedColumns =['fooditemid','fooditem','foodcategory','avilabletime','price','status'];

@@ -22,6 +22,7 @@ import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
 import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisi
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
    
     
   ],
