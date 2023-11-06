@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Auth } from 'src/app/model/auth.model';
+// import { Auth } from 'src/app/model/auth.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import Swal from 'sweetalert2';
 
@@ -12,9 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  auth:Auth[]=[
 
-  ];
   loginData:any;
   type:string = "password";
   isText: boolean = false;
@@ -42,8 +40,9 @@ export class LoginComponent implements OnInit{
         this.authService.login(this.loginForm.value).subscribe(result=>{  
           this.loginData=result;
           this.authService.setData(this.loginData) 
-          console.log("++++",this.loginData)         
-            console.log(result.username);
+          console.log("++++",this.loginData)
+          localStorage.setItem('token',result.accesstoken);         
+          //   console.log(result.username);
           if(result.accesstoken){
             console.log(result.accesstoken);
             // alert("login sucessful"); 
@@ -58,7 +57,8 @@ export class LoginComponent implements OnInit{
           }
           
         })
-            {
+          
+        {
           Swal.fire("Incorrect Username / Password!");
           this.loginForm.reset();
         }
