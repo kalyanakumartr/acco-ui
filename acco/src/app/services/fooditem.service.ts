@@ -3,6 +3,7 @@ import { environment } from '../environments/environments';
 import { fooditem } from '../model/fooditem.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { GetdetailsInterceptor } from './getdetails.interceptor';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,8 @@ import { Observable } from 'rxjs';
 export class FooditemService {
   constructor(private httpClient: HttpClient) {}
 
-  showfooditem(): Observable<fooditem[]> {
+  getfooditem(): Observable<fooditem[]> {
+    
     return this.httpClient.get<fooditem[]>(`${environment.fooditemapiUrl}`);
   }
 }

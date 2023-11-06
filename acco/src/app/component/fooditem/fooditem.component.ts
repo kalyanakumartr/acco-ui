@@ -38,7 +38,7 @@ export class FooditemComponent implements OnInit{
         this.showfooditem()
 }
 showfooditem(){
-    this.fooditemService.showfooditem()
+    this.fooditemService.getfooditem()
   // .subscribe((res)=>{
     .subscribe((res)=>{
     console.log(res);    

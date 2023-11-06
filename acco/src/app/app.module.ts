@@ -9,7 +9,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import { FacitiliesComponent } from './component/facitilies/facitilies.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { DatePipe } from '@angular/common';
@@ -23,6 +23,7 @@ import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
 import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GetdetailsInterceptor } from './services/getdetails.interceptor';
 
 
 @NgModule({
@@ -56,7 +57,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
    
     
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:GetdetailsInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
