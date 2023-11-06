@@ -1,10 +1,8 @@
-import { BaseModel } from "./base.model";
-
 export class Placetovisit {
     placeid!:number;
     location!:string ;
     distancefromhotel!:string;
-    description!:string;;
+    description!:string;
     state!:string;
     duration!:string;
     hints!:string;
