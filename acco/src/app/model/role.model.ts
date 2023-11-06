@@ -1,5 +1,5 @@
 import { BaseModel } from "./base.model";
-export class Role implements BaseModel{
+export class Role {
     // export class Role {
 roleid:any;
 rolename!:string;

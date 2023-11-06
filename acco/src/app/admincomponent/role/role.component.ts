@@ -43,7 +43,7 @@ import { RoleService } from 'src/app/services/role.service';
         .subscribe((res)=>{
         console.log(res);
         this.dataSource.data=res;
-        console.log("datasource1",this.dataSource.data); 
+        console.log("datasource",this.dataSource.data); 
       });
         
       }

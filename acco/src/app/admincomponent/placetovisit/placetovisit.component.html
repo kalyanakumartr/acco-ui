@@ -1,12 +1,50 @@
+<app-header></app-header>
 <div class="outer">
-    <app-header></app-header>
+   <div class="container ">
+       <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Place To Visit</h4>
+        <div style="color: #964b00ad; ">
+            <table mat-table [dataSource]="dataSource">
+      
+                <ng-container matColumnDef="placeid">
+                  <th mat-header-cell *matHeaderCellDef> Place Id </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    {{element.placeid}}</td>
+                </ng-container>
 
-    <div class="container ">
+              <ng-container matColumnDef="location">
+                  <th mat-header-cell *matHeaderCellDef> Loacation </th>
+                  <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="distancefromhotel">
+                  <th mat-header-cell *matHeaderCellDef> Distance From Hotel</th>
+                  <td mat-cell *matCellDef="let element"> {{element.distancefromhotel}} </td>
+                </ng-container>
 
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef> description Famous</th>
+                  <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef> Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
 
-        <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Place To Visit</h4>
-
-        <div style="color: #964B00; ">
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                
+              </table>
+              <div class="page">
+                
+                <mat-paginator 
+                #paginator
+                  [pageSizeOptions]="[2,5,10]" 
+                  showFirstLastButtons
+                  >
+          </mat-paginator>
+              </div>
+        
         </div>
     </div>
 </div>
