@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserModel } from 'src/app/model/auth.model';
 // import { Auth } from 'src/app/model/auth.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import Swal from 'sweetalert2';
@@ -35,6 +36,10 @@ export class LoginComponent implements OnInit{
     }
 
     loginProcess(){
+      const newuser = new UserModel() ;
+      const formData = this.loginForm.value;
+      newuser.username = formData.userName;
+      newuser.password = formData.password;
       // Swal.fire("Success");
       if(this.loginForm.valid){
         this.authService.login(this.loginForm.value).subscribe(result=>{  

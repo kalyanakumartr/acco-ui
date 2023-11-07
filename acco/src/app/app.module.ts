@@ -57,11 +57,13 @@ import { GetdetailsInterceptor } from './services/getdetails.interceptor';
    
     
   ],
-  providers: [DatePipe,{
+  providers: [DatePipe,
+    {
     provide:HTTP_INTERCEPTORS,
     useClass:GetdetailsInterceptor,
     multi:true
-  }],
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

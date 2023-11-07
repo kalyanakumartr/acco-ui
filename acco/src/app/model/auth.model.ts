@@ -1,5 +1,5 @@
 export class UserModel {
-    userid!: any;
+    userid: any;
     firstname!: string;
     lastname!: string;
     address1!: string;
@@ -9,7 +9,8 @@ export class UserModel {
     country!: string;
     phonenumber!: string;
     email!: string;
-    userName!: string;
+    username!: string;
     password!: string;
-    accesstoken!:string;
+    cpassword!:string;
+    roleid:any;
 }
