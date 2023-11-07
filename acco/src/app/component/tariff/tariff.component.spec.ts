@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TraiffComponent } from './traiff.component';
+import { TraiffComponent } from './tariff.component';
 
-describe('TraiffComponent', () => {
-  let component: TraiffComponent;
-  let fixture: ComponentFixture<TraiffComponent>;
+describe('TariffComponent', () => {
+  let component: TariffComponent;
+  let fixture: ComponentFixture<TariffComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TraiffComponent]
+      declarations: [TariffComponent]
     });
-    fixture = TestBed.createComponent(TraiffComponent);
+    fixture = TestBed.createComponent(TariffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

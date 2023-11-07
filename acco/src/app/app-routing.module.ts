@@ -11,7 +11,7 @@ import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
 import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
-import { TraiffComponent } from './component/traiff/traiff.component';
+import { TariffComponent } from './component/tariff/tariff.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:'role',component:RoleComponent},
   {path:'roomtype',component:RoomtypeComponent},
   {path:'placetovisit',component:PlacetovisitComponent},
-  {path:'traiff',component:TraiffComponent},
+  {path:'tariff',component:TariffComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
