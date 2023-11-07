@@ -24,6 +24,7 @@ import { FooditemComponent } from './component/fooditem/fooditem.component';
 import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetdetailsInterceptor } from './services/getdetails.interceptor';
+import { TraiffComponent } from './component/traiff/traiff.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { GetdetailsInterceptor } from './services/getdetails.interceptor';
     RoleComponent,
     RoomtypeComponent,
     FooditemComponent,
-    PlacetovisitComponent
+    PlacetovisitComponent,
+    TraiffComponent
   ],
   imports: [
     BrowserModule,

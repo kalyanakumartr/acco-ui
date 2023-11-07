@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
- 
+  homeForm!:FormGroup;
   modalForm!:FormGroup;
   selectedValue: any = '';
   
@@ -23,9 +23,13 @@ export class HomeComponent implements OnInit {
     ){}
 
   ngOnInit():void{   
+    this.homeForm=this.fb.group({
+      home: ['', Validators.required]
+    })
       this.modalForm = this.fb.group({
     user: ['',],
    
+    
       });
   }
   modalProcess(){

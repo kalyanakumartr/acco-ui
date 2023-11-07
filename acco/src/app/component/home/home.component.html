@@ -38,7 +38,7 @@
           <div>            
             <h3 style="color:#964B00">Check Availability</h3>            
             <div class="row">
-              <form></form>
+              <form [formGroup]="homeForm">
               <div class="col-lg-6">
                 <h5 style="color:#964B00">Check-In</h5>
                 <div class="row">
@@ -68,7 +68,7 @@
                     <input type="date">
                   </div>
                   <div class="col-lg-6">
-                    <input type="time">
+                    <input  formControlName="home" type="time" required>
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -77,12 +77,15 @@
                     <!-- <label style="color:#964B00">Child</label> -->
                     <div class="row">
                       <div class="col-lg-6  pb-0">
-                        <input class="childinput" type="number">
+                        <input formControlName="home" class="childinput" type="number"  name="childinput"  required>
+                        
+                        <!-- <input class="childinput" type="number"> -->
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              </form>
             </div>
           
             <!--show hide div-->
