@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './tariff.component.html',
   styleUrls: ['./tariff.component.scss']
 })
-export class TraiffComponent {
+export class TariffComponent {
 
 }
