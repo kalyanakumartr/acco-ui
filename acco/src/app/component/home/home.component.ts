@@ -45,6 +45,73 @@ export class HomeComponent implements OnInit {
       Swal.fire("Please select value");
     }
   }
+  
+  
+  ReadMore:boolean = true
 
+  //hiding info box
+  visible:boolean = true
+  facilities: boolean = true
+
+
+  //onclick toggling both
+  onclick()
+  {
+     //not equal to condition
+    this.visible = !this.visible
+  }
+  FirstFloor : boolean = true;
+  FirstFloor1 : boolean = true;
+  FirstFloor2 : boolean = true;
+  ontouch()
+  {
+    this.facilities = !this.facilities
+  }
+
+toggleFirstFloor()
+{
+  this.FirstFloor = !this.FirstFloor;
+}
+
+toggleFirstFloor1()
+{
+  this.FirstFloor1 = !this.FirstFloor1;
+}
+
+
+toggleFirstFloor2()
+{
+  this.FirstFloor2 = !this.FirstFloor2;
+}
+inputnumber = 0;
+plus()
+  {
+    if(this.inputnumber<6){
+    
+   this.inputnumber = this.inputnumber+1;
+    }
+  }
+  minus()
+  {
+    if(this.inputnumber != 0)
+  {
+   this.inputnumber = this.inputnumber-1;
+  }
+  
+  }
+  foodnumber = 0;
+  plus3()
+    {
+      if(this.foodnumber<12){
+        this.foodnumber = this.foodnumber+1;
+      }
+    }
+    minus3()
+  {
+    if(this.foodnumber !=0)
+    {
+      this.foodnumber = this.foodnumber-1;
+    }
+  }
   
 }
