@@ -41,35 +41,28 @@ export class LoginComponent implements OnInit{
       newuser.username = formData.userName;
       newuser.password = formData.password;
       // Swal.fire("Success");
-      if(this.loginForm.valid){
-        this.authService.login(this.loginForm.value).subscribe(result=>{  
-          this.loginData=result;
-          this.authService.setData(this.loginData) 
-          console.log("++++",this.loginData)
-          localStorage.setItem('token',result.accesstoken);         
-          //   console.log(result.username);
-          if(result.accesstoken){
+      // if(this.loginForm.value){
+        this.authService.login(this.loginForm.value).subscribe(result=>{ 
+          if(result.accesstoken) {
+            this.loginData=result;
+            this.authService.setData(this.loginData) 
+            console.log("++++",this.loginData)
+            localStorage.setItem('token',result.accesstoken); 
             console.log(result.accesstoken);
             // alert("login sucessful"); 
-            Swal.fire(result.message);
+            Swal.fire(result.message);           
             this.loginForm.reset();
             this.router.navigate(["home"])
-          }
-          else{
-            // alert("Invalid")
-            Swal.fire("Invalid");
-            this.loginForm.reset();
-          }
+          }                  
           
-        })
           
-        {
-          Swal.fire("Incorrect Username / Password!");
-          this.loginForm.reset();
+        },
+        error=>{
+          Swal.fire("Invalid Credentials"); 
         }
-        
-        
-      }
+        )
+               
+      
     
   }
     
