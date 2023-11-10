@@ -140,123 +140,122 @@
             </div>              
           </div>
         </div>
-         
-      </div>
-      <!--show hide div-->
-      <div class="row">
-        <div class="col-md-12">
-          <!---will create button with ternary operator and click function--->
-          <span class="arrow" (click)="onclick( )" style="font-size: 20px; color: brown;">
-            <i class="fa fa-angle-down"></i></span>
-
-          <!-- {{ReadMore?"Read More":"Read Less"}} -->
-
-          <!--will create if condition my default it will
-                        b hide on click it will toggle--->
-          <ng-container *ngIf="visible">
-            <div class="card">
-              <h5 style="text-align: center;color:#964B00;">Floor and Rooms your choices</h5>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4" *ngFor="let i of floorData">
-                    <button  (click)="toggleFirstFloor()" type="button"
-                      class="btn btn-warning btn-xs">{{i.floornumber}}</button>
-                    <br><br>
-                    <!-- <div  *ngFor="let i of floorRoom" > -->
-                      <div *ngIf="!FirstFloor">
-                      <!-- *ngIf="!FirstFloor" -->
-                     <p  style="color:#964B00;"><input  type="checkbox" class="2BHK">Room1 2BKH</p>
-                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BH</p>
-                      <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
-                      <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
-                    </div>
-                    <!-- </div> -->
-                  </div>
-                </div>
-                <!-- <button (click)="toggleFirstFloor1()" type="button"
-                  class="btn btn-warning btn-xs">SecondFloor</button><br><br>
-                <div *ngIf="!FirstFloor1">
-                  <p style="color:#964B00;"> <input type="checkbox" class="2BHK">Room1 2BHK </p>
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
-                </div>
-                <button (click)="toggleFirstFloor2()" type="button"
-                  class="btn btn-warning btn-xs">ThirdFloorr</button><br><br>
-                <div *ngIf="!FirstFloor2">
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK">Room1 2BHK </p>
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
-                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
-                </div> -->
-                <br>
-                <p style="color:#964B00;"> <input  type="checkbox" name=" ac" id=" ac">AC</p>
-                <br>
-                <div class="row pl-2 ">
-
-                  <p style="color:#964B00;">  <input  class="mr-1" type="checkbox" id="bed" name="bed" value="bed"></p>
-                  <label  style="color:#964B00;" class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
-                  <div class="row pl-3">
-                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                        (click)="plus()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
-
-                      <div class="form-check-inline">
-                        <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
-                          [(ngModel)]="inputnumber">&nbsp;&nbsp;
-
-                        <div class="form-check-inline">
-                          <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                            (click)="minus()"><i class="fa fa-minus"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <P style="font-size: smaller; color:#964B00; ">150rs/person</P>
-                <div class="row pl-2">
-                  <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
-                  <label  style="color:#964B00;" class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
-                  <div class="row">
-
-                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
-                      <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
-
-                      <div class="form-check-inline">
-                        <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
-                          [(ngModel)]="foodnumber">&nbsp;&nbsp;
-
-                        <div class="form-check-inline">
-                          <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                            (click)="minus3()"><i class="fa fa-minus"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <P style="font-size: smaller;color:#964B00;"> 200Rs/person</P>
-                <br>
-                <span class="button" (click)="ontouch( )" style="font-size: 20px; color: brown;">
-                  <i class="btn btn-warning"></i></span>
-                  <ng-container *ngIf="facilities">
-                    <div class="card">
-                      <div class="card-body">
-                   <h5 style="text-align: center; color: #964B00;;"> Facilities of Madura Service Appartment</h5>
-
-                      </div>
-                    </div>
-                  </ng-container>
-              </div>
-             
-            </div>
-            
-          </ng-container>
-          <span class="arrow" (click)="onclick()" style="font-size: 20px; color: brown;"><i
-              class="fa fa-angle-up"></i></span>
-       </div>
-      </div>
+               </div>      
           </form>
+          <!--show hide div-->
+          <div class="row">
+            <div class="col-md-12">
+              <!---will create button with ternary operator and click function--->
+              <span class="arrow" (click)="onclick( )" style="font-size: 20px; color: brown;">
+                <i class="fa fa-angle-down"></i></span>
+    
+              <!-- {{ReadMore?"Read More":"Read Less"}} -->
+    
+              <!--will create if condition my default it will
+                            b hide on click it will toggle--->
+              <ng-container *ngIf="visible">
+                <div class="card">
+                  <h5 style="text-align: center;color:#964B00;">Floor and Rooms your choices</h5>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-4" *ngFor="let i of floorData">
+                        <button  (click)="toggleFirstFloor()" type="button"
+                          class="btn btn-warning btn-xs">{{i.floornumber}}</button>
+                       
+                        <!-- <div  *ngFor="let i of floorRoom" > -->
+                          <div *ngIf="!FirstFloor">
+                          <!-- *ngIf="!FirstFloor" -->
+                         <p  style="color:#964B00;"><input  type="checkbox" class="2BHK">Room1 2BKH</p>
+                          <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BH</p>
+                          <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
+                          <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
+                        </div>
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                    <!-- <button (click)="toggleFirstFloor1()" type="button"
+                      class="btn btn-warning btn-xs">SecondFloor</button><br><br>
+                    <div *ngIf="!FirstFloor1">
+                      <p style="color:#964B00;"> <input type="checkbox" class="2BHK">Room1 2BHK </p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
+                    </div>
+                    <button (click)="toggleFirstFloor2()" type="button"
+                      class="btn btn-warning btn-xs">ThirdFloorr</button><br><br>
+                    <div *ngIf="!FirstFloor2">
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK">Room1 2BHK </p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
+                    </div> -->
+                    
+                    <p style="color:#964B00;" class="mt-2"> <input class="mr-1 mt-0 " type="checkbox" name=" ac" id=" ac">AC</p>
+                   
+                    <div class="row pl-2 ">
+    
+                       <input  class="mr-1 ml-2" type="checkbox" id="bed" name="bed" value="bed">
+                      <label  style="color:#964B00;" class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
+                      <div class="row pl-3">
+                        <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                            (click)="plus()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+    
+                          <div class="form-check-inline">
+                            <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
+                              [(ngModel)]="inputnumber">&nbsp;&nbsp;
+    
+                            <div class="form-check-inline">
+                              <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                (click)="minus()"><i class="fa fa-minus"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <P style="font-size: smaller; color:#964B00; ">150rs/person</P>
+                    <div class="row pl-2">
+                      <input class="mr-1 ml-2" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                      <label  style="color:#964B00;" class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
+                      <div class="row">
+    
+                        <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                          <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                            (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+    
+                          <div class="form-check-inline">
+                            <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
+                              [(ngModel)]="foodnumber">&nbsp;&nbsp;
+    
+                            <div class="form-check-inline">
+                              <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                (click)="minus3()"><i class="fa fa-minus"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <P style="font-size: smaller;color:#964B00;"> 200Rs/person</P>
+                    <br>
+                    <span class="button" (click)="ontouch( )" style="font-size: 20px; color: brown;">
+                      <i class="btn btn-warning"></i></span>
+                      <ng-container *ngIf="facilities">
+                        <div class="card">
+                          <div class="card-body">
+                       <h5 style="text-align: center; color: #964B00;;"> Facilities of Madura Service Appartment</h5>
+    
+                          </div>
+                        </div>
+                      </ng-container>
+                  </div>
+                 
+                </div>
+                
+              </ng-container>
+              <span class="arrow" (click)="onclick()" style="font-size: 20px; color: brown;"><i
+                  class="fa fa-angle-up"></i></span>
+           </div>
+          </div>
         </div>
       </div>
     </div>

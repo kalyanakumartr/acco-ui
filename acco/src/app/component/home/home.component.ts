@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   selectedValue: any = '';
   floorData: any;
   floorRoom: any;
+  inputnumber = 0;
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,
@@ -92,11 +93,10 @@ toggleFirstFloor2()
 {
   this.FirstFloor2 = !this.FirstFloor2;
 }
-inputnumber = 0;
+
 plus()
   {
-    if(this.inputnumber<6){
-    
+    if(this.inputnumber<6){    
    this.inputnumber = this.inputnumber+1;
     }
   }
