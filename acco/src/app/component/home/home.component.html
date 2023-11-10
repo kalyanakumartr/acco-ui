@@ -32,231 +32,231 @@
 
       </div>
       <div class="col-sm-6">
-
-        <!-- <h1 style="color:#964B00"> Check Availability</h1> -->
-        <div class="row">         
-          <div>            
-            <h3 style="color:#964B00">Check Availability</h3>            
-            <div class="row">
-             
+        <h3 style="color:#964B00">Check Availability</h3> 
+        <div class="panel-body p-0">
+          <form [formGroup]="homeForm" (ngSubmit)="checkAvailability()">
+            <div class="form-group pt-0 row justify-content-around">
               <div class="col-lg-6">
                 <h5 style="color:#964B00">Check-In</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input type="date">
+                    <input formControlName="checkIn" type="date">
                   </div>
                   <div class="col-lg-6">
-                    <input type="time">
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-lg-6">
-                    <h5 style="color:#964B00">Adult</h5>
-                    <!-- <label style="color:#964B00">Adult</label>  -->
-                    <div class="row">
-                      <div class="col-lg-6  pb-3">
-                        <input class="adultinput" type="number">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <h5 style="color:#964B00">Check-Out</h5>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <input type="date">
-                  </div>
-                  <div class="col-lg-6">
-                    <input   type="time" required>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-lg-6">
-                    <h5 style="color:#964B00">Child</h5>
-                    <!-- <label style="color:#964B00">Child</label> -->
-                    <div class="row">
-                      <div class="col-lg-6  pb-0">
-                        <input  class="childinput" type="number"  name="childinput"  required>
-                        
-                        <!-- <input class="childinput" type="number"> -->
-                      </div>
-                    </div>
+                    <input formControlName="checkInTime" type="time">
                   </div>
                 </div>
               </div>
               
-            </div>
-          
-            <!--show hide div-->
-           
-            <div class="row pt-0 mt-0">
-              <div class="col-md-6 pt-0 ">
-                <h5 style="color:#964B00" class="pt-0">RoomType</h5>
-                <div class="col-md-6 p-0">
-                  <select>
-                    <option value="1">Service Apartment</option>
-                    <option value="2">Rooms</option>
-                  </select>
+             <div class="col-lg-6">
+              <h5 style="color:#964B00">Check-Out</h5>
+              <div class="row">
+                <div class="col-lg-6">
+                  <input formControlName="checkOut" type="date">
+                </div>
+                <div class="col-lg-6">
+                  <input formControlName="checkOutTime" type="time">
                 </div>
               </div>
+            </div>
+             
+          </div>
+          <div class="form-group pt-0 row justify-content-around">
+            <div class="col-lg-6">
+              <h5 style="color:#964B00">Adult</h5>
+              <div class="row">
+                <div class="col-lg-6">
+                  <input formControlName="adult" class="adultinput" type="number">
+                </div>
+                
+              </div>
+            </div>
             
-
-              <div class="col-lg-6 pt-4 pl-3 ">
-                <button type="submit" class="btn btn-outline   w-100 pt-1 " data-toggle="modal"
-                  data-target="#exampleModalCenter"
-                  style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability</button>
-                <form [formGroup]="modalForm" (ngSubmit)="modalProcess()">
-                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle" style="color: #964B00;">Availability</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                            style="color: #964B00;">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form-check form-check-inline">
-                            <input formControlName="user" class="form-check-input" type="radio" name="user"
-                              id="inlineRadio1" value="NewUser">
-                            <label class="form-check-label" for="inlineRadio1" style="color: #964B00;">NewUser</label>
-                          </div>&nbsp;&nbsp;&nbsp;
-                          <div class="form-check form-check-inline">
-                            <input formControlName="user" class="form-check-input" type="radio" name="user"
-                              id="inlineRadio2" value="ExistingUser">
-                            <label class="form-check-label" for="inlineRadio2"
-                              style="color: #964B00;">ExistingUser</label>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                          <button type="submit" class="btn btn-outLine"
-                            style="color: #964B00;background-color: #efc96a;">Continue</button>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </form>
+           <div class="col-lg-6">
+            <h5 style="color:#964B00">Child</h5>
+            <div class="row">
+              <div class="col-lg-6">
+                <input formControlName="child" class="adultinput" type="number">
+              </div>              
+            </div>
+          </div>
+           
+        </div>
+        <div class="form-group pt-0 row justify-content-around">
+          <div class="col-lg-6">
+            <h5 style="color:#964B00">RoomType</h5>
+            <div class="row">
+              <div class="col-lg-6">
+                <select formControlName="roomType">
+                  <option value="1">Service Apartment</option>
+                  <option value="2">Rooms</option>
+                </select>
               </div>
               
-            </div>
-            <!--show hide div-->
-            <div class="row">
-              <div class="col-md-12">
-                <!---will create button with ternary operator and click function--->
-                <span class="arrow" (click)="onclick( )" style="font-size: 20px; color: brown;">
-                  <i class="fa fa-angle-down"></i></span>
-
-                <!-- {{ReadMore?"Read More":"Read Less"}} -->
-
-                <!--will create if condition my default it will
-                              b hide on click it will toggle--->
-                <ng-container *ngIf="visible">
-                  <div class="card">
-                    <h5 style="text-align: center;color:#964B00;">Floor and Rooms your choices</h5>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-4">
-                          <button (click)="toggleFirstFloor()" type="button"
-                            class="btn btn-warning btn-xs">1stfl</button>
-                          <br><br>
-                          <div *ngIf="!FirstFloor">
-                           <p  style="color:#964B00;"><input  type="checkbox" class="2BHK">Room1 2BHK</p>
-                            <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BH</p>
-                            <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
-                            <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
-                          </div>
-                        </div>
-                      </div>
-                      <button (click)="toggleFirstFloor1()" type="button"
-                        class="btn btn-warning btn-xs">SecondFloor</button><br><br>
-                      <div *ngIf="!FirstFloor1">
-                        <p style="color:#964B00;"> <input type="checkbox" class="2BHK">Room1 2BHK </p>
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
-                      </div>
-                      <button (click)="toggleFirstFloor2()" type="button"
-                        class="btn btn-warning btn-xs">ThirdFloorr</button><br><br>
-                      <div *ngIf="!FirstFloor2">
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK">Room1 2BHK </p>
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
-                        <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
-                      </div>
-                      <br>
-                      <p style="color:#964B00;"> <input  type="checkbox" name=" ac" id=" ac">AC</p>
-                      <br>
-                      <div class="row pl-2 ">
-
-                        <p style="color:#964B00;">  <input  class="mr-1" type="checkbox" id="bed" name="bed" value="bed"></p>
-                        <label  style="color:#964B00;" class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
-                        <div class="row pl-3">
-                          <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                              (click)="plus()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
-
-                            <div class="form-check-inline">
-                              <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
-                                [(ngModel)]="inputnumber">&nbsp;&nbsp;
-
-                              <div class="form-check-inline">
-                                <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                                  (click)="minus()"><i class="fa fa-minus"></i></button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <P style="font-size: smaller; color:#964B00; ">150rs/person</P>
-                      <div class="row pl-2">
-                        <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
-                        <label  style="color:#964B00;" class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
-                        <div class="row">
-
-                          <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                              (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
-
-                            <div class="form-check-inline">
-                              <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
-                                [(ngModel)]="foodnumber">&nbsp;&nbsp;
-
-                              <div class="form-check-inline">
-                                <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                                  (click)="minus3()"><i class="fa fa-minus"></i></button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <P style="font-size: smaller;color:#964B00;"> 200Rs/person</P>
-                      <br>
-                      <span class="button" (click)="ontouch( )" style="font-size: 20px; color: brown;">
-                        <i class="btn btn-warning"></i></span>
-                        <ng-container *ngIf="facilities">
-                          <div class="card">
-                            <div class="card-body">
-                         <h5 style="text-align: center; color: #964B00;;"> Facilities of Madura Service Appartment</h5>
-
-                            </div>
-                          </div>
-                        </ng-container>
-                    </div>
-                   
-                  </div>
-                  
-                </ng-container>
-                <span class="arrow" (click)="onclick()" style="font-size: 20px; color: brown;"><i
-                    class="fa fa-angle-up"></i></span>
-             </div>
             </div>
           </div>
           
+         <div class="col-lg-6">
+          <h5 style="color:#964B00 ">Check Availability</h5>
+          <div class="row">
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-outline " data-toggle="modal"
+                          data-target="#exampleModalCenter"
+                          style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability </button>
+                          <form [formGroup]="modalForm" (ngSubmit)="modalProcess()">
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #964B00;">Availability</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                      style="color: #964B00;">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-check form-check-inline">
+                                      <input formControlName="user" class="form-check-input" type="radio" name="user"
+                                        id="inlineRadio1" value="NewUser">
+                                      <label class="form-check-label" for="inlineRadio1" style="color: #964B00;">NewUser</label>
+                                    </div>&nbsp;&nbsp;&nbsp;
+                                    <div class="form-check form-check-inline">
+                                      <input formControlName="user" class="form-check-input" type="radio" name="user"
+                                        id="inlineRadio2" value="ExistingUser">
+                                      <label class="form-check-label" for="inlineRadio2"
+                                        style="color: #964B00;">ExistingUser</label>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                    <button type="submit" class="btn btn-outLine"
+                                      style="color: #964B00;background-color: #efc96a;">Continue</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+            </div>              
+          </div>
+        </div>
+         
+      </div>
+      <!--show hide div-->
+      <div class="row">
+        <div class="col-md-12">
+          <!---will create button with ternary operator and click function--->
+          <span class="arrow" (click)="onclick( )" style="font-size: 20px; color: brown;">
+            <i class="fa fa-angle-down"></i></span>
+
+          <!-- {{ReadMore?"Read More":"Read Less"}} -->
+
+          <!--will create if condition my default it will
+                        b hide on click it will toggle--->
+          <ng-container *ngIf="visible">
+            <div class="card">
+              <h5 style="text-align: center;color:#964B00;">Floor and Rooms your choices</h5>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4" *ngFor="let i of floorData">
+                    <button  (click)="toggleFirstFloor()" type="button"
+                      class="btn btn-warning btn-xs">{{i.floornumber}}</button>
+                    <br><br>
+                    <!-- <div  *ngFor="let i of floorRoom" > -->
+                      <div *ngIf="!FirstFloor">
+                      <!-- *ngIf="!FirstFloor" -->
+                     <p  style="color:#964B00;"><input  type="checkbox" class="2BHK">Room1 2BKH</p>
+                      <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BH</p>
+                      <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
+                      <p  style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
+                    </div>
+                    <!-- </div> -->
+                  </div>
+                </div>
+                <!-- <button (click)="toggleFirstFloor1()" type="button"
+                  class="btn btn-warning btn-xs">SecondFloor</button><br><br>
+                <div *ngIf="!FirstFloor1">
+                  <p style="color:#964B00;"> <input type="checkbox" class="2BHK">Room1 2BHK </p>
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
+                </div>
+                <button (click)="toggleFirstFloor2()" type="button"
+                  class="btn btn-warning btn-xs">ThirdFloorr</button><br><br>
+                <div *ngIf="!FirstFloor2">
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK">Room1 2BHK </p>
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room2 2BHK</p>
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room3 2BHK</p>
+                  <p style="color:#964B00;"><input type="checkbox" class="2BHK"> Room4 3BHK</p>
+                </div> -->
+                <br>
+                <p style="color:#964B00;"> <input  type="checkbox" name=" ac" id=" ac">AC</p>
+                <br>
+                <div class="row pl-2 ">
+
+                  <p style="color:#964B00;">  <input  class="mr-1" type="checkbox" id="bed" name="bed" value="bed"></p>
+                  <label  style="color:#964B00;" class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
+                  <div class="row pl-3">
+                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                        (click)="plus()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                      <div class="form-check-inline">
+                        <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
+                          [(ngModel)]="inputnumber">&nbsp;&nbsp;
+
+                        <div class="form-check-inline">
+                          <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                            (click)="minus()"><i class="fa fa-minus"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <P style="font-size: smaller; color:#964B00; ">150rs/person</P>
+                <div class="row pl-2">
+                  <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                  <label  style="color:#964B00;" class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
+                  <div class="row">
+
+                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                      <div class="form-check-inline">
+                        <input style="border-color:#efc96a; width: 50px;" type="text" class="form-control"
+                          [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                        <div class="form-check-inline">
+                          <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                            (click)="minus3()"><i class="fa fa-minus"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <P style="font-size: smaller;color:#964B00;"> 200Rs/person</P>
+                <br>
+                <span class="button" (click)="ontouch( )" style="font-size: 20px; color: brown;">
+                  <i class="btn btn-warning"></i></span>
+                  <ng-container *ngIf="facilities">
+                    <div class="card">
+                      <div class="card-body">
+                   <h5 style="text-align: center; color: #964B00;;"> Facilities of Madura Service Appartment</h5>
+
+                      </div>
+                    </div>
+                  </ng-container>
+              </div>
+             
+            </div>
+            
+          </ng-container>
+          <span class="arrow" (click)="onclick()" style="font-size: 20px; color: brown;"><i
+              class="fa fa-angle-up"></i></span>
+       </div>
+      </div>
+          </form>
         </div>
       </div>
     </div>

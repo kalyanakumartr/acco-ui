@@ -15,37 +15,42 @@ export class HomeComponent implements OnInit {
   homeForm!:FormGroup;
   modalForm!:FormGroup;
   selectedValue: any = '';
-  
+  floorData: any;
+  floorRoom: any;
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,
     
     ){}
-
+    
+  
   ngOnInit():void{   
     this.homeForm=this.fb.group({
-      home: ['', Validators.required]
+      checkIn: ['', Validators.required],
+      checkInTime: ['', Validators.required],
+      checkOut: ['', Validators.required],
+      checkOutTime: ['', Validators.required],
+      adult: ['', Validators.required],
+      child: ['', Validators.required],
+      roomType: ['', Validators.required],
     })
       this.modalForm = this.fb.group({
-    user: ['',],
-   
-    
-      });
+    user: ['',], });
+    this.getFloor();
+    this.getroom();
   }
   modalProcess(){
     this.selectedValue = this.modalForm.controls['user'].value;
-    console.log(this.selectedValue);
-    
+    console.log(this.selectedValue);    
     if(this.selectedValue == 'NewUser'){
-      console.log("check");
-          
-             this.router.navigate(["signup"]);
-             this.modalForm.reset(); 
+      console.log(this.selectedValue);          
+             this.router.navigate(["signup"]);             
     }else if(this.selectedValue=='ExistingUser'){
-      
+      console.log(this.selectedValue);     
       this.router.navigate(["login"]);
-      this.modalForm.reset();
-    }else{
+     
+    }
+    else{
       Swal.fire("Please select value");
     }
   }
@@ -117,5 +122,29 @@ plus()
       this.foodnumber = this.foodnumber-1;
     }
   }
-  
+  getFloor(){
+    console.log("getfloor check purpose");
+    return this.http.get("http://localhost:3001/users/getfloor").
+    subscribe((res)=>{
+      console.log(res);
+     this. floorData=res;
+      console.log(this.floorData);
+      
+    });
+  }
+  getroom(){
+    console.log("getroom check purpose");
+    return this.http.get("http://localhost:3001/users/getroom").
+    subscribe((res)=>{
+      console.log(res);
+     this. floorRoom=res;
+      console.log(this.floorRoom);
+      
+    });
+  }
+
+  checkAvailability(){
+   
+
+  }
 }
