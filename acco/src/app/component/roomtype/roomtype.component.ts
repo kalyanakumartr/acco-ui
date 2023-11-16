@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetroomlistService } from 'src/app/services/getroomlist.service';
 
 @Component({
   selector: 'app-roomtype',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./roomtype.component.scss']
 })
 export class RoomtypeComponent implements OnInit {
-  constructor(){}
+  roomData:any;
+  constructor(private getroomlistservice:GetroomlistService){
+    getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
+  }
   ngOnInit(): void {
+   console.log("room:",this.roomData) ;
     
   }
   inputnumber = 0;

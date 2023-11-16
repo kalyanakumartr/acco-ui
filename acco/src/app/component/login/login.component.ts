@@ -36,10 +36,11 @@ export class LoginComponent implements OnInit{
     }
 
     loginProcess(){
-      const newuser = new UserModel() ;
-      const formData = this.loginForm.value;
-      newuser.username = formData.userName;
-      newuser.password = formData.password;
+      // const newuser = new UserModel() ;
+      // const formData = this.loginForm.value;
+      // newuser.username = formData.userName;
+      // newuser.password = formData.password;
+      // console.log(newuser);
       // Swal.fire("Success");
       // if(this.loginForm.value){
         this.authService.login(this.loginForm.value).subscribe(result=>{ 

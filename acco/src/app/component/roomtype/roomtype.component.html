@@ -23,9 +23,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="color: #964B00;">
-                        <th class="align-middle" style="border-color: #964B00;" scope="row">1</th>
-                        <td class="align-middle " style="border-color: #964B00;">2BHK
+                    <tr style="color: #964B00;" *ngFor="let i of roomData">
+                        <th class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomid}}</th>
+                        <td class="align-middle " style="border-color: #964B00;">{{i.roomname}}
                     <tr scope="col" style="border-color: #964B00;">Reccommended for 2 adults, and 1 child</tr>
                     <div class="row">
                         <div class="col">
@@ -45,12 +45,10 @@
 
                     </td>
 
-                    <td style="border-color: #964B00;" class="align-middle ">3</td>
-
+                    <td style="border-color: #964B00;" class="align-middle ">{{i.basecount}}</td>
                     <td style="border-color: #964B00;" class="align-middle ">1</td>
-
                     <td style="border-color: #964B00;" class="align-middle ">3500</td>
-                    <td style="border-color: #964B00;" class="align-middle ">600 sq.ft</td>
+                    <td style="border-color: #964B00;" class="align-middle ">{{i.roomsize}} sq.ft</td>
 
                     <td style="border-color: #964B00; "class=" align-middle">
 
@@ -116,7 +114,7 @@
                     </td>
                     </tr>
 
-                    <tr>
+                    <!-- <tr>
                         <th  class="align-middle" style="border-color: #964B00;" scope="row">2</th>
                         <td style="border-color: #964B00;">3BHK
                     <tr style="border-color: #964B00;" scope="col">Reccommended for 2 adults, and 1 child</tr>
@@ -216,8 +214,8 @@
 
                     </td>
 
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                         <th class="align-middle" style="border-color: #964B00;" scope="row">3</th>
                         <td style="border-color: #964B00;">Splited room
 
@@ -305,7 +303,7 @@
                     </td>
 
 
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

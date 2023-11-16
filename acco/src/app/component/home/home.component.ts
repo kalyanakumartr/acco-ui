@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GetRoomList } from 'src/app/model/getroomlist.model';
+import { GetroomlistService } from 'src/app/services/getroomlist.service';
+
 
 import Swal from 'sweetalert2';
 
@@ -18,9 +21,12 @@ export class HomeComponent implements OnInit {
   floorData: any;
   floorRoom: any;
   inputnumber = 0;
+  adultNumber:any;
+  roomData:any;
+  roomValue:any;
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
-    private router: Router,
+    private router: Router,private getroomlistservice:GetroomlistService
     
     ){}
     
@@ -35,10 +41,11 @@ export class HomeComponent implements OnInit {
       child: ['', Validators.required],
       roomType: ['', Validators.required],
     })
+   
       this.modalForm = this.fb.group({
     user: ['',], });
-    this.getFloor();
-    this.getroom();
+    // this.getFloor();
+    // this.getroom();
   }
   modalProcess(){
     this.selectedValue = this.modalForm.controls['user'].value;
@@ -144,7 +151,25 @@ plus()
   }
 
   checkAvailability(){
-   
-
+    const formData=this.homeForm.value;  
+    const newRoom= new GetRoomList(); 
+    newRoom.checkIn=formData.checkIn;
+    newRoom.checkOut=formData.checkOut;
+    newRoom.checkInTime=formData.checkOut;
+    newRoom.checkOutTime=formData.checkOut;
+    newRoom.adult=formData.adult;
+    // this.adultNumber =baseCount.adult;
+    
+    console.log(newRoom);
+   this.getroomlistservice.roomlist(newRoom).subscribe((res)=>{
+    console.log(res);
+    this.roomData=res;
+            this.getroomlistservice.setData(this.roomData) 
+            console.log("++++roomData:",this.roomData);
+            console.log("0 value:",this.roomData[0].roomid);
+            this.roomValue;
+             this.router.navigate(["roomtype"]);
+    
+  });
   }
 }
