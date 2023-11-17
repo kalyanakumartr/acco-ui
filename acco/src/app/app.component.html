@@ -1,3 +1,16 @@
 
 
 <router-outlet></router-outlet>
+<form #f="ngForm" novalidate (ngSubmit)="f.form.valid&&onsubmit()"  >
+<div>
+    
+    <input type="text" minlength="4" name="fname" [(ngModel)]="formdata.fname" #fname="ngModel" required  minlength="4" ><br>
+    <span class="text-danger" *ngIf="this.submit&&fname.errors?.['required']"> Name is required</span><br>
+    <div *ngIf="fname.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </div>
+      
+      
+      <input class="btn btn-register" type="submit" value="Sumbit" (click)="submit=true">
+</div>
+</form>
