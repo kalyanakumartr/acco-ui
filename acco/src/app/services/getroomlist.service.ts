@@ -14,8 +14,9 @@ export class GetroomlistService {
 
   roomlist(adult:any,checkIn:any,checkOut:any):Observable<any>{
     console.log("I am roomlist"); 
+    console.log("checkhere",adult,checkIn,checkOut)
        
-    return this.http.get("http://localhost:3001/users/getroomlist?adult=adult&checkin=checkIn&checkout=checkOut");
+    return this.http.get("http://localhost:3001/users/getroomlist?adults="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
   }
   setData(roomData: any) { 
     this.apiRoom.next(roomData)
