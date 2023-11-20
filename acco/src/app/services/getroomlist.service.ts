@@ -12,10 +12,10 @@ export class GetroomlistService {
   public apiRoom$ = this.apiRoom.asObservable();
   constructor(private http:HttpClient) { }
 
-  roomlist(room: GetRoomList):Observable<GetRoomList>{
+  roomlist(adult:any,checkIn:any,checkOut:any):Observable<any>{
     console.log("I am roomlist"); 
        
-    return this.http.get<GetRoomList>("http://localhost:3001/users/getroomlist?adults="+room);
+    return this.http.get("http://localhost:3001/users/getroomlist?adult=adult&checkin=checkIn&checkout=checkOut");
   }
   setData(roomData: any) { 
     this.apiRoom.next(roomData)

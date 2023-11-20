@@ -155,13 +155,13 @@ plus()
     const newRoom= new GetRoomList(); 
     newRoom.checkIn=formData.checkIn;
     newRoom.checkOut=formData.checkOut;
-    newRoom.checkInTime=formData.checkOut;
-    newRoom.checkOutTime=formData.checkOut;
+    newRoom.checkInTime=formData.checkInTime;
+    newRoom.checkOutTime=formData.checkOutTime;
     newRoom.adult=formData.adult;
     // this.adultNumber =baseCount.adult;
     
     console.log(newRoom);
-   this.getroomlistservice.roomlist(newRoom).subscribe((res)=>{
+   this.getroomlistservice.roomlist(newRoom.adult,newRoom.checkIn,newRoom.checkOut).subscribe((res)=>{
     console.log(res);
     this.roomData=res;
             this.getroomlistservice.setData(this.roomData) 
