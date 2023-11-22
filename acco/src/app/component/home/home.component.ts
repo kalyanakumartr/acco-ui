@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
+import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 
 import Swal from 'sweetalert2';
@@ -155,45 +156,23 @@ plus()
 
   checkAvailability(){
 
-    const formData=this.homeForm.value;  
-    const newRoom= new GetRoomList(); 
-    const formattedcheckIn=formData.checkIn.split("T").join(" ");
-    const formattedcheckOut=formData.checkOut.split("T").join(" ");
+    const formData=this.homeForm.value; 
+    var inDate = new Date(formData.checkIn);
+    var OutDate = new Date(formData.checkOut);
+  
+    var noofdays = (OutDate.getTime() - inDate.getTime())/ (1000 * 3600 * 24);
+    console.log("nnnnn",noofdays);
+    
+    
 
-    newRoom.checkIn=formData.checkIn;
-    newRoom.checkOut=formData.checkOut;
-    newRoom.checkInTime=formData.checkInTime;
-    newRoom.checkOutTime=formData.checkOutTime;
-    newRoom.adult=formData.adult;
-    // this.adultNumber =baseCount.adult;
-
-    // const Indate = newRoom.checkIn;
-    // const Intime = newRoom.checkInTime;
-    // const t1: any = Intime.split(' ');
-    // const t2: any = t1[0].split(':');
-    // t2[0] = (t1[1] === 'PM' ? (1*t2[0] + 12) : t2[0]);
-    // const inTime24 = (t2[0] < 10 ? '0' + t2[0] : t2[0]) + ':' + t2[1];
-    // const checkInCompleteDate = Indate.replace("00:00", inTime24.toString());
-
-    // const Outdate = newRoom.checkOut;
-    // const Outtime = newRoom.checkOutTime;
-    // const t3: any = Outtime.split(' ');
-    // const t4: any = t3[0].split(':');
-    // t4[0] = (t3[1] === 'PM' ? (1*t4[0] + 12) : t4[0]);
-    // const outTime24 = (t4[0] < 10 ? '0' + t4[0] : t4[0]) + ':' + t4[1];
-    // const checkOutCompleteDate = Outdate.replace("00:00", outTime24.toString());
-    console.log(formattedcheckIn);
-    console.log(newRoom);
-    console.log("adddddddd",formattedcheckIn,formattedcheckOut);
-
-   this.getroomlistservice.roomlist(formData.adult,formattedcheckIn,formattedcheckOut).subscribe((res)=>{
+   this.getroomlistservice.roomlist(formData.adult,formData.checkIn,formData.checkOut,noofdays).subscribe((res)=>{
     console.log(res);
     this.roomData=res;
             this.getroomlistservice.setData(this.roomData) 
             console.log("++++roomData:",this.roomData);
             console.log("0 value:",this.roomData[0].roomid);
             this.roomValue;
-             this.router.navigate(["roomtype"]);
+             this.router.navigate(["roomtype",{formData}]);
     
   });
   }

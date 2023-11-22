@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { GetchargedamenityService } from 'src/app/services/getchargedamenity.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 
 @Component({
@@ -7,18 +8,38 @@ import { GetroomlistService } from 'src/app/services/getroomlist.service';
   styleUrls: ['./roomtype.component.scss']
 })
 export class RoomtypeComponent implements OnInit {
+  @Input() fd: any;
   roomData:any;
-  constructor(private getroomlistservice:GetroomlistService){
+  chargedData:any;
+  constructor(
+    private getroomlistservice:GetroomlistService,
+    private getChargedAmenity:GetchargedamenityService){
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
   }
   ngOnInit(): void {
    console.log("room:",this.roomData) ;
+   this.getChargedAmenities();
+    console.log("fd :",this.fd);
+
     
   }
   inputnumber = 0;
   number = 0;
   bednumber = 0;
   foodnumber = 0;
+
+  getChargedAmenities(){
+  this.getChargedAmenity.getChargedData().subscribe((res)=>{
+    console.log(res);
+    this.chargedData=res;
+            console.log("++++chargedData:",this.chargedData);
+    
+  });
+}
+
+sendbookeddata(data:any){
+console.log(data)
+}
   
   plus()
   {

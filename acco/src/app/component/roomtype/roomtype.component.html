@@ -47,69 +47,73 @@
 
                     <td style="border-color: #964B00;" class="align-middle ">{{i.basecount}}</td>
                     <td style="border-color: #964B00;" class="align-middle ">1</td>
-                    <td style="border-color: #964B00;" class="align-middle ">3500</td>
+                    <td style="border-color: #964B00;" class="align-middle ">{{i.price}}</td>
                     <td style="border-color: #964B00;" class="align-middle ">{{i.roomsize}} sq.ft</td>
 
-                    <td style="border-color: #964B00; "class=" align-middle">
+                    <td style="border-color: #964B00; " class=" align-middle">
+                        <!-- <form> -->
+                            <div class="row pl-2 ">
 
-                        <div class="row pl-2 ">
-
-                            <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
-                            <label class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;
-                            <div class="row pl-3">
-                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                                        (click)="plus()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
-
-                                    <div class="form-check-inline">
-                                        <input style="border-color:#efc96a; width: 50px;" type="text"
-                                            class="form-control" [(ngModel)]="inputnumber">&nbsp;&nbsp;
+                                <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+                                <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
+                                <div class="row pl-3">
+                                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button style="color:#efc96a; background-color: #964B00;"
+                                            class="btn btn-sm outline" (click)="plus()"><i
+                                                class="fa fa-plus"></i></button>&nbsp;&nbsp;
 
                                         <div class="form-check-inline">
-                                            <button style="color:#efc96a; background-color: #964B00;"
-                                                class="btn btn-sm outline" (click)="minus()"><i
-                                                    class="fa fa-minus"></i></button>
+                                            <input style="border-color:#efc96a; width: 50px;" type="text"
+                                                class="form-control" [(ngModel)]="inputnumber">&nbsp;&nbsp;
+
+                                            <div class="form-check-inline">
+                                                <button style="color:#efc96a; background-color: #964B00;"
+                                                    class="btn btn-sm outline" (click)="minus()"><i
+                                                        class="fa fa-minus"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <P style="font-size: smaller;">150rs/person</P>
-                        
-                        <div class="row pl-2">
-                            <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
-                            <label class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
-                            <div class="row">
+                            <P style="font-size: smaller;">Rs.{{chargedData[1].charges}} per Bed</P>
 
-                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
-                                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+                            <div class="row pl-2">
+                                <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                                <label class="pt-2" for="breakfast"> {{chargedData[2].facilityname}}</label>&nbsp;
+                                <div class="row">
 
-                                    <div class="form-check-inline">
-                                        <input style="border-color:#efc96a; width: 50px;" type="text"
-                                            class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+                                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button style="color:#efc96a; background-color: #964B00;"
+                                            class="btn btn-sm outline" (click)="plus3()"><i
+                                                class="fa fa-plus"></i></button>&nbsp;&nbsp;
 
                                         <div class="form-check-inline">
-                                            <button style="color:#efc96a; background-color: #964B00;"
-                                                class="btn btn-sm outline" (click)="minus3()"><i
-                                                    class="fa fa-minus"></i></button>
+                                            <input style="border-color:#efc96a; width: 50px;" type="text"
+                                                class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                            <div class="form-check-inline">
+                                                <button style="color:#efc96a; background-color: #964B00;"
+                                                    class="btn btn-sm outline" (click)="minus3()"><i
+                                                        class="fa fa-minus"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <P style="font-size: smaller;">200Rs/person</P>
-                        <div class="row pl-2">
-                        <input class="mr-1" type="checkbox" id="AC" name="AC" value="AC">
-                        <label class="mt-2" for="AC"> AC</label>
-                    </div>
+                            <P style="font-size: smaller;">Rs.{{chargedData[2].charges}} per Person</P>
+                            <div class="row pl-2">
+                                <input class="mr-1" type="checkbox" id="AC" name="AC" value="AC">
+                                <label class="mt-2" for="AC"> {{chargedData[0].facilityname}}</label>
 
+                            </div>
+                            <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Room</P>
+                        <!-- </form> -->
 
                     </td>
                     <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
 
-                        <button style="color:#efc96a; background-color: #964B00;" class="btn btn-outline"><i
-                                class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+                        <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;"
+                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 
                     </td>
                     </tr>

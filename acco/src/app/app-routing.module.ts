@@ -12,6 +12,7 @@ import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
 import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
 import { TariffComponent } from './component/tariff/tariff.component';
+import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -25,6 +26,8 @@ const routes: Routes = [
   {path:'role',component:RoleComponent},
   {path:'roomtype',component:RoomtypeComponent},
   {path:'placetovisit',component:PlacetovisitComponent},
+  {path:'bookingsummary',component:BookingsummaryComponent},
+
   {path:'tariff',component:TariffComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

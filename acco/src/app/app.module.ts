@@ -25,6 +25,7 @@ import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetdetailsInterceptor } from './services/getdetails.interceptor';
 import { TariffComponent } from './component/tariff/tariff.component';
+import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { TariffComponent } from './component/tariff/tariff.component';
     RoomtypeComponent,
     FooditemComponent,
     PlacetovisitComponent,
-    TariffComponent
+    TariffComponent,
+    BookingsummaryComponent
   ],
   imports: [
     BrowserModule,
