@@ -4,4 +4,7 @@ export class GetRoomList{
    adult:any;
    checkInTime:any;
    checkOutTime:any;
+   roomid:any;
+   roomname:any;
+   price:any;
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GetchargedamenityService } from 'src/app/services/getchargedamenity.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 
@@ -8,19 +9,41 @@ import { GetroomlistService } from 'src/app/services/getroomlist.service';
   styleUrls: ['./roomtype.component.scss']
 })
 export class RoomtypeComponent implements OnInit {
-  @Input() fd: any;
+  //  @Input() fd: any;
+
   roomData:any;
   chargedData:any;
+  days: any;
+  adult:any;
+  cIn:any;
+  cOut:any;
   constructor(
     private getroomlistservice:GetroomlistService,
-    private getChargedAmenity:GetchargedamenityService){
+    private getChargedAmenity:GetchargedamenityService,
+    private homeroute: ActivatedRoute,
+    private router: Router
+
+    ){
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
   }
   ngOnInit(): void {
    console.log("room:",this.roomData) ;
    this.getChargedAmenities();
-    console.log("fd :",this.fd);
-
+   
+    this.homeroute.params.subscribe((params: Params) =>
+     this.days = params[('days')], );    
+     this.homeroute.params.subscribe((params: Params) =>
+     this.adult = params[('adult')], );
+     this.homeroute.params.subscribe((params: Params) =>
+     this.cIn = params[('cIn')], );
+     this.homeroute.params.subscribe((params: Params) =>
+     this.cOut = params[('cOut')], );
+   
+     
+    console.log("days:",this.days)
+    console.log("adult:",this.adult)
+    console.log("cIn:",this.cIn)
+    console.log("cOut:",this.cOut)
     
   }
   inputnumber = 0;
@@ -39,6 +62,15 @@ export class RoomtypeComponent implements OnInit {
 
 sendbookeddata(data:any){
 console.log(data)
+ this.router.navigate(["bookingsummary",{"id":data.roomid,
+ "name":data.roomname,
+ "price":data.price,
+ "nodays":this.days,
+ "checkIn":this.cIn,
+ "checkOut":this.cOut,
+"adult":this.adult
+}]);
+
 }
   
   plus()

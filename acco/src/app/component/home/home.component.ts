@@ -133,26 +133,26 @@ plus()
       this.foodnumber = this.foodnumber-1;
     }
   }
-  getFloor(){
-    console.log("getfloor check purpose");
-    return this.http.get("http://localhost:3001/users/getfloor").
-    subscribe((res)=>{
-      console.log(res);
-     this. floorData=res;
-      console.log(this.floorData);
+  // getFloor(){
+  //   console.log("getfloor check purpose");
+  //   return this.http.get("http://localhost:3001/users/getfloor").
+  //   subscribe((res)=>{
+  //     console.log(res);
+  //    this. floorData=res;
+  //     console.log(this.floorData);
       
-    });
-  }
-  getroom(){
-    console.log("getroom check purpose");
-    return this.http.get("http://localhost:3001/users/getroom").
-    subscribe((res)=>{
-      console.log(res);
-     this. floorRoom=res;
-      console.log(this.floorRoom);
+  //   });
+  // }
+  // getroom(){
+  //   console.log("getroom check purpose");
+  //   return this.http.get("http://localhost:3001/users/getroom").
+  //   subscribe((res)=>{
+  //     console.log(res);
+  //    this. floorRoom=res;
+  //     console.log(this.floorRoom);
       
-    });
-  }
+  //   });
+  // }
 
   checkAvailability(){
 
@@ -172,7 +172,12 @@ plus()
             console.log("++++roomData:",this.roomData);
             console.log("0 value:",this.roomData[0].roomid);
             this.roomValue;
-             this.router.navigate(["roomtype",{formData}]);
+             this.router.navigate(["roomtype",{"days":noofdays,
+             "adult":formData.adult,
+             "cIn":formData.checkIn,
+             "cOut":formData.checkOut
+            }]);
+            //  "cIn":formData.checkIn,"cOut":formData.checkOut,
     
   });
   }

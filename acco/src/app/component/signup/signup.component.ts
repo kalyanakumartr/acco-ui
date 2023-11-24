@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs';
+
 import { UserModel } from 'src/app/model/auth.model';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 import Swal from 'sweetalert2';
