@@ -15,19 +15,21 @@
 
                         <mat-form-field style="color: #964B00;" appearance="fill">
                             <mat-label>Name</mat-label>
-                            <input matInput style="color: #964B00;" placeholder="Name" formControlName="Name">
+                            <input matInput style="color: #964B00;"  placeholder="Name" formControlName="name">
                         </mat-form-field><br>
                         <mat-form-field appearance="fill">
                             <mat-label>Phone Number</mat-label>
-                            <input matInput placeholder="Phone Number" formControlName="PhoneNumber">
+                            <input matInput placeholder="Phone Number"  formControlName="phonenumber">
                         </mat-form-field><br>
                         <mat-form-field appearance="fill">
                             <mat-label>Email</mat-label>
-                            <input matInput placeholder="Email" formControlName="Email">
-                            <a style="float: right;">send otp</a>
-
+                            <input matInput placeholder="Email"   formControlName="email">
+                            <!-- <a (click)="generateOTP()" style="float: right;"
+                                >send otp</a> -->
+                                <!-- <button mat-raised-button (click)="generateOTP(name.value,phonenumber.value,email.value)"  style='background-color: #efc96a; color:#964B00;float: right;'>sendotp</button> -->
                         </mat-form-field><br>
-                        <!-- <small><a style="text-align: right;">send otp</a></small> -->
+                        <button mat-raised-button (click)="generateOTP()"  style='background-color: #efc96a; color:#964B00;float: right;'>sendotp</button>
+                        
                       
                         <br>
                         <mat-form-field appearance="fill">
@@ -35,7 +37,7 @@
                             <input matInput placeholder="otp" formControlName="otp">
                         </mat-form-field>
                         <div>
-                            <button mat-raised-button style='background-color: #efc96a;' matStepperNext>Next</button>
+                            <button mat-raised-button style='background-color: #efc96a; color:#964B00;' matStepperNext (click)="verifyOTP()">Next</button>
                         </div>
                     </div>
                 </mat-step>
@@ -50,8 +52,8 @@
                         </mat-radio-group>
 
                         <div>
-                            <button mat-raised-button color="primary" matStepperPrevious>Back</button> |
-                            <button mat-raised-button color="accent">Click to make Payment</button>
+                            <button mat-raised-button   style='background-color: #efc96a; color:#964B00;'matStepperPrevious>Back</button> |
+                            <button mat-raised-button style='background-color: #efc96a; color:#964B00;' (click)="confirmBooking()">Click to make Payment</button>
                         </div>
                     </div>
                 </mat-step>

@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environments';
+import { BookingModel } from '../model/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,8 @@ import { Observable } from 'rxjs';
 export class BookingServiceService {
 
   constructor(private http:HttpClient) { }
-  booking(data: any):Observable<any>{
+  booking(book:BookingModel):Observable<BookingModel>{
     console.log("I am booking");
-    return this.http.post('http://localhost:3001/users/addbooking',data);
+    return this.http.post<BookingModel>(`${environment.bookingURL}`,book);
   }
 }

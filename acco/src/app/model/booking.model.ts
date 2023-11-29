@@ -1,20 +1,15 @@
 export class BookingModel {
-    userid: any;
-    firstName!: string;
-    lastName!: string;
-    address1!: string;
-    address2!: string;
-    city!: string;
-    state!: string;
-    country!: string;
-    phonenumber!: string;
-    email!: string;
-   pincode!:  string;
-   checkin!:string;
-   checkout!:string;
-   adults!:string;
-   children!:string;
-   roomtype!:string;
-   
-    
+    roomid!:string   
+    checkin!:string
+    checkout!:string
+    roombhk!:string
+    noofdays!:string
+    adults!:string
+    name!:string
+    phonenumber!:string
+    email!:string
+    price!:string
+    totalprice!:string
+    verificationstatus!:string
+
 }

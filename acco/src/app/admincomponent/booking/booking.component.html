@@ -11,8 +11,8 @@
                             <label>First Name</label>
                         </div>
                         <div class="col-lg-3">
-                            <input formControlName="firstName"type="text" name="firstName" placeholder="FirstName" >
-                            <small   *ngIf="bookingForm.controls['firstName'].dirty && bookingForm.hasError('required','firstName')"  
+                            <input formControlName="firstname" type="text" name="firstName" placeholder="FirstName" >
+                            <small   *ngIf="bookingForm.controls['firstname'].dirty && bookingForm.hasError('required','firstname')"  
                             class="text-danger form-inline  mt-0">*firstName is required</small> 
                           
                         </div>
@@ -20,8 +20,8 @@
                             <label>LastName</label>
                         </div>
                         <div class="col-lg-3">
-                            <input formControlName="lastName" type="text" name="lastName" placeholder="LastName" >
-                            <small  *ngIf="bookingForm.controls['lastName'].dirty && bookingForm.hasError('required','lastName')"  
+                            <input formControlName="lastname" type="text" name="lastName" placeholder="LastName" >
+                            <small  *ngIf="bookingForm.controls['lastname'].dirty && bookingForm.hasError('required','lastname')"  
                              class="text-danger form-inline  mt-0" >*lastName is required</small>
 
                         </div>
@@ -103,7 +103,8 @@
         </div>
         <div class="col-lg-3">
             
-            <input fromControlName="from" type="datetime-local" name="city" placeholder="From" ><small  *ngIf="bookingForm.controls['from'].dirty && bookingForm.hasError('required','from')"   class="text-danger form-inline  mt-0" >*date is required</small>
+            <input fromControlName="checkin" type="datetime-local" name="city" placeholder="From" >
+            <small  *ngIf="bookingForm.controls['checkin'].dirty && bookingForm.hasError('required','checkin')"   class="text-danger form-inline  mt-0" >*date is required</small>
            
             
         </div>
@@ -113,7 +114,7 @@
         <div class="col-lg-3">
             <input  formControlName="checkout" type="datetime-local" name="fromto" placeholder="To"> 
             
-            <small  *ngIf="bookingForm.controls['to'].dirty && bookingForm.hasError('required','to')"   class="text-danger form-inline  mt-0" >*date is required</small>
+            <small  *ngIf="bookingForm.controls['checkout'].dirty && bookingForm.hasError('required','checkout')"   class="text-danger form-inline  mt-0" >*date is required</small>
             
         </div>
     
@@ -149,7 +150,7 @@
         </div>
     
     
-                <button type="submit" class="btn btn-light btn-elevate mr-2 margin-left" >
+                <button  type="submit" class="btn btn-light btn-elevate mr-2 margin-left" >
                       Save</button>
                     <button type="button" class="btn btn-light btn-elevate mr-2 margin-left " onclick="reset()">
                     Reset

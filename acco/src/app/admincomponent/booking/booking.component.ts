@@ -55,21 +55,21 @@ export class BookingComponent implements OnInit{
   bookingFormProcess(){
     const newbooking = new BookingModel() ;
     const formData = this.bookingForm.value;
-    newbooking.firstName = formData.firstName;
-      newbooking.lastName = formData.lastname;
-      newbooking.email = formData.email;
-      newbooking.phonenumber = formData.phonenumber;
-      newbooking.address1 = formData.address1;
-      newbooking.address2 = formData.address2;
-      newbooking.city = formData.city;
-      newbooking.state = formData.state;
-      newbooking.country = formData.country;
-      newbooking.pincode = formData.pincode;
-      newbooking.checkin = formData.checkin;
-      newbooking.checkout= formData.checkout;
-            newbooking.adults = formData.adults;
-            newbooking.children = formData.child;
-            newbooking.roomtype = formData.roomtype;
+    // newbooking.firstname = formData.firstName;
+    //   newbooking.lastname = formData.lastname;
+    //   newbooking.email = formData.email;
+    //   newbooking.phonenumber = formData.phonenumber;
+    //   newbooking.address1 = formData.address1;
+    //   newbooking.address2 = formData.address2;
+    //   newbooking.city = formData.city;
+    //   newbooking.state = formData.state;
+    //   newbooking.country = formData.country;
+    //   newbooking.pincode = formData.pincode;
+    //   newbooking.checkin = formData.checkin;
+    //   newbooking.checkout= formData.checkout;
+    //         newbooking.adults = formData.adults;
+    //         newbooking.children = formData.child;
+    //         newbooking.roomtype = formData.roomtype;
         
              // Swal.fire("Success");
   if(this.bookingForm.valid){

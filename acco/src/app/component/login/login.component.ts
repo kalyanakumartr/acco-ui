@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit{
             // alert("login sucessful"); 
             Swal.fire(result.message);           
             this.loginForm.reset();
-            this.router.navigate(["roomtype"])
+            this.router.navigate(["home"])
           }                  
           
           
