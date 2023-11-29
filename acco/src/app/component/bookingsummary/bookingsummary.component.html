@@ -31,7 +31,7 @@
                         <td class="align-middle " style="border-color: #964B00;">{{days}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Room Number {{data}} with {{name}}
+                        <td class="align-middle " style="border-color: #964B00;">Room Number {{roomid}} with {{bhk}}
                         </td>
                         <td class="align-middle " style="border-color: #964B00;">Rs.{{amount}}</td>
                     </tr>
@@ -46,8 +46,8 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <button type="submit" class="btn btn-outline "
-                    style="color:#964B00 ;background-color: #efc96a;border-radius: 15px; font-weight: bold;">Click to make
+                <button (click)="confirmBooking()" type="submit" class="btn btn-outline "
+                    style="color:#964B00 ;background-color: #efc96a;border-radius: 15px; font-weight: bold;" >Click to make
                     Payment</button>
             </div>
         </div>

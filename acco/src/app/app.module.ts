@@ -18,6 +18,9 @@ import{MatPaginatorModule} from '@angular/material/paginator';
 import{MatInputModule} from '@angular/material/input';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import{MatSortModule} from '@angular/material/sort';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
 import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
@@ -26,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetdetailsInterceptor } from './services/getdetails.interceptor';
 import { TariffComponent } from './component/tariff/tariff.component';
 import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
+import { StepperComponent } from './component/stepper/stepper.component';
 
 
 @NgModule({
@@ -44,7 +48,8 @@ import { BookingsummaryComponent } from './component/bookingsummary/bookingsumma
     FooditemComponent,
     PlacetovisitComponent,
     TariffComponent,
-    BookingsummaryComponent
+    BookingsummaryComponent,
+    StepperComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,9 @@ import { BookingsummaryComponent } from './component/bookingsummary/bookingsumma
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatRadioModule,
+    MatStepperModule,
+    MatButtonModule
    
     
   ],

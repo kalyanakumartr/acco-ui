@@ -13,6 +13,7 @@ import { FooditemComponent } from './component/fooditem/fooditem.component';
 import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
 import { TariffComponent } from './component/tariff/tariff.component';
 import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
+import { StepperComponent } from './component/stepper/stepper.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -27,6 +28,8 @@ const routes: Routes = [
   {path:'roomtype',component:RoomtypeComponent},
   {path:'placetovisit',component:PlacetovisitComponent},
   {path:'bookingsummary',component:BookingsummaryComponent},
+  {path:'stepper',component:StepperComponent},
+
 
   {path:'tariff',component:TariffComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }

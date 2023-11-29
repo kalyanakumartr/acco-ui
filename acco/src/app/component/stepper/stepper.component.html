@@ -1,0 +1,61 @@
+<div class="outer">
+    <app-navbar></app-navbar>
+    <div class="container mt-0">
+        <div class="row ">
+            <div class="col-sm-6 mt-2">
+                <h2 style="color:#964B00; font-weight:bold ;">Verification and Payment</h2>
+            </div>
+        </div>
+        <form [formGroup]="Emailcheck" style="color: #964B00;" (ngSubmit)="HandleSubmit()">
+            <mat-stepper style="color: #964B00;" [linear]="isLinear" #stepper>
+
+                <mat-step [stepControl]="Basicform">
+                    <div formGroupName="EmailVerification">
+                        <ng-template style="background-color: #964B00;" matStepLabel>Email Verification</ng-template>
+
+                        <mat-form-field style="color: #964B00;" appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input matInput style="color: #964B00;" placeholder="Name" formControlName="Name">
+                        </mat-form-field><br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput placeholder="Phone Number" formControlName="PhoneNumber">
+                        </mat-form-field><br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="Email">
+                            <a style="float: right;">send otp</a>
+
+                        </mat-form-field><br>
+                        <!-- <small><a style="text-align: right;">send otp</a></small> -->
+                      
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>otp</mat-label>
+                            <input matInput placeholder="otp" formControlName="otp">
+                        </mat-form-field>
+                        <div>
+                            <button mat-raised-button style='background-color: #efc96a;' matStepperNext>Next</button>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step [stepControl]="PaymentForm" label="Payment Information">
+                    <div formGroupName="Payment">
+                        <mat-label>Your Amount to be Paid</mat-label>
+                        <mat-radio-group formControlName="payment" aria-label="Select payment Method"><br>
+                            <mat-radio-button value="1">Netbanking</mat-radio-button><br>
+                            <mat-radio-button value="2">Paytm</mat-radio-button><br>
+                            <mat-radio-button value="3">GPay</mat-radio-button><br>
+                            <mat-radio-button value="4">PhonePe</mat-radio-button><br>
+                        </mat-radio-group>
+
+                        <div>
+                            <button mat-raised-button color="primary" matStepperPrevious>Back</button> |
+                            <button mat-raised-button color="accent">Click to make Payment</button>
+                        </div>
+                    </div>
+                </mat-step>
+            </mat-stepper>
+        </form>
+    </div>
+</div>
