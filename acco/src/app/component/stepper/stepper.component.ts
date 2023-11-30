@@ -21,6 +21,8 @@ export class StepperComponent {
   price: any;
   noofdays: any;
   totalprice:any;
+  userId:any;
+  verifymsg:any
   
 
   constructor(private builder: FormBuilder, 
@@ -94,12 +96,13 @@ export class StepperComponent {
     newotp.name=basic.name;
     newotp.phonenumber=basic.phonenumber;
     newotp.email=basic.email;
-    
+    newotp.otptype="email"
         this.otpService.genOTP(newotp).    
       subscribe( result=>{
              console.log(result);
-          
-          // this.signupForm.reset();
+          // console.log(result[0].user);
+          // this.userId=result[0].user;
+          // console.log("id:",this.userId)
           Swal.fire(" OTP generated Successfully");
         
           
@@ -113,18 +116,23 @@ export class StepperComponent {
     const verifyotp = new ForOtp() ;
     const basic= this.Basicform.value
     verifyotp.inputotp=basic.otp;
-    verifyotp.userid=17;
+    verifyotp.userid=33;
     
     console.log(verifyotp)
     this.otpService.verifyOTP(verifyotp).    
-      subscribe( result=>{
-                   console.log(result);
-                  Swal.fire(" OTP verified Successfully"); 
+      subscribe( res=>{
+                   console.log(res);
+                   this.verifymsg=res;
+                   console.log(this.verifymsg.message);
+                   if(this.verifymsg.status==true){
+                    Swal.fire(this.verifymsg.message); 
+                   
+                   }else{
+                    Swal.fire(this.verifymsg.message); 
+                   }
+                  
          
-      },
-      error=>{
-        Swal.fire("Invalid OTP"); 
-      }
+      }      
       )
   }
 
