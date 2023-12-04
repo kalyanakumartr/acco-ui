@@ -14,6 +14,8 @@ import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisi
 import { TariffComponent } from './component/tariff/tariff.component';
 import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
 import { StepperComponent } from './component/stepper/stepper.component';
+import { AdminComponent } from './admincomponent/admin/admin.component';
+import { FrontdeskComponent } from './admincomponent/frontdesk/frontdesk.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -29,6 +31,9 @@ const routes: Routes = [
   {path:'placetovisit',component:PlacetovisitComponent},
   {path:'bookingsummary',component:BookingsummaryComponent},
   {path:'stepper',component:StepperComponent},
+  {path:'admin',component:AdminComponent},
+  {path:'frontdesk',component:FrontdeskComponent},
+
 
 
   {path:'tariff',component:TariffComponent},

@@ -17,12 +17,12 @@
                                 <div class="input-field">
                                     <span class="fa fa-user p-2" style="color:#964B00"></span>
                                     <!-- <label style="color:#964B00">UserName</label> -->
-                                    <input formControlName="userName" type="text" placeholder="UserName">
+                                    <input formControlName="username" type="text" placeholder="UserName">
                                     <!-- placeholder="UserName" -->
                                 </div>
                             </div>
                             <small
-                                *ngIf="loginForm.controls['userName'].dirty && loginForm.hasError('required','userName')"
+                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
                                 class="text-danger form-inline  mt-0">*username is required</small>
                             <div class="form-group pt-3">
                                 <div class="input-field">

@@ -30,6 +30,8 @@ import { GetdetailsInterceptor } from './services/getdetails.interceptor';
 import { TariffComponent } from './component/tariff/tariff.component';
 import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
 import { StepperComponent } from './component/stepper/stepper.component';
+import { AdminComponent } from './admincomponent/admin/admin.component';
+import { FrontdeskComponent } from './admincomponent/frontdesk/frontdesk.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { StepperComponent } from './component/stepper/stepper.component';
     PlacetovisitComponent,
     TariffComponent,
     BookingsummaryComponent,
-    StepperComponent
+    StepperComponent,
+    AdminComponent,
+    FrontdeskComponent
   ],
   imports: [
     BrowserModule,

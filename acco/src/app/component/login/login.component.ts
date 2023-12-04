@@ -12,59 +12,75 @@ import Swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
-  loginData:any;
-  type:string = "password";
+  loginData: any;
+  type: string = "password";
   isText: boolean = false;
   eyeIcon: string = 'fa-eye-slash';
-  userName: string ="";
-  password: string ="";
-  loginForm!:FormGroup;
-  constructor(private fb: FormBuilder,private http: HttpClient, private router: Router,private authService:AuthServiceService){}
-  ngOnInit():void{
+  userName: string = "";
+  password: string = "";
+  loginForm!: FormGroup;
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthServiceService) { }
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
     });
 
   }
-    hideShowPass(){
-      this.isText = !this.isText;
-      this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
-      this.isText ? (this.type = 'text') : (this.type = 'password');
-    }
-
-    loginProcess(){
-      // const newuser = new UserModel() ;
-      // const formData = this.loginForm.value;
-      // newuser.username = formData.userName;
-      // newuser.password = formData.password;
-      // console.log(newuser);
-      // Swal.fire("Success");
-      // if(this.loginForm.value){
-        this.authService.login(this.loginForm.value).subscribe(result=>{ 
-          if(result.accesstoken) {
-            this.loginData=result;
-            this.authService.setData(this.loginData) 
-            console.log("++++",this.loginData)
-            localStorage.setItem('token',result.accesstoken); 
-            console.log(result.accesstoken);
-            // alert("login sucessful"); 
-            Swal.fire(result.message);           
-            this.loginForm.reset();
-            this.router.navigate(["home"])
-          }                  
-          
-          
-        },
-        error=>{
-          Swal.fire("Invalid Credentials"); 
-        }
-        )
-               
-      
-    
+  hideShowPass() {
+    this.isText = !this.isText;
+    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
+    this.isText ? (this.type = 'text') : (this.type = 'password');
   }
-    
+
+  loginProcess() {
+    // const newuser = new UserModel() ;
+    // const formData = this.loginForm.value;
+    // newuser.username = formData.userName;
+    // newuser.password = formData.password;
+    // console.log(newuser);
+    // Swal.fire("Success");
+    // if(this.loginForm.value){
+    this.authService.login(this.loginForm.value).subscribe(result => {
+      console.log(result);
+      console.log(result.usertype)
+      if (result.accesstoken) {
+        this.loginData = result;
+        this.authService.setData(this.loginData)
+        console.log("++++", this.loginData)
+        localStorage.setItem('token', result.accesstoken);
+        console.log(result.accesstoken, result.usertype);
+      
+        if (result.usertype == "Admin") {
+          this.router.navigate(["admin"])
+        } else if (result.usertype == "Manager") {
+          this.router.navigate(["frontdesk"])
+        } else {
+          this.router.navigate(["home"])
+        }
+        // if(result.accesstoken) {
+        //   this.loginData=result;
+        //   this.authService.setData(this.loginData) 
+        //   console.log("++++",this.loginData)
+        //   localStorage.setItem('token',result.accesstoken); 
+        //   console.log(result.accesstoken,result.usertype);
+        //   // alert("login sucessful"); 
+        //   Swal.fire(result.message);           
+        //   this.loginForm.reset();
+        //   this.router.navigate(["home"])
+      }
+
+
+    },
+      error => {
+        Swal.fire("Invalid Credentials");
+      }
+    )
+
+
+
+  }
+
 }

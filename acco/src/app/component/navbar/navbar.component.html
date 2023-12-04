@@ -7,16 +7,22 @@
                 
               
             </div>
-            <div class="  text-right" style="flex: 1; text-align: right; vertical-align: bottom;  ">
+            <div style="flex: 1; text-align: right; vertical-align: bottom; margin-top:80px ">
              
               <span >
-                <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="logout()">Logout</button> -->
-                <!-- <div class="nav-item dropdown  " >
+
+                <a  href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/login">Login</a>
+                <a *ngIf="isLoggedIn | async"  href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" >logout</a>
+
+                <!-- <button  class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="login()">Login</button> 
+                <button  class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="login()">Login</button>  -->
+
+                 <!-- <div class="nav-item dropdown  " > -->
                   
-                    <a class="nav-link dropdown " href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi User
-                      <i class="fa fa-fw fa-user" style="color:#964B00;" ></i> </a>
+                    <!-- <a class="nav-link dropdown " href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi User
+                      <i class="fa fa-fw fa-user" style="color:#964B00;" ></i> </a> -->
                   
-                  <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon"  >
+                  <!-- <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon"  >
                     <a class="dropdown-item" href="#" routerLink="/login">Login</a>
                     <a class="dropdown-item" href="#" routerLink="/signup">Signup</a>
                     <a class="dropdown-item" href="#">Logout</a>
