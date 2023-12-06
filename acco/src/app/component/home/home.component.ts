@@ -27,15 +27,51 @@ export class HomeComponent implements OnInit {
   roomValue:any;
  checkOutCompleteDate:any;
  checkInCompleteDate:any;
+ currentDate: any = new Date();
+ Todaydate="2023-03-12"
+ outDate="2023-03-12"
+
 
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,private getroomlistservice:GetroomlistService
     
     ){}
-    
+
+    date1=new Date();
+    currentyear=this.date1.getUTCFullYear();
+    currentmonth=this.date1.getUTCMonth() +1;
+    currentday=this.date1.getUTCDate();
+    checkoutday=this.date1.getDate() + 1;
+    currentmin=this.date1.getMinutes();
+    currenthour=this.date1.getHours();
+   
+    finalmonth:any;
+    finalday:any;
+    finalOutday:any;
   
-  ngOnInit():void{   
+  ngOnInit():void{  
+    
+    if(this.currentmonth<10){
+      this.finalmonth="0" +this.currentmonth;
+    }else{
+      this.finalmonth=this.currentmonth;
+    }
+    if(this.currentday<10){
+      this.finalday="0" +this.currentday ;
+    }else{
+      this.finalday=this.currentday;
+    }
+    if(this.checkoutday<10){
+      this.finalOutday="0" +this.checkoutday ;
+    }else{
+      this.finalOutday=this.checkoutday;
+    }
+    
+    this.Todaydate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday +" "+this.currenthour+":"+this.currentmin;
+    this.outDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalOutday +" "+this.currenthour+":"+this.currentmin;
+
+
     this.homeForm=this.fb.group({
       checkIn: ['', Validators.required],
       checkInTime: ['', Validators.required],
@@ -50,6 +86,8 @@ export class HomeComponent implements OnInit {
     user: ['',], });
     // this.getFloor();
     // this.getroom();
+
+
   }
   modalProcess(){
     this.selectedValue = this.modalForm.controls['user'].value;
