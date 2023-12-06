@@ -14,26 +14,31 @@ export class AuthServiceService {
   private apiData = new BehaviorSubject<any>(null);
   public apiData$ = this.apiData.asObservable();
   authresults:any;
-
+ session:boolean=false;
+ loginData:any;
+ 
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient,private router:Router,
+   
+    ) { }
 
   login(data: any): Observable<any> {
     console.log("I am server");
-    return this.http.post(`${environment.authURL}`, data).pipe(map(result =>{
+    return this.http.post(`${environment.authURL}`, data)
+    .pipe(map(result =>{
       console.log(result);
       this.authresults=result;
       console.log(this.authresults.usertype)
       if (this.authresults.accesstoken) {
-        // this.loginData = result;
-        // this.authService.setData(this.loginData)
-        // console.log("++++", this.loginData)
+        this.loginData = result;
+        this.setData(this.loginData)
+        console.log("++++", this.loginData)
         localStorage.setItem('token', this.authresults.accesstoken);
         console.log(this.authresults.accesstoken, this.authresults.usertype);
-        // this.loggedIn.next(true);
-      
+         this.loggedIn.next(true);
+    
         if (this.authresults.usertype == "Admin") {
           this.router.navigate(["admin"])
           
@@ -41,6 +46,7 @@ export class AuthServiceService {
           this.router.navigate(["frontdesk"])
          
         } else {
+         
           this.router.navigate(["home"])
         }
   }}))
@@ -55,6 +61,9 @@ export class AuthServiceService {
   get isUserLoggedIn() {
     return this.loggedIn.asObservable();
   }
+// logged(){
+//   return localStorage.getItem("this.authresults.accesstoken");
+// }
 
   logout() {
     // localStorage.removeitem('token');

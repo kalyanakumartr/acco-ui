@@ -16,31 +16,27 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
   userDetails:any;
   loginData:any;
-  isLoggedIn : Observable<boolean> | undefined;
-
+  isLoggedIn$!: Observable<boolean>;
+ 
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
     private getUserService:GetUserServiceService,
     private authService:AuthServiceService){
       authService.apiData$.subscribe(data => this.loginData = data)
+      
     }
   ngOnInit():void{
-    this.isLoggedIn = this.authService.isUserLoggedIn;
-   }
+    this.isLoggedIn$ = this.authService.isUserLoggedIn;
+    
+  }
+   
   logout(){
      localStorage.removeItem('accessToken');
      this.router.navigate(["home"]) 
      console.log("++","logout sucessfully")
      
-    
+     
 
    }
-  //  showUser(){
-  //   this.getUserService.getUser()
-  //   .subscribe((res)=>{
-  //     console.log("@@@@",res);
-  //     this.userDetails=res;
-  //     console.log("userdetails:",this.userDetails); 
-  //   });
-  //     }
+  
 }

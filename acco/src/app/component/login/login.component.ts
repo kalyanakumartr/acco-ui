@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
 // import { Auth } from 'src/app/model/auth.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -21,8 +22,10 @@ export class LoginComponent implements OnInit {
   userName: string = "";
   password: string = "";
   loginForm!: FormGroup;
+  isLoggedIn! : Observable<boolean>;
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthServiceService) { }
   ngOnInit(): void {
+    this.isLoggedIn = this.authService.isUserLoggedIn;
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -36,30 +39,25 @@ export class LoginComponent implements OnInit {
   }
 
   loginProcess() {
-    // const newuser = new UserModel() ;
-    // const formData = this.loginForm.value;
-    // newuser.username = formData.userName;
-    // newuser.password = formData.password;
-    // console.log(newuser);
-    // Swal.fire("Success");
-    // if(this.loginForm.value){
+   
     this.authService.login(this.loginForm.value).subscribe(result => {
-      console.log(result);
-      console.log(result.usertype)
-      if (result.accesstoken) {
-        this.loginData = result;
-        this.authService.setData(this.loginData)
-        console.log("++++", this.loginData)
-        localStorage.setItem('token', result.accesstoken);
-        console.log(result.accesstoken, result.usertype);
       
-        if (result.usertype == "Admin") {
-          this.router.navigate(["admin"])
-        } else if (result.usertype == "Manager") {
-          this.router.navigate(["frontdesk"])
-        } else {
-          this.router.navigate(["home"])
-        }
+      // console.log(result);
+      //  console.log(result.usertype)
+      // if (result.accesstoken) {
+      //   this.loginData = result;
+      //   this.authService.setData(this.loginData)
+      //   console.log("++++", this.loginData)
+      //   localStorage.setItem('token', result.accesstoken);
+      //   console.log(result.accesstoken, result.usertype);
+      
+      //   if (result.usertype == "Admin") {
+      //     this.router.navigate(["admin"])
+      //   } else if (result.usertype == "Manager") {
+      //     this.router.navigate(["frontdesk"])
+      //   } else {
+      //     this.router.navigate(["home"])
+      //   }
         // if(result.accesstoken) {
         //   this.loginData=result;
         //   this.authService.setData(this.loginData) 
@@ -70,17 +68,17 @@ export class LoginComponent implements OnInit {
         //   Swal.fire(result.message);           
         //   this.loginForm.reset();
         //   this.router.navigate(["home"])
-      }
+      })
 
 
-    },
-      error => {
-        Swal.fire("Invalid Credentials");
-      }
-    )
+    // },
+    //   error => {
+    //     Swal.fire("Invalid Credentials");
+    //   }
+    // )
 
 
 
   }
 
-}
+ }

@@ -10,10 +10,11 @@
             <div style="flex: 1; text-align: right; vertical-align: bottom; margin-top:80px ">
              
               <span >
-
-                <a  href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/login">Login</a>
-                <a *ngIf="isLoggedIn | async"  href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" >logout</a>
-
+               
+                <a *ngIf="isLoggedIn$ "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/login">Login</a>&nbsp;
+                <a *ngIf="isLoggedIn$ "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/signup">Signup</a>&nbsp;
+                <a *ngIf="isLoggedIn$ |async " (click)="logout()" href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" >Logout</a>
+                
                 <!-- <button  class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="login()">Login</button> 
                 <button  class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="login()">Login</button>  -->
 
@@ -86,12 +87,12 @@
                       <!-- {{loginData.username| uppercase}} -->
                       <i class="fa fa-fw fa-user" style="color:#964B00;" ></i> </a>
                  
-                  <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon"  >
+                  <!-- <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon"  >
                     <a class="dropdown-item" href="#" routerLink="/login">Login</a>
-                    <!-- <a class="dropdown-item" href="#" routerLink="/signup">Signup</a> -->
+                     <a class="dropdown-item" href="#" routerLink="/signup">Signup</a> 
                     <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                      
-                  </div> 
+                  </div>  -->
                 </div>
                 
                
@@ -101,23 +102,7 @@
             </div>
           </nav>
     <!-- </div> -->
-    <!-- <div class="row" >
-<div class="col-sm-6" >
- 
-    <img src="assets/01.jpg" style= "width:550px;height:400px; ">
-
-</div>
-<div class="col-sm-6" >
     
-        <h1 style="color:#964B00"> Check Availability</h1>
-    
-</div>
-</div>
-<div class="Footer">
-<div class="card">
-    
-</div>
-</div> -->
 </div>
 </div>
   
