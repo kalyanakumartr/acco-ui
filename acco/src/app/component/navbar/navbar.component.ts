@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   userDetails:any;
   loginData:any;
   isLoggedIn$!: Observable<boolean>;
- 
+ user="Hi User";
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
     private getUserService:GetUserServiceService,
@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
   }
    
   logout(){
-     localStorage.removeItem('accessToken');
+     localStorage.removeItem('token');
      this.router.navigate(["home"]) 
      console.log("++","logout sucessfully")
      

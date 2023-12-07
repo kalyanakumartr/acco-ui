@@ -5,7 +5,7 @@ getuserURL:'http://localhost:3001/users/getuser',
 fooditemapiUrl:'http://localhost:3001/users/getfooditem',
 placUrl:'http://localhost:3001/users/getplacetovisit',
 registerURL:'http://localhost:3001/users/adduser',
-bookingURL:'http://localhost:3001/users/confirmbooking',
+bookingURL:'http://localhost:3001/users/addbooking',
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',

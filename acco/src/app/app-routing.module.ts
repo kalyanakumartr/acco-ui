@@ -16,6 +16,11 @@ import { BookingsummaryComponent } from './component/bookingsummary/bookingsumma
 import { StepperComponent } from './component/stepper/stepper.component';
 import { AdminComponent } from './admincomponent/admin/admin.component';
 import { FrontdeskComponent } from './admincomponent/frontdesk/frontdesk.component';
+import { UserdetailsComponent } from './component/userdetails/userdetails.component';
+import { MybookingsComponent } from './component/mybookings/mybookings.component';
+import { ProfiledetailsComponent } from './component/profiledetails/profiledetails.component';
+import { ChangepasswordComponent } from './component/changepassword/changepassword.component';
+import { CancelbookingComponent } from './component/cancelbooking/cancelbooking.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -33,10 +38,12 @@ const routes: Routes = [
   {path:'stepper',component:StepperComponent},
   {path:'admin',component:AdminComponent},
   {path:'frontdesk',component:FrontdeskComponent},
-
-
-
   {path:'tariff',component:TariffComponent},
+  {path:'userdetails',component:UserdetailsComponent},
+  {path:'mybookings',component:MybookingsComponent},
+  {path:'profiledetails',component:ProfiledetailsComponent},
+  {path:'changepassword',component:ChangepasswordComponent},
+  {path:'cancelbooking',component:CancelbookingComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

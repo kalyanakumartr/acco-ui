@@ -116,7 +116,7 @@ export class StepperComponent {
     const verifyotp = new ForOtp() ;
     const basic= this.Basicform.value
     verifyotp.inputotp=basic.otp;
-    verifyotp.userid=33;
+    verifyotp.userid=16;
     
     console.log(verifyotp)
     this.otpService.verifyOTP(verifyotp).    
