@@ -37,6 +37,8 @@ import { MybookingsComponent } from './component/mybookings/mybookings.component
 import { ProfiledetailsComponent } from './component/profiledetails/profiledetails.component';
 import { ChangepasswordComponent } from './component/changepassword/changepassword.component';
 import { CancelbookingComponent } from './component/cancelbooking/cancelbooking.component';
+import { WalkingcurrentComponent } from './admincomponent/walkingcurrent/walkingcurrent.component';
+import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfuture.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { CancelbookingComponent } from './component/cancelbooking/cancelbooking.
     MybookingsComponent,
     ProfiledetailsComponent,
     ChangepasswordComponent,
-    CancelbookingComponent
+    CancelbookingComponent,
+    WalkingcurrentComponent,
+    WalkingfutureComponent
   ],
   imports: [
     BrowserModule,

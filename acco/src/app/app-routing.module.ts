@@ -21,6 +21,8 @@ import { MybookingsComponent } from './component/mybookings/mybookings.component
 import { ProfiledetailsComponent } from './component/profiledetails/profiledetails.component';
 import { ChangepasswordComponent } from './component/changepassword/changepassword.component';
 import { CancelbookingComponent } from './component/cancelbooking/cancelbooking.component';
+import { WalkingcurrentComponent } from './admincomponent/walkingcurrent/walkingcurrent.component';
+import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfuture.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -44,6 +46,8 @@ const routes: Routes = [
   {path:'profiledetails',component:ProfiledetailsComponent},
   {path:'changepassword',component:ChangepasswordComponent},
   {path:'cancelbooking',component:CancelbookingComponent},
+  {path:'walkingcurrent',component:WalkingcurrentComponent},
+  {path:'walkingfuture',component:WalkingfutureComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
