@@ -7,24 +7,30 @@
                         <h3 class="pt-1 font-weight-bold" style="color:#964B00">Register Yourself </h3>
                     </div>
                     <div class="panel-body p-3">
-                        <form [formGroup]="signupForm" (ngSubmit)="signupProcess()">
+                        <form [formGroup]="signupForm" (ngSubmit)="signupFormProcess()">
                             <div class="form-group pt-0 row justify-content-around">
                                 <div class="col-md-4">
                                     <div class="input-group mb-1">
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">FirstName:</label> -->
-                                            <input formControlName="firstname"type="text" placeholder="FirstName">
+                                            <input formControlName="firstName"type="text" placeholder="FirstName">
+
+                                 </div> 
+                                    <small *ngIf="signupForm.controls['firstName'].dirty && signupForm.hasError('required','firstName')"  
+                              class="text-danger form-inline  mt-0">*firstName is required</small>
                                         </div>
-                                    </div>
                                </div>
                                 <div class="col-md-4">
                                     <div class="input-group mb-1">
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">LastName:</label> -->
-                                            <input formControlName="lastname" type="text" placeholder="Lastname">
+                                            <input formControlName="lastName" type="text" placeholder="Lastname">
                                         </div>
+                                        <small *ngIf="signupForm.controls['lastName'].dirty && signupForm.hasError('required','lastName')"  
+                              class="text-danger form-inline  mt-0">*lastName is required</small>
+                                        
                                     </div>                                    
                                 </div>                                
                             </div>
@@ -36,6 +42,9 @@
                                             <!-- <label style="color:#964B00">Address1:</label> -->
                                             <input formControlName="address1"type="text" placeholder="Address1">
                                         </div>
+                                        <small *ngIf="signupForm.controls['address1'].dirty && signupForm.hasError('required','address1')"  
+                              class="text-danger form-inline  mt-0">*address1 is required</small>
+                                        
                                     </div>
                                </div>
                                 <div class="col-md-4">
@@ -45,6 +54,9 @@
                                             <!-- <label style="color:#964B00">Address2:</label> -->
                                             <input formControlName="address2"type="text" placeholder="Address2">
                                         </div>
+                                        <small *ngIf="signupForm.controls['address2'].dirty && signupForm.hasError('required','address2')"  
+                              class="text-danger form-inline  mt-0">*address2 is required</small>
+                                        
                                     </div>                                    
                                 </div>                                
                             </div>
@@ -56,6 +68,9 @@
                                             <!-- <label style="color:#964B00">City:</label> -->
                                             <input formControlName="city" type="text" placeholder="City">
                                         </div>
+                                        <small *ngIf="signupForm.controls['city'].dirty && signupForm.hasError('required','city')"  
+                              class="text-danger form-inline  mt-0">*city is required</small>
+                                        
                                     </div>
                                </div>
                                 <div class="col-md-4">
@@ -65,6 +80,9 @@
                                             <!-- <label style="color:#964B00">State:</label> -->
                                             <input formControlName="state" type="text" placeholder="state">
                                         </div>
+                                        <small *ngIf="signupForm.controls['state'].dirty && signupForm.hasError('required','state')"  
+                              class="text-danger form-inline  mt-0">*state is required</small>
+                                        
                                     </div>                                    
                                 </div>                                
                             </div>
@@ -76,6 +94,9 @@
                                             <!-- <label style="color:#964B00">Country:</label> -->
                                             <input formControlName="country" type="text" placeholder="Country" >
                                         </div>
+                                        <small *ngIf="signupForm.controls['country'].dirty && signupForm.hasError('required','country')"  
+                              class="text-danger form-inline  mt-0">*country is required</small>
+                                        
                                     </div>
                                </div>
                                 <div class="col-md-4">
@@ -85,6 +106,9 @@
                                             <!-- <label style="color:#964B00">PhoneNumber:</label> -->
                                             <input formControlName="phonenumber"  type="text" placeholder="PhoneNumber" >
                                         </div>
+                                        <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
+                              class="text-danger form-inline  mt-0">*phonenumber is required</small>
+                                        
                                     </div>                                    
                                 </div>                                
                             </div>
@@ -96,6 +120,9 @@
                                             <!-- <label style="color:#964B00">Email:</label> -->
                                             <input formControlName="email" type="text" placeholder="Email">
                                         </div>
+                                        <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')"  
+                              class="text-danger form-inline  mt-0">*email is required</small>
+                                        
                                     </div>
                                </div>
                                 <div class="col-md-4">
@@ -105,6 +132,9 @@
                                             <!-- <label style="color:#964B00">UserName:</label> -->
                                             <input formControlName="username" type="text" placeholder="UserName">
                                         </div>
+                                        <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required','username')"  
+                              class="text-danger form-inline  mt-0">*username is required</small>
+                                        
                                     </div>                                    
                                 </div>                                
                             </div>
@@ -116,6 +146,9 @@
                                             <!-- <label style="color:#964B00">Password:</label> -->
                                             <input formControlName="password" type="text" placeholder="Password">
                                         </div>
+                                        <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"  
+                              class="text-danger form-inline  mt-0">*password is required</small>
+                                        
                                     </div>
                                </div>
                                 <div class="col-md-4">
@@ -125,6 +158,9 @@
                                             <!-- <label style="color:#964B00">ConfirmPassword:</label> -->
                                             <input  formControlName="confirmpassword" type="text"  placeholder="ConfirmPassword">
                                         </div>
+                                        <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required','confirmpassword')"  
+                              class="text-danger form-inline  mt-0">*confirmpassword is required</small>
+                                        
                                     </div>                                    
                                 </div>                                
                             </div>
