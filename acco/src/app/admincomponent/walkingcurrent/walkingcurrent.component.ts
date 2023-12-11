@@ -28,19 +28,19 @@ export class WalkingcurrentComponent implements OnInit {
 
 
     this.WalkingcurrentForm = this.fb.group({
-      firstName: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      lastName: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      email: ['', Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
-      phonenumber: ['', Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
-      address1: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
-      address2: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
-      city: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
-      state: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
-      country: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
-      username: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      password: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      confirmpassword: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-     roleid:4
+      firstName: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
+      lastName: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
+      email: ['', Validators.required,(Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"))],
+      phonenumber: ['', Validators.required,(Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"))],
+      address1: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
+      address2: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
+      city: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
+      state: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
+      country: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
+      username: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
+      password: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
+      confirmpassword: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
+     
       
      
     });
@@ -126,7 +126,7 @@ showRoomType(){
     .subscribe((result)=>{
     console.log("roomtype:",result);    
      this. visibleRoom=result;
-     console.log(this.visibleRoom);
+     console.log("walkingcurrent",this.visibleRoom);
   });
 
 }

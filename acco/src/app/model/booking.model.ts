@@ -11,5 +11,7 @@ export class BookingModel {
     price!:string
     totalprice!:string
     verificationstatus!:string
+    userid:any;
+    firstname!:string;
 
 }

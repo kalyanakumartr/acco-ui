@@ -1,8 +1,27 @@
-
 <div class="outer">
     <app-header></app-header>
     <div class="container">
-        <p>frontdesk works!</p>
+        <div class="row" style="border: solid;color: #964B00;width:100%;margin-left: 2px;">
+            <div class="col-lg-3">
+                <h4  >Guests Status  {{TodayDate}}</h4>
+            </div>
+            <div class="col-lg-5" style="display: flex; justify-content:space-around;margin-top: 5px;">
+                <p class="square "> </p> 
+                  <span style="margin-left: 2px;">Completed</span> 
+               
+                <p class="square1"></p>
+                <span style="margin-left: 2px;">TimeLeft</span> 
+                <p class="square2"></p>
+                <span style="margin-left: 2px;">TimeOut</span> 
+            </div>
+            <div class="col-lg-3" style="margin-top: 5px;">
+                <label>Date</label>
+                <input type="date" [value]="TodayDate" style="margin-left: 3%;">
+            </div>
+            </div>
+          <div>
+            table
+          </div>
     </div>
    
 </div>

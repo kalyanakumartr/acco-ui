@@ -9,28 +9,29 @@
         <form [formGroup]="Emailcheck" style="color: #964B00;" (ngSubmit)="HandleSubmit()">
             <mat-stepper style="color: #964B00;" [linear]="isLinear" #stepper>
 
-                <mat-step [stepControl]="Basicform">
+                <!-- <mat-step [stepControl]="Basicform">
                     <div formGroupName="EmailVerification">
-                        <ng-template style="background-color: #964B00;" matStepLabel>Email Verification</ng-template>
+                        <ng-template style="background-color: #964B00;" matStepLabel> Email Verification</ng-template>
 
                         <mat-form-field style="color: #964B00;width: 100%;" appearance="fill">
-                            <mat-label>Name</mat-label>
-                            <input matInput style="color: #964B00;"  placeholder="Name" formControlName="name">
-                            {{loginData.username}}
+                            <mat-label>Name</mat-label>  
+                           
+                            <input matInput style="color: #964B00;"  placeholder="Name" formControlName="name"> {{loginData.username}}
+                          
                         </mat-form-field><br>
                         <mat-form-field style="color: #964B00;width: 100%;" appearance="fill">
                             <mat-label>Phone Number</mat-label>
-                            <input matInput placeholder="Phone Number"  formControlName="phonenumber">
-                            {{loginData.phonenumber}}
+                          
+                            <input matInput placeholder="Phone Number"  formControlName="phonenumber">  {{loginData.phonenumber}}
+                            
                         </mat-form-field><br>
                         <mat-form-field style="color: #964B00;width: 100%;" appearance="fill">
                             <mat-label>Email</mat-label>
-                            <input matInput placeholder="Email"   formControlName="email">
-                            {{loginData.email}}
-                            <!-- <a (click)="generateOTP()" style="float: right;"
-                                >send otp</a> -->
-                                <!-- <button mat-raised-button (click)="generateOTP(name.value,phonenumber.value,email.value)"  style='background-color: #efc96a; color:#964B00;float: right;'>sendotp</button> -->
-                        </mat-form-field><br>
+                            
+                            <input matInput placeholder="Email"  formControlName="email">{{loginData.email}}
+                             -->
+                          
+                        <!-- </mat-form-field><br>
                         <button mat-raised-button (click)="generateOTP()"  style='background-color: #efc96a; color:#964B00;float: right;'>sendotp</button>
                         
                       
@@ -40,10 +41,11 @@
                             <input matInput placeholder="otp" formControlName="otp">
                         </mat-form-field>
                         <div>
-                            <button mat-raised-button style='background-color: #efc96a; color:#964B00;' matStepperNext (click)="verifyOTP()">Next</button>
+                            <button mat-raised-button style='background-color: #efc96a; color:#964B00;'    (click)="verifyOTP()" matStepperNext >Next</button>
+                         
                         </div>
-                    </div>
-                </mat-step>
+                    </div> 
+                </mat-step>-->
                 <mat-step [stepControl]="PaymentForm" label="Payment Information">
                     <div formGroupName="Payment">
                         <mat-label>Your Amount to be Paid</mat-label>
@@ -55,7 +57,7 @@
                         </mat-radio-group>
 
                         <div>
-                            <button mat-raised-button   style='background-color: #efc96a; color:#964B00;'matStepperPrevious>Back</button> |
+                            <!-- <button mat-raised-button   style='background-color: #efc96a; color:#964B00;'matStepperPrevious>Back</button> | -->
                             <button mat-raised-button style='background-color: #efc96a; color:#964B00;' (click)="confirmBooking()">Click to make Payment</button>
                         </div>
                     </div>

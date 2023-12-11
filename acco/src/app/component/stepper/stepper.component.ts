@@ -159,6 +159,8 @@ export class StepperComponent {
     book.name=basic.name;
     book.email=basic.email;
     book.phonenumber=basic.phonenumber;
+    book.userid=this.userId;
+    book.firstname=this.loginData.username;
     console.log(book);
     this.bookingService.booking(book).    
     subscribe( result=>{
