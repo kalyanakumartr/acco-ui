@@ -87,9 +87,10 @@
             <h5 style="color:#964B00">RoomType</h5>
             <div class="row">
               <div class="col-lg-6">
-                <select formControlName="roomType">
-                  <option value="1">Service Apartment</option>
-                  <option value="2">Rooms</option>
+                <select formControlName="roomType" >
+                  <option value="0">--Select--</option>  
+                  <option value="1" *ngFor="let type of visibleRoom">{{type.roomcategory}}</option>
+                  
                 </select>
               </div>
               

@@ -1,6 +1,6 @@
 <div class="outer">
 <div class="container mt-2"> 
-    <!-- <div class="card"> -->
+   
         <div class="row app-container p-2"> 
             <div class="col-lg-10 offset-md-0  centerTest" > 
                 <img src="assets/index_logo.jpg" style= "width:250px;height:100px; ">  <span id="text" class="p-2" >Welcome to MaduraServices</span>                  
@@ -11,34 +11,22 @@
              
               <span >
                
-                <a *ngIf="isLoggedIn$ "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/login">Login</a>&nbsp;
-                <a *ngIf="isLoggedIn$ "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/signup">Signup</a>&nbsp;
-                <a *ngIf="isLoggedIn$ |async " (click)="logout()" href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" >Logout</a>
+                <a *ngIf="!authService.logged() "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/login">Login</a>&nbsp;
+                <a *ngIf="!authService.logged() "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/signup">Signup</a>&nbsp;
+                <a *ngIf="authService.logged()" (click)="logout()" href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" >Logout</a>
                 
-                <!-- <button  class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="login()">Login</button> 
-                <button  class="btn btn-outline my-2 my-sm-0 mr-sm-2 "  id="btn" type="submit"  click="login()">Login</button>  -->
+               
 
-                 <!-- <div class="nav-item dropdown  " > -->
-                  
-                    <!-- <a class="nav-link dropdown " href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi User
-                      <i class="fa fa-fw fa-user" style="color:#964B00;" ></i> </a> -->
-                  
-                  <!-- <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon"  >
-                    <a class="dropdown-item" href="#" routerLink="/login">Login</a>
-                    <a class="dropdown-item" href="#" routerLink="/signup">Signup</a>
-                    <a class="dropdown-item" href="#">Logout</a>
-                    
-                  </div> 
-                </div> -->
+                
                </span>
              
             </div> 
             
            
-        <!-- </div> -->
+       
 
     </div>
-    <!-- <div class="card"> -->
+   
 
         <nav class="navbar navbar-expand-lg navbar-light ">
             <!-- <img src="assets/logo.jpg" style= "width:120px;height:40px"> -->
@@ -79,29 +67,25 @@
                     <!-- <a class="nav-link " href="#" style="color:#964B00">Contact Us</a> -->
                   </li>
               </ul>
-              <!-- <form class="form-inline my-2 my-lg-0"> -->
+              
                 <div class="nav-item dropdown  " >
+                   <span  style="  color: #964B00;">{{username}}
+                  
+                    <i class="fa fa-fw fa-user" style="color:#964B00;" ></i>
+                   </span>
                    
-                    <a class="nav-link dropdown " href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         
                       <!-- {{loginData.username| uppercase}} -->
-                      <i class="fa fa-fw fa-user" style="color:#964B00;" ></i> </a>
+                      
                  
-                  <!-- <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon"  >
-                    <a class="dropdown-item" href="#" routerLink="/login">Login</a>
-                     <a class="dropdown-item" href="#" routerLink="/signup">Signup</a> 
-                    <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
-                     
-                  </div>  -->
+                  
                 </div>
                 
                
-                <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/login">Login</button>
-                <button class="btn btn-outline my-2 my-sm-0"  id="btn" type="submit" routerLink="/signup">SignUp</button> -->
-              <!-- </form> -->
+               
             </div>
           </nav>
-    <!-- </div> -->
+    
     
 </div>
 </div>

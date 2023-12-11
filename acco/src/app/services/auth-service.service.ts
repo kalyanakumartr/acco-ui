@@ -49,7 +49,8 @@ export class AuthServiceService {
          
           this.router.navigate(["home"])
         }
-  }}))
+  }
+}))
     
 
   };
@@ -61,13 +62,13 @@ export class AuthServiceService {
   get isUserLoggedIn() {
     return this.loggedIn.asObservable();
   }
-// logged(){
-//   return localStorage.getItem("this.authresults.accesstoken");
-// }
+logged(){
+  return localStorage.getItem('token');
+}
 
   logout() {
-    // localStorage.removeitem('token');
-   
+    localStorage.removeItem('token');
+    this.router.navigate(["home"]) 
   }
 }
 

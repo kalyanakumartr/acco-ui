@@ -9,6 +9,7 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 
 import Swal from 'sweetalert2';
+import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 
 @Component({
   selector: 'app-home',
@@ -30,11 +31,12 @@ export class HomeComponent implements OnInit {
  currentDate: any = new Date();
  Todaydate="2023-03-12"
  outDate="2023-03-12"
-
+ select=null;
 
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
-    private router: Router,private getroomlistservice:GetroomlistService
+    private router: Router,private getroomlistservice:GetroomlistService,
+    private roomTypeService:GetroomtypeService
     
     ){}
 
@@ -49,9 +51,12 @@ export class HomeComponent implements OnInit {
     finalmonth:any;
     finalday:any;
     finalOutday:any;
-  
-  ngOnInit():void{  
+    tokenvalue:any;
+    visibleRoom:any;
     
+  ngOnInit():void{  
+    this.showRoomType();
+    this.tokenvalue=localStorage.getItem('token');
     if(this.currentmonth<10){
       this.finalmonth="0" +this.currentmonth;
     }else{
@@ -82,28 +87,28 @@ export class HomeComponent implements OnInit {
       roomType: ['', Validators.required],
     })
    
-      this.modalForm = this.fb.group({
-    user: ['',], });
+    //   this.modalForm = this.fb.group({
+    // user: ['',], });
     // this.getFloor();
     // this.getroom();
 
 
   }
-  modalProcess(){
-    this.selectedValue = this.modalForm.controls['user'].value;
-    console.log(this.selectedValue);    
-    if(this.selectedValue == 'NewUser'){
-      console.log(this.selectedValue);          
-             this.router.navigate(["signup"]);             
-    }else if(this.selectedValue=='ExistingUser'){
-      console.log(this.selectedValue);     
-      this.router.navigate(["login"]);
+  // modalProcess(){
+  //   this.selectedValue = this.modalForm.controls['user'].value;
+  //   console.log(this.selectedValue);    
+  //   if(this.selectedValue == 'NewUser'){
+  //     console.log(this.selectedValue);          
+  //            this.router.navigate(["signup"]);             
+  //   }else if(this.selectedValue=='ExistingUser'){
+  //     console.log(this.selectedValue);     
+  //     this.router.navigate(["login"]);
      
-    }
-    else{
-      Swal.fire("Please select value");
-    }
-  }
+  //   }
+  //   else{
+  //     Swal.fire("Please select value");
+  //   }
+  // }
   
   
   ReadMore:boolean = true
@@ -193,7 +198,9 @@ plus()
   // }
 
   checkAvailability(){
-
+if(this.tokenvalue==null){
+  Swal.fire(" Please LOGIN if you are Existing user or SIGNUP for Newuser");
+}else{
     const formData=this.homeForm.value; 
     var inDate = new Date(formData.checkIn);
     var OutDate = new Date(formData.checkOut);
@@ -219,4 +226,17 @@ plus()
     
   });
   }
+}
+
+showRoomType(){
+  this.roomTypeService.getRoomType()
+  // .subscribe((res)=>{
+    .subscribe((result)=>{
+    console.log("roomtype:",result);    
+     this. visibleRoom=result;
+     console.log(this.visibleRoom);
+  });
+
+}
+
 }

@@ -17,7 +17,12 @@ export class SignupComponent implements OnInit{
   user =new UserModel();   
   
   
-    constructor(private fb: FormBuilder,private http: HttpClient, private router: Router,private registerService:RegisterServiceService){}
+    constructor(private fb: FormBuilder,
+      private http: HttpClient, 
+      private router: Router,
+      private registerService:RegisterServiceService,
+      
+      ){}
   ngOnInit():void{
     this.signupForm = this.fb.group({
       firstname: ['', Validators.required],
@@ -64,10 +69,8 @@ export class SignupComponent implements OnInit{
        console.log(result);
         // alert("login sucessful"); 
         this.signupForm.reset();
-        Swal.fire(" Registered Successfully");
-      
-        
-        // this.router.navigate(["signup"])
+        Swal.fire(" Registered Successfully");      
+         this.router.navigate(["login"])
      
     })
   }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BookingModel } from 'src/app/model/booking.model';
 import { ForOtp } from 'src/app/model/otp.model';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { GenerateOTPService } from 'src/app/services/generate-otp.service';
 import Swal from 'sweetalert2';
@@ -22,17 +23,24 @@ export class StepperComponent {
   noofdays: any;
   totalprice:any;
   userId:any;
-  verifymsg:any
-  
+  verifymsg:any;
+  loginData:any;
+  name:any;
 
   constructor(private builder: FormBuilder, 
     private stepperroute: ActivatedRoute,
      private otpService:GenerateOTPService ,
-     private bookingService:BookingServiceService
-    ) { }
+     private bookingService:BookingServiceService,
+     public authService:AuthServiceService
+    ) {
+      authService.apiData$.subscribe(data => this.loginData = data)
+     }
   isLinear = true;
 
   ngOnInit(): void {
+   this. name=this.loginData.username
+   console.log(this.name)
+   this.userId=this.loginData.userid
     this.stepperroute.params.subscribe((params: Params) =>
       this.roomid = params[('roomid')],);
     this.stepperroute.params.subscribe((params: Params) =>
@@ -116,7 +124,7 @@ export class StepperComponent {
     const verifyotp = new ForOtp() ;
     const basic= this.Basicform.value
     verifyotp.inputotp=basic.otp;
-    verifyotp.userid=16;
+    verifyotp.userid=this.userId;
     
     console.log(verifyotp)
     this.otpService.verifyOTP(verifyotp).    

@@ -12,8 +12,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">FirstName:</label> -->
-                                    <input formControlName="firstName" type="text" placeholder="FirstName*">
+                                    <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
+                                    <input formControlName="firstName" type="text" placeholder="FirstName">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['firstName'].dirty && WalkingfutureForm.hasError('required','firstName')"
@@ -24,7 +24,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">LastName:</label> -->
+                                    <label style="color:#964B00">LastName</label>
                                     <input formControlName="lastName" type="text" placeholder="LastName">
                                 </div>
                                 <small
@@ -38,8 +38,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">Address1:</label> -->
-                                    <input formControlName="email" type="text" placeholder="Email*">
+                                    <label style="color:#964B00">Email<span class="text-danger">*</span></label>
+                                    <input formControlName="email" type="text" placeholder="Email">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['email'].dirty && WalkingfutureForm.hasError('required','email')"
@@ -50,8 +50,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">Address2:</label> -->
-                                    <input formControlName="phonenumber" type="text" placeholder="PhoneNumber*">
+                                    <label style="color:#964B00">PhoneNumber<span class="text-danger">*</span></label>
+                                    <input formControlName="phonenumber" type="text" placeholder="PhoneNumber">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['phonenumber'].dirty && WalkingfutureForm.hasError('required','phonenumber')"
@@ -64,7 +64,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">City:</label> -->
+                                    <label style="color:#964B00">Address1<span class="text-danger">*</span></label>
                                     <input formControlName="address1" type="text" placeholder="Address1">
                                 </div>
                                 <small
@@ -76,7 +76,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">State:</label> -->
+                                    <label style="color:#964B00">Address2</label>
                                     <input formControlName="address2" type="text" placeholder="Address2">
                                 </div>
                                 <small
@@ -90,7 +90,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">Country:</label> -->
+                                    <label style="color:#964B00">City</label>
                                     <input formControlName="city" type="text" placeholder="City">
                                 </div>
                                 <small
@@ -102,7 +102,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">PhoneNumber:</label> -->
+                                    <label style="color:#964B00">State</label>
                                     <input formControlName="state" type="text" placeholder="State">
                                 </div>
                                 <small
@@ -116,7 +116,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">Email:</label> -->
+                                    <label style="color:#964B00">Country</label>
                                     <input formControlName="country" type="text" placeholder="Country">
                                 </div>
                                 <small
@@ -128,8 +128,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">UserName:</label> -->
-                                    <input formControlName="postalcode" type="text" placeholder="Postal code*">
+                                    <label style="color:#964B00">Postalcode</label>
+                                    <input formControlName="postalcode" type="text" placeholder="Postalcode*">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['postalcode'].dirty && WalkingfutureForm.hasError('required','postalcode')"
@@ -142,9 +142,9 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">ConfirmPassword:</label> -->
+                                    <label style="color:#964B00">From<span class="text-danger">*</span></label>
                                     <input formControlName="from" type="datetime-local" #input ([ngModel])="values"
-                                        (change)="onChange(input.value)" min="{{min}}" placeholder="From*">
+                                        (change)="onChange(input.value)" min="{{min}}" placeholder="From">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['from'].dirty && WalkingfutureForm.hasError('required','from')"
@@ -156,8 +156,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">ConfirmPassword:</label> -->
-                                    <input formControlName="to" type="datetime-local" placeholder="To*">
+                                    <label style="color:#964B00">To<span class="text-danger">*</span></label>
+                                    <input formControlName="to" type="datetime-local" placeholder="To">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['to'].dirty && WalkingfutureForm.hasError('required','to')"
@@ -170,8 +170,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">Password:</label> -->
-                                    <input formControlName="adults" type="text" placeholder="Adults*">
+                                    <label style="color:#964B00">Adults<span class="text-danger">*</span></label>
+                                    <input formControlName="adults" type="text" placeholder="Adults">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['adults'].dirty && WalkingfutureForm.hasError('required','adults')"
@@ -182,8 +182,8 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">ConfirmPassword:</label> -->
-                                    <input formControlName="children" type="text" placeholder="Children*">
+                                    <label style="color:#964B00">Children</label>
+                                    <input formControlName="children" type="text" placeholder="Children">
                                 </div>
                                 <small
                                     *ngIf="WalkingfutureForm.controls['children'].dirty && WalkingfutureForm.hasError('required','Children')"
@@ -196,8 +196,7 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <!-- <label style="color:#964B00">Password:</label> -->
-
+                                    <label style="color:#964B00">RoomType</label>
                                     <select formControlName="roomType" type="text" placeholder="RoomType">
                                         <option value="1">Service Apartment</option>
                                         <option value="2">Rooms</option>
@@ -214,7 +213,7 @@
                     <div class="col-lg-10 ml-5">
 
                         <button type="submit" class="btn btn-light btn-elevate mr-2 margin-left">
-                            check</button>
+                            Check</button>
                     </div>
                 </form>
             </div>

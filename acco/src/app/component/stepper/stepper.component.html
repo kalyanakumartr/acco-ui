@@ -16,14 +16,17 @@
                         <mat-form-field style="color: #964B00;width: 100%;" appearance="fill">
                             <mat-label>Name</mat-label>
                             <input matInput style="color: #964B00;"  placeholder="Name" formControlName="name">
+                            {{loginData.username}}
                         </mat-form-field><br>
                         <mat-form-field style="color: #964B00;width: 100%;" appearance="fill">
                             <mat-label>Phone Number</mat-label>
                             <input matInput placeholder="Phone Number"  formControlName="phonenumber">
+                            {{loginData.phonenumber}}
                         </mat-form-field><br>
                         <mat-form-field style="color: #964B00;width: 100%;" appearance="fill">
                             <mat-label>Email</mat-label>
                             <input matInput placeholder="Email"   formControlName="email">
+                            {{loginData.email}}
                             <!-- <a (click)="generateOTP()" style="float: right;"
                                 >send otp</a> -->
                                 <!-- <button mat-raised-button (click)="generateOTP(name.value,phonenumber.value,email.value)"  style='background-color: #efc96a; color:#964B00;float: right;'>sendotp</button> -->

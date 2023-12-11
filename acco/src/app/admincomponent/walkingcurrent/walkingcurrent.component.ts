@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
+import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 
 import Swal from 'sweetalert2';
 
@@ -16,10 +17,16 @@ export class WalkingcurrentComponent implements OnInit {
   WalkingcurrentForm!:FormGroup;
   user =new UserModel();   
   submitted = false;
+  visibleRoom:any;
 
-
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder,
+    private roomTypeService:GetroomtypeService
+    ){}
   ngOnInit():void{
+
+   this. showRoomType();
+
+
     this.WalkingcurrentForm = this.fb.group({
       firstName: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
       lastName: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
@@ -113,6 +120,16 @@ export class WalkingcurrentComponent implements OnInit {
 
 }
 
+showRoomType(){
+  this.roomTypeService.getRoomType()
+  // .subscribe((res)=>{
+    .subscribe((result)=>{
+    console.log("roomtype:",result);    
+     this. visibleRoom=result;
+     console.log(this.visibleRoom);
+  });
+
+}
 
 }
 

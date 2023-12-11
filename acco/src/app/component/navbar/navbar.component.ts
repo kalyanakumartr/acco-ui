@@ -16,27 +16,32 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
   userDetails:any;
   loginData:any;
-  isLoggedIn$!: Observable<boolean>;
- user="Hi User";
+ 
+ 
+ tokenvalue:any;
+ username:any;
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
     private getUserService:GetUserServiceService,
-    private authService:AuthServiceService){
+    public authService:AuthServiceService){
       authService.apiData$.subscribe(data => this.loginData = data)
       
     }
   ngOnInit():void{
-    this.isLoggedIn$ = this.authService.isUserLoggedIn;
     
+    this.tokenvalue=localStorage.getItem('token');
+    console.log("navtoken",this.tokenvalue)
+    this. username = this.tokenvalue == null ? "Hi" : this.loginData.username;
+    console.log("name:",this.username);
   }
    
   logout(){
-     localStorage.removeItem('token');
-     this.router.navigate(["home"]) 
-     console.log("++","logout sucessfully")
+  //   //  localStorage.removeItem('token');
+  //    this.router.navigate(["home"]) 
+  //    console.log("++","logout sucessfully")
      
-     
+     this.authService.logout();
 
-   }
+    }
   
 }
