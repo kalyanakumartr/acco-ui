@@ -20,7 +20,8 @@
                         <!-- <th style="border-color: #964B00;" scope="col">Roomsize</th> -->
                         <th  style="border-color: #964B00;" scope="col">SpecialCharges</th>
                         <th  style="border-color: #964B00;" scope="col">SelectRooms</th>
-                        <th  style="border-color: #964B00;" scope="col">Confirmation</th>
+                        <th  style="border-color: #964B00;" scope="col"></th>
+                        <!-- <th  style="border-color: #964B00;" scope="col">Confirmation</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -111,20 +112,28 @@
                         <!-- </form> -->
 
                     </td>
-                    <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
-
-                        <!-- <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;"
-                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp; -->
-
+                    <td style="border-color: #964B00;" class="align-middle ">
+                        <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true">
                     </td>
-                    <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;" 
+                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp; 
+
+                     </td> -->
+                    <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
 
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 
-                    </td>
+                    </td> -->
                     </tr>
-
+                    <tr>
+                    <td>
+                        <button  style="color:#efc96a; background-color: #964B00;"
+                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+                    </td>
+                </tr>
                     <!-- <tr>
                         <th  class="align-middle" style="border-color: #964B00;" scope="row">2</th>
                         <td style="border-color: #964B00;">3BHK

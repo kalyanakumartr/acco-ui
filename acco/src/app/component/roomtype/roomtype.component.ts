@@ -17,13 +17,17 @@ export class RoomtypeComponent implements OnInit {
   adult:any;
   cIn:any;
   cOut:any;
+  selectedRow: any;
+selectedAll: boolean = false;
+
   constructor(
     private getroomlistservice:GetroomlistService,
     private getChargedAmenity:GetchargedamenityService,
     private homeroute: ActivatedRoute,
-    private router: Router
+    private router: Router,
 
     ){
+      this.selectedRow = [];
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
   }
   ngOnInit(): void {
@@ -59,6 +63,17 @@ export class RoomtypeComponent implements OnInit {
     
   });
 }
+
+
+selectAll(index: any) {
+  if (typeof (index) == 'undefined') {
+   this.selectedAll = !this.selectedAll;
+   this.selectedRow = [];
+  } else {
+   this.selectedRow.push(index);
+   console.log("rooooom",this.selectedRow);
+  }
+ }
 
 sendbookeddata(data:any){
 console.log(data)
