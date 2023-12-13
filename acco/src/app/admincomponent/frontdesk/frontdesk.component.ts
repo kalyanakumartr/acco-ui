@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetguestdetailService } from 'src/app/services/getguestdetail.service';
 
 @Component({
   selector: 'app-frontdesk',
@@ -14,8 +15,12 @@ currentmonth=this.date1.getUTCMonth() +1;
 currentday=this.date1.getUTCDate();
 finalmonth:any;
 finalday:any;
-constructor(){
+guestData:any;
 
+
+constructor( private getguestdetail:GetguestdetailService){
+  // getguestdetail.getGuest$.subscribe(res => this.guestData = res);
+  // console.log(this.guestData)
 }
 
 ngOnInit(): void {
@@ -30,5 +35,14 @@ ngOnInit(): void {
     this.finalday=this.currentday;
   }
   this.TodayDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday ;
+}
+calggapi(seldate:any){
+  console.log("daaaaaa",seldate);
+  this.getguestdetail.getGuestData(seldate).subscribe(res=>{
+    console.table("0000",res[0]);
+    this.guestData=res[0]
+    console.log("guestdata",this.guestData);
+  });
+
 }
 }

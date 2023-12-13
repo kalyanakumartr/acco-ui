@@ -132,7 +132,7 @@
                                             <div class="input-field">  
                                                  <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">From<span class="text-danger">*</span></label>
-                                                <input  formControlName="from" type="datetime-local" #input ([ngModel])="values" (change)="onChange(input.value)" min="{{min}}" placeholder="From">
+                                                <input  formControlName="from" type="datetime-local" #input [(ngModel)]="values" (change)="onChange(input.value)" min="{{min}}" placeholder="From">
                                             </div>
                                             <small *ngIf="WalkingcurrentForm.controls['from'].dirty && WalkingcurrentForm.hasError('required','from')"
                                                 class="text-danger form-inline mt-0 ">*from is required</small>
