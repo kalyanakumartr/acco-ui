@@ -16,6 +16,8 @@ export class BookingsummaryComponent implements OnInit {
   out: any;
   adult: any;
   total: any;
+  child:any;
+  roomtype:any;
   constructor(
     private homeroute: ActivatedRoute,
     private router: Router
@@ -36,6 +38,10 @@ export class BookingsummaryComponent implements OnInit {
       this.out = params[('checkOut')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.adult = params[('adult')],);
+      this.homeroute.params.subscribe((params: Params) =>
+      this.child = params[('child')],);
+      this.homeroute.params.subscribe((params: Params) =>
+      this.roomtype = params[('roomtype')],);
     //  this.total=
     console.log("data:", this.roomid);
     console.log("name:", this.bhk);
@@ -54,7 +60,9 @@ export class BookingsummaryComponent implements OnInit {
       "adult": this.adult,
       "cIn": this.in,
       "cOut": this.out,
-      "price":this.amount
+      "price":this.amount,
+      "child":this.child,
+      "roomtype":this.roomtype
     }]);
   }
 }

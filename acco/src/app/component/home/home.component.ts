@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
  Todaydate="2023-03-12"
  outDate="2023-03-12"
  select=null;
-
+value=0;
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,private getroomlistservice:GetroomlistService,
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
       checkOut: ['', Validators.required],
       checkOutTime: ['', Validators.required],
       adult: ['', Validators.required],
-      child: ['', Validators.required],
+      child: ['0', Validators.required],
       roomType: ['', Validators.required],
     })
    
@@ -202,6 +202,7 @@ if(this.tokenvalue==null){
   Swal.fire(" Please LOGIN if you are Existing user or SIGNUP for Newuser");
 }else{
     const formData=this.homeForm.value; 
+    console.log("chlid:",formData.child,formData.roomType)
     var inDate = new Date(formData.checkIn);
     var OutDate = new Date(formData.checkOut);
   
@@ -220,7 +221,9 @@ if(this.tokenvalue==null){
              this.router.navigate(["roomtype",{"days":noofdays,
              "adult":formData.adult,
              "cIn":formData.checkIn,
-             "cOut":formData.checkOut
+             "cOut":formData.checkOut,
+             "child":formData.child,
+             "roomType":formData.roomType,
             }]);
             //  "cIn":formData.checkIn,"cOut":formData.checkOut,
     

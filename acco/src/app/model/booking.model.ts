@@ -13,5 +13,7 @@ export class BookingModel {
     verificationstatus!:string
     userid:any;
     firstname!:string;
+    child:any;
+    roomtype:any;
 
 }

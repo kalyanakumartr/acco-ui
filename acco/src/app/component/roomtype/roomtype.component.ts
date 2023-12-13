@@ -18,6 +18,8 @@ export class RoomtypeComponent implements OnInit {
   cIn:any;
   cOut:any;
   selectedRow: any;
+  child:any;
+  roomtype:any;
 selectedAll: boolean = false;
 
   constructor(
@@ -42,12 +44,17 @@ selectedAll: boolean = false;
      this.cIn = params[('cIn')], );
      this.homeroute.params.subscribe((params: Params) =>
      this.cOut = params[('cOut')], );
-   
+     this.homeroute.params.subscribe((params: Params) =>
+     this.child = params[('child')], );
+     this.homeroute.params.subscribe((params: Params) =>
+     this.roomtype = params[('roomType')], );
      
     console.log("days:",this.days)
     console.log("adult:",this.adult)
     console.log("cIn:",this.cIn)
     console.log("cOut:",this.cOut)
+    console.log("child:",this.child)
+    console.log("roomtype:",this.roomtype)
     
   }
   inputnumber = 0;
@@ -83,7 +90,9 @@ console.log(data)
  "nodays":this.days,
  "checkIn":this.cIn,
  "checkOut":this.cOut,
-"adult":this.adult
+"adult":this.adult,
+"child":this.child,
+"roomtype":this.roomtype,
 }]);
 
 }

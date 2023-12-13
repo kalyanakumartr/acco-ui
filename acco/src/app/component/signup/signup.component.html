@@ -14,10 +14,10 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">FirstName:</label> -->
-                                            <input formControlName="firstName"type="text" placeholder="FirstName">
+                                            <input formControlName="firstname"type="text" placeholder="Firstname">
 
                                  </div> 
-                                    <small *ngIf="signupForm.controls['firstName'].dirty && signupForm.hasError('required','firstName')"  
+                                    <small *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('required','firstname')"  
                               class="text-danger form-inline  mt-0">*firstName is required</small>
                                         </div>
                                </div>
@@ -26,9 +26,9 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">LastName:</label> -->
-                                            <input formControlName="lastName" type="text" placeholder="Lastname">
+                                            <input formControlName="lastname" type="text" placeholder="Lastname">
                                         </div>
-                                        <small *ngIf="signupForm.controls['lastName'].dirty && signupForm.hasError('required','lastName')"  
+                                        <small *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('required','lastname')"  
                               class="text-danger form-inline  mt-0">*lastName is required</small>
                                         
                                     </div>                                    

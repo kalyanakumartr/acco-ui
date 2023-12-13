@@ -26,24 +26,20 @@ export class SignupComponent implements OnInit{
       ){}
   ngOnInit():void{
     this.signupForm = this.fb.group({
-      firstName: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
-      lastName: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
-      address1: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      address2: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      city: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      state: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      country: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      phonenumber: ['',Validators.required,Validators.pattern("^[0-9]*$"),
-      Validators.minLength(10), Validators.maxLength(10)],
-      email:['',Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
-      username:['',Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
-    ],
-      password: ['', Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
-    ],
-      confirmpassword: ['', Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
-    ],
-     
-      
+      firstname: ['', Validators.required,],
+      lastname: ['', Validators.required,],
+      address1: ['', Validators.required,],
+      address2: ['', Validators.required,],
+      city: ['', Validators.required,],
+      state: ['', Validators.required,],
+      country: ['', Validators.required,],
+      phonenumber: ['',Validators.required,],
+      email:['',Validators.required,],
+      username:['',Validators.required,],
+      password: ['', Validators.required,],
+      confirmpassword: ['', Validators.required,],
+      roleid:4
+    
      
     });
   }

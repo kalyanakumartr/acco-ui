@@ -26,6 +26,8 @@ export class StepperComponent {
   verifymsg:any;
   loginData:any;
   name:any;
+  child:any;
+  roomtype:any;
 
   constructor(private builder: FormBuilder, 
     private stepperroute: ActivatedRoute,
@@ -55,6 +57,10 @@ export class StepperComponent {
       this.noofdays = params[('days')],);
     this.stepperroute.params.subscribe((params: Params) =>
       this.price = params[('price')],);
+      this.stepperroute.params.subscribe((params: Params) =>
+      this.child = params[('child')],);
+      this.stepperroute.params.subscribe((params: Params) =>
+      this.roomtype= params[('roomtype')],);
     this.totalprice=this.noofdays*this.price;
         console.log(
       this.roomid,
@@ -64,7 +70,10 @@ export class StepperComponent {
       this.adults,
       this.price,
       this.noofdays,
-      this.totalprice
+      this.totalprice,
+      this.child,
+      this.roomtype
+
     )
 
   }
@@ -150,16 +159,18 @@ export class StepperComponent {
     const basic= this.Basicform.value
     book.roomid=this.roomid;
     book.roombhk=this.bhk;
-    book.adults=this.adults;
+    book.adults= this.adults;
     book.checkin=this.cin;
     book.checkout=this.cout
     book.price=this.price;
     book.noofdays=this.noofdays;
     book.totalprice=this.totalprice;
-    book.name=basic.name;
-    book.email=basic.email;
-    book.phonenumber=basic.phonenumber;
+    book.name=this.loginData.username
+    book.email=this.loginData.email
+    book.phonenumber=this.loginData.phonenumber;
     book.userid=this.userId;
+    book.child=this.child;
+    book.roomtype=this.roomtype;
     book.firstname=this.loginData.username;
     console.log(book);
     this.bookingService.booking(book).    
