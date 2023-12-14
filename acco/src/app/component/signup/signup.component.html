@@ -19,6 +19,8 @@
                                  </div> 
                                     <small *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('required','firstname')"  
                               class="text-danger form-inline  mt-0">*firstName is required</small>
+                              <small *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('pattern','firstname')"  
+                              class="text-danger form-inline  mt-0">*firstName is invalid</small>
                                         </div>
                                </div>
                                 <div class="col-md-4">
@@ -108,6 +110,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
                               class="text-danger form-inline  mt-0">*phonenumber is required</small>
+                              <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('pattern','phonenumber')"  
+                              class="text-danger form-inline  mt-0">*phonenumber is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -122,6 +126,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')"  
                               class="text-danger form-inline  mt-0">*email is required</small>
+                              <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('pattern','email')"  
+                              class="text-danger form-inline  mt-0">*email is invalid</small>
                                         
                                     </div>
                                </div>
