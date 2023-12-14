@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BookingModel } from 'src/app/model/booking.model';
 import { ForOtp } from 'src/app/model/otp.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -33,7 +33,8 @@ export class StepperComponent {
     private stepperroute: ActivatedRoute,
      private otpService:GenerateOTPService ,
      private bookingService:BookingServiceService,
-     public authService:AuthServiceService
+     public authService:AuthServiceService,
+     private router: Router,
     ) {
       authService.apiData$.subscribe(data => this.loginData = data)
      }
@@ -177,7 +178,7 @@ export class StepperComponent {
     subscribe( result=>{
             console.log(result);              
         Swal.fire(" Booked Successfully");
-      
+        this.router.navigate(["home"]);
     })
   }
 }

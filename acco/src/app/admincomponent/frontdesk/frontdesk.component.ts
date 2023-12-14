@@ -24,6 +24,7 @@ constructor( private getguestdetail:GetguestdetailService){
 }
 
 ngOnInit(): void {
+  this.calggapi(this.TodayDate);
   if(this.currentmonth<10){
     this.finalmonth="0" +this.currentmonth;
   }else{
@@ -36,6 +37,7 @@ ngOnInit(): void {
   }
   this.TodayDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday ;
 }
+
 calggapi(seldate:any){
   console.log("daaaaaa",seldate);
   this.getguestdetail.getGuestData(seldate).subscribe(res=>{

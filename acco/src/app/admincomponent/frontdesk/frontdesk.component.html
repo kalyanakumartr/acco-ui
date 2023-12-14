@@ -27,14 +27,14 @@
 
           <thead>
             <tr>
-              <th style="border-color: #964B00;" scope="col">BookingID</th>
-              <th style="border-color: #964B00;" scope="col">RoomNo</th>
-              <th style="border-color: #964B00;" scope="col">Name</th>
-              <th style="border-color: #964B00;" scope="col">Phone</th>
-              <th style="border-color: #964B00;" scope="col">Email</th>
-              <th style="border-color: #964B00;" scope="col">CheckinTime</th>
-              <th style="border-color: #964B00;" scope="col">ActualCheckInTime</th>
-              <th style="border-color: #964B00;" scope="col">Status</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">BookingID</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">RoomNo</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">Name</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">Phone</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">Email</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">CheckinTime</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">ActualCheckInTime</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -48,7 +48,7 @@
               <td class="align-middle " style="border-color: #964B00;">{{i.acheckin}}
               <td class="align-middle " style="border-color: #964B00;">
                 <!-- <pclass="square1"></p> -->
-              <div [ngClass]="i.color == 'Green' ? 'square' : 'square1'"></div>
+                <div [ngClass]="i.color == 'Green'?'square':i.color == 'Blue'?'square1':'square2'"></div>
           </tbody>
         </table>
       </div>
