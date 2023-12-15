@@ -24,6 +24,9 @@
                             <small
                                 *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
                                 class="text-danger form-inline  mt-0">*username is required</small>
+                                <small
+                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
+                                class="text-danger form-inline  mt-0">*username is invalid</small>
                             <div class="form-group pt-3">
                                 <div class="input-field">
                                     <span class="fa fa-lock p-2" style="color:#964B00"></span>
@@ -36,6 +39,9 @@
                             <small
                                 *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
                                 class="text-danger form-inline ">*password is required</small>
+                                <small
+                                *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('pattern','password')"
+                                class="text-danger form-inline ">*password is invalid</small>
                             <div class="form-inline fr mt-4">
                                 <a href="" id="forgot" style="color:#964B00;">Forgot password?</a>
                             </div>
