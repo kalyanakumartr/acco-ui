@@ -13,4 +13,5 @@ export class UserModel {
     password!: string;
     cpassword!:string;
     roleid:any;
+    postalcode:any;
 }

@@ -5,16 +5,17 @@
             <div class="text-center ">
                 <h1>Walking in Current</h1>                          
                         
-                            <form [formGroup]="WalkingcurrentForm" (ngSubmit)="WalkingcurrentFormProcess()">
+                            <form [formGroup]="walkingCurrentForm" (ngSubmit)="walkingCurrentFormProcess()">
+                            <!-- (ngSubmit)="walkingCurrentFormProcess()"> -->
                                 <div class="form-group pt-0 row justify-content-around">
                                     <div class="col-md-4">
                                         <div class="input-group mb-1">
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
-                                                <input formControlName="firstName"type="text" placeholder="FirstName">
+                                                <input formControlName="firstname"type="text" placeholder="FirstName">
                                                 </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['firstName'].dirty && WalkingcurrentForm.hasError('required','firstName')"
+                                            <small *ngIf="walkingCurrentForm.controls['firstname'].dirty && walkingCurrentForm.hasError('required','firstname')"
                                                 class="text-danger form-inline mt-0 ">*firstName is required</small>
                                         </div>
                                    </div>
@@ -23,9 +24,9 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">LastName</label>
-                                                <input formControlName="lastName" type="text" placeholder="LastName">
+                                                <input formControlName="lastname" type="text" placeholder="LastName">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['lastName'].dirty && WalkingcurrentForm.hasError('required','lastName')"
+                                            <small *ngIf="walkingCurrentForm.controls['lastname'].dirty && walkingCurrentForm.hasError('required','lastname')"
                                                 class="text-danger form-inline mt-0 ">*lastName is required</small>
                                         </div>                                    
                                     </div>                                
@@ -38,7 +39,7 @@
                                                 <label style="color:#964B00">Email<span class="text-danger">*</span></label>
                                                 <input formControlName="email"type="text" placeholder="Email">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['email'].dirty && WalkingcurrentForm.hasError('required','email')"
+                                            <small *ngIf="walkingCurrentForm.controls['email'].dirty && walkingCurrentForm.hasError('required','email')"
                                                 class="text-danger form-inline mt-0 ">*email is required</small>
                                         </div>
                                    </div>
@@ -49,7 +50,7 @@
                                                 <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label>
                                                 <input formControlName="phonenumber"type="text" placeholder="PhoneNumber">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['phonenumber'].dirty && WalkingcurrentForm.hasError('required','phonenumber')"
+                                            <small *ngIf="walkingCurrentForm.controls['phonenumber'].dirty && walkingCurrentForm.hasError('required','phonenumber')"
                                                 class="text-danger form-inline mt-0 ">*phonenumber is required</small>
                                         </div>                                    
                                     </div>                                
@@ -62,7 +63,7 @@
                                                 <label style="color:#964B00">Address1<span class="text-danger">*</span></label>
                                                 <input formControlName="address1" type="text" placeholder="Address1">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['address1'].dirty && WalkingcurrentForm.hasError('required','address1')"
+                                            <small *ngIf="walkingCurrentForm.controls['address1'].dirty && walkingCurrentForm.hasError('required','address1')"
                                                 class="text-danger form-inline mt-0 ">*address1 is required</small>
                                         </div>
                                    </div>
@@ -73,7 +74,7 @@
                                                 <label style="color:#964B00">Address2</label>
                                                 <input formControlName="address2" type="text" placeholder="Address2">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['address2'].dirty && WalkingcurrentForm.hasError('required','address2')"
+                                            <small *ngIf="walkingCurrentForm.controls['address2'].dirty && walkingCurrentForm.hasError('required','address2')"
                                                 class="text-danger form-inline mt-0 ">*address2 is required</small>
                                         </div>                                    
                                     </div>                                
@@ -86,7 +87,7 @@
                                                 <label style="color:#964B00">City</label>
                                                 <input formControlName="city" type="text" placeholder="City" >
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['city'].dirty && WalkingcurrentForm.hasError('required','city')"
+                                            <small *ngIf="walkingCurrentForm.controls['city'].dirty && walkingCurrentForm.hasError('required','city')"
                                                 class="text-danger form-inline mt-0 ">*city is required</small>
                                         </div>
                                    </div>
@@ -97,7 +98,7 @@
                                                 <label style="color:#964B00">State</label>
                                                 <input formControlName="state"  type="text" placeholder="State" >
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['state'].dirty && WalkingcurrentForm.hasError('required','state')"
+                                            <small *ngIf="walkingCurrentForm.controls['state'].dirty && walkingCurrentForm.hasError('required','state')"
                                                 class="text-danger form-inline mt-0 ">*state is required</small>
                                         </div>                                    
                                     </div>                                
@@ -108,23 +109,23 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">Country</label>
-                                                <input formControlName="country" type="text" placeholder="Country">
+                                                <input  type="text" placeholder="Country">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['country'].dirty && WalkingcurrentForm.hasError('required','country')"
+                                            <small *ngIf="walkingCurrentForm.controls['country'].dirty && walkingCurrentForm.hasError('required','country')"
                                                 class="text-danger form-inline mt-0 ">*country is required</small>
                                         </div>
                                    </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <div class="input-group mb-1">
                                             <div class="input-field">
-                                                <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
+                                                <span class="fa fa-user p-2" style="color:#964B00"></span>
                                                 <label style="color:#964B00">Postalcode</label>
                                                 <input formControlName="postalcode" type="text" placeholder="Postal code">
                                             </div>
-                                            <!-- <small *ngIf="WalkingcurrentForm.controls['postalcode'].dirty && WalkingcurrentForm.hasError('required','postalcode')"
-                                                class="text-danger form-inline mt-0 ">*postalcode is required</small> -->
+                                            <small *ngIf="walkingCurrentForm.controls['postalcode'].dirty && walkingCurrentForm.hasError('required','postalcode')"
+                                                class="text-danger form-inline mt-0 ">*postalcode is required</small>
                                         </div>                                    
-                                    </div>                                
+                                    </div>                                 -->
                                 </div>
                                 <div class="form-group pt-1 row justify-content-around">
                                     <div class="col-md-4">
@@ -132,10 +133,10 @@
                                             <div class="input-field">  
                                                  <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">From<span class="text-danger">*</span></label>
-                                                <input  formControlName="from" type="datetime-local" #input [(ngModel)]="values" (change)="onChange(input.value)" min="{{min}}" placeholder="From">
+                                                <input  formControlName="from" type="datetime-local" #input  placeholder="From">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['from'].dirty && WalkingcurrentForm.hasError('required','from')"
-                                                class="text-danger form-inline mt-0 ">*from is required</small>
+                                            <!-- <small *ngIf="walkingCurrentForm.controls['from'].dirty && walkingCurrentForm.hasError('required','from')"
+                                                class="text-danger form-inline mt-0 ">*form is required</small> -->
                                         
                                         </div>                                    
                                     </div>
@@ -144,10 +145,10 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">To<span class="text-danger">*</span></label>
-                                                <input  formControlName="to" type="datetime-local"  placeholder="To">
+                                                <input formControlName="to" type="datetime-local"  placeholder="To">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['to'].dirty && WalkingcurrentForm.hasError('required','to')"
-                                                class="text-danger form-inline mt-0 ">*to is required</small>
+                                            <!-- <small *ngIf="walkingCurrentForm.controls['to'].dirty && walkingCurrentForm.hasError('required','to')"
+                                                class="text-danger form-inline mt-0 ">*to is required</small> -->
                                         </div>                                    
                                     </div>
                                 </div>
@@ -157,10 +158,10 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">Adults<span class="text-danger">*</span></label>
-                                                <input formControlName="adults" type="text" placeholder="Adults">
+                                                <input formControlName="adult" type="text" placeholder="Adults">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['adults'].dirty && WalkingcurrentForm.hasError('required','adults')"
-                                                class="text-danger form-inline mt-0 ">*adults is required</small>
+                                            <!-- <small *ngIf="walkingCurrentForm.controls['adults'].dirty && walkingCurrentForm.hasError('required','adults')"
+                                                class="text-danger form-inline mt-0 ">*adults is required</small> -->
                                         </div>
                                    </div>
                                     <div class="col-md-4">
@@ -168,10 +169,10 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">Children</label>
-                                                <input  formControlName="children" type="text"  placeholder="Children">
+                                                <input formControlName="children"  type="text"  placeholder="Children">
                                             </div>
-                                            <small *ngIf="WalkingcurrentForm.controls['children'].dirty && WalkingcurrentForm.hasError('required','Children')"
-                                                class="text-danger form-inline mt-0 ">*children is required</small>
+                                            <!-- <small *ngIf="walkingCurrentForm.controls['children'].dirty && walkingCurrentForm.hasError('required','Children')"
+                                                class="text-danger form-inline mt-0 ">*children is required</small> -->
                                         </div>                                    
                                     </div>
                                 </div>  
@@ -182,7 +183,7 @@
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">RoomType</label>
                                                 
-                                                <select formControlName="roomType" type="text" placeholder="RoomType">
+                                                <select formControlName="roomtype" type="text" placeholder="RoomType">
                                                     <option value="0">--Select--</option>  
                                                     <option value="1" *ngFor="let types of visibleRoom">{{types.roomcategory}}</option>
                                                     <!-- <option value="2">Rooms</option> -->
@@ -198,7 +199,7 @@
                            
                               <div class="col-lg-10 ml-5" > 
                                 
-                                <button type="submit" class="btn btn-light btn-elevate mr-2 margin-left" >
+                                <button (click)="walkingCurrentFormProcess()" type="submit" class="btn btn-light btn-elevate mr-2 margin-left" >
                                     Check</button>
                               </div>
                             </form>

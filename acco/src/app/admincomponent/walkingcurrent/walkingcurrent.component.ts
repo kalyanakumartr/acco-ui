@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
+import { BookingModel } from 'src/app/model/booking.model';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
+import { RegisterServiceService } from 'src/app/services/register-service.service';
+
 
 import Swal from 'sweetalert2';
 
@@ -14,89 +17,116 @@ import Swal from 'sweetalert2';
   styleUrls: ['./walkingcurrent.component.scss']
 })
 export class WalkingcurrentComponent implements OnInit {
-  WalkingcurrentForm!:FormGroup;
+  walkingCurrentForm!:FormGroup;
   user =new UserModel();   
   submitted = false;
   visibleRoom:any;
+  formData: any;
+   newuser = new UserModel() ;
+   booking = new BookingModel();
+
 
   constructor(private fb: FormBuilder,
-    private roomTypeService:GetroomtypeService
+    private roomTypeService:GetroomtypeService,
+    private registerService:RegisterServiceService,
+
     ){}
   ngOnInit():void{
 
-   this. showRoomType();
+  //  this. showRoomType();
 
 
-    this.WalkingcurrentForm = this.fb.group({
-      firstName: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
-      lastName: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
-      email: ['', Validators.required,(Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"))],
-      phonenumber: ['', Validators.required,(Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"))],
-      address1: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      address2: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      city: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      state: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      country: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'))],
-      username: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
-      password: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
-      confirmpassword: ['', Validators.required,(Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10))],
+    this.walkingCurrentForm = this.fb.group({
+      firstname: ['', Validators.required,],
+      lastname: ['', Validators.required,],
+      email: ['', Validators.required,],
+      phonenumber: ['', Validators.required,],
+      address1: ['', Validators.required,],
+      address2: ['', Validators.required,],
+      city: ['', Validators.required,],
+      state: ['', Validators.required,],
+      country: ['', ],
+      from:['',],
+      to:['',],
+      adult:['',],
+      children:['',],
+      roomtype:['',],
+      roleid:3
      
       
      
     });
-    this.passDateTime();
+    // this.passDateTime();
   }
-  min:any="2023-12-06T05.56";
+  // min:any="2023-12-06T05.56";
     
  
   
 
-    passDateTime(){
-      var tdate = new Date();
-      var date:any = tdate.getDate();
-      if(date < 10){
-        date = "0" + date;
-      }
-      var month:any = tdate.getMonth() + 1;
-      if(month < 10){
-       month = "0" + month; 
-      }
-      var year:any = tdate.getFullYear();
-      var hours:any = tdate.getHours();
-      var minutes:any = tdate.getMinutes();
-      this.min = year + "-" + month + "-" + date + "T" + hours + ":" + minutes;
+  //   passDateTime(){
+  //     var tdate = new Date();
+  //     var date:any = tdate.getDate();
+  //     if(date < 10){
+  //       date = "0" + date;
+  //     }
+  //     var month:any = tdate.getMonth() + 1;
+  //     if(month < 10){
+  //      month = "0" + month; 
+  //     }
+  //     var year:any = tdate.getFullYear();
+  //     var hours:any = tdate.getHours();
+  //     var minutes:any = tdate.getMinutes();
+  //     this.min = year + "-" + month + "-" + date + "T" + hours + ":" + minutes;
 
-    }
-    values: any;
-    onChange(value:any){
+  //   }
+  //   values: any;
+  //   onChange(value:any){
 
-    var todate:any = new Date().getTime();
-    var selectDate:any = new Date(value).getTime();
-    if(todate > selectDate){
-      this.values = "";
+  //   var todate:any = new Date().getTime();
+  //   var selectDate:any = new Date(value).getTime();
+  //   if(todate > selectDate){
+  //     this.values = "";
 
-    }
+  //   }
   
-  }
+  // }
   
 
 
-    WalkingcurrentFormProcess(){
-      const newuser = new UserModel() ;
-      const formData = this.WalkingcurrentForm.value;
-      newuser.firstname = formData.firstname;
-      newuser.lastname = formData.lastname;
-      newuser.email = formData.email;
-      newuser.phonenumber = formData.phonenumber;
-      newuser.address1 = formData.address1;
-      newuser.address2 = formData.address2;
-      newuser.city = formData.city;
-      newuser.state = formData.state;
-      newuser.country = formData.country;
-      newuser.username = formData.username;
-      newuser.password = formData.password;
-      newuser.cpassword = formData.confirmpassword;
-      newuser.roleid=formData.roleid;
+    walkingCurrentFormProcess(){
+      
+      const formData = this.walkingCurrentForm.value;
+      this.newuser.firstname = formData.firstname;
+      this.newuser.lastname = formData.lastname;
+      this.newuser.email = formData.email;
+      this.newuser.phonenumber = formData.phonenumber;
+      this.newuser.address1 = formData.address1;
+      this.newuser.address2 = formData.address2;
+      this.newuser.city = formData.city;
+      this.newuser.state = formData.state;
+      this.newuser.country = formData.country;
+      this.newuser.username = formData.username;
+      this.newuser.roleid=formData.roleid;
+      
+      this.booking.checkin=formData.from;
+      this.booking.checkout=formData.to;
+      this.booking.adults=formData.adult;
+      this.booking.child=formData.children;
+      this.booking.roomtype=formData.roomtype;
+
+      if(this.walkingCurrentForm.valid){
+        
+        console.log(this.newuser);
+        console.log(this.booking);
+
+        // this.registerService.register(this.newuser).    
+        // subscribe( result=>{
+        //   console.log(result);
+        //   this.walkingCurrentForm.reset();
+        // })
+      }
+    }
+
       // Swal.fire("Success");
   // if(this.walkingcurrentForm.valid){
   //   console.log(this.user);
@@ -118,18 +148,18 @@ export class WalkingcurrentComponent implements OnInit {
 
 
 
-}
 
-showRoomType(){
-  this.roomTypeService.getRoomType()
-  // .subscribe((res)=>{
-    .subscribe((result)=>{
-    console.log("roomtype:",result);    
-     this. visibleRoom=result;
-     console.log("walkingcurrent",this.visibleRoom);
-  });
 
-}
+// showRoomType(){
+//   this.roomTypeService.getRoomType()
+//   // .subscribe((res)=>{
+//     .subscribe((result)=>{
+//     console.log("roomtype:",result);    
+//      this. visibleRoom=result;
+//      console.log("walkingcurrent",this.visibleRoom);
+//   });
+
+// }
 
 }
 
