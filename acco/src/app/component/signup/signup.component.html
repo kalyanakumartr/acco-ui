@@ -32,6 +32,9 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('required','lastname')"  
                               class="text-danger form-inline  mt-0">*lastName is required</small>
+                            
+                            <small *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('pattern','lastname')"  
+                  class="text-danger form-inline  mt-0">*lastName is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -46,6 +49,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['address1'].dirty && signupForm.hasError('required','address1')"  
                               class="text-danger form-inline  mt-0">*address1 is required</small>
+                              <small *ngIf="signupForm.controls['address1'].dirty && signupForm.hasError('pattern','address1')"  
+                              class="text-danger form-inline  mt-0">*address1 is invalid</small>
                                         
                                     </div>
                                </div>
@@ -58,6 +63,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['address2'].dirty && signupForm.hasError('required','address2')"  
                               class="text-danger form-inline  mt-0">*address2 is required</small>
+                              <small *ngIf="signupForm.controls['address2'].dirty && signupForm.hasError('pattern','address2')"  
+                              class="text-danger form-inline  mt-0">*address2 is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -72,6 +79,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['city'].dirty && signupForm.hasError('required','city')"  
                               class="text-danger form-inline  mt-0">*city is required</small>
+                              <small *ngIf="signupForm.controls['city'].dirty && signupForm.hasError('pattern','city')"  
+                              class="text-danger form-inline  mt-0">*city is invalid</small>  
                                         
                                     </div>
                                </div>
@@ -84,6 +93,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['state'].dirty && signupForm.hasError('required','state')"  
                               class="text-danger form-inline  mt-0">*state is required</small>
+                              <small *ngIf="signupForm.controls['state'].dirty && signupForm.hasError('pattern','state')"  
+                              class="text-danger form-inline  mt-0">*state is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -98,6 +109,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['country'].dirty && signupForm.hasError('required','country')"  
                               class="text-danger form-inline  mt-0">*country is required</small>
+                              <small *ngIf="signupForm.controls['country'].dirty && signupForm.hasError('pattern','country')"  
+                              class="text-danger form-inline  mt-0">*country is invalid</small>
                                         
                                     </div>
                                </div>
@@ -140,6 +153,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required','username')"  
                               class="text-danger form-inline  mt-0">*username is required</small>
+                              <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('pattern','username')"  
+                              class="text-danger form-inline  mt-0">*username is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -154,6 +169,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"  
                               class="text-danger form-inline  mt-0">*password is required</small>
+                              <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('pattern','password')"  
+                              class="text-danger form-inline  mt-0">*password is invalid</small>
                                         
                                     </div>
                                </div>
@@ -166,6 +183,9 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required','confirmpassword')"  
                               class="text-danger form-inline  mt-0">*confirmpassword is required</small>
+                              <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('pattern','confirmpassword')"  
+                              class="text-danger form-inline  mt-0">*confirmpassword is required</small>
+                                        
                                         
                                     </div>                                    
                                 </div>                                
