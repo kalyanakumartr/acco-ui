@@ -19,14 +19,14 @@
                         <th  style="border-color: #964B00;" scope="col">Tariff</th>
                         <!-- <th style="border-color: #964B00;" scope="col">Roomsize</th> -->
                         <th  style="border-color: #964B00;" scope="col">SpecialCharges</th>
-                        <th  style="border-color: #964B00;" scope="col">SelectRooms</th>
-                        <th  style="border-color: #964B00;" scope="col"></th>
+                        <th  style="border-color: #964B00;" scope="col" >SelectRooms</th>
+                        <th style="border-color: #964B00;" scope="col"></th>
                         <!-- <th  style="border-color: #964B00;" scope="col">Confirmation</th> -->
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="color: #964B00;" *ngFor="let i of roomData">
-                        <th class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomid}}</th>
+                    <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
+                        <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomid}}</td>
                         <td class="align-middle " style="border-color: #964B00;">{{i.roomname}}
                     <tr scope="col" style="border-color: #964B00;">Reccommended for 2 adults, and 1 child</tr>
                     <div class="row">
@@ -121,19 +121,19 @@
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp; 
 
                      </td> -->
-                    <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
-
+                    <td   *ngIf="index === 0" [attr.rowspan]="roomData.length"style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <!-- scope="col" rowspan="2" -->
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 
-                    </td> -->
+                    </td>
                     </tr>
-                    <tr>
-                    <td>
+                    <!-- <tr>
+                    <td scope="row" colspan="8">
                         <button  style="color:#efc96a; background-color: #964B00;"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
                     </td>
-                </tr>
+                </tr> -->
                     <!-- <tr>
                         <th  class="align-middle" style="border-color: #964B00;" scope="row">2</th>
                         <td style="border-color: #964B00;">3BHK
