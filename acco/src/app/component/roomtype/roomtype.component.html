@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                     <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
-                        <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomid}}</td>
+                        <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td>
                         <td class="align-middle " style="border-color: #964B00;">{{i.roomname}}
                     <tr scope="col" style="border-color: #964B00;">Reccommended for 2 adults, and 1 child</tr>
                     <div class="row">
@@ -47,7 +47,7 @@
 
                     </td>
 
-                    <td style="border-color: #964B00;" class="align-middle ">{{i.basecount}}</td>
+                    <td style="border-color: #964B00;" class="align-middle ">{{adult}}</td>
                     <!-- <td style="border-color: #964B00;" class="align-middle ">1</td> -->
                     <td style="border-color: #964B00;" class="align-middle ">Rs{{i.price}}/-</td>
                     <!-- <td style="border-color: #964B00;" class="align-middle ">{{i.roomsize}} sq.ft</td> -->
@@ -59,17 +59,17 @@
                                 <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
                                 <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
                                 <div class="row pl-0">
-                                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button style="color:#efc96a; background-color: #964B00;"
-                                            class="btn btn-sm outline" (click)="plus()"><i
+                                    <div class="form-check-inline"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button   style="color:#efc96a; background-color: #964B00;"
+                                            class="btn btn-sm outline" (click)="plus()" ><i
                                                 class="fa fa-plus"></i></button>&nbsp;&nbsp;
-
+                                                
                                         <div class="form-check-inline">
                                             <input style="border-color:#efc96a; width: 50px;" type="text"
                                                 class="form-control" [(ngModel)]="inputnumber">&nbsp;&nbsp;
 
                                             <div class="form-check-inline">
-                                                <button style="color:#efc96a; background-color: #964B00;"
+                                                <button  style="color:#efc96a; background-color: #964B00;"
                                                     class="btn btn-sm outline" (click)="minus()"><i
                                                         class="fa fa-minus"></i></button>
                                             </div>
@@ -113,6 +113,22 @@
 
                     </td>
                     <td style="border-color: #964B00;" class="align-middle ">
+                        <div>
+                            <div >
+                                <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown" >
+                                    <span *ngIf="checkedList.length<=0">Select</span>
+                                    <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <div class="drop-show" *ngIf="showDropDown">
+                                    <label *ngFor="let item of roomData; let n = index " [attr.data-index]="n">
+                                        <input type="checkbox" [(ngModel)]="item.checked" 
+                                            (change)="getSelectedValue(item.checked, item.roomids)" />
+                                        <span>{{n}}{{item.roomids}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true">
                     </td>
                     <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -121,7 +137,7 @@
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp; 
 
                      </td> -->
-                    <td   *ngIf="index === 0" [attr.rowspan]="roomData.length"style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
