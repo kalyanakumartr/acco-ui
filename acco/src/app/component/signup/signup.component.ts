@@ -27,15 +27,16 @@ export class SignupComponent implements OnInit{
   ngOnInit():void{
     this.signupForm = this.fb.group({
       firstname: ['', [Validators.required,Validators.pattern("^[A-za-z]*$")]],
-      lastname: ['', Validators.required,],
-      address1: ['', Validators.required,],
-      address2: ['', Validators.required,],
-      city: ['', Validators.required,],
-      state: ['', Validators.required,],
-      country: ['', Validators.required,],
+      lastname: ['', [Validators.required,Validators.pattern("^[A-za-z]*$")]],
+      address1: ['', [Validators.required,Validators.pattern("^[A-za-z0-9]*$")]],
+      address2: ['', [Validators.required,Validators.pattern("^[A-za-z0-9]*$")]],
+      city: ['', [Validators.required,Validators.pattern("^[A-za-z]*$")]],
+      state: ['', [Validators.required,Validators.pattern("^[A-za-z]*$")]],
+      country: ['', [Validators.required,Validators.pattern("^[A-za-z]*$")]],
+      pincode:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
       phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]*$")]],
       email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      username:['',Validators.required,],
+      username:['',[Validators.required,Validators.pattern("^[A-za-z0-9]*$")]],
       password: ['', Validators.required,],
       confirmpassword: ['', Validators.required,],
       roleid:3
@@ -56,6 +57,7 @@ export class SignupComponent implements OnInit{
       newuser.city = formData.city;
       newuser.state = formData.state;
       newuser.country = formData.country;
+      newuser.pincode = formData.pincode
       newuser.username = formData.username;
       newuser.password = formData.password;
       newuser.cpassword = formData.confirmpassword;

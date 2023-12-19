@@ -13,8 +13,8 @@ export class RoleService {
     return this.httpClient.get<Role[]>(`${environment.roleapiUrl}`);
   }
 
-  myBooking(): Observable<any>{
+  myBooking(id: any): Observable<any>{
     console.log("getMybooking");
-    return this.httpClient.get<any>("http://localhost:3001/users/getbookingwithuserid/7");
+    return this.httpClient.get<any>("http://localhost:3001/users/getbookingwithuserid?userid="+id);
   }
 }

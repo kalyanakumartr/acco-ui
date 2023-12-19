@@ -15,4 +15,9 @@ export class RegisterServiceService {
     console.log("I am register");    
     return this.http.post<UserModel>(`${environment.registerURL}`, user);
   }
+
+  changePassword(user:UserModel):Observable<UserModel>{
+    console.log("I am changepasword");    
+    return this.http.post<UserModel>("http://localhost:3001/users/changepassword",user);
+  }
 }

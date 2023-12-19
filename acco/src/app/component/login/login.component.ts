@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
   userName: string = "";
   password: string = "";
   loginForm!: FormGroup;
-  isLoggedIn! : Observable<boolean>;
+  
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthServiceService) { }
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isUserLoggedIn;
+    
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],

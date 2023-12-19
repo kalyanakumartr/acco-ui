@@ -21,6 +21,8 @@
                               class="text-danger form-inline  mt-0">*firstName is required</small>
                               <small *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('pattern','firstname')"  
                               class="text-danger form-inline  mt-0">*firstName is invalid</small>
+                              <small *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('pattern','firstname')"  
+                              class="text-danger form-inline  mt-0">*Firstname is invalid</small>
                                         </div>
                                </div>
                                 <div class="col-md-4">
@@ -32,6 +34,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('required','lastname')"  
                               class="text-danger form-inline  mt-0">*lastName is required</small>
+                              <small *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('pattern','lastname')"  
+                              class="text-danger form-inline  mt-0">*Lastname is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -46,6 +50,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['address1'].dirty && signupForm.hasError('required','address1')"  
                               class="text-danger form-inline  mt-0">*address1 is required</small>
+                              <small *ngIf="signupForm.controls['address1'].dirty && signupForm.hasError('pattern','address1')"  
+                              class="text-danger form-inline  mt-0">*Address1 is invalid</small>
                                         
                                     </div>
                                </div>
@@ -58,6 +64,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['address2'].dirty && signupForm.hasError('required','address2')"  
                               class="text-danger form-inline  mt-0">*address2 is required</small>
+                              <small *ngIf="signupForm.controls['address2'].dirty && signupForm.hasError('pattern','address2')"  
+                              class="text-danger form-inline  mt-0">*Address2 is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -72,6 +80,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['city'].dirty && signupForm.hasError('required','city')"  
                               class="text-danger form-inline  mt-0">*city is required</small>
+                              <small *ngIf="signupForm.controls['city'].dirty && signupForm.hasError('pattern','city')"  
+                              class="text-danger form-inline  mt-0">*City is invalid</small>
                                         
                                     </div>
                                </div>
@@ -84,6 +94,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['state'].dirty && signupForm.hasError('required','state')"  
                               class="text-danger form-inline  mt-0">*state is required</small>
+                              <small *ngIf="signupForm.controls['state'].dirty && signupForm.hasError('pattern','state')"  
+                              class="text-danger form-inline  mt-0">*State is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -98,6 +110,8 @@
                                         </div>
                                         <small *ngIf="signupForm.controls['country'].dirty && signupForm.hasError('required','country')"  
                               class="text-danger form-inline  mt-0">*country is required</small>
+                              <small *ngIf="signupForm.controls['country'].dirty && signupForm.hasError('pattern','country')"  
+                              class="text-danger form-inline  mt-0">*Country is invalid</small>
                                         
                                     </div>
                                </div>
@@ -106,12 +120,12 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">PhoneNumber:</label> -->
-                                            <input formControlName="phonenumber"  type="text" placeholder="PhoneNumber" >
+                                            <input formControlName="pincode"  type="text" placeholder="Pincode" >
                                         </div>
-                                        <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
-                              class="text-danger form-inline  mt-0">*phonenumber is required</small>
-                              <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('pattern','phonenumber')"  
-                              class="text-danger form-inline  mt-0">*phonenumber is invalid</small>
+                                        <small *ngIf="signupForm.controls['pincode'].dirty && signupForm.hasError('required','pincode')"  
+                              class="text-danger form-inline  mt-0">*pincode is required</small>
+                              <small *ngIf="signupForm.controls['pincode'].dirty && signupForm.hasError('pattern','pincode')"  
+                              class="text-danger form-inline  mt-0">*pincode is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -122,12 +136,12 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">Email:</label> -->
-                                            <input formControlName="email" type="text" placeholder="Email">
+                                            <input formControlName="phonenumber" type="text" placeholder="Phonenumber">
                                         </div>
-                                        <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')"  
-                              class="text-danger form-inline  mt-0">*email is required</small>
-                              <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('pattern','email')"  
-                              class="text-danger form-inline  mt-0">*email is invalid</small>
+                                        <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
+                              class="text-danger form-inline  mt-0">*phonenumber is required</small>
+                              <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('pattern','phonenumber')"  
+                              class="text-danger form-inline  mt-0">*Phonenumber is invalid</small>
                                         
                                     </div>
                                </div>
@@ -136,10 +150,12 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">UserName:</label> -->
-                                            <input formControlName="username" type="text" placeholder="UserName">
+                                            <input formControlName="email" type="text" placeholder="Email">
                                         </div>
-                                        <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required','username')"  
-                              class="text-danger form-inline  mt-0">*username is required</small>
+                                        <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')"  
+                              class="text-danger form-inline  mt-0">*email is required</small>
+                              <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('pattern','email')"  
+                              class="text-danger form-inline  mt-0">*Email is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -169,6 +185,34 @@
                                         
                                     </div>                                    
                                 </div>                                
+                            </div>
+                            <div class="form-group pt-1 row justify-content-around">
+                                <div class="col-md-4">
+                                    <div class="input-group mb-1">
+                                        <div class="input-field">
+                                            <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
+                                            <!-- <label style="color:#964B00">Password:</label> -->
+                                            <input formControlName="username" type="text" placeholder="UserName">
+                                        </div>
+                                        <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required','username')"  
+                              class="text-danger form-inline  mt-0">*username is required</small>
+                              <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('pattern','username')"  
+                              class="text-danger form-inline  mt-0">*Username is invalid</small>
+                                        
+                                    </div>
+                               </div>
+                                 <div class="col-md-4">
+                                    <div class="input-group mb-1">
+                                        <!-- <div class="input-field">
+                                          <span class="fa fa-user p-2" style="color:#964B00"></span>  
+                                            <label style="color:#964B00">ConfirmPassword:</label>  
+                                            <input  formControlName="confirmpassword" type="text"  placeholder="ConfirmPassword">
+                                        </div>
+                                        <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required','confirmpassword')"  
+                              class="text-danger form-inline  mt-0">*confirmpassword is required</small> -->
+                                        
+                                    </div>                                    
+                                </div>                             
                             </div>
                             
                        

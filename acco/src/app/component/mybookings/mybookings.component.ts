@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MyBooking } from 'src/app/model/mybooking.model';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { RoleService } from 'src/app/services/role.service';
 
 @Component({
@@ -9,37 +11,41 @@ import { RoleService } from 'src/app/services/role.service';
   styleUrls: ['./mybookings.component.scss']
 })
 export class MybookingsComponent  implements OnInit{
-  public displayedColumns =['checkin','checkout','adults','child','noofflats','flatno','totalcost','bookingno','option'];
-  public dataSource=new MatTableDataSource<any>();
+  userid:any;
+  loginData:any;
+  bookingData:any;
+ 
 
-  constructor (private roleService:RoleService)
+  constructor (private roleService:RoleService,public authService:AuthServiceService)
       {
-        console.log("display",this.displayedColumns);
-        console.log("datasource",this.dataSource); 
+        authService.apiData$.subscribe(data => this.loginData = data)
+       
+       
       }
-      
       @ViewChild('paginator')
-  paginator!: MatPaginator;
-      
-
-      PageSizes=[3,5,7];
-      
-
-
+      paginator!: MatPaginator;
+          
       ngAfterViewInit(){
-        this.dataSource.paginator=this.paginator;
+        // this.bookingData.paginator=this.paginator;
 
       }
+      
+     
+          
+
+
+      
     ngOnInit(): void {
-        this.getMyBooking();
+      this.userid=this.loginData.userid;
+      console.log("id:",this.userid);
+       this.getMyBooking(this.userid);
     }
-      getMyBooking(){
-      this.roleService.myBooking()
+      getMyBooking(userid:any){
+      this.roleService.myBooking(userid)
       // .subscribe((res)=>{
         .subscribe((result)=>{
         console.log(result);
-        this.dataSource.data=result;
-        console.log("datasource",this.dataSource.data); 
+       this.bookingData=result;
       });
         
       }

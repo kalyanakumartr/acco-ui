@@ -38,12 +38,15 @@ export class RoomtypeComponent implements OnInit {
     this.selectedRow = [];
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
     this.checkedList = [];
-    this.roomid = [
-      this.roomData[0].roomids,
-    ],
-      this.roomId = [
-        this.roomData[1].roomids
-      ]
+    // this.roomid = [
+    //   this.roomData[0].roomids[0],
+    //   this.roomData[0].roomids[1],
+    //   this.roomData[0].roomids[2],
+    // ],
+    //   this.roomId = [
+    //     this.roomData[1].roomids[0],
+    //     this.roomData[1].roomids[1],
+    //   ]
   }
   ngOnInit(): void {
     console.log("room:", this.roomData);
@@ -69,8 +72,8 @@ export class RoomtypeComponent implements OnInit {
     console.log("child:", this.child)
     console.log("roomtype:", this.roomtype)
 
-    console.log("roomids:", this.roomData[0].roomids);
-    console.log("roomids1:", this.roomData[1].roomids);
+    console.log("roomids:", this.roomid);
+    console.log("roomids1:", this.roomId);
 
   }
   inputnumber = 0;
@@ -98,10 +101,10 @@ export class RoomtypeComponent implements OnInit {
     }
   }
 
-  sendbookeddata(data: any) {
+  sendbookeddata(data: any,) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id": data.roomid,
+      "id": data.roomnos,
       "name": data.roomname,
       "price": data.price,
       "nodays": this.days,

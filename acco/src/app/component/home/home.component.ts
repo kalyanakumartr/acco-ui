@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
  Todaydate="2023-03-12"
  outDate="2023-03-12"
  select=null;
-value=0;
+
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,private getroomlistservice:GetroomlistService,

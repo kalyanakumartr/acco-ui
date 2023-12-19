@@ -12,7 +12,7 @@
             <table class="table table-bordered">
                 <thead >
                     <tr>
-                        <th  style="border-color: #964B00;" scope="col">RoomNo</th>
+                        <th  style="border-color: #964B00;" scope="col">RoomCount</th>
                         <th  style="border-color: #964B00;" scope="col">AccommodotionType</th>
                         <th  style="border-color: #964B00;" scope="col">Guests</th>
                         <!-- <th style="border-color: #964B00;" scope="col">Family</th> -->
@@ -113,22 +113,28 @@
 
                     </td>
                     <td style="border-color: #964B00;" class="align-middle ">
-                        <div>
+                        <!-- <div>
                             <div >
                                 <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown" >
                                     <span *ngIf="checkedList.length<=0">Select</span>
                                     <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
                                     <i class="fa fa-angle-down"></i>
                                 </button>
-                                <div class="drop-show" *ngIf="showDropDown">
-                                    <label *ngFor="let item of roomData; let n = index " [attr.data-index]="n">
-                                        <input type="checkbox" [(ngModel)]="item.checked" 
-                                            (change)="getSelectedValue(item.checked, item.roomids)" />
-                                        <span>{{n}}{{item.roomids}}</span>
-                                    </label>
-                                </div>
+                                <div  class="drop-show" *ngIf="showDropDown" > -->
+                                    <!-- <label *ngFor="let item of roomData.roomids; "> -->
+                                        <select >
+                                            <!-- <option value="0">--Select--</option>   -->
+                                            <option value="1" *ngFor="let type of roomData[0].roomnos">{{type}}</option>
+                                            
+                                          </select>
+                                        <!-- let n = index " [attr.data-index]="n" -->
+                                        <!-- <input  type="checkbox" [(ngModel)]="item.checked" 
+                                            (change)="getSelectedValue(item.checked, item)" /> -->
+                                        <!-- <span>{{item}}</span> -->
+                                    <!-- </label> -->
+                                <!-- </div>
                             </div>
-                        </div>
+                        </div> -->
                         <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true">
                     </td>
                     <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
