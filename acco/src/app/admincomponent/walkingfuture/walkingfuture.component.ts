@@ -22,20 +22,21 @@ export class WalkingfutureComponent implements OnInit {
   constructor(private fb: FormBuilder){}
   ngOnInit():void{
     this.WalkingfutureForm = this.fb.group({
-      firstName: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      lastName: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      email: ['', Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
-      phonenumber: ['', Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
-      address1: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
+      firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
+      lastName: ['', Validators],
+      email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
+      address1: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
       address2: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
       city: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
       state: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
       country: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
-      username: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      password: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-      confirmpassword: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(10)],
-     roleid:4
-      
+      from:['',Validators.required],
+      to:['',Validators.required],
+      adult:['',Validators.required],
+      children:['',Validators.required],
+      roomtype:['',],
+      roleid:3
      
     });
     this.passDateTime();

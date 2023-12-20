@@ -37,19 +37,19 @@ export class WalkingcurrentComponent implements OnInit {
 
 
     this.walkingCurrentForm = this.fb.group({
-      firstname: ['', Validators.required,],
+      firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
       lastname: ['', Validators.required,],
-      email: ['', Validators.required,],
-      phonenumber: ['', Validators.required,],
-      address1: ['', Validators.required,],
+      email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
+      address1: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
       address2: ['', Validators.required,],
-      city: ['', Validators.required,],
+      city: ['', Validators.required],
       state: ['', Validators.required,],
-      country: ['', ],
-      from:['',],
-      to:['',],
-      adult:['',],
-      children:['',],
+      country: ['', Validators.required],
+      from:['',Validators.required],
+      to:['',Validators.required],
+      adult:['',Validators.required],
+      children:['',Validators.required],
       roomtype:['',],
       roleid:3
      
