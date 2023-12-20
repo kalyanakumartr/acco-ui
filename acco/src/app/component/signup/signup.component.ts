@@ -32,6 +32,7 @@ export class SignupComponent implements OnInit{
        address2: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
        city: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
        state: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
+       pincode:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
        country: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
       phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
       email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
@@ -55,6 +56,7 @@ export class SignupComponent implements OnInit{
       newuser.address2 = formData.address2;
       newuser.city = formData.city;
       newuser.state = formData.state;
+      newuser.pincode = formData.pincode
       newuser.country = formData.country;
       newuser.username = formData.username;
       newuser.password = formData.password;

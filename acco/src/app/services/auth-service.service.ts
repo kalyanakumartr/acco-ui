@@ -47,7 +47,7 @@ export class AuthServiceService {
          
         } else {
          
-          this.router.navigate(["home"])
+          this.router.navigate(["mybookings"])
         }
   }
 }))

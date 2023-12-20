@@ -18,8 +18,9 @@ console.log("date is passing",date)
     return this.http.get("http://localhost:3001/users/getguestdetail?checkin="+date);
   }
 
-  // setData(guestdata: any) {
-  //   this.getGuest.next(guestdata)
-  // }
 
+  
+   
+
+  
 }

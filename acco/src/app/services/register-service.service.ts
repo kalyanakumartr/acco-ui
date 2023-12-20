@@ -15,4 +15,5 @@ export class RegisterServiceService {
     console.log("I am register");    
     return this.http.post<UserModel>(`${environment.registerURL}`, user);
   }
+  
 }

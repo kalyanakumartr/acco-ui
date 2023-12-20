@@ -22,11 +22,11 @@ export class RoomtypeComponent implements OnInit {
   roomtype: any;
   selectedAll: boolean = false;
 
-  roomid: Array<any> = [];
-  roomId: Array<any> = []
+  
   checkedList: any[];
   currentSelected: {} | undefined;
   showDropDown!: boolean;
+  checked:any;
 
   constructor(
     private getroomlistservice: GetroomlistService,
@@ -35,15 +35,11 @@ export class RoomtypeComponent implements OnInit {
     private router: Router,
 
   ) {
+  
     this.selectedRow = [];
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
     this.checkedList = [];
-    this.roomid = [
-      this.roomData[0].roomids,
-    ],
-      this.roomId = [
-        this.roomData[1].roomids
-      ]
+    
   }
   ngOnInit(): void {
     console.log("room:", this.roomData);
@@ -88,7 +84,7 @@ export class RoomtypeComponent implements OnInit {
   }
 
 
-  selectAll(index: any) {
+  selectAll(index: any,) {
     if (typeof (index) == 'undefined') {
       this.selectedAll = !this.selectedAll;
       this.selectedRow = [];
@@ -101,7 +97,7 @@ export class RoomtypeComponent implements OnInit {
   sendbookeddata(data: any) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id": data.roomid,
+      "id": this.checked,
       "name": data.roomname,
       "price": data.price,
       "nodays": this.days,
@@ -165,16 +161,24 @@ export class RoomtypeComponent implements OnInit {
     }
   }
 
-  getSelectedValue(status: Boolean, value: String) {
-    if (status) {
-      this.checkedList.push(value);
-    } else {
-      var index = this.checkedList.indexOf(value);
-      this.checkedList.splice(index, 1);
-    }
-
-    this.currentSelected = { checked: status, name: value };
-  }
+  getSelectedValue(event:any, value: String) {
+    console.log("hi")
+    // if (event.target.checked) {
+    //   this.checkedList.push(value);
+      
+    // } else {
+    //   var index = this.checkedList.indexOf(value);
+    //   this.checkedList.splice(index, 1);
+      
+    // }
+// if(event.target.checked){
+  // console.log("hiiiii")
+    this.currentSelected = { checked:event.target.checked, name: value };
+    console.log("checked:",this.currentSelected);
+    this.checked=this.currentSelected;
+    console.log("ch:",this.checked);
+  // }
+}
 
 
 

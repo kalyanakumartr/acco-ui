@@ -25,7 +25,7 @@
                     </li>
                     <li class="nav-item active">
                         <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/fooditem">FOOD</button> -->
-                        <a class="nav-link " href="#" style="color:#964B00" routerLink="/cancelbooking">Cancel
+                        <a class="nav-link " href="#" style="color:#964B00" routerLink="/cancelbooking">Canceled
                             Bookings</a>
                     </li>
                 </ul>
@@ -33,14 +33,14 @@
         </nav>
         <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Update Your Details</h4>
         <div class="panel-body p-3">
-            <form>
+            <form [formGroup]="updateForm" (ngSubmit)="updateProcess()">
                 <div class="form-group pt-0 row justify-content-around">
                     <div class="col-md-4">
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
-                                <input  type="text" placeholder="FirstName">
+                                <input  formControlName="firstname" type="text" placeholder="FirstName">
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">LastName<span class="text-danger">*</span></label>
-                                <input  type="text" placeholder="Lastname">
+                                <input formControlName="lastname"  type="text" placeholder="Lastname">
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">Address1<span class="text-danger">*</span></label>
-                                <input  type="text" placeholder="Address1">
+                                <input formControlName="address1"  type="text" placeholder="Address1">
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">Address2</label>
-                                <input  type="text" placeholder="Address2">
+                                <input formControlName="address2"  type="text" placeholder="Address2">
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">City<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="City">
+                                <input formControlName="city"  type="text" placeholder="City">
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00 ">State</label>
-                                <input  type="text" placeholder="State">
+                                <input formControlName="state"  type="text" placeholder="State">
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">Country<span class="text-danger">*</span></label>
-                                <input  type="text" placeholder="Country">
+                                <input formControlName="country"  type="text" placeholder="Country">
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">Phonenumber <span class="text-danger">*</span></label>
-                                <input  type="text" placeholder="Phonenumber">
+                                <input formControlName="phonenumber"  type="text" placeholder="Phonenumber">
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">Email<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="Email">
+                                <input  formControlName="email"  type="text" placeholder="Email">
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                 <label style="color:#964B00">Username <span class="text-danger">*</span></label>
-                                <input  type="text" placeholder="Username">
+                                <input formControlName="username"  type="text" placeholder="Username">
                             </div>
                         </div>
                     </div>

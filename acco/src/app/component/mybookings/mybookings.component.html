@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-item active">
                     <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/fooditem">FOOD</button> -->
-                    <a class="nav-link " href="#" style="color:#964B00" routerLink="/cancelbooking">Cancel Bookings</a>
+                    <a class="nav-link " href="#" style="color:#964B00" routerLink="/cancelbooking">Canceled Bookings</a>
                   </li>
                   
               </ul>
@@ -34,56 +34,36 @@
           <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Booking History</h4>
           
           <div >
-            <table mat-table [dataSource]="dataSource" >
-              
-              <ng-container matColumnDef="checkin" >
-                <th mat-header-cell *matHeaderCellDef style="color:#964B00"> From </th>
-                <td mat-cell *matCellDef="let element"> 
-                  {{element.checkin}}</td>
-              </ng-container>
-            <ng-container matColumnDef="checkout">
-                <th mat-header-cell *matHeaderCellDef>To </th>
-                <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
-              </ng-container>
-            
-              <ng-container matColumnDef="adults">
-                <th mat-header-cell *matHeaderCellDef> Adults</th>
-                <td mat-cell *matCellDef="let element"> {{element.adults}} </td>
-              </ng-container>
-            
-              <ng-container matColumnDef="child">
-                <th mat-header-cell *matHeaderCellDef> Kids </th>
-                <td mat-cell *matCellDef="let element"> {{element.child}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="noofflats">
-                <th mat-header-cell *matHeaderCellDef>NoofFlats</th>
-                <td mat-cell *matCellDef="let element"> {{element.roomid}} </td>
-              </ng-container>
-              <ng-container matColumnDef="flatno">
-                <th mat-header-cell *matHeaderCellDef>Flatno</th>
-                <td mat-cell *matCellDef="let element"> {{element.roomid}} </td>
-              </ng-container>
-              <ng-container matColumnDef="totalcost">
-                <th mat-header-cell *matHeaderCellDef>TotalCost</th>
-                <td mat-cell *matCellDef="let element"> {{element.totalprice}} </td>
-              </ng-container>
-              <ng-container matColumnDef="bookingno">
-                <th mat-header-cell *matHeaderCellDef>BookingNo</th>
-                <td mat-cell *matCellDef="let element"> {{element.bookingid}} </td>
-              </ng-container>
-              <ng-container matColumnDef="option">
-                <th mat-header-cell *matHeaderCellDef>Option</th>
-                <!-- <td mat-cell *matCellDef="let element"> {{element.status}} </td> -->
-                <td mat-cell >
-                  view 
-                </td>
-              </ng-container>
-      
-              
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              
+            <table class="table table-striped table-bordered" >
+              <thead>
+                <tr>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">From</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">To</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">Adult</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">Child</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">NoofFlats</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">FlatNo</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">Totalcost</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">BookingId</th>
+                  <th style="border-color: #964B00; color:#964B00;" scope="col">Option</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="color: #964B00;" *ngFor="let i of bookingData">
+                  <td class="align-middle " style="border-color: #964B00;">{{i.checkin}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.checkout}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.adults}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.child}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.roomtype}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.roomid}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.totalprice}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.bookingid}}
+                  <td class="align-middle " style="border-color: #964B00;">
+                    
+                    
+                   
+              </tbody>
+             
             </table>
             <div class="page">
               

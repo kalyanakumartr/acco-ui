@@ -119,12 +119,12 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">PhoneNumber:</label> -->
-                                            <input formControlName="phonenumber"  type="text" placeholder="PhoneNumber" >
+                                            <input formControlName="pincode"  type="text" placeholder="pincode" >
                                         </div>
-                                        <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
-                              class="text-danger form-inline  mt-0">*phonenumber is required</small>
-                              <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('pattern','phonenumber')"  
-                              class="text-danger form-inline  mt-0">*phonenumber is invalid</small>
+                                        <small *ngIf="signupForm.controls['pincode'].dirty && signupForm.hasError('required','pincode')"  
+                              class="text-danger form-inline  mt-0">*pincode is required</small>
+                              <small *ngIf="signupForm.controls['pincode'].dirty && signupForm.hasError('pattern','pincode')"  
+                              class="text-danger form-inline  mt-0">*pincode is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -149,12 +149,12 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">UserName:</label> -->
-                                            <input formControlName="username" type="text" placeholder="UserName">
+                                            <input formControlName="phonenumber" type="text" placeholder="Phonenumber">
                                         </div>
-                                        <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required','username')"  
-                              class="text-danger form-inline  mt-0">*username is required</small>
-                              <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('pattern','username')"  
-                              class="text-danger form-inline  mt-0">*username is invalid</small>
+                                        <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
+                              class="text-danger form-inline  mt-0">*phonenumber is required</small>
+                              <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('pattern','phonenumber')"  
+                              class="text-danger form-inline  mt-0">*phonenumber is invalid</small>
                                         
                                     </div>                                    
                                 </div>                                
@@ -190,7 +190,34 @@
                                     </div>                                    
                                 </div>                                
                             </div>
-                            
+                            <div class="form-group pt-1 row justify-content-around">
+                                <div class="col-md-4">
+                                    <div class="input-group mb-1">
+                                        <div class="input-field">
+                                            <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
+                                            <!-- <label style="color:#964B00">Password:</label> -->
+                                            <input formControlName="username" type="text" placeholder="UserName">
+                                        </div>
+                                        <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required','username')"  
+                              class="text-danger form-inline  mt-0">*username is required</small>
+                              <small *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('pattern','username')"  
+                              class="text-danger form-inline  mt-0">*Username is invalid</small>
+                                        
+                                    </div>
+                               </div>
+                                 <div class="col-md-4">
+                                    <div class="input-group mb-1">
+                                        <!-- <div class="input-field">
+                                          <span class="fa fa-user p-2" style="color:#964B00"></span>  
+                                            <label style="color:#964B00">ConfirmPassword:</label>  
+                                            <input  formControlName="confirmpassword" type="text"  placeholder="ConfirmPassword">
+                                        </div>
+                                        <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required','confirmpassword')"  
+                              class="text-danger form-inline  mt-0">*confirmpassword is required</small> -->
+                                        
+                                    </div>                                    
+                                </div>                             
+                            </div>
                        
                           <div class="col-lg-10 ml-5" > 
                             <button type="submit" class="btn btn-outline btn-block mt-3 w-60 " style="color:#964B00 ;background-color: #efc96a;align-items: center;">Signup</button></div>  

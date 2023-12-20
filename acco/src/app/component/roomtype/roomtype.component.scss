@@ -59,4 +59,9 @@ table  thead{
     top :0px;
     background-color:#efc96a;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 10px;
+}
 

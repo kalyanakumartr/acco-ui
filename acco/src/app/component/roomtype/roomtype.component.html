@@ -12,7 +12,7 @@
             <table class="table table-bordered">
                 <thead >
                     <tr>
-                        <th  style="border-color: #964B00;" scope="col">RoomNo</th>
+                        <th  style="border-color: #964B00;" scope="col">RoomCount</th>
                         <th  style="border-color: #964B00;" scope="col">AccommodotionType</th>
                         <th  style="border-color: #964B00;" scope="col">Guests</th>
                         <!-- <th style="border-color: #964B00;" scope="col">Family</th> -->
@@ -115,20 +115,29 @@
                     <td style="border-color: #964B00;" class="align-middle ">
                         <div>
                             <div >
-                                <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown" >
+                                <!-- <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown" >
                                     <span *ngIf="checkedList.length<=0">Select</span>
                                     <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
                                     <i class="fa fa-angle-down"></i>
-                                </button>
-                                <div class="drop-show" *ngIf="showDropDown">
-                                    <label *ngFor="let item of roomData; let n = index " [attr.data-index]="n">
-                                        <input type="checkbox" [(ngModel)]="item.checked" 
-                                            (change)="getSelectedValue(item.checked, item.roomids)" />
-                                        <span>{{n}}{{item.roomids}}</span>
+                                </button> -->
+                                <!-- <div class="drop-show" *ngIf="showDropDown"> -->
+                                    <div  class="grid-container">
+                                       
+                                    <label *ngFor="let item of i.roomnos; ">
+                                        
+                                        <input  type="checkbox"  
+                                            (change)="getSelectedValue($event, item)" />
+                                        <span style="padding: 2px;">{{item}}</span>
                                     </label>
+                                
                                 </div>
                             </div>
                         </div>
+                        <!-- <select >
+                            <option value="0">--Select--</option>  
+                            <option value="1" *ngFor="let type of i.roomnos">{{type}}</option>
+                            
+                          </select> -->
                         <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true">
                     </td>
                     <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
