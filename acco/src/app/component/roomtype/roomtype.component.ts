@@ -97,7 +97,7 @@ export class RoomtypeComponent implements OnInit {
   sendbookeddata(data: any) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id": this.checked,
+      "id": this.checked.name,
       "name": data.roomname,
       "price": data.price,
       "nodays": this.days,
