@@ -9,15 +9,15 @@
         <div class="container tbl-container">
             <div class="row tbl-fixed">
 
-            <table class="table table-bordered">
+            <table class="table table-bordered ">
                 <thead >
                     <tr>
-                        <th  style="border-color: #964B00;" scope="col">RoomCount</th>
+                        <!-- <th  style="border-color: #964B00;" scope="col">RoomCount</th> -->
                         <th  style="border-color: #964B00;" scope="col">AccommodotionType</th>
-                        <th  style="border-color: #964B00;" scope="col">Guests</th>
-                        <!-- <th style="border-color: #964B00;" scope="col">Family</th> -->
-                        <th  style="border-color: #964B00;" scope="col">Tariff</th>
-                        <!-- <th style="border-color: #964B00;" scope="col">Roomsize</th> -->
+                        <!-- <th  style="border-color: #964B00;" scope="col">Guests</th> -->
+                       
+                        <!-- <th  style="border-color: #964B00;" scope="col">Tariff</th> -->
+                       
                         <th  style="border-color: #964B00;" scope="col">SpecialCharges</th>
                         <th  style="border-color: #964B00;" scope="col" >SelectRooms</th>
                         <th style="border-color: #964B00;" scope="col"></th>
@@ -26,9 +26,10 @@
                 </thead>
                 <tbody>
                     <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
-                        <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td>
+                        <!-- <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td> -->
                         <td class="align-middle " style="border-color: #964B00;">{{i.roomname}}
-                    <tr scope="col" style="border-color: #964B00;">Reccommended for 2 adults, and 1 child</tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='2BHK'">Reccommended for 4 adults and 2 child</tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='3BHK'">Reccommended for 6 adults and 3 child</tr>
                     <div class="row">
                         <div class="col">
                             <tr scope="col">
@@ -47,16 +48,16 @@
 
                     </td>
 
-                    <td style="border-color: #964B00;" class="align-middle ">{{adult}}</td>
+                    <!-- <td style="border-color: #964B00;" class="align-middle ">{{adult}}</td> -->
                     <!-- <td style="border-color: #964B00;" class="align-middle ">1</td> -->
-                    <td style="border-color: #964B00;" class="align-middle ">Rs{{i.price}}/-</td>
+                    <!-- <td style="border-color: #964B00;" class="align-middle " >Rs{{i.price * count}}/-</td> -->
                     <!-- <td style="border-color: #964B00;" class="align-middle ">{{i.roomsize}} sq.ft</td> -->
 
                     <td style="border-color: #964B00; " class=" align-middle">
                         <!-- <form> -->
                             <div class="row pl-2 ">
 
-                                <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+                                <!-- <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed"> -->
                                 <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
                                 <div class="row pl-0">
                                     <div class="form-check-inline"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -125,9 +126,9 @@
                                        
                                     <label *ngFor="let item of i.roomnos; ">
                                         
-                                        <input  type="checkbox"  
-                                            (change)="getSelectedValue($event, item)" />
-                                        <span style="padding: 2px;">{{item}}</span>
+                                        <input  type="checkbox"  [(ngModel)]="item.checked" 
+                                            (change)="getSelectedValue( item.checked,item.roomid,item.price)" />
+                                        <span style="padding: 2px;">{{item.roomid}}</span>
                                     </label>
                                 
                                 </div>
@@ -138,7 +139,7 @@
                             <option value="1" *ngFor="let type of i.roomnos">{{type}}</option>
                             
                           </select> -->
-                        <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true">
+                        <!-- <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true"> -->
                     </td>
                     <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
 
