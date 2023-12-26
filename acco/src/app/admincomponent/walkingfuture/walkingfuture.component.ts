@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
-
+import { BookingModel } from 'src/app/model/booking.model';
+import { GetroomtypeService } from 'src/app/services/getroomtype.service';
+import { RegisterServiceService } from 'src/app/services/register-service.service';
 import Swal from 'sweetalert2';
 
 
@@ -14,16 +16,66 @@ import Swal from 'sweetalert2';
   styleUrls: ['./walkingfuture.component.scss']
 })
 export class WalkingfutureComponent implements OnInit {
-  WalkingfutureForm!:FormGroup;
+  walkingFutureForm!:FormGroup;
   user =new UserModel();   
   submitted = false;
+  visibleRoom:any;
+  formData: any;
+  newuser = new UserModel() ;
+  booking = new BookingModel();
+
+  Todaydate="2023-03-12"
+  outDate="2023-03-12"
 
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder,
+    private roomTypeService:GetroomtypeService,
+    private registerService:RegisterServiceService,
+
+    ){}
+
+    date1=new Date();
+    currentyear=this.date1.getUTCFullYear();
+    currentmonth=this.date1.getUTCMonth() +1;
+    currentday=this.date1.getUTCDate();
+    checkoutday=this.date1.getDate() + 1;
+    currentmin=this.date1.getMinutes();
+    currenthour=this.date1.getHours();
+   
+    finalmonth:any;
+    finalday:any;
+    finalOutday:any;
   ngOnInit():void{
-    this.WalkingfutureForm = this.fb.group({
+
+    this. showRoomType();
+   if(this.currentmonth<10){
+    this.finalmonth="0" +this.currentmonth;
+  }else{
+    this.finalmonth=this.currentmonth;
+  }
+  if(this.currentday<10){
+    this.finalday="0" +this.currentday ;
+  }else{
+    this.finalday=this.currentday;
+  }
+  if(this.checkoutday<10){
+    this.finalOutday="0" +this.checkoutday ;
+  }else{
+    this.finalOutday=this.checkoutday;
+  }
+  
+  this.Todaydate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday +" "+this.currenthour+":"+this.currentmin;
+  this.outDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalOutday +" "+this.currenthour+":"+this.currentmin;
+
+
+
+
+
+
+
+    this.walkingFutureForm = this.fb.group({
       firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
-      lastName: ['', Validators],
+      lastname: ['', Validators.required],
       email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
       address1: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
@@ -33,65 +85,50 @@ export class WalkingfutureComponent implements OnInit {
       country: ['', Validators.required,Validators.pattern('^[a-zA-Z]+$')],
       from:['',Validators.required],
       to:['',Validators.required],
-      adult:['',Validators.required],
-      children:['',Validators.required],
-      roomtype:['',],
+      adults:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
+      children:['0',[Validators.required,Validators.pattern("^[0-9]*$")]],
+      roomtype:['',Validators.required,],
       roleid:3
      
     });
-    this.passDateTime();
+    
   }
-  min:any="2023-12-06T05.56";
+
+  
     
  
   
 
-    passDateTime(){
-      var tdate = new Date();
-      var date:any = tdate.getDate();
-      if(date < 10){
-        date = "0" + date;
-      }
-      var month:any = tdate.getMonth() + 1;
-      if(month < 10){
-       month = "0" + month; 
-      }
-      var year:any = tdate.getFullYear();
-      var hours:any = tdate.getHours();
-      var minutes:any = tdate.getMinutes();
-      this.min = year + "-" + month + "-" + date + "T" + hours + ":" + minutes;
-
-    }
-    values: any;
-    onChange(value:any){
-
-    var todate:any = new Date().getTime();
-    var selectDate:any = new Date(value).getTime();
-    if(todate > selectDate){
-      this.values = "";
-
-    }
-  
-  }
   
 
 
-    WalkingfutureFormProcess(){
-      const newuser = new UserModel() ;
-      const formData = this.WalkingfutureForm.value;
-      newuser.firstname = formData.firstname;
-      newuser.lastname = formData.lastname;
-      newuser.email = formData.email;
-      newuser.phonenumber = formData.phonenumber;
-      newuser.address1 = formData.address1;
-      newuser.address2 = formData.address2;
-      newuser.city = formData.city;
-      newuser.state = formData.state;
-      newuser.country = formData.country;
-      newuser.username = formData.username;
-      newuser.password = formData.password;
-      newuser.cpassword = formData.confirmpassword;
-      newuser.roleid=formData.roleid;
+    walkingFutureFormProcess(){
+      const formData = this.walkingFutureForm.value;
+      this.newuser.firstname = formData.firstname;
+      this.newuser.lastname = formData.lastname;
+      this.newuser.email = formData.email;
+      this.newuser.phonenumber = formData.phonenumber;
+      this.newuser.address1 = formData.address1;
+      this.newuser.address2 = formData.address2;
+      this.newuser.city = formData.city;
+      this.newuser.state = formData.state;
+      this.newuser.country = formData.country;
+      this.newuser.username = formData.username;
+      this.newuser.roleid=formData.roleid;
+      
+      this.booking.checkin=formData.from;
+      this.booking.checkout=formData.to;
+      this.booking.adults=formData.adult;
+      this.booking.child=formData.children;
+      this.booking.roomtype=formData.roomtype;
+
+      if(this.walkingFutureForm.valid){
+        
+        console.log(this.newuser);
+        console.log(this.booking);
+
+      }
+    }
       // Swal.fire("Success");
   // if(this.walkingcurrentForm.valid){
   //   console.log(this.user);
@@ -112,11 +149,21 @@ export class WalkingfutureComponent implements OnInit {
   //   }
 
 
+  showRoomType(){
+    this.roomTypeService.getRoomType()
+    // .subscribe((res)=>{
+      .subscribe((result)=>{
+      console.log("roomtype:",result);    
+       this. visibleRoom=result;
+       console.log("walkingfuture",this.visibleRoom);
+    });
+  
+
+  }
 
 }
 
 
-}
 
 
 
