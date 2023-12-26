@@ -12,6 +12,6 @@ export class GetchargedamenityService {
   getChargedData():Observable<any>{
     console.log("charged data api "); 
        
-    return this.http.get("http://localhost:3001/users/getChargedAmenities");
+    return this.http.get("http://localhost:3001/booking/getChargedAmenities");
   }
 }

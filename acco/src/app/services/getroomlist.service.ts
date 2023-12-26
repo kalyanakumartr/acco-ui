@@ -17,7 +17,7 @@ export class GetroomlistService {
     console.log("checkhere",adult,checkIn,checkOut)
     console.log("no of days",noofdays)
        
-    return this.http.get("http://localhost:3001/users/getroomlist?adults="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
+    return this.http.get("http://localhost:3001/booking/getroomlist?adults="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
   }
   setData(roomData: any) { 
     this.apiRoom.next(roomData)

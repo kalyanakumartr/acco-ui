@@ -28,7 +28,8 @@
                     <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
                         <!-- <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td> -->
                         <td class="align-middle " style="border-color: #964B00;">{{i.roomname}}
-                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='2BHK'">Reccommended for 4 adults and 2 child</tr>
+                            <small>- Rs.{{i.price}} /</small>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='2BHK'">Reccommended for 4 adults and 2 child </tr>
                     <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='3BHK'">Reccommended for 6 adults and 3 child</tr>
                     <div class="row">
                         <div class="col">
@@ -57,8 +58,9 @@
                         <!-- <form> -->
                             <div class="row pl-2 ">
 
-                                <!-- <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed"> -->
+                                <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
                                 <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
+                                
                                 <div class="row pl-0">
                                     <div class="form-check-inline"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button   style="color:#efc96a; background-color: #964B00;"
@@ -79,7 +81,7 @@
                                 </div>
                             </div>
                             <P style="font-size: smaller;">Rs.{{chargedData[1].charges}} per Bed</P>
-
+                           
                             <!-- <div class="row pl-2">
                                 <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
                                 <label class="pt-2" for="breakfast"> {{chargedData[2].facilityname}}</label>&nbsp;
