@@ -20,18 +20,18 @@
                 <tbody>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Your Checkin Date</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{in}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{in | date:'dd-MM-yyyy HH:mm a'}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Your Checkout Date</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{out}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{out | date:'dd-MM-yyyy HH:mm a'}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Number of Days</td>
                         <td class="align-middle " style="border-color: #964B00;">{{days}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Room Number {{roomid}} with {{bhk}}
+                        <td class="align-middle " style="border-color: #964B00;">Room Number {{roomid}} 
                         </td>
                         <td class="align-middle " style="border-color: #964B00;">Rs.{{amount}}</td>
                     </tr>

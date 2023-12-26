@@ -75,6 +75,7 @@ value=0;
     
     this.Todaydate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday +" "+this.currenthour+":"+this.currentmin;
     this.outDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalOutday +" "+this.currenthour+":"+this.currentmin;
+    // +":"+this.currentmin
 
 
     this.homeForm=this.fb.group({

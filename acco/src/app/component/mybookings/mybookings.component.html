@@ -50,8 +50,8 @@
               </thead>
               <tbody>
                 <tr style="color: #964B00;" *ngFor="let i of bookingData">
-                  <td class="align-middle " style="border-color: #964B00;">{{i.checkin}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.checkout}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
+                  <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.adults}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.child}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.roomtype}}

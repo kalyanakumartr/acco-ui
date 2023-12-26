@@ -12,6 +12,6 @@ export class GetroomtypeService {
   getRoomType():Observable<any>{
     console.log("GetRoomType"); 
        
-    return this.http.get("http://localhost:3001/users/roomtype");
+    return this.http.get("http://localhost:3001/book/roomtype");
   }
 }

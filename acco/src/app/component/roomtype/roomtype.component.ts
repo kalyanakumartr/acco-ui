@@ -21,13 +21,15 @@ export class RoomtypeComponent implements OnInit {
   child: any;
   roomtype: any;
   selectedAll: boolean = false;
-
+  count=0;
   
   checkedList: any[];
+  priceList:any[];
   currentSelected: {} | undefined;
   showDropDown!: boolean;
   checked:any;
-
+  sumNumber:any;
+ value:any;
   constructor(
     private getroomlistservice: GetroomlistService,
     private getChargedAmenity: GetchargedamenityService,
@@ -39,10 +41,14 @@ export class RoomtypeComponent implements OnInit {
     this.selectedRow = [];
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
     this.checkedList = [];
+    this.priceList = [];
     
   }
+
   ngOnInit(): void {
+    
     console.log("room:", this.roomData);
+    console.log("value:",this.value)
     this.getChargedAmenities();
 
     this.homeroute.params.subscribe((params: Params) =>
@@ -97,9 +103,9 @@ export class RoomtypeComponent implements OnInit {
   sendbookeddata(data: any) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id": this.checked,
+      "id":this.checkedList,
       "name": data.roomname,
-      "price": data.price,
+      "price": this.sumNumber,
       "nodays": this.days,
       "checkIn": this.cIn,
       "checkOut": this.cOut,
@@ -161,25 +167,34 @@ export class RoomtypeComponent implements OnInit {
     }
   }
 
-  getSelectedValue(event:any, value: String) {
+  getSelectedValue(status:Boolean,value:String,price:String) {
+    // this.count = 0;
     console.log("hi")
-    // if (event.target.checked) {
-    //   this.checkedList.push(value);
+    if (status) {
+      this.checkedList.push(value);
+      this.priceList.push(price);
+      // this.count = this.count + 1;
       
-    // } else {
-    //   var index = this.checkedList.indexOf(value);
-    //   this.checkedList.splice(index, 1);
+    } else {
+      var index = this.checkedList.indexOf(value);
+      this.checkedList.splice(index, 1);
+      var index = this.priceList.indexOf(price);
+      this.priceList.splice(index, 1);
       
-    // }
-// if(event.target.checked){
-  // console.log("hiiiii")
-    this.currentSelected = { checked:event.target.checked, name: value };
+    }
+
+    this.sumNumber = this.priceList.reduce((acc, cur) => acc + Number(cur), 0)
+console.log("sum:",this.sumNumber);
+// console.log("count:",this.count)
+  console.log("hiiiii")
+    this.currentSelected = { checked : status,name:value,price:price};
     console.log("checked:",this.currentSelected);
     this.checked=this.currentSelected;
     console.log("ch:",this.checked);
-  // }
+    console.log(this.checkedList)
+    console.log(this.priceList)
+  
 }
-
 
 
 
