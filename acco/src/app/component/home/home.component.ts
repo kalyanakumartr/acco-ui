@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
  Todaydate="2023-03-12"
  outDate="2023-03-12"
  select=null;
-value=0;
+
   
   constructor(private fb: FormBuilder,private http: HttpClient, 
     private router: Router,private getroomlistservice:GetroomlistService,
@@ -55,6 +55,7 @@ value=0;
     visibleRoom:any;
     
   ngOnInit():void{  
+
     this.showRoomType();
     this.tokenvalue=localStorage.getItem('token');
     if(this.currentmonth<10){
@@ -75,7 +76,6 @@ value=0;
     
     this.Todaydate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday +" "+this.currenthour+":"+this.currentmin;
     this.outDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalOutday +" "+this.currenthour+":"+this.currentmin;
-    // +":"+this.currentmin
 
 
     this.homeForm=this.fb.group({
@@ -83,11 +83,14 @@ value=0;
       checkInTime: ['', Validators.required],
       checkOut: ['', Validators.required],
       checkOutTime: ['', Validators.required],
-      adult: ['1', Validators.required],
-      child: ['0', Validators.required,],
+      adult: ['', Validators.required],
+      child: ['0',[ Validators.required,MaxLengthValidator]],
       roomType: ['', Validators.required],
     })
    
+    // for(let i=1;i<=9;i++){
+    //   this.childAge.push(i);
+    // }
     //   this.modalForm = this.fb.group({
     // user: ['',], });
     // this.getFloor();
@@ -115,16 +118,28 @@ value=0;
   ReadMore:boolean = true
 
   //hiding info box
-  visible:boolean = true
+  visible:boolean = false
   facilities: boolean = true
+  samArray:any=[]
+  childAge:any=[1,2,3,4,5,6,7,8,9]
 
+  ValueEntered(value: any){
+    console.log("djhckjkasj")
+    this.samArray=[]
+
+    for(let i=1;i<=value;i++){
+      this.samArray.push(i)
+    }
+    console.log("cchhh",this.samArray)
+  }
 
   //onclick toggling both
-  onclick()
+  clickon()
   {
      //not equal to condition
     this.visible = !this.visible
   }
+
   FirstFloor : boolean = true;
   FirstFloor1 : boolean = true;
   FirstFloor2 : boolean = true;

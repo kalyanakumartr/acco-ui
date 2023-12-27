@@ -32,7 +32,7 @@
 
       </div>
       <div class="col-sm-6">
-        <h3 style="color:#964B00">Check Availability</h3> 
+        <h3 style="color:#964B00">Check Availability</h3>
         <div class="panel-body p-0">
           <form [formGroup]="homeForm" (ngSubmit)="checkAvailability()">
             <div class="form-group pt-0 row justify-content-around">
@@ -40,72 +40,92 @@
                 <h5 style="color:#964B00">Check-In</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate" step="00:30">
+                    <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate"
+                      step="00:30">
                   </div>
                   <!-- <div class="col-lg-6">
                     <input formControlName="checkInTime" type="time">
                   </div> -->
                 </div>
               </div>
-              
-             <div class="col-lg-6">
-              <h5 style="color:#964B00">Check-Out</h5>
-              <div class="row">
-                <div class="col-lg-6">
-                  <input formControlName="checkOut" type="datetime-local"  [(ngModel)]="outDate" [min]="outDate">
-                </div>
-                <!-- <div class="col-lg-6">
+
+              <div class="col-lg-6">
+                <h5 style="color:#964B00">Check-Out</h5>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input formControlName="checkOut" type="datetime-local" [(ngModel)]="outDate" [min]="outDate">
+                  </div>
+                  <!-- <div class="col-lg-6">
                   <input formControlName="checkOutTime" type="time">
                 </div> -->
-              </div>
-            </div>
-             
-          </div>
-          <div class="form-group pt-0 row justify-content-around">
-            <div class="col-lg-6">
-              <h5 style="color:#964B00">Adult</h5>
-              <div class="row">
-                <div class="col-lg-6">
-                  <input formControlName="adult" class="adultInput" type="number" value="0" min="0" max=""/>
                 </div>
-                
               </div>
+
             </div>
-            
-           <div class="col-lg-6">
-            <h5 style="color:#964B00">Child <small>(0-9years)</small></h5>
-            <div class="row">
+            <div class="form-group pt-0 row justify-content-around">
               <div class="col-lg-6">
-                <input  style="width:170px" formControlName="child" class="childInput" type="number"   value="0" min="0" max="9"/>
-                
-              </div>              
-            </div>
-          </div>
-           
-        </div>
-        <div class="form-group pt-0 row justify-content-around">
-          <div class="col-lg-6">
-            <h5 style="color:#964B00">RoomType</h5>
-            <div class="row">
-              <div class="col-lg-6">
-                <select formControlName="roomType" >
-                  <option value="0">--Select--</option>  
-                  <option value="1" *ngFor="let type of visibleRoom">{{ type.roomcategory}}</option>
-                  
-                </select>
+                <h5 style="color:#964B00">Adult</h5>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input formControlName="adult" class="adultInput" type="number" value="0" min="0" max="" />
+                  </div>
+
+                </div>
               </div>
-              
+
+              <div class="col-lg-6">
+                <h5 style="color:#964B00">Child <small>(0-9years)</small></h5>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input  (change)="ValueEntered(childVal.value)" #childVal  (click)="clickon()" style="width:170px" formControlName="child" class="childInput" type="number" min="0"
+                      max="6" />
+                    <ng-container *ngIf="visible">
+                      <div class="card" style="width: 15rem;">
+                        <ul class="list-group list-group-flush" >
+                          <li *ngFor="let array of samArray" class="list-group-item">Age of Child{{array}}
+                            <select style="margin-left: 10px;">
+                              <option><1</option>
+                              <option *ngFor="let item of childAge">{{item}}</option>
+                           </select>
+                           <!-- <small><div class="btn-group dropright" >
+                              <button   class=" dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button *ngFor="let item of childAge" class="dropdown-item" type="button">{{item}}</button>
+                              </div>
+                            </div>
+                           </small> -->
+                          </li>
+                        </ul>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+
             </div>
-          </div>
-          
-         <div class="col-lg-6">
-          <h5 style="color:#964B00 ">Check Availability</h5>
-          <div class="row">
-            <div class="col-lg-6">
-              <button type="submit" class="btn btn-outline " data-toggle="modal"
-                          data-target="#exampleModalCenter"
-                          style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability </button>
-                          <!-- <form [formGroup]="modalForm" (ngSubmit)="modalProcess()" >
+            <div class="form-group pt-0 row justify-content-around">
+              <div class="col-lg-6">
+                <h5 style="color:#964B00">RoomType</h5>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <select formControlName="roomType">
+                      <option value="0">--Select--</option>
+                      <option value="1" *ngFor="let type of visibleRoom">{{ type.roomcategory}}</option>
+
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <h5 style="color:#964B00 ">Check Availability</h5>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <button type="submit" class="btn btn-outline " data-toggle="modal" data-target="#exampleModalCenter"
+                      style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability </button>
+                    <!-- <form [formGroup]="modalForm" (ngSubmit)="modalProcess()" >
                            
                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                               aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -140,17 +160,17 @@
                               </div>
                             </div>
                           </form> -->
-            </div>              
-          </div>
-        </div>
-               </div>      
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
           <!--show hide div-->
-         
+
         </div>
       </div>
     </div>
-    
+
     <!-- <div class="Footer" >
               <div class="card">
                   
