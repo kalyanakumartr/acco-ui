@@ -83,8 +83,8 @@ value=0;
       checkInTime: ['', Validators.required],
       checkOut: ['', Validators.required],
       checkOutTime: ['', Validators.required],
-      adult: ['', Validators.required],
-      child: ['0', Validators.required],
+      adult: ['1', Validators.required],
+      child: ['0', Validators.required,],
       roomType: ['', Validators.required],
     })
    
