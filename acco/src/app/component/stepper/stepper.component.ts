@@ -27,6 +27,7 @@ export class StepperComponent {
   loginData:any;
   name:any;
   child:any;
+  childAge:any=[];
   roomtype:any;
 
   constructor(private builder: FormBuilder, 
@@ -58,9 +59,11 @@ export class StepperComponent {
       this.noofdays = params[('days')],);
     this.stepperroute.params.subscribe((params: Params) =>
       this.price = params[('price')],);
-      this.stepperroute.params.subscribe((params: Params) =>
+    this.stepperroute.params.subscribe((params: Params) =>
       this.child = params[('child')],);
-      this.stepperroute.params.subscribe((params: Params) =>
+    this.stepperroute.params.subscribe((params: Params) =>
+      this.childAge = params[('childage')],);
+    this.stepperroute.params.subscribe((params: Params) =>
       this.roomtype= params[('roomtype')],);
     this.totalprice=this.noofdays*this.price;
         console.log(
@@ -73,6 +76,7 @@ export class StepperComponent {
       this.noofdays,
       this.totalprice,
       this.child,
+      this.childAge,
       this.roomtype
 
     )
@@ -171,6 +175,7 @@ export class StepperComponent {
     book.phonenumber=this.loginData.phonenumber;
     book.userid=this.userId;
     book.child=this.child;
+    book.childage=this.childAge;
     book.roomtype=this.roomtype;
     book.firstname=this.loginData.username;
     console.log(book);

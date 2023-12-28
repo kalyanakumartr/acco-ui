@@ -18,6 +18,7 @@ export class BookingsummaryComponent implements OnInit {
   total: any;
   child:any;
   roomtype:any;
+  childAge:any=[];
   constructor(
     private homeroute: ActivatedRoute,
     private router: Router
@@ -38,9 +39,11 @@ export class BookingsummaryComponent implements OnInit {
       this.out = params[('checkOut')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.adult = params[('adult')],);
-      this.homeroute.params.subscribe((params: Params) =>
+    this.homeroute.params.subscribe((params: Params) =>
       this.child = params[('child')],);
-      this.homeroute.params.subscribe((params: Params) =>
+    this.homeroute.params.subscribe((params: Params) =>
+      this.childAge = params[('ageChild')],);
+    this.homeroute.params.subscribe((params: Params) =>
       this.roomtype = params[('roomtype')],);
     //  this.total=
     console.log("data:", this.roomid);
@@ -50,6 +53,7 @@ export class BookingsummaryComponent implements OnInit {
     console.log("checkIn:", this.in);
     console.log("checkOut:", this.out);
     console.log("persons:", this.adult);
+    console.log("child&age:", this.child,this.childAge);
   }
 
   confirmBooking() {
@@ -62,6 +66,7 @@ export class BookingsummaryComponent implements OnInit {
       "cOut": this.out,
       "price":this.amount,
       "child":this.child,
+      "childage":this.childAge,
       "roomtype":this.roomtype
     }]);
   }

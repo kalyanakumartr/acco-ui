@@ -10,8 +10,13 @@ import { BookingModel } from '../model/booking.model';
 export class BookingServiceService {
 
   constructor(private http:HttpClient) { }
+  // booking(book:BookingModel):Observable<BookingModel>{
+  //   console.log("I am booking");
+  //   return this.http.post<BookingModel>(`${environment.bookingURL}`,book);
+  // }
+
   booking(book:BookingModel):Observable<BookingModel>{
     console.log("I am booking");
-    return this.http.post<BookingModel>(`${environment.bookingURL}`,book);
+    return this.http.post<BookingModel>(`${environment.booking}`,book);
   }
 }

@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
@@ -6,8 +5,6 @@ import { Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
-
-
 import Swal from 'sweetalert2';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 
@@ -83,14 +80,15 @@ export class HomeComponent implements OnInit {
       checkInTime: ['', Validators.required],
       checkOut: ['', Validators.required],
       checkOutTime: ['', Validators.required],
-      adult: ['', Validators.required],
-      child: ['0',[ Validators.required,MaxLengthValidator]],
+      adult: ['1', Validators.required],
+      child: ['0', Validators.required],
       roomType: ['', Validators.required],
     })
    
     // for(let i=1;i<=9;i++){
     //   this.childAge.push(i);
     // }
+    // console.log("age:",this.childAge)
     //   this.modalForm = this.fb.group({
     // user: ['',], });
     // this.getFloor();
@@ -121,16 +119,17 @@ export class HomeComponent implements OnInit {
   visible:boolean = false
   facilities: boolean = true
   samArray:any=[]
-  childAge:any=[1,2,3,4,5,6,7,8,9]
+  childAge:any=['<1',1,2,3,4,5,6,7,8,9]
+  selectedAge :any=[];
+  currentAge:any=[];
 
   ValueEntered(value: any){
-    console.log("djhckjkasj")
+    // console.log("djhckjkasj")
     this.samArray=[]
-
     for(let i=1;i<=value;i++){
       this.samArray.push(i)
     }
-    console.log("cchhh",this.samArray)
+         console.log("array",this.samArray)
   }
 
   //onclick toggling both
@@ -140,6 +139,21 @@ export class HomeComponent implements OnInit {
     this.visible = !this.visible
   }
 
+  
+	onSelected(value:any) {
+		// this.selectedAge=value.target.value;
+    // if(value.target.value){
+         this.selectedAge.push(value.target.value)
+    //  }else{
+    //   var index = this.selectedAge.indexOf(value.target.value);
+    //   this.selectedAge.splice(index, 1);
+    // }
+     
+        console.log("age:",this.selectedAge);
+        
+	}
+
+
   FirstFloor : boolean = true;
   FirstFloor1 : boolean = true;
   FirstFloor2 : boolean = true;
@@ -148,21 +162,21 @@ export class HomeComponent implements OnInit {
     this.facilities = !this.facilities
   }
 
-toggleFirstFloor()
-{
-  this.FirstFloor = !this.FirstFloor;
-}
+// toggleFirstFloor()
+// {
+//   this.FirstFloor = !this.FirstFloor;
+// }
 
-toggleFirstFloor1()
-{
-  this.FirstFloor1 = !this.FirstFloor1;
-}
+// toggleFirstFloor1()
+// {
+//   this.FirstFloor1 = !this.FirstFloor1;
+// }
 
 
-toggleFirstFloor2()
-{
-  this.FirstFloor2 = !this.FirstFloor2;
-}
+// toggleFirstFloor2()
+// {
+//   this.FirstFloor2 = !this.FirstFloor2;
+// }
 
 plus()
   {
@@ -192,26 +206,7 @@ plus()
       this.foodnumber = this.foodnumber-1;
     }
   }
-  // getFloor(){
-  //   console.log("getfloor check purpose");
-  //   return this.http.get("http://localhost:3001/users/getfloor").
-  //   subscribe((res)=>{
-  //     console.log(res);
-  //    this. floorData=res;
-  //     console.log(this.floorData);
-      
-  //   });
-  // }
-  // getroom(){
-  //   console.log("getroom check purpose");
-  //   return this.http.get("http://localhost:3001/users/getroom").
-  //   subscribe((res)=>{
-  //     console.log(res);
-  //    this. floorRoom=res;
-  //     console.log(this.floorRoom);
-      
-  //   });
-  // }
+ 
 
   checkAvailability(){
 if(this.tokenvalue==null){
@@ -240,6 +235,7 @@ if(this.tokenvalue==null){
              "cOut":formData.checkOut,
              "child":formData.child,
              "roomType":formData.roomType,
+             "childAge":this.selectedAge
             }]);
             //  "cIn":formData.checkIn,"cOut":formData.checkOut,
     

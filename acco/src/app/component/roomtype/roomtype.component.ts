@@ -30,6 +30,7 @@ export class RoomtypeComponent implements OnInit {
   checked:any;
   sumNumber:any;
  value:any;
+ childAge:any=[];
   constructor(
     private getroomlistservice: GetroomlistService,
     private getChargedAmenity: GetchargedamenityService,
@@ -61,6 +62,8 @@ export class RoomtypeComponent implements OnInit {
       this.cOut = params[('cOut')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.child = params[('child')],);
+      this.homeroute.params.subscribe((params: Params) =>
+      this.childAge = params[('childAge')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.roomtype = params[('roomType')],);
 
@@ -69,10 +72,10 @@ export class RoomtypeComponent implements OnInit {
     console.log("cIn:", this.cIn)
     console.log("cOut:", this.cOut)
     console.log("child:", this.child)
+    console.log("childage:", this.childAge)
     console.log("roomtype:", this.roomtype)
 
-    console.log("roomids:", this.roomData[0].roomids);
-    console.log("roomids1:", this.roomData[1].roomids);
+    
 
   }
   inputnumber = 0;
@@ -111,6 +114,7 @@ export class RoomtypeComponent implements OnInit {
       "checkOut": this.cOut,
       "adult": this.adult,
       "child": this.child,
+      "ageChild":this.childAge,
       "roomtype": this.roomtype,
     }]);
 

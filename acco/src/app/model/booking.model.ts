@@ -14,6 +14,7 @@ export class BookingModel {
     userid:any;
     firstname!:string;
     child:any;
+    childage:any;
     roomtype:any;
 
 }

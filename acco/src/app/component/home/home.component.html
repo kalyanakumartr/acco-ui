@@ -80,12 +80,13 @@
                     <input  (change)="ValueEntered(childVal.value)" #childVal  (click)="clickon()" style="width:170px" formControlName="child" class="childInput" type="number" min="0"
                       max="6" />
                     <ng-container *ngIf="visible">
-                      <div class="card" style="width: 15rem;">
+                      <div class="card" style="width: 12rem;">
                         <ul class="list-group list-group-flush" >
                           <li *ngFor="let array of samArray" class="list-group-item">Age of Child{{array}}
-                            <select style="margin-left: 10px;">
-                              <option><1</option>
-                              <option *ngFor="let item of childAge">{{item}}</option>
+                            <select style="margin-left: 10px;" (change)="onSelected($event)"  >
+                              <!-- #age (change)="onSelected(age.value)" -->
+                              <option>--</option>
+                              <option *ngFor="let item of childAge"  [value]="item">{{item}}</option>
                            </select>
                            <!-- <small><div class="btn-group dropright" >
                               <button   class=" dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
