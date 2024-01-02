@@ -61,7 +61,7 @@
                                 <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
                                 <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
                                 
-                                <div class="row pl-0">
+                                <!-- <div class="row pl-0">
                                     <div class="form-check-inline"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button   style="color:#efc96a; background-color: #964B00;"
                                             class="btn btn-sm outline" (click)="plus()" ><i
@@ -78,7 +78,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <P style="font-size: smaller;">Rs.{{chargedData[1].charges}} per Bed</P>
                            
@@ -124,7 +124,7 @@
                                     <i class="fa fa-angle-down"></i>
                                 </button> -->
                                 <!-- <div class="drop-show" *ngIf="showDropDown"> -->
-                                    <div  class="grid-container">
+                                    <!-- <div  class="grid-container">
                                        
                                     <label *ngFor="let item of i.roomnos; ">
                                         
@@ -133,14 +133,20 @@
                                         <span style="padding: 2px;">{{item.roomid}}</span>
                                     </label>
                                 
-                                </div>
+                                </div> -->
+                                <div>
+                                    
+                                <select  >
+                                    <option value="0">--Click to Select--</option>  
+                                    <option value="1" *ngFor="let type of i.roomnos">{{type.roomid}}</option>
+                                    
+                                  </select>
+                                 
+                                  </div>
                             </div>
                         </div>
-                        <!-- <select >
-                            <option value="0">--Select--</option>  
-                            <option value="1" *ngFor="let type of i.roomnos">{{type}}</option>
-                            
-                          </select> -->
+
+                       
                         <!-- <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true"> -->
                     </td>
                     <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -151,7 +157,7 @@
                      </td> -->
                     <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
-                        <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;"
+                        <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 
                     </td>

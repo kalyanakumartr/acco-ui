@@ -77,10 +77,10 @@ export class HomeComponent implements OnInit {
 
     this.homeForm=this.fb.group({
       checkIn: ['', Validators.required],
-      checkInTime: ['', Validators.required],
+      // checkInTime: ['', Validators.required],
       checkOut: ['', Validators.required],
-      checkOutTime: ['', Validators.required],
-      adult: ['1', Validators.required],
+      // checkOutTime: ['', Validators.required],
+      adult: ['1', [Validators.required,Validators.pattern("^[1-9][0-9]*$")]],
       child: ['0', Validators.required],
       roomType: ['', Validators.required],
     })
@@ -143,7 +143,7 @@ export class HomeComponent implements OnInit {
 	onSelected(value:any) {
 		// this.selectedAge=value.target.value;
     // if(value.target.value){
-         this.selectedAge.push(value.target.value)
+         this.selectedAge.push(value)
     //  }else{
     //   var index = this.selectedAge.indexOf(value.target.value);
     //   this.selectedAge.splice(index, 1);
@@ -210,6 +210,7 @@ plus()
 
   checkAvailability(){
 if(this.tokenvalue==null){
+  
   Swal.fire(" Please LOGIN if you are Existing user or SIGNUP for Newuser");
 }else{
     const formData=this.homeForm.value; 

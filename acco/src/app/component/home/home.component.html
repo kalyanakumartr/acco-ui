@@ -67,10 +67,13 @@
                 <h5 style="color:#964B00">Adult</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input formControlName="adult" class="adultInput" type="number" value="0" min="0" max="" />
+                    <input formControlName="adult" class="adultInput" type="number" value="1" min="1" max="" />
                   </div>
-
                 </div>
+                <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('required','adult')"  
+                  class="text-danger form-inline  mt-0">*adult is required</small>
+                  <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('pattern','adult')"  
+                  class="text-danger form-inline  mt-0">*adult is invalid</small>
               </div>
 
               <div class="col-lg-6">
@@ -82,11 +85,11 @@
                     <ng-container *ngIf="visible">
                       <div class="card" style="width: 12rem;">
                         <ul class="list-group list-group-flush" >
-                          <li *ngFor="let array of samArray" class="list-group-item">Age of Child{{array}}
-                            <select style="margin-left: 10px;" (change)="onSelected($event)"  >
+                          <li *ngFor="let array of samArray;let i = index" class="list-group-item">Age of Child{{array}}
+                            <select style="margin-left: 10px;" #age (change)="onSelected(age.value)"  >
                               <!-- #age (change)="onSelected(age.value)" -->
                               <option>--</option>
-                              <option *ngFor="let item of childAge"  [value]="item">{{item}}</option>
+                              <option *ngFor="let item of childAge ;let z = index"  [value]="item">{{item}}</option>
                            </select>
                            <!-- <small><div class="btn-group dropright" >
                               <button   class=" dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,7 +127,7 @@
                 <h5 style="color:#964B00 ">Check Availability</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <button type="submit" class="btn btn-outline " data-toggle="modal" data-target="#exampleModalCenter"
+                    <button [disabled]=homeForm.invalid type="submit"  class="btn btn-outline " data-toggle="modal" data-target="#exampleModalCenter"
                       style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability </button>
                     <!-- <form [formGroup]="modalForm" (ngSubmit)="modalProcess()" >
                            

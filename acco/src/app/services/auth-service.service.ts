@@ -62,6 +62,7 @@ export class AuthServiceService {
   get isUserLoggedIn() {
     return this.loggedIn.asObservable();
   }
+  
 logged(){
   return localStorage.getItem('token');
 }

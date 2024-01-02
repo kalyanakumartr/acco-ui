@@ -195,8 +195,8 @@ console.log("sum:",this.sumNumber);
     console.log("checked:",this.currentSelected);
     this.checked=this.currentSelected;
     console.log("ch:",this.checked);
-    console.log(this.checkedList)
-    console.log(this.priceList)
+    console.log("list",this.checkedList)
+    console.log("price",this.priceList)
   
 }
 
