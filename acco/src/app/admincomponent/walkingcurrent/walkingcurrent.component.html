@@ -167,13 +167,13 @@
                                         <div class="input-group mb-1">
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                                <label style="color:#964B00">Adults<span class="text-danger">*</span></label>
-                                                <input formControlName="adults" type="text" placeholder="Adults">
+                                                <label style="color:#964B00">Adult<span class="text-danger">*</span></label>
+                                                <input formControlName="adult"  type="number" class="adultInput" placeholder="Adult"   value="1" min="1" max="" />
                                             </div>
-                                            <small *ngIf="walkingCurrentForm.controls['adults'].dirty && walkingCurrentForm.hasError('required','adults')"
-                                                class="text-danger form-inline mt-0 ">*adults is required</small>
-                                                <small *ngIf="walkingCurrentForm.controls['adults'].dirty && walkingCurrentForm.hasError('pattern','adults')"
-                                                class="text-danger form-inline mt-0 ">*adults is invalid</small>
+                                            <small *ngIf="walkingCurrentForm.controls['adult'].dirty && walkingCurrentForm.hasError('required','adult')"
+                                                class="text-danger form-inline mt-0 ">*adult is required</small>
+                                                <small *ngIf="walkingCurrentForm.controls['adult'].dirty && walkingCurrentForm.hasError('pattern','adult')"
+                                                class="text-danger form-inline mt-0 ">*adult is invalid</small>
                                         </div>
                                    </div>
                                     <div class="col-md-4">
@@ -181,10 +181,12 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">Children</label>
-                                                <input formControlName="children"  placeholder="Children"  type="number"  value="0"/>
+                                                <input formControlName="children"  placeholder="Children"  type="number" value="0" min="0" max="6" style="width:170px" />
                                             </div>
                                             <small *ngIf="walkingCurrentForm.controls['children'].dirty && walkingCurrentForm.hasError('required','children')"
                                                 class="text-danger form-inline mt-0 ">*children is required</small>
+                                                <small *ngIf="walkingCurrentForm.controls['children'].dirty && walkingCurrentForm.hasError('max','children')"
+                                                class="text-danger form-inline mt-0 ">*children is invalid</small>
                                         </div>                                    
                                     </div>
                                 </div>  

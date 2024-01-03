@@ -81,8 +81,8 @@ export class WalkingcurrentComponent implements OnInit {
       pincode:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
       from:['',Validators.required,],
       to:['',Validators.required,],
-      adults:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
-      children:['0',[Validators.required,Validators.pattern("^[0-9]*$")]],
+      adult: ['1', [Validators.required,Validators.pattern("^[1-9][0-9]*$")]],
+      children:['0',[Validators.required,Validators.max(6)]],
       roomtype:['',Validators.required,],
       roleid:3
      

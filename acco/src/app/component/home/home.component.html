@@ -103,6 +103,10 @@
                         </ul>
                       </div>
                     </ng-container>
+                    <small *ngIf="homeForm.controls['child'].dirty && homeForm.hasError('required','child')"  
+                  class="text-danger form-inline  mt-0">*child is required</small>
+                  <small *ngIf="homeForm.controls['child'].dirty && homeForm.hasError('max','child')"  
+                  class="text-danger form-inline  mt-0">*child is invalid</small>
                   </div>
                 </div>
               </div>

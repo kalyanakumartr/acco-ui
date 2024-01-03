@@ -136,9 +136,10 @@
                                 </div> -->
                                 <div>
                                     
-                                <select  >
+                                <select >
                                     <option value="0">--Click to Select--</option>  
-                                    <option value="1" *ngFor="let type of i.roomnos">{{type.roomid}}</option>
+                                    <option value="1" *ngFor="let e of [].constructor(i.roomcount); let ind = index"  > 
+                                        &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; &#8377;&nbsp;{{(ind+1)*i.price}}</option>
                                     
                                   </select>
                                  

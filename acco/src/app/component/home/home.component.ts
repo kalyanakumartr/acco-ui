@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
       checkOut: ['', Validators.required],
       // checkOutTime: ['', Validators.required],
       adult: ['1', [Validators.required,Validators.pattern("^[1-9][0-9]*$")]],
-      child: ['0', Validators.required],
+      child: ['0', [Validators.required,Validators.max(6)]],
       roomType: ['', Validators.required],
     })
    

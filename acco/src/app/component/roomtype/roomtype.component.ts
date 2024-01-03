@@ -31,6 +31,8 @@ export class RoomtypeComponent implements OnInit {
   sumNumber:any;
  value:any;
  childAge:any=[];
+ noOfRoom:any=[];
+ 
   constructor(
     private getroomlistservice: GetroomlistService,
     private getChargedAmenity: GetchargedamenityService,
@@ -75,8 +77,12 @@ export class RoomtypeComponent implements OnInit {
     console.log("childage:", this.childAge)
     console.log("roomtype:", this.roomtype)
 
+    for(let i=1;i<=this.roomData[0].roomcount;i++){
+      this.noOfRoom.push(i);
+      
+    }
+    console.log("roomlist",this.noOfRoom)
     
-
   }
   inputnumber = 0;
   number = 0;
@@ -171,36 +177,39 @@ export class RoomtypeComponent implements OnInit {
     }
   }
 
-  getSelectedValue(status:Boolean,value:String,price:String) {
-    // this.count = 0;
-    console.log("hi")
-    if (status) {
-      this.checkedList.push(value);
-      this.priceList.push(price);
-      // this.count = this.count + 1;
+//   getSelectedValue(status:Boolean,value:String,price:String) {
+//     // this.count = 0;
+//     console.log("hi")
+//     if (status) {
+//       this.checkedList.push(value);
+//       this.priceList.push(price);
+//       // this.count = this.count + 1;
       
-    } else {
-      var index = this.checkedList.indexOf(value);
-      this.checkedList.splice(index, 1);
-      var index = this.priceList.indexOf(price);
-      this.priceList.splice(index, 1);
+//     } else {
+//       var index = this.checkedList.indexOf(value);
+//       this.checkedList.splice(index, 1);
+//       var index = this.priceList.indexOf(price);
+//       this.priceList.splice(index, 1);
       
-    }
+//     }
 
-    this.sumNumber = this.priceList.reduce((acc, cur) => acc + Number(cur), 0)
-console.log("sum:",this.sumNumber);
-// console.log("count:",this.count)
-  console.log("hiiiii")
-    this.currentSelected = { checked : status,name:value,price:price};
-    console.log("checked:",this.currentSelected);
-    this.checked=this.currentSelected;
-    console.log("ch:",this.checked);
-    console.log("list",this.checkedList)
-    console.log("price",this.priceList)
+//     this.sumNumber = this.priceList.reduce((acc, cur) => acc + Number(cur), 0)
+// console.log("sum:",this.sumNumber);
+// // console.log("count:",this.count)
+//   console.log("hiiiii")
+//     this.currentSelected = { checked : status,name:value,price:price};
+//     console.log("checked:",this.currentSelected);
+//     this.checked=this.currentSelected;
+//     console.log("ch:",this.checked);
+//     console.log("list",this.checkedList)
+//     console.log("price",this.priceList)
   
+// }
+
+getSelectedValue(value:any){
+  console.log("vvv",value)
+
 }
-
-
 
 
 }
