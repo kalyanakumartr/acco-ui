@@ -106,7 +106,7 @@ export class WalkingcurrentComponent implements OnInit {
       this.newuser.city = formData.city;
       this.newuser.state = formData.state;
       this.newuser.country = formData.country;
-      this.newuser.username = formData.username;
+      // this.newuser.username = formData.username;
       this.newuser.roleid=formData.roleid;
       
       this.booking.checkin=formData.from;
@@ -120,11 +120,11 @@ export class WalkingcurrentComponent implements OnInit {
         console.log(this.newuser);
         console.log(this.booking);
 
-        // this.registerService.register(this.newuser).    
-        // subscribe( result=>{
-        //   console.log(result);
-        //   this.walkingCurrentForm.reset();
-        // })
+        this.registerService.register(this.newuser).    
+        subscribe( result=>{
+          console.log(result);
+          this.walkingCurrentForm.reset();
+        })
       }
     }
 

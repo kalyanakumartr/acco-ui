@@ -23,8 +23,9 @@ export class RoomtypeComponent implements OnInit {
   selectedAll: boolean = false;
   count=0;
   
-  checkedList: any[];
-  priceList:any[];
+  checkedList: any=[];
+  priceList:any=[];
+  
   currentSelected: {} | undefined;
   showDropDown!: boolean;
   checked:any;
@@ -32,6 +33,7 @@ export class RoomtypeComponent implements OnInit {
  value:any;
  childAge:any=[];
  noOfRoom:any=[];
+ bed:any;
  
   constructor(
     private getroomlistservice: GetroomlistService,
@@ -41,10 +43,10 @@ export class RoomtypeComponent implements OnInit {
 
   ) {
   
-    this.selectedRow = [];
+    
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
-    this.checkedList = [];
-    this.priceList = [];
+    
+    this.selectedRow = [];
     
   }
 
@@ -77,11 +79,11 @@ export class RoomtypeComponent implements OnInit {
     console.log("childage:", this.childAge)
     console.log("roomtype:", this.roomtype)
 
-    for(let i=1;i<=this.roomData[0].roomcount;i++){
-      this.noOfRoom.push(i);
+    // for(let i=1;i<=this.roomData[1].avilable;i++){
+    //   this.noOfRoom.push(i);
       
-    }
-    console.log("roomlist",this.noOfRoom)
+    // }
+    // console.log("roomlist",this.noOfRoom)
     
   }
   inputnumber = 0;
@@ -206,9 +208,51 @@ export class RoomtypeComponent implements OnInit {
   
 // }
 
-getSelectedValue(value:any){
-  console.log("vvv",value)
 
+
+getSelectedValue(value:any,name:any,price:any){
+  console.log("vvv",value)
+  console.log("nam",name)
+  console.log("price",price)
+ 
+
+     this.checkedList.push(value)
+     console.log("list",this.checkedList)
+     this.priceList.push(price);
+     console.log("price",this.priceList)
+  
+  var index = this.checkedList.indexOf(value);
+  if (index > -1 ){
+  this.checkedList.slice(index, 1);
+  }
+  var index = this.priceList.indexOf(value);
+  if (index > -1 ){
+  this.priceList.pop(index, 1);
+  }
+  this.sumNumber = this.priceList.reduce((acc: number, cur: any) => acc + Number(cur), 0)
+   console.log("sum:",this.sumNumber);
+
+
+
+  // var index = this.checkedList.indexOf(value);
+  // if (index > -1 && name=="2BHK") {
+  //   this.checkedList.splice(index, 1);
+  // }
+  // console.log("list1",this.checkedList)
+  // return this.checkedList;
+}
+  
+  
+   
+onChangeBed(e:any){
+  if (e.target.checked) {
+    this.bed=e.target.value;
+    console.log("bed",this.bed)
+  }else {
+    // this.bed=e.target.value;
+    console.log("bedoff")
+  }
+ 
 }
 
 

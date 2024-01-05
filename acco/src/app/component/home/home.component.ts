@@ -119,7 +119,7 @@ export class HomeComponent implements OnInit {
   visible:boolean = false
   facilities: boolean = true
   samArray:any=[]
-  childAge:any=['<1',1,2,3,4,5,6,7,8,9]
+  childAge:any=[0,1,2,3,4,5,6,7,8,9]
   selectedAge :any=[];
   currentAge:any=[];
 
@@ -144,12 +144,14 @@ export class HomeComponent implements OnInit {
 		// this.selectedAge=value.target.value;
     // if(value.target.value){
          this.selectedAge.push(value)
+         console.log("age:",this.selectedAge);
+         
     //  }else{
     //   var index = this.selectedAge.indexOf(value.target.value);
     //   this.selectedAge.splice(index, 1);
     // }
      
-        console.log("age:",this.selectedAge);
+        // console.log("age:",this.selectedAge);
         
 	}
 
@@ -223,12 +225,12 @@ if(this.tokenvalue==null){
     
     
 
-   this.getroomlistservice.roomlist(formData.adult,formData.checkIn,formData.checkOut,noofdays).subscribe((res)=>{
+   this.getroomlistservice.roomlist(formData.adult,formData.checkIn,formData.checkOut,formData.roomType,noofdays).subscribe((res)=>{
     console.log(res);
-    this.roomData=res;
+    this.roomData=res.roomlist;
             this.getroomlistservice.setData(this.roomData) 
             console.log("++++roomData:",this.roomData);
-            console.log("0 value:",this.roomData[0].roomid);
+            console.log("0 value:",this.roomData.roomid);
             this.roomValue;
              this.router.navigate(["roomtype",{"days":noofdays,
              "adult":formData.adult,

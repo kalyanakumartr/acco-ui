@@ -27,10 +27,10 @@
                 <tbody>
                     <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
                         <!-- <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td> -->
-                        <td class="align-middle " style="border-color: #964B00;">{{i.roomname}}
+                        <td class="align-middle " style="border-color: #964B00;">{{i.name}}
                             <small>- Rs.{{i.price}} /</small>
-                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='2BHK'">Reccommended for 4 adults and 2 child </tr>
-                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.roomname=='3BHK'">Reccommended for 6 adults and 3 child</tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.name=='2BHK'">Reccommended for 4 adults and 2 child </tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.name=='3BHK'">Reccommended for 6 adults and 3 child</tr>
                     <div class="row">
                         <div class="col">
                             <tr scope="col">
@@ -58,7 +58,7 @@
                         <!-- <form> -->
                             <div class="row pl-2 ">
 
-                                <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+                                <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed"  (change)="onChangeBed($event)">
                                 <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
                                 
                                 <!-- <div class="row pl-0">
@@ -80,7 +80,7 @@
                                     </div>
                                 </div> -->
                             </div>
-                            <P style="font-size: smaller;">Rs.{{chargedData[1].charges}} per Bed</P>
+                            <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Bed</P>
                            
                             <!-- <div class="row pl-2">
                                 <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
@@ -135,10 +135,11 @@
                                 
                                 </div> -->
                                 <div>
-                                    
-                                <select >
+                                 
+                                <select #room (change)="getSelectedValue(room.value,i.name,i.price) ">
+                                    <!-- [(ngModel)]="selectedLevel" (change)="selected()" -->
                                     <option value="0">--Click to Select--</option>  
-                                    <option value="1" *ngFor="let e of [].constructor(i.roomcount); let ind = index"  > 
+                                    <option *ngFor="let e of [].constructor(i.avilable); let ind = index"  > 
                                         &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; &#8377;&nbsp;{{(ind+1)*i.price}}</option>
                                     
                                   </select>
