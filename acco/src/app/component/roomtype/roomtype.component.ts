@@ -21,20 +21,21 @@ export class RoomtypeComponent implements OnInit {
   child: any;
   roomtype: any;
   selectedAll: boolean = false;
-  count=0;
-  
-  checkedList: any=[];
-  priceList:any=[];
-  
+  count = 0;
+   roomMap = new Map();
+
+  checkedList: any = [];
+  priceList: any = [];
+
   currentSelected: {} | undefined;
   showDropDown!: boolean;
-  checked:any;
-  sumNumber:any;
- value:any;
- childAge:any=[];
- noOfRoom:any=[];
- bed:any;
- 
+  checked: any;
+  sumNumber: any;
+  value: any;
+  childAge: any = [];
+  noOfRoom: any = [];
+  bed: any;
+
   constructor(
     private getroomlistservice: GetroomlistService,
     private getChargedAmenity: GetchargedamenityService,
@@ -42,18 +43,18 @@ export class RoomtypeComponent implements OnInit {
     private router: Router,
 
   ) {
-  
-    
+
+
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
-    
+
     this.selectedRow = [];
-    
+
   }
 
   ngOnInit(): void {
-    
+
     console.log("room:", this.roomData);
-    console.log("value:",this.value)
+    console.log("value:", this.value)
     this.getChargedAmenities();
 
     this.homeroute.params.subscribe((params: Params) =>
@@ -66,7 +67,7 @@ export class RoomtypeComponent implements OnInit {
       this.cOut = params[('cOut')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.child = params[('child')],);
-      this.homeroute.params.subscribe((params: Params) =>
+    this.homeroute.params.subscribe((params: Params) =>
       this.childAge = params[('childAge')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.roomtype = params[('roomType')],);
@@ -81,10 +82,10 @@ export class RoomtypeComponent implements OnInit {
 
     // for(let i=1;i<=this.roomData[1].avilable;i++){
     //   this.noOfRoom.push(i);
-      
+
     // }
     // console.log("roomlist",this.noOfRoom)
-    
+
   }
   inputnumber = 0;
   number = 0;
@@ -114,7 +115,7 @@ export class RoomtypeComponent implements OnInit {
   sendbookeddata(data: any) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id":this.checkedList,
+      "id": this.checkedList,
       "name": data.roomname,
       "price": this.sumNumber,
       "nodays": this.days,
@@ -122,7 +123,7 @@ export class RoomtypeComponent implements OnInit {
       "checkOut": this.cOut,
       "adult": this.adult,
       "child": this.child,
-      "ageChild":this.childAge,
+      "ageChild": this.childAge,
       "roomtype": this.roomtype,
     }]);
 
@@ -179,81 +180,86 @@ export class RoomtypeComponent implements OnInit {
     }
   }
 
-//   getSelectedValue(status:Boolean,value:String,price:String) {
-//     // this.count = 0;
-//     console.log("hi")
-//     if (status) {
-//       this.checkedList.push(value);
-//       this.priceList.push(price);
-//       // this.count = this.count + 1;
-      
-//     } else {
-//       var index = this.checkedList.indexOf(value);
-//       this.checkedList.splice(index, 1);
-//       var index = this.priceList.indexOf(price);
-//       this.priceList.splice(index, 1);
-      
-//     }
+  //   getSelectedValue(status:Boolean,value:String,price:String) {
+  //     // this.count = 0;
+  //     console.log("hi")
+  //     if (status) {
+  //       this.checkedList.push(value);
+  //       this.priceList.push(price);
+  //       // this.count = this.count + 1;
 
-//     this.sumNumber = this.priceList.reduce((acc, cur) => acc + Number(cur), 0)
-// console.log("sum:",this.sumNumber);
-// // console.log("count:",this.count)
-//   console.log("hiiiii")
-//     this.currentSelected = { checked : status,name:value,price:price};
-//     console.log("checked:",this.currentSelected);
-//     this.checked=this.currentSelected;
-//     console.log("ch:",this.checked);
-//     console.log("list",this.checkedList)
-//     console.log("price",this.priceList)
-  
-// }
+  //     } else {
+  //       var index = this.checkedList.indexOf(value);
+  //       this.checkedList.splice(index, 1);
+  //       var index = this.priceList.indexOf(price);
+  //       this.priceList.splice(index, 1);
 
+  //     }
 
+  //     this.sumNumber = this.priceList.reduce((acc, cur) => acc + Number(cur), 0)
+  // console.log("sum:",this.sumNumber);
+  // // console.log("count:",this.count)
+  //   console.log("hiiiii")
+  //     this.currentSelected = { checked : status,name:value,price:price};
+  //     console.log("checked:",this.currentSelected);
+  //     this.checked=this.currentSelected;
+  //     console.log("ch:",this.checked);
+  //     console.log("list",this.checkedList)
+  //     console.log("price",this.priceList)
 
-getSelectedValue(value:any,name:any,price:any){
-  console.log("vvv",value)
-  console.log("nam",name)
-  console.log("price",price)
- 
-
-     this.checkedList.push(value)
-     console.log("list",this.checkedList)
-     this.priceList.push(price);
-     console.log("price",this.priceList)
-  
-  var index = this.checkedList.indexOf(value);
-  if (index > -1 ){
-  this.checkedList.slice(index, 1);
-  }
-  var index = this.priceList.indexOf(value);
-  if (index > -1 ){
-  this.priceList.pop(index, 1);
-  }
-  this.sumNumber = this.priceList.reduce((acc: number, cur: any) => acc + Number(cur), 0)
-   console.log("sum:",this.sumNumber);
-
-
-
-  // var index = this.checkedList.indexOf(value);
-  // if (index > -1 && name=="2BHK") {
-  //   this.checkedList.splice(index, 1);
   // }
-  // console.log("list1",this.checkedList)
-  // return this.checkedList;
-}
-  
-  
-   
-onChangeBed(e:any){
-  if (e.target.checked) {
-    this.bed=e.target.value;
-    console.log("bed",this.bed)
-  }else {
-    // this.bed=e.target.value;
-    console.log("bedoff")
+
+
+
+  getSelectedValue(value: any, name: any, price: any) {
+    console.log("vvv", value)
+    console.log("nam", name)
+    console.log("price", price)
+
+      this.roomMap.set(name,value);
+
+      // this.roomlist.push(name,value);
+
+
+      // var index = this.checkedList.indexOf(value);
+      // if (index > -1) {
+      //   this.checkedList.splice(index, 1);
+      // }
+    console.log("list", this.roomMap)
+
+
+    this.priceList.push(price);
+    console.log("price", this.priceList)
+
+
+    var index = this.priceList.indexOf(value);
+    if (index > -1) {
+      this.priceList.pop(index, 1);
+    }
+    this.sumNumber = this.priceList.reduce((acc: number, cur: any) => acc + Number(cur), 0)
+    console.log("sum:", this.sumNumber);
+
+
+
+    // var index = this.checkedList.indexOf(value);
+    // if (index > -1 && name=="2BHK") {
+    //   this.checkedList.splice(index, 1);
+    // }
+    // console.log("list1",this.checkedList)
+    // return this.checkedList;
   }
- 
-}
+
+
+
+  onChangeBed(e: any) {
+    if (e.target.checked) {
+      this.bed = e.target.value;
+      console.log("bed", this.bed)
+    } else {
+      // this.bed=e.target.value;
+      console.log("bedoff")
+    }
+  }
 
 
 }
