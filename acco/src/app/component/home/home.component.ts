@@ -236,10 +236,10 @@ export class HomeComponent implements OnInit {
 
       this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType, noofdays).subscribe((res) => {
         console.log(res);
-        this.roomData = res.roomlist;
+        this.roomData = res[0];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
-        console.log("0 value:", this.roomData.roomid);
+        console.log("0 value:", this.roomData);
         this.roomValue;
         this.router.navigate(["roomtype", {
           "days": noofdays,

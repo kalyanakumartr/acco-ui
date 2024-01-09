@@ -25,6 +25,7 @@ export class RoomtypeComponent implements OnInit {
   count = 0;
    roomMap = new Map();
    priceMap = new Map();
+   bedPrice = new Map();
 
   checkedList: any = [];
   priceList: any  = [];
@@ -33,13 +34,19 @@ export class RoomtypeComponent implements OnInit {
   value: any;
   childAge: any = [];
   noOfRoom: any = [];
-  bedNo:any =[] ;
+  bedNo2BHK:any =[] ;
+  bedNo3BHK:any =[] ;
   bed: any;
   totalValue="";
-roomOne:any;
-roomOneCount:any;
-roomTwo:any;
-roomTwoCount:any;
+room2BHK:any;
+room2BHKCount:any;
+room3BHK:any;
+room3BHKCount:any;
+roomOccupancy:any;
+roomOccuCount:any;
+totalBedAmount:any;
+totalBed:any;
+
 
   constructor(
     private getroomlistservice: GetroomlistService,
@@ -127,7 +134,7 @@ roomTwoCount:any;
   sendbookeddata(data: any) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id": this.roomOneCount,
+      "id": this.room2BHKCount,
       "name": data.roomname,
       "price": this.sumNumber,
       "nodays": this.days,
@@ -221,18 +228,28 @@ roomTwoCount:any;
 
   // }
 
-  counter(ibed: number) {
-    this.bedNo=[];
-    for(var i=0;i<ibed;i++){
-      this.bedNo.push(i);
+  counter(ibed: number,name:any) {
+    console.log("NNN",name);      
+    if(name=="2BHK"){
+      this.bedNo2BHK=[];
+      for(var i=0;i<ibed;i++){
+        this.bedNo2BHK.push(i);
+      }
+    }else{
+      this.bedNo3BHK=[];
+      for(var i=0;i<ibed;i++){
+        this.bedNo3BHK.push(i);
+      }
     }
+    
   //  this.bedNo= ibed;
-   console.log("bbbb",this.bedNo)
+   console.log("bbbb222",this.bedNo2BHK)
+   console.log("bbbb333",this.bedNo3BHK)
     // return new Array(i);
 }
 
   getSelectedValue(value: any, name: any, price: any) {
-    this.counter(value);
+    this.counter(value,name);
    
     // console.log("vvv", value)
     // console.log("nam", name)
@@ -242,9 +259,9 @@ roomTwoCount:any;
       this.roomMap.set(name,value);
       for ( let value of this.roomMap.values()) {
             console.log("aa:",value);
+          
          }
-      
-     
+ 
          const sumUp=value*price;
          console.log("***",sumUp)
       this.priceMap.set(name,sumUp);
@@ -258,10 +275,12 @@ roomTwoCount:any;
   console.log("rrr",roomArray[0]);
   let roomValues = Object.values(roomArray[0]);
   let roomKeys = Object.keys(roomArray[0]);
-  this.roomOne=roomKeys[0];
-  this.roomOneCount=roomValues[0];
-  this.roomTwo=roomKeys[1];
-  this.roomTwoCount=this.roomIds[1];
+  this.room2BHK=roomKeys[0];
+  this.room2BHKCount=roomValues[0];
+  this.room3BHK=roomKeys[1];
+  this.room3BHKCount=roomValues[1];
+  this.roomOccupancy=roomKeys[2];
+  this.roomOccuCount=roomValues[2];
 
      const arr = [Array.from(this.priceMap).reduce((acc, curr) => ({ 
       ...acc, 
@@ -280,15 +299,26 @@ roomTwoCount:any;
 
 
 
-  onChangeBed(e: any) {
-    if (e.target.checked) {
-      this.bed = e.target.value;
-      console.log("bed", this.bed)
-    } else {
-      // this.bed=e.target.value;
-      console.log("bedoff")
-    }
-  }
+  selectedBed(value:any,name:any) {
 
+    console.log("bed",value);
+    this.bedPrice.set(name,value);
+    console.log("bbbpppp:",this.bedPrice);
+    const arrBedPrice = [Array.from(this.bedPrice).reduce((acc, curr) => ({ 
+      ...acc, 
+      [curr[0]]: curr[1] 
+  }), Object.create(null))];
+  
+  console.log("rrr",arrBedPrice[0]);
+  let vbed = Object.values(arrBedPrice[0]);
+  console.log("exprice", vbed)
+
+  this. totalBed= vbed.reduce((acc: number, cur: any) => acc + Number(cur), 0)
+  console.log("sumbed:", this.totalBed);
+  this. totalBedAmount=this.totalBed*299;
+  console.log("+++",this. totalBedAmount);
+
+  }
+  
 
 }

@@ -141,13 +141,24 @@
                                 
                                 </div> -->
                                 <div>
-                                 
-                                <select #room (change)="getSelectedValue(room.value,i.name,i.price) " >
+                                <ng-container *ngIf="i.headcount>3">    
+                                <select #room (change)="getSelectedValue(room.value,i.name,i.price)" >
                                     <option value="0">--Click to Select--</option>  
-                                    <option *ngFor="let e of [].constructor(i.avilable); let ind = index"  > 
+                                    <option  *ngFor=" e of [].constructor(i.avail); let ind = index "  > 
                                         &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; </option>
                                         <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
+                                   
                                   </select>
+                                  </ng-container>
+                                  <ng-container *ngIf="i.headcount<3">    
+                                    <select #room (change)="getSelectedValue(room.value,i.name,i.price)" >
+                                        <option value="0">--Click to Select--</option>  
+                                        <option  *ngFor=" e of [].constructor(1); let ind = index "  > 
+                                            &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; </option>
+                                            <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
+                                       
+                                      </select>
+                                      </ng-container>
                                  
                                   </div>
                             </div>
@@ -158,20 +169,32 @@
                     </td>
                     
                      <td style="border-color: #964B00; " class=" align-middle">
-                            <div class="row pl-2 " *ngIf="i.headcount >2" >
+                            <div class="row pl-2 " *ngIf="i.headcount >2 "  >
+                                
+                                <ng-container *ngIf="i.name == '2BHK'">  
                                 <!-- <label > {{chargedData[1].facilityname}}</label>&nbsp;&nbsp; -->
-                                <select >
+                                <select #bed (change)="selectedBed(bed.value,i.name)" >
                                     <option value="0">--Click Bed --</option>  
-                                    <option  *ngFor="let bd of bedNo;let bed = index">{{bed+1}} </option>
+                                    <option  *ngFor="let bd of bedNo2BHK;let bed = index">{{bed+1}} </option>
                                                                     
                                   </select>
+                                
+                                  </ng-container>
+                                   <ng-container *ngIf="i.name=='3BHK'">  
+                                   
+                                    <select #bed (change)="selectedBed(bed.value,i.name)">
+                                        <option value="0">--Click Bed --</option>  
+                                        <option  *ngFor="let bedextra of bedNo3BHK;let bedcount = index">{{bedcount+1}} </option>
+                                                                        
+                                      </select>
+                                      </ng-container> 
                               
                             </div>
                             <P style="font-size: smaller;"*ngIf="i.headcount >2">Rs.{{chargedData[0].charges}} per Bed</P>
                     <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" > &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
-                        <label>For{{roomOneCount}} {{roomOne}} and {{roomTwoCount}} {{roomTwo}} </label>
-                        <label > &#8377;&nbsp;{{totalValue}} </label>
+                        <label>For{{room2BHKCount}} {{room2BHK}} and {{room3BHKCount}} {{room3BHK}} </label>
+                        <label > &#8377;&nbsp;total={{totalValue}} </label>
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 
