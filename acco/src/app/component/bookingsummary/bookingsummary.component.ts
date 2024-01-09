@@ -9,7 +9,7 @@ import { GetRoomList } from 'src/app/model/getroomlist.model';
 })
 export class BookingsummaryComponent implements OnInit {
   bhk: any;
-  roomid: any;
+  roomid:any;
   days: any;
   amount: any;
   in: any;

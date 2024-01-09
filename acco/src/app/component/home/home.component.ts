@@ -138,19 +138,36 @@ export class HomeComponent implements OnInit {
     this.visible = !this.visible
   }
 
-
-  onSelected(value: any) {
-    // this.selectedAge=value.target.value;
-    // if(value.target.value){
-    this.selectedAge.push(value)
-    console.log("age:", this.selectedAge);
-
-    //  }else{
-    //   var index = this.selectedAge.indexOf(value.target.value);
-    //   this.selectedAge.splice(index, 1);
+  childAgeMap = new Map<string,string>;
+  ageValue:any;
+  onSelected(value: any,e:any) {
+      this.childAgeMap.set(e,value);
+     
+    //   this.childMap.forEach((value: string, key: string) => {
+    //     console.log("++++",key, value);})
+    //   for ( let value of this.childMap.values()) {
+    //     console.log("aa:",value);
     // }
+      
+      console.log("childage:", this.childAgeMap);
 
-    // console.log("age:",this.selectedAge);
+      // this.childMap.forEach((value: string, key: string) => {
+      //       console.log("++++",key, value);
+      //       this.selectedAge[key]=value;
+      //     })
+      const arr = [Array.from(this.childAgeMap).reduce((acc, curr) => ({ 
+        ...acc, 
+        [curr[0]]: curr[1] 
+    }), Object.create(null))];
+    
+    console.log("rrr",arr[0]);
+    this.ageValue = Object.values(arr[0]);
+    console.log("age++",this.ageValue )
+
+            
+    // this.selectedAge.push(value)
+    //  console.log("age:", this.selectedAge);
+
 
   }
 
@@ -231,9 +248,9 @@ export class HomeComponent implements OnInit {
           "cOut": formData.checkOut,
           "child": formData.child,
           "roomType": formData.roomType,
-          "childAge": this.selectedAge
+          "childAge": this.ageValue
         }]);
-        //  "cIn":formData.checkIn,"cOut":formData.checkOut,
+        
 
       });
     }

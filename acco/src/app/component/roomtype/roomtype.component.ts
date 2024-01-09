@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GetchargedamenityService } from 'src/app/services/getchargedamenity.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
@@ -20,21 +20,26 @@ export class RoomtypeComponent implements OnInit {
   selectedRow: any;
   child: any;
   roomtype: any;
+  roomIds:any;
   selectedAll: boolean = false;
   count = 0;
    roomMap = new Map();
+   priceMap = new Map();
 
   checkedList: any = [];
-  priceList: any = [];
-
+  priceList: any  = [];
   currentSelected: {} | undefined;
-  showDropDown!: boolean;
-  checked: any;
-  sumNumber: any;
+   sumNumber: any;
   value: any;
   childAge: any = [];
   noOfRoom: any = [];
+  bedNo:any =[] ;
   bed: any;
+  totalValue="";
+roomOne:any;
+roomOneCount:any;
+roomTwo:any;
+roomTwoCount:any;
 
   constructor(
     private getroomlistservice: GetroomlistService,
@@ -85,7 +90,14 @@ export class RoomtypeComponent implements OnInit {
 
     // }
     // console.log("roomlist",this.noOfRoom)
-
+//     console.log("___",this.roomData[1].price)
+// for (let i=0;i<=10;i++){
+//   var pr=i;
+//   console.log("iii",pr)
+//   var ad=this.roomData[1].price * pr;
+//   var aa=this.roomData[2].price* pr
+//   console.log("***",ad,"**",aa)
+// }
   }
   inputnumber = 0;
   number = 0;
@@ -115,7 +127,7 @@ export class RoomtypeComponent implements OnInit {
   sendbookeddata(data: any) {
     console.log(data)
     this.router.navigate(["bookingsummary", {
-      "id": this.checkedList,
+      "id": this.roomOneCount,
       "name": data.roomname,
       "price": this.sumNumber,
       "nodays": this.days,
@@ -209,44 +221,61 @@ export class RoomtypeComponent implements OnInit {
 
   // }
 
-
+  counter(ibed: number) {
+    this.bedNo=[];
+    for(var i=0;i<ibed;i++){
+      this.bedNo.push(i);
+    }
+  //  this.bedNo= ibed;
+   console.log("bbbb",this.bedNo)
+    // return new Array(i);
+}
 
   getSelectedValue(value: any, name: any, price: any) {
-    console.log("vvv", value)
-    console.log("nam", name)
-    console.log("price", price)
+    this.counter(value);
+   
+    // console.log("vvv", value)
+    // console.log("nam", name)
+   
+    // console.log("price++", price)
 
       this.roomMap.set(name,value);
+      for ( let value of this.roomMap.values()) {
+            console.log("aa:",value);
+         }
+      
+     
+         const sumUp=value*price;
+         console.log("***",sumUp)
+      this.priceMap.set(name,sumUp);
+    
+    console.log("list", this.roomMap);
+    console.log("list1", this.priceMap)
+    const roomArray = [Array.from(this.roomMap).reduce((acc, curr) => ({ 
+      ...acc, 
+      [curr[0]]: curr[1] 
+  }), Object.create(null))];
+  console.log("rrr",roomArray[0]);
+  let roomValues = Object.values(roomArray[0]);
+  let roomKeys = Object.keys(roomArray[0]);
+  this.roomOne=roomKeys[0];
+  this.roomOneCount=roomValues[0];
+  this.roomTwo=roomKeys[1];
+  this.roomTwoCount=this.roomIds[1];
 
-      // this.roomlist.push(name,value);
+     const arr = [Array.from(this.priceMap).reduce((acc, curr) => ({ 
+      ...acc, 
+      [curr[0]]: curr[1] 
+  }), Object.create(null))];
+  
+  console.log("rrr",arr[0]);
+  let v = Object.values(arr[0]);
+  console.log("price", v)
 
-
-      // var index = this.checkedList.indexOf(value);
-      // if (index > -1) {
-      //   this.checkedList.splice(index, 1);
-      // }
-    console.log("list", this.roomMap)
-
-
-    this.priceList.push(price);
-    console.log("price", this.priceList)
-
-
-    var index = this.priceList.indexOf(value);
-    if (index > -1) {
-      this.priceList.pop(index, 1);
-    }
-    this.sumNumber = this.priceList.reduce((acc: number, cur: any) => acc + Number(cur), 0)
+    this.sumNumber = v.reduce((acc: number, cur: any) => acc + Number(cur), 0)
     console.log("sum:", this.sumNumber);
-
-
-
-    // var index = this.checkedList.indexOf(value);
-    // if (index > -1 && name=="2BHK") {
-    //   this.checkedList.splice(index, 1);
-    // }
-    // console.log("list1",this.checkedList)
-    // return this.checkedList;
+  this.totalValue=this.sumNumber;
+  console.log("tot:", this.totalValue);
   }
 
 

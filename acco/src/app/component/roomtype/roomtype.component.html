@@ -14,12 +14,11 @@
                     <tr>
                         <!-- <th  style="border-color: #964B00;" scope="col">RoomCount</th> -->
                         <th  style="border-color: #964B00;" scope="col">AccommodotionType</th>
-                        <!-- <th  style="border-color: #964B00;" scope="col">Guests</th> -->
-                       
-                        <!-- <th  style="border-color: #964B00;" scope="col">Tariff</th> -->
-                       
-                        <th  style="border-color: #964B00;" scope="col">SpecialCharges</th>
+                        <th  style="border-color: #964B00;" scope="col">Guests</th>                       
+                        <!-- <th  style="border-color: #964B00;" scope="col">Tariff</th> -->                       
+                        <!-- <th  style="border-color: #964B00;" scope="col">SpecialCharges</th> -->
                         <th  style="border-color: #964B00;" scope="col" >SelectRooms</th>
+                        <th  style="border-color: #964B00;" scope="col">SpecialCharges</th>
                         <th style="border-color: #964B00;" scope="col"></th>
                         <!-- <th  style="border-color: #964B00;" scope="col">Confirmation</th> -->
                     </tr>
@@ -49,19 +48,26 @@
 
                     </td>
 
-                    <!-- <td style="border-color: #964B00;" class="align-middle ">{{adult}}</td> -->
+                    <td style="border-color: #964B00;" class="align-middle ">{{i.headcount}}</td>
                     <!-- <td style="border-color: #964B00;" class="align-middle ">1</td> -->
                     <!-- <td style="border-color: #964B00;" class="align-middle " >Rs{{i.price * count}}/-</td> -->
                     <!-- <td style="border-color: #964B00;" class="align-middle ">{{i.roomsize}} sq.ft</td> -->
 
-                    <td style="border-color: #964B00; " class=" align-middle">
-                        <!-- <form> -->
+                    <!-- <td style="border-color: #964B00; " class=" align-middle">
+                        <form>
                             <div class="row pl-2 ">
-
+                                <label > {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;
+                                <select >
+                                   
+                                    <option value="0">--Click Bed --</option>  
+                                    <option value="1">1  </option>
+                                       
+                                    
+                                  </select>
                                 <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed"  (change)="onChangeBed($event)">
-                                <label class="pt-2" for="bed"> {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;&nbsp;
                                 
-                                <!-- <div class="row pl-0">
+                                
+                                <div class="row pl-0">
                                     <div class="form-check-inline"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button   style="color:#efc96a; background-color: #964B00;"
                                             class="btn btn-sm outline" (click)="plus()" ><i
@@ -78,11 +84,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                             <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Bed</P>
                            
-                            <!-- <div class="row pl-2">
+                            <div class="row pl-2">
                                 <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
                                 <label class="pt-2" for="breakfast"> {{chargedData[2].facilityname}}</label>&nbsp;
                                 <div class="row">
@@ -105,16 +111,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <P style="font-size: smaller;">Rs.{{chargedData[2].charges}} per Person</P> -->
-                            <!-- <div class="row pl-2">
+                            <P style="font-size: smaller;">Rs.{{chargedData[2].charges}} per Person</P> 
+                             <div class="row pl-2">
                                 <input class="mr-1" type="checkbox" id="AC" name="AC" value="AC">
                                 <label class="mt-2" for="AC"> {{chargedData[0].facilityname}}</label>
 
                             </div>
-                            <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Room</P> -->
-                        <!-- </form> -->
+                            <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Room</P> 
+                        </form>
 
-                    </td>
+                    </td> -->
                     <td style="border-color: #964B00;" class="align-middle ">
                         <div>
                             <div >
@@ -136,12 +142,11 @@
                                 </div> -->
                                 <div>
                                  
-                                <select #room (change)="getSelectedValue(room.value,i.name,i.price) ">
-                                    <!-- [(ngModel)]="selectedLevel" (change)="selected()" -->
+                                <select #room (change)="getSelectedValue(room.value,i.name,i.price) " >
                                     <option value="0">--Click to Select--</option>  
                                     <option *ngFor="let e of [].constructor(i.avilable); let ind = index"  > 
-                                        &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; &#8377;&nbsp;{{(ind+1)*i.price}}</option>
-                                    
+                                        &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; </option>
+                                        <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
                                   </select>
                                  
                                   </div>
@@ -151,25 +156,28 @@
                        
                         <!-- <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true"> -->
                     </td>
-                    <!-- <td style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
-
-                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;" 
-                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp; 
-
-                     </td> -->
-                    <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" class="align-middle "> &nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                     <td style="border-color: #964B00; " class=" align-middle">
+                            <div class="row pl-2 " *ngIf="i.headcount >2" >
+                                <!-- <label > {{chargedData[1].facilityname}}</label>&nbsp;&nbsp; -->
+                                <select >
+                                    <option value="0">--Click Bed --</option>  
+                                    <option  *ngFor="let bd of bedNo;let bed = index">{{bed+1}} </option>
+                                                                    
+                                  </select>
+                              
+                            </div>
+                            <P style="font-size: smaller;"*ngIf="i.headcount >2">Rs.{{chargedData[0].charges}} per Bed</P>
+                    <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" > &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
+                        <label>For{{roomOneCount}} {{roomOne}} and {{roomTwoCount}} {{roomTwo}} </label>
+                        <label > &#8377;&nbsp;{{totalValue}} </label>
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 
                     </td>
                     </tr>
-                    <!-- <tr>
-                    <td scope="row" colspan="8">
-                        <button  style="color:#efc96a; background-color: #964B00;"
-                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
-                    </td>
-                </tr> -->
+                   
                     <!-- <tr>
                         <th  class="align-middle" style="border-color: #964B00;" scope="row">2</th>
                         <td style="border-color: #964B00;">3BHK

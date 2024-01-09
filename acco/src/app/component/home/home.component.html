@@ -86,7 +86,7 @@
                       <div class="card" style="width: 12rem;">
                         <ul class="list-group list-group-flush" >
                           <li *ngFor="let array of samArray;let i = index" class="list-group-item">Age of Child{{array}}
-                            <select style="margin-left: 10px;" #age (change)="onSelected(age.value)"  >
+                            <select style="margin-left: 10px;" #age (change)="onSelected(age.value,array)"  >
                               <!-- #age (change)="onSelected(age.value)" -->
                               <option>--</option>
                               <option *ngFor="let item of childAge ;let z = index"  [value]="item">{{item}}</option>
