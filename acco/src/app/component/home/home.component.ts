@@ -234,7 +234,7 @@ export class HomeComponent implements OnInit {
 
 
 
-      this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType, noofdays).subscribe((res) => {
+      this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((res) => {
         console.log(res);
         this.roomData = res[0];
         this.getroomlistservice.setData(this.roomData)

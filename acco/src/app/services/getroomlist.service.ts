@@ -12,10 +12,10 @@ export class GetroomlistService {
   public apiRoom$ = this.apiRoom.asObservable();
   constructor(private http:HttpClient) { }
 
-  roomlist(adult:any,checkIn:any,checkOut:any,noofdays:any,roomType:any):Observable<any>{
+  roomlist(adult:any,checkIn:any,checkOut:any,roomType:any):Observable<any>{
     console.log("I am roomlist"); 
     console.log("checkhere",adult,checkIn,checkOut)
-    console.log("no of days",noofdays)
+    
     console.log("roomtype",roomType)
        
     return this.http.get("http://localhost:3001/booking/getroomlist?adults="+adult+"&checkin="+checkIn+"&checkout="+checkOut+"&roomtypeid="+roomType);

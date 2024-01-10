@@ -1,10 +1,13 @@
 export class BookingModel {
-    roomid!:string   
+     
     checkin!:string
     checkout!:string
-    roombhk!:string
     noofdays!:string
     adults!:string
+    child:any
+    roombhk!:string
+   
+    
     name!:string
     phonenumber!:string
     email!:string
@@ -13,8 +16,9 @@ export class BookingModel {
     verificationstatus!:string
     userid:any;
     firstname!:string;
-    child:any;
+    
     childage:any;
     roomtype:any;
+    roomid!:string  
 
 }

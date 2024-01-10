@@ -193,8 +193,8 @@
                             <P style="font-size: smaller;"*ngIf="i.headcount >2">Rs.{{chargedData[0].charges}} per Bed</P>
                     <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" > &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
-                        <label>For{{room2BHKCount}} {{room2BHK}} and {{room3BHKCount}} {{room3BHK}} </label>
-                        <label > &#8377;&nbsp;total={{totalValue}} </label>
+                        <label>{{sumUpWords}} </label><br>
+                        <!-- <label > total=&#8377;&nbsp;{{totalValue}} </label> -->
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
 

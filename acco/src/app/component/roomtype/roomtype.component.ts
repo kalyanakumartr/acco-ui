@@ -46,6 +46,8 @@ roomOccupancy:any;
 roomOccuCount:any;
 totalBedAmount:any;
 totalBed:any;
+sumUpWords="";
+sumWithDays:any;
 
 
   constructor(
@@ -131,73 +133,58 @@ totalBed:any;
     }
   }
 
-  sendbookeddata(data: any) {
-    console.log(data)
-    this.router.navigate(["bookingsummary", {
-      "id": this.room2BHKCount,
-      "name": data.roomname,
-      "price": this.sumNumber,
-      "nodays": this.days,
-      "checkIn": this.cIn,
-      "checkOut": this.cOut,
-      "adult": this.adult,
-      "child": this.child,
-      "ageChild": this.childAge,
-      "roomtype": this.roomtype,
-    }]);
+ 
 
-  }
+  // plus() {
+  //   if (this.inputnumber < 6) {
 
-  plus() {
-    if (this.inputnumber < 6) {
+  //     this.inputnumber = this.inputnumber + 1;
+  //   }
+  // }
+  // plus1() {
+  //   if (this.number < 6) {
+  //     this.number = this.number + 1;
+  //   }
 
-      this.inputnumber = this.inputnumber + 1;
-    }
-  }
-  plus1() {
-    if (this.number < 6) {
-      this.number = this.number + 1;
-    }
+  // }
+  // plus2() {
 
-  }
-  plus2() {
+  //   if (this.bednumber < 6) {
+  //     this.bednumber = this.bednumber + 1;
+  //   }
+  // }
+  // plus3() {
+  //   if (this.foodnumber < 12) {
+  //     this.foodnumber = this.foodnumber + 1;
+  //   }
+  // }
 
-    if (this.bednumber < 6) {
-      this.bednumber = this.bednumber + 1;
-    }
-  }
-  plus3() {
-    if (this.foodnumber < 12) {
-      this.foodnumber = this.foodnumber + 1;
-    }
-  }
-
-  minus() {
-    if (this.inputnumber != 0) {
-      this.inputnumber = this.inputnumber - 1;
-    }
+  // minus() {
+  //   if (this.inputnumber != 0) {
+  //     this.inputnumber = this.inputnumber - 1;
+  //   }
 
 
-  }
-  minus1() {
-    if (this.number != 0) {
-      this.number = this.number - 1;
-    }
+  // }
+  // minus1() {
+  //   if (this.number != 0) {
+  //     this.number = this.number - 1;
+  //   }
 
 
-  }
-  minus2() {
+  // }
+  // minus2() {
 
-    if (this.bednumber != 0) {
-      this.bednumber = this.bednumber - 1;
-    }
+  //   if (this.bednumber != 0) {
+  //     this.bednumber = this.bednumber - 1;
+  //   }
 
-  }
-  minus3() {
-    if (this.foodnumber != 0) {
-      this.foodnumber = this.foodnumber - 1;
-    }
-  }
+  // }
+  // minus3() {
+  //   if (this.foodnumber != 0) {
+  //     this.foodnumber = this.foodnumber - 1;
+  //   }
+  // }
 
   //   getSelectedValue(status:Boolean,value:String,price:String) {
   //     // this.count = 0;
@@ -272,15 +259,33 @@ totalBed:any;
       ...acc, 
       [curr[0]]: curr[1] 
   }), Object.create(null))];
+  
   console.log("rrr",roomArray[0]);
   let roomValues = Object.values(roomArray[0]);
   let roomKeys = Object.keys(roomArray[0]);
+  
+    Object.keys(roomArray[0]).forEach((key:any) => {
+      if(roomArray[0][key] == '0' ) {delete roomArray[0][key]};
+         })
+    console.log("length",Object.keys(roomArray[0]).length);
+    console.log("rraaa",roomArray[0]);
+  
   this.room2BHK=roomKeys[0];
   this.room2BHKCount=roomValues[0];
   this.room3BHK=roomKeys[1];
   this.room3BHKCount=roomValues[1];
   this.roomOccupancy=roomKeys[2];
   this.roomOccuCount=roomValues[2];
+  
+  // this.sumUpWords="";
+  // if(Object.keys(roomArray[0]).length=1){
+  //      this.sumUpWords="For"+ this.room2BHKCount+ "room of" + this.room2BHK;
+  // }else if(Object.keys(roomArray[0]).length=2){
+  //   console.log("sfddfs");
+  //      this.sumUpWords="For"+this.room2BHKCount+ "room of" +this.room2BHK+"and"+this.room3BHKCount +"room of" +this.room3BHK;
+  // }
+  
+  
 
      const arr = [Array.from(this.priceMap).reduce((acc, curr) => ({ 
       ...acc, 
@@ -294,7 +299,29 @@ totalBed:any;
     this.sumNumber = v.reduce((acc: number, cur: any) => acc + Number(cur), 0)
     console.log("sum:", this.sumNumber);
   this.totalValue=this.sumNumber;
+  this.sumWithDays =this.sumNumber*this.days;
+  console.log("sumdays:", this.sumWithDays);
   console.log("tot:", this.totalValue);
+  
+  switch (Object.keys(roomArray[0]).length ) {
+    case 1:
+      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0'
+      +"Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;
+      break;
+    case 2:
+      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0\xa0'
+      +"and"+'\n'+ this.room3BHKCount +"room of"+'\xa0'+this.room3BHK +"Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;
+      break;
+    case 3:
+      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0'
+      +","+this.room3BHKCount +"room of"+'\xa0'+this.room3BHK+'\xa0\xa0'+"and\n"
+      + this.roomOccuCount+"room of"+'\xa0'+ this.roomOccupancy +"Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;;
+      break;
+    
+    default:
+      this.sumUpWords="";
+      break;
+  }
   }
 
 
@@ -317,8 +344,32 @@ totalBed:any;
   console.log("sumbed:", this.totalBed);
   this. totalBedAmount=this.totalBed*299;
   console.log("+++",this. totalBedAmount);
-let totlaCost=this.sumNumber+this.totalBedAmount;
+let totlaCost=this.sumWithDays+this.totalBedAmount;
 console.log("ttt+++",totlaCost);
+  }
+
+
+  sendbookeddata(data: any) {
+    console.log(data)
+    this.router.navigate(["bookingsummary", {
+      "checkIn": this.cIn,
+      "checkOut": this.cOut,
+      "nodays": this.days,
+      "adult": this.adult,
+      "child": this.child,
+      "room2BHK": this.room2BHKCount,
+      "room3BHK": this.room3BHKCount,
+      "extrabed":this.totalBed,
+      "totalamount":this.sumWithDays,
+      "tax":this.roomData.tax,
+      "maintenance":this.roomData.maintenance,
+      "discount":0,
+      "name": data.roomname,
+      "price": this.sumNumber,
+      "ageChild": this.childAge,
+      "roomtype": this.roomtype,
+    }]);
+
   }
   
 
