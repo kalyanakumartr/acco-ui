@@ -317,7 +317,8 @@ totalBed:any;
   console.log("sumbed:", this.totalBed);
   this. totalBedAmount=this.totalBed*299;
   console.log("+++",this. totalBedAmount);
-
+let totlaCost=this.sumNumber+this.totalBedAmount;
+console.log("ttt+++",totlaCost);
   }
   
 

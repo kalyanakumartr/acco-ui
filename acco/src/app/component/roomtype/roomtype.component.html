@@ -28,8 +28,8 @@
                         <!-- <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td> -->
                         <td class="align-middle " style="border-color: #964B00;">{{i.name}}
                             <small>- Rs.{{i.price}} /</small>
-                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.name=='2BHK'">Reccommended for 4 adults and 2 child </tr>
-                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.name=='3BHK'">Reccommended for 6 adults and 3 child</tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.headcount>3">Reccommended for {{i.des}} </tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.headcount<=3">Reccommended for 1 Room</tr>
                     <div class="row">
                         <div class="col">
                             <tr scope="col">
@@ -150,7 +150,7 @@
                                    
                                   </select>
                                   </ng-container>
-                                  <ng-container *ngIf="i.headcount<3">    
+                                  <ng-container *ngIf="i.headcount<=3">    
                                     <select #room (change)="getSelectedValue(room.value,i.name,i.price)" >
                                         <option value="0">--Click to Select--</option>  
                                         <option  *ngFor=" e of [].constructor(1); let ind = index "  > 
