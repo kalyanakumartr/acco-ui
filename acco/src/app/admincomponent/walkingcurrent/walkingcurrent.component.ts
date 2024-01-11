@@ -161,6 +161,52 @@ showRoomType(){
   });
 
 }
+//hiding info box
+visible: boolean = false
+  facilities: boolean = true
+  samArray: any = []
+  childAge: any = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  
+
+ValueEntered(value: any) {
+  // console.log("djhckjkasj")
+  this.samArray = []
+  for (let i = 1; i <= value; i++) {
+    this.samArray.push(i)
+  }
+  console.log("array", this.samArray)
+}
+//onclick toggling both
+clickon() {
+  //not equal to condition
+  this.visible = !this.visible
+}
+
+childAgeMap = new Map<string,string>;
+  ageValue:any;
+  onSelected(value: any,e:any) {
+      this.childAgeMap.set(e,value);     
+    //   this.childMap.forEach((value: string, key: string) => {
+    //     console.log("++++",key, value);})
+    //   for ( let value of this.childMap.values()) {
+    //     console.log("aa:",value);
+    // }
+           console.log("childage:", this.childAgeMap);
+      // this.childMap.forEach((value: string, key: string) => {
+      //       console.log("++++",key, value);
+      //       this.selectedAge[key]=value;
+      //     })
+      const arr = [Array.from(this.childAgeMap).reduce((acc, curr) => ({ 
+        ...acc, 
+        [curr[0]]: curr[1] 
+    }), Object.create(null))];
+    
+    console.log("rrr",arr[0]);
+    this.ageValue = Object.values(arr[0]);
+    console.log("age++",this.ageValue )        
+    // this.selectedAge.push(value)
+    //  console.log("age:", this.selectedAge);
+  }
 
 }
 

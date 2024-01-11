@@ -1,5 +1,6 @@
 import { Component, Input, OnInit,} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BookingModel } from 'src/app/model/booking.model';
 import { GetchargedamenityService } from 'src/app/services/getchargedamenity.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 
@@ -47,7 +48,11 @@ roomOccuCount:any;
 totalBedAmount:any;
 totalBed:any;
 sumUpWords="";
+bhk3="";
+tot="";
+occupancy="";
 sumWithDays:any;
+totlaCost:any;
 
 
   constructor(
@@ -236,9 +241,10 @@ sumWithDays:any;
 }
 
   getSelectedValue(value: any, name: any, price: any) {
+    // console.log("index",value.selectedIndex)
     this.counter(value,name);
    
-    // console.log("vvv", value)
+   console.log("vvv", value)
     // console.log("nam", name)
    
     // console.log("price++", price)
@@ -302,20 +308,41 @@ sumWithDays:any;
   this.sumWithDays =this.sumNumber*this.days;
   console.log("sumdays:", this.sumWithDays);
   console.log("tot:", this.totalValue);
-  
+   this.sumUpWords="";
+   this.bhk3="";
+   this.tot="";
+   this.occupancy="";
   switch (Object.keys(roomArray[0]).length ) {
     case 1:
-      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0'
-      +"Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;
+      if(this.room2BHKCount>0){
+      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0';
+      }
+      if(this.room3BHKCount>0){
+      this.bhk3= this.room3BHKCount +"room of"+'\xa0'+this.room3BHK+"," ;
+      }
+      if(this.roomOccuCount>0){
+      this.occupancy= this.roomOccuCount+"room of"+'\xa0'+ this.roomOccupancy ;
+      }
+      this.tot="Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;
       break;
     case 2:
+      if(this.room2BHKCount>0){
       this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0\xa0'
-      +"and"+'\n'+ this.room3BHKCount +"room of"+'\xa0'+this.room3BHK +"Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;
+      +"and";}
+      if(this.room3BHKCount>0){
+      this.bhk3= this.room3BHKCount +"room of"+'\xa0'+this.room3BHK+"," ;}
+      if(this.roomOccuCount>0){
+      this.occupancy= this.roomOccuCount+"room of"+'\xa0'+ this.roomOccupancy ;}
+      this.tot="Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;
       break;
     case 3:
-      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0'
-      +","+this.room3BHKCount +"room of"+'\xa0'+this.room3BHK+'\xa0\xa0'+"and\n"
-      + this.roomOccuCount+"room of"+'\xa0'+ this.roomOccupancy +"Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;;
+      if(this.room2BHKCount>0){
+      this.sumUpWords="For"+this.room2BHKCount+"room of"+'\xa0'+this.room2BHK+'\xa0'+",";}
+      if(this.room3BHKCount>0){
+      this.bhk3=this.room3BHKCount +"room of"+'\xa0'+this.room3BHK+'\xa0\xa0'+"and";}
+      if(this.roomOccuCount>0){
+      this.occupancy= this.roomOccuCount+"room of"+'\xa0'+ this.roomOccupancy ;}
+      this.tot="Total="+'\xa0'+'Rs'+'\xa0'+this.sumWithDays;;
       break;
     
     default:
@@ -344,31 +371,50 @@ sumWithDays:any;
   console.log("sumbed:", this.totalBed);
   this. totalBedAmount=this.totalBed*299;
   console.log("+++",this. totalBedAmount);
-let totlaCost=this.sumWithDays+this.totalBedAmount;
-console.log("ttt+++",totlaCost);
+this.totlaCost=this.sumWithDays+this.totalBedAmount;
+console.log("ttt+++",this.totlaCost);
   }
 
 
   sendbookeddata(data: any) {
+
     console.log(data)
-    this.router.navigate(["bookingsummary", {
-      "checkIn": this.cIn,
-      "checkOut": this.cOut,
-      "nodays": this.days,
-      "adult": this.adult,
-      "child": this.child,
-      "room2BHK": this.room2BHKCount,
-      "room3BHK": this.room3BHKCount,
-      "extrabed":this.totalBed,
-      "totalamount":this.sumWithDays,
-      "tax":this.roomData.tax,
-      "maintenance":this.roomData.maintenance,
-      "discount":0,
-      "name": data.roomname,
-      "price": this.sumNumber,
-      "ageChild": this.childAge,
-      "roomtype": this.roomtype,
-    }]);
+    const roomBookingSummary= new BookingModel();
+    roomBookingSummary.checkin=this.cIn;
+    roomBookingSummary.checkout=this.cOut;
+    roomBookingSummary.noofdays=this.days;
+    roomBookingSummary.adults=this.adult;
+    roomBookingSummary.child=this.child;
+    roomBookingSummary.childage=this.childAge;
+    roomBookingSummary.bhk2count=this.room2BHKCount;
+    roomBookingSummary.bhk3count=this.room3BHKCount;
+    roomBookingSummary.extrabed=this.totalBed;
+    roomBookingSummary.totalamount=this.sumWithDays;
+    roomBookingSummary.tax=this.roomData.tax;
+    roomBookingSummary.maintenance=this.roomData.maintenance;
+    roomBookingSummary.discount=0;
+    roomBookingSummary.price=this.totlaCost;   
+    roomBookingSummary.roomtype=this.roomtype;
+    
+console.log("___",roomBookingSummary)
+    this.router.navigate(["bookingsummary", {roomBookingSummary
+    //   "checkIn": this.cIn,
+    //   "checkOut": this.cOut,
+    //   "nodays": this.days,
+    //   "adult": this.adult,
+    //   "child": this.child,
+    //   "room2BHK": this.room2BHKCount,
+    //   "room3BHK": this.room3BHKCount,
+    //   "extrabed":this.totalBed,
+    //   "totalamount":this.sumWithDays,
+    //   "tax":this.roomData.tax,
+    //   "maintenance":this.roomData.maintenance,
+    //   "discount":0,
+    //   // "name": data.roomname,
+    //  "price": this.totlaCost,
+    //   "ageChild": this.childAge,
+    //   "roomtype": this.roomtype,
+  }]);
 
   }
   

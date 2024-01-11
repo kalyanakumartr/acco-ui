@@ -142,19 +142,19 @@
                                 </div> -->
                                 <div>
                                 <ng-container *ngIf="i.headcount>3">    
-                                <select #room (change)="getSelectedValue(room.value,i.name,i.price)" >
+                                <select #room (change)="getSelectedValue(room.selectedIndex,i.name,i.price)"  >
                                     <option value="0">--Click to Select--</option>  
                                     <option  *ngFor=" e of [].constructor(i.avail); let ind = index "  > 
-                                        &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; </option>
+                                        &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp;&#8377;&nbsp;{{(ind+1)*i.price}} </option>
                                         <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
                                    
                                   </select>
                                   </ng-container>
                                   <ng-container *ngIf="i.headcount<=3">    
-                                    <select #room (change)="getSelectedValue(room.value,i.name,i.price)" >
+                                    <select #room (change)="getSelectedValue(room.selectedIndex,i.name,i.price)" >
                                         <option value="0">--Click to Select--</option>  
                                         <option  *ngFor=" e of [].constructor(1); let ind = index "  > 
-                                            &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp; </option>
+                                            &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp;&#8377;&nbsp;{{(ind+1)*i.price}} </option>
                                             <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
                                        
                                       </select>
@@ -190,10 +190,11 @@
                                       </ng-container> 
                               
                             </div>
-                            <P style="font-size: smaller;"*ngIf="i.headcount >2">Rs.{{chargedData[0].charges}} per Bed</P>
+                            <P style="font-size: smaller;"*ngIf="i.headcount >2">Rs.{{chargedData[0].charges}} per Bed per Day</P>
+                            <P style="font-size: smaller;"*ngIf="i.headcount >2">Maximum one extra bed for one room</P>
                     <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" > &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
-                        <label>{{sumUpWords}} </label><br>
+                        <label> {{sumUpWords}}<br> {{bhk3}} <br> {{occupancy}} <br> {{tot}}</label><br>
                         <!-- <label > total=&#8377;&nbsp;{{totalValue}} </label> -->
                         <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
                             class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;

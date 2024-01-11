@@ -180,8 +180,22 @@
                                         <div class="input-group mb-1">
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                                <label style="color:#964B00">Children</label>
-                                                <input formControlName="children"  placeholder="Children"  type="number" value="0" min="0" max="6" style="width:170px" />
+                                                <label style="color:#964B00">Children<small>(0-9years)</small></label>
+                                                <input formControlName="children" (change)="ValueEntered(childVal.value)" #childVal  (click)="clickon()" placeholder="Children"  type="number" value="0" min="0" max="6" style="width:170px" />
+                                                <ng-container *ngIf="visible" >
+                                                    <div class="card" style="width: 15rem;align-items: right;">
+                                                      <ul class="list-group list-group-flush"  >
+                                                        <li *ngFor="let array of samArray;let i = index" class="list-group-item">Age of Child{{array}}
+                                                          <select style="margin-left: 10px;" #age (change)="onSelected(age.value,array)"  >
+                                                            <!-- #age (change)="onSelected(age.value)" -->
+                                                            <option>--</option>
+                                                            <option *ngFor="let item of childAge ;let z = index"  [value]="item">{{item}}</option>
+                                                         </select>
+                                                        
+                                                        </li>
+                                                      </ul>
+                                                    </div>
+                                                  </ng-container>
                                             </div>
                                             <small *ngIf="walkingCurrentForm.controls['children'].dirty && walkingCurrentForm.hasError('required','children')"
                                                 class="text-danger form-inline mt-0 ">*children is required</small>

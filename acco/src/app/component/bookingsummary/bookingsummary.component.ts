@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
+import { BookingModel } from 'src/app/model/booking.model';
 
 @Component({
   selector: 'app-bookingsummary',
@@ -19,41 +20,53 @@ export class BookingsummaryComponent implements OnInit {
   child:any;
   roomtype:any;
   childAge:any=[];
+  bookingData:any;
+  
+
   constructor(
     private homeroute: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.homeroute.params.subscribe((params: Params) =>
-      this.roomid = params[('id')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.bhk = params[('name')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.amount = params[('price')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.days = params[('nodays')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.in = params[('checkIn')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.out = params[('checkOut')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.adult = params[('adult')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.child = params[('child')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.childAge = params[('ageChild')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.roomtype = params[('roomtype')],);
-    //  this.total=
-    console.log("data:", this.roomid);
-    console.log("name:", this.bhk);
-    console.log("nofdays:", this.days);
-    console.log("amount:", this.amount);
-    console.log("checkIn:", this.in);
-    console.log("checkOut:", this.out);
-    console.log("persons:", this.adult);
-    console.log("child&age:", this.child,this.childAge);
+
+    this.bookingData=new BookingModel();
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   bookingData = params[('roomBookingSummary')],);
+    //   console.log("aaaaaa",bookingData)
+      this.homeroute.queryParams.subscribe(params => {
+       this.bookingData= params["roomBookingSummary"];
+       
+      }); console.log("aaaaaa",this.bookingData);
+      this.bookingData = this.homeroute.snapshot.params['roomBookingSummary'];
+      console.log(",,,,,",this.bookingData);
+         // this.homeroute.params.subscribe((params: Params) =>
+    //   this.bhk = params[('name')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.amount = params[('price')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.days = params[('nodays')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.in = params[('checkIn')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.out = params[('checkOut')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.adult = params[('adult')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.child = params[('child')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.childAge = params[('ageChild')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.roomtype = params[('roomtype')],);
+    // //  this.total=
+    // console.log("data:", this.roomid);
+    // console.log("name:", this.bhk);
+    // console.log("nofdays:", this.days);
+    // console.log("amount:", this.amount);
+    // console.log("checkIn:", this.in);
+    // console.log("checkOut:", this.out);
+    // console.log("persons:", this.adult);
+    // console.log("child&age:", this.child,this.childAge);
   }
 
   confirmBooking() {
