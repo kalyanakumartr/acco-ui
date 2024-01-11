@@ -19,7 +19,9 @@ export class BookingModel {
     childage:any;
     roomtype:any;
     userid:any;   
+constructor(){
 
+}
     roombhk!:string
     maintenance:any;
     discount:any    

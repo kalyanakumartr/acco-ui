@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
 import { BookingModel } from 'src/app/model/booking.model';
@@ -9,6 +9,9 @@ import { BookingModel } from 'src/app/model/booking.model';
   styleUrls: ['./bookingsummary.component.scss']
 })
 export class BookingsummaryComponent implements OnInit {
+  @Input()
+  getroomdetails!: BookingModel;
+ 
   bhk: any;
   roomid:any;
   days: any;
@@ -20,7 +23,7 @@ export class BookingsummaryComponent implements OnInit {
   child:any;
   roomtype:any;
   childAge:any=[];
-  bookingData:any;
+  // bookingData:any;
   
 
   constructor(
@@ -30,16 +33,13 @@ export class BookingsummaryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.bookingData=new BookingModel();
+    // this.bookingData=new BookingModel();
     // this.homeroute.params.subscribe((params: Params) =>
     //   bookingData = params[('roomBookingSummary')],);
     //   console.log("aaaaaa",bookingData)
-      this.homeroute.queryParams.subscribe(params => {
-       this.bookingData= params["roomBookingSummary"];
+     
        
-      }); console.log("aaaaaa",this.bookingData);
-      this.bookingData = this.homeroute.snapshot.params['roomBookingSummary'];
-      console.log(",,,,,",this.bookingData);
+     
          // this.homeroute.params.subscribe((params: Params) =>
     //   this.bhk = params[('name')],);
     // this.homeroute.params.subscribe((params: Params) =>
@@ -67,6 +67,7 @@ export class BookingsummaryComponent implements OnInit {
     // console.log("checkOut:", this.out);
     // console.log("persons:", this.adult);
     // console.log("child&age:", this.child,this.childAge);
+    console.log("++++",this.getroomdetails)
   }
 
   confirmBooking() {

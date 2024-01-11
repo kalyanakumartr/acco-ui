@@ -53,6 +53,7 @@ tot="";
 occupancy="";
 sumWithDays:any;
 totlaCost:any;
+roomBookingSummary:any;
 
 
   constructor(
@@ -369,7 +370,7 @@ totlaCost:any;
 
   this. totalBed= vbed.reduce((acc: number, cur: any) => acc + Number(cur), 0)
   console.log("sumbed:", this.totalBed);
-  this. totalBedAmount=this.totalBed*299;
+  this. totalBedAmount=this.totalBed*299*this.days;
   console.log("+++",this. totalBedAmount);
 this.totlaCost=this.sumWithDays+this.totalBedAmount;
 console.log("ttt+++",this.totlaCost);
@@ -379,25 +380,25 @@ console.log("ttt+++",this.totlaCost);
   sendbookeddata(data: any) {
 
     console.log(data)
-    const roomBookingSummary= new BookingModel();
-    roomBookingSummary.checkin=this.cIn;
-    roomBookingSummary.checkout=this.cOut;
-    roomBookingSummary.noofdays=this.days;
-    roomBookingSummary.adults=this.adult;
-    roomBookingSummary.child=this.child;
-    roomBookingSummary.childage=this.childAge;
-    roomBookingSummary.bhk2count=this.room2BHKCount;
-    roomBookingSummary.bhk3count=this.room3BHKCount;
-    roomBookingSummary.extrabed=this.totalBed;
-    roomBookingSummary.totalamount=this.sumWithDays;
-    roomBookingSummary.tax=this.roomData.tax;
-    roomBookingSummary.maintenance=this.roomData.maintenance;
-    roomBookingSummary.discount=0;
-    roomBookingSummary.price=this.totlaCost;   
-    roomBookingSummary.roomtype=this.roomtype;
+    this. roomBookingSummary= new BookingModel();
+    this. roomBookingSummary.checkin=this.cIn;
+    this.roomBookingSummary.checkout=this.cOut;
+    this.roomBookingSummary.noofdays=this.days;
+    this.roomBookingSummary.adults=this.adult;
+    this.roomBookingSummary.child=this.child;
+    this.roomBookingSummary.childage=this.childAge;
+    this.roomBookingSummary.bhk2count=this.room2BHKCount;
+    this. roomBookingSummary.bhk3count=this.room3BHKCount;
+    this.roomBookingSummary.extrabed=this.totalBed;
+    this.roomBookingSummary.totalamount=this.sumWithDays;
+    this.roomBookingSummary.tax=this.roomData.tax;
+    this.roomBookingSummary.maintenance=this.roomData.maintenance;
+    this.roomBookingSummary.discount=0;
+    this.roomBookingSummary.price=this.totlaCost;   
+    this.roomBookingSummary.roomtype=this.roomtype;
     
-console.log("___",roomBookingSummary)
-    this.router.navigate(["bookingsummary", {roomBookingSummary
+console.log("___",this.roomBookingSummary)
+    this.router.navigate(["bookingsummary", 
     //   "checkIn": this.cIn,
     //   "checkOut": this.cOut,
     //   "nodays": this.days,
@@ -414,7 +415,7 @@ console.log("___",roomBookingSummary)
     //  "price": this.totlaCost,
     //   "ageChild": this.childAge,
     //   "roomtype": this.roomtype,
-  }]);
+  ]);
 
   }
   
