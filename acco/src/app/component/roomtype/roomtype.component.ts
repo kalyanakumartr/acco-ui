@@ -398,7 +398,11 @@ console.log("ttt+++",this.totlaCost);
     this.roomBookingSummary.roomtype=this.roomtype;
     
 console.log("___",this.roomBookingSummary)
-    this.router.navigate(["bookingsummary", 
+this.router.navigate(["bookingsummary",{"roomBookingSummary":this.roomBookingSummary,
+"checkIn": this.cIn
+
+}]);
+    // this.router.navigate([{"bookingsummary": this.roomBookingSummary
     //   "checkIn": this.cIn,
     //   "checkOut": this.cOut,
     //   "nodays": this.days,
@@ -415,7 +419,7 @@ console.log("___",this.roomBookingSummary)
     //  "price": this.totlaCost,
     //   "ageChild": this.childAge,
     //   "roomtype": this.roomtype,
-  ]);
+  // }]);
 
   }
   

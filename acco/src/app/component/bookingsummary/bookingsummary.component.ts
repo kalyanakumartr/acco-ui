@@ -23,7 +23,7 @@ export class BookingsummaryComponent implements OnInit {
   child:any;
   roomtype:any;
   childAge:any=[];
-  // bookingData:any;
+   bookingData:any;
   
 
   constructor(
@@ -33,12 +33,11 @@ export class BookingsummaryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.bookingData=new BookingModel();
-    // this.homeroute.params.subscribe((params: Params) =>
-    //   bookingData = params[('roomBookingSummary')],);
-    //   console.log("aaaaaa",bookingData)
+     this.bookingData=new BookingModel();
+    this.homeroute.params.subscribe((params: Params) =>
+      this.bookingData = params[('roomBookingSummary')],);
+      console.log("aaaaaa",this.bookingData)
      
-       
      
          // this.homeroute.params.subscribe((params: Params) =>
     //   this.bhk = params[('name')],);
@@ -46,8 +45,8 @@ export class BookingsummaryComponent implements OnInit {
     //   this.amount = params[('price')],);
     // this.homeroute.params.subscribe((params: Params) =>
     //   this.days = params[('nodays')],);
-    // this.homeroute.params.subscribe((params: Params) =>
-    //   this.in = params[('checkIn')],);
+    this.homeroute.params.subscribe((params: Params) =>
+      this.in = params[('checkIn')],);
     // this.homeroute.params.subscribe((params: Params) =>
     //   this.out = params[('checkOut')],);
     // this.homeroute.params.subscribe((params: Params) =>
@@ -63,11 +62,11 @@ export class BookingsummaryComponent implements OnInit {
     // console.log("name:", this.bhk);
     // console.log("nofdays:", this.days);
     // console.log("amount:", this.amount);
-    // console.log("checkIn:", this.in);
+    console.log("checkIn:", this.in);
     // console.log("checkOut:", this.out);
     // console.log("persons:", this.adult);
     // console.log("child&age:", this.child,this.childAge);
-    console.log("++++",this.getroomdetails)
+    
   }
 
   confirmBooking() {

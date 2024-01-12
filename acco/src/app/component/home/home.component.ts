@@ -162,13 +162,11 @@ export class HomeComponent implements OnInit {
     console.log("rrr",arr[0]);
     this.ageValue = Object.values(arr[0]);
     console.log("age++",this.ageValue )
-
-            
+           
     // this.selectedAge.push(value)
     //  console.log("age:", this.selectedAge);
 
-
-  }
+ }
 
 
   FirstFloor: boolean = true;
