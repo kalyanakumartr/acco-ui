@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
 import { BookingModel } from 'src/app/model/booking.model';
+import { Subscription } from 'rxjs';
+import { BookingServiceService } from 'src/app/services/booking-service.service';
 
 @Component({
   selector: 'app-bookingsummary',
@@ -24,19 +26,31 @@ export class BookingsummaryComponent implements OnInit {
   roomtype:any;
   childAge:any=[];
    bookingData:any;
+
+  subscription!:Subscription;
+  totalwithalladded:any
+
   
 
   constructor(
     private homeroute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public bookingservice:BookingServiceService
   ) { }
 
   ngOnInit(): void {
 
      this.bookingData=new BookingModel();
-    this.homeroute.params.subscribe((params: Params) =>
-      this.bookingData = params[('roomBookingSummary')],);
-      console.log("aaaaaa",this.bookingData)
+     this.subscription =this.bookingservice.currentValue.subscribe(data=>{
+      this.bookingData=data;
+      console.log("booked data",this.bookingData);
+      console.log("booked data",this.bookingData.checkin);
+
+     })
+
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.bookingData = params[('roomBookingSummary')],);
+    //   console.log("aaaaaa",this.bookingData)
      
      
          // this.homeroute.params.subscribe((params: Params) =>
@@ -66,7 +80,9 @@ export class BookingsummaryComponent implements OnInit {
     // console.log("checkOut:", this.out);
     // console.log("persons:", this.adult);
     // console.log("child&age:", this.child,this.childAge);
-    
+   
+    this.totalwithalladded=this.bookingData.totalamount+this.bookingData.totalbedamount
+ 
   }
 
   confirmBooking() {

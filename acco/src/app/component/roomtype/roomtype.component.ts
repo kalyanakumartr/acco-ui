@@ -1,6 +1,7 @@
 import { Component, Input, OnInit,} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BookingModel } from 'src/app/model/booking.model';
+import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { GetchargedamenityService } from 'src/app/services/getchargedamenity.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 
@@ -61,6 +62,7 @@ roomBookingSummary:any;
     private getChargedAmenity: GetchargedamenityService,
     private homeroute: ActivatedRoute,
     private router: Router,
+    private bookingService:BookingServiceService
 
   ) {
 
@@ -391,6 +393,7 @@ console.log("ttt+++",this.totlaCost);
     this. roomBookingSummary.bhk3count=this.room3BHKCount;
     this.roomBookingSummary.extrabed=this.totalBed;
     this.roomBookingSummary.totalamount=this.sumWithDays;
+    this.roomBookingSummary.totalbedamount=this.totalBedAmount;
     this.roomBookingSummary.tax=this.roomData.tax;
     this.roomBookingSummary.maintenance=this.roomData.maintenance;
     this.roomBookingSummary.discount=0;
@@ -398,6 +401,8 @@ console.log("ttt+++",this.totlaCost);
     this.roomBookingSummary.roomtype=this.roomtype;
     
 console.log("___",this.roomBookingSummary)
+this.bookingService.changeMessage(this.roomBookingSummary);
+
 this.router.navigate(["bookingsummary",{"roomBookingSummary":this.roomBookingSummary,
 "checkIn": this.cIn
 

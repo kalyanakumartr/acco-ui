@@ -18,10 +18,10 @@ export class BookingModel {
     totalprice!:string
     childage:any;
     roomtype:any;
-    userid:any;   
-constructor(){
+    userid:any;  
+    totalbedamount:any; 
+    
 
-}
     roombhk!:string
     maintenance:any;
     discount:any    

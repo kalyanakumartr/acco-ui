@@ -21,52 +21,56 @@
                 <tbody>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Your Checkin Date</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{in | date:'dd-MM-yyyy HH:mm a'}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.checkin | date:'dd-MM-yyyy HH:mm a'}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Your Checkout Date</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{out | date:'dd-MM-yyyy HH:mm a'}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.checkout | date:'dd-MM-yyyy HH:mm a'}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Number of Days</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{days}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.noofdays}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Adults Count</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.adults}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Child Count</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.child}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Total no of Rooms {{roomid}} 
+                        <td class="align-middle " style="border-color: #964B00;">Total no of Rooms {{bookingData.bhk2count}} and {{bookingData.bhk3count}}
                         </td>
-                        <td class="align-middle " style="border-color: #964B00;">Rs.{{amount}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">Rs.{{bookingData.totalamount}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Extra Bed</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">Extra Bed Count</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.extrabed}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Total Amount</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Tax</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">Extra Bed Amount</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.totalbedamount}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Discount</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.discount}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Maintenance</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{adult}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.maintenance}}</td>
+                    </tr>
+                     <tr>
+                        <td class="align-middle " style="border-color: #964B00;">Total Amount</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{totalwithalladded}}</td>
+                    </tr> 
+                    <tr>
+                        <td class="align-middle " style="border-color: #964B00;">Tax</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.tax}}</td>
                     </tr>
                     <tr>
                         <td style="border-color: #964B00;" scope="col">Invoice</td>
-                        <td style="border-color: #964B00;" scope="col">Rs.{{days * amount}}</td>
+                        <td style="border-color: #964B00;" scope="col">Rs.{{totalwithalladded}}</td>
                     </tr>
                 </tbody>
             </table>
