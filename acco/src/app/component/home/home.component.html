@@ -119,7 +119,7 @@
                   <div class="col-lg-6">
                     <select formControlName="roomType" >
                       <option value="0" >--Select--</option>
-                      <option  value="1"  *ngFor="let type of visibleRoom">{{ type.roomcategory}}</option>
+                      <option  *ngFor="let type of visibleRoom" [value]="type.roomtypeid" >{{ type.roomcategory}}</option>
 
                     </select>
                   </div>

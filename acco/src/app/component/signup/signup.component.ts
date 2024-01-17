@@ -72,7 +72,11 @@ export class SignupComponent implements OnInit{
        console.log(result);
         // alert("login sucessful"); 
         this.signupForm.reset();
-        Swal.fire(" Registered Successfully");      
+        Swal.fire({
+          text:" Registered Successfully",
+          confirmButtonColor: '#964B00',
+          background:'#efc96a',
+        });      
          this.router.navigate(["login"])
      
     })

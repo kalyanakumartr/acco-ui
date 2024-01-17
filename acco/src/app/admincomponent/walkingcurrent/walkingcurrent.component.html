@@ -213,7 +213,7 @@
                                                 
                                                 <select formControlName="roomtype" type="text" placeholder="RoomType">
                                                     <option value="0">--Select--</option>  
-                                                    <option value="1" *ngFor="let types of visibleRoom">{{types.roomcategory}}</option>
+                                                    <option  *ngFor="let types of visibleRoom" [value]="types.roomtypeid">{{types.roomcategory}}</option>
                                                     <!-- <option value="2">Rooms</option> -->
                                                   </select>
                                             </div>

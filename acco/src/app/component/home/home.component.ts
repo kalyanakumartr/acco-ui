@@ -7,6 +7,8 @@ import { GetroomlistService } from 'src/app/services/getroomlist.service';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
+import { BookingServiceService } from 'src/app/services/booking-service.service';
+import { BookingModel } from 'src/app/model/booking.model';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +35,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
-    private roomTypeService: GetroomtypeService
+    private roomTypeService: GetroomtypeService,
+    public bookingService:BookingServiceService
 
   ) { }
 
@@ -50,7 +53,7 @@ export class HomeComponent implements OnInit {
   finalOutday: any;
   tokenvalue: any;
   visibleRoom: any;
-
+  roomBookingSummary:any;
   ngOnInit(): void {
 
     this.showRoomType();
@@ -82,7 +85,7 @@ export class HomeComponent implements OnInit {
       // checkOutTime: ['', Validators.required],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       child: ['0', [Validators.required, Validators.max(6)]],
-      roomType: ['', Validators.required],
+      roomType: ['1', Validators.required],
     })
 
     // for(let i=1;i<=9;i++){
@@ -169,12 +172,12 @@ export class HomeComponent implements OnInit {
  }
 
 
-  FirstFloor: boolean = true;
-  FirstFloor1: boolean = true;
-  FirstFloor2: boolean = true;
-  ontouch() {
-    this.facilities = !this.facilities
-  }
+  // FirstFloor: boolean = true;
+  // FirstFloor1: boolean = true;
+  // FirstFloor2: boolean = true;
+  // ontouch() {
+  //   this.facilities = !this.facilities
+  // }
 
   // toggleFirstFloor()
   // {
@@ -192,34 +195,42 @@ export class HomeComponent implements OnInit {
   //   this.FirstFloor2 = !this.FirstFloor2;
   // }
 
-  plus() {
-    if (this.inputnumber < 6) {
-      this.inputnumber = this.inputnumber + 1;
-    }
-  }
-  minus() {
-    if (this.inputnumber != 0) {
-      this.inputnumber = this.inputnumber - 1;
-    }
+  // plus() {
+  //   if (this.inputnumber < 6) {
+  //     this.inputnumber = this.inputnumber + 1;
+  //   }
+  // }
+  // minus() {
+  //   if (this.inputnumber != 0) {
+  //     this.inputnumber = this.inputnumber - 1;
+  //   }
 
-  }
-  foodnumber = 0;
-  plus3() {
-    if (this.foodnumber < 12) {
-      this.foodnumber = this.foodnumber + 1;
-    }
-  }
-  minus3() {
-    if (this.foodnumber != 0) {
-      this.foodnumber = this.foodnumber - 1;
-    }
-  }
+  // }
+  // foodnumber = 0;
+  // plus3() {
+  //   if (this.foodnumber < 12) {
+  //     this.foodnumber = this.foodnumber + 1;
+  //   }
+  // }
+  // minus3() {
+  //   if (this.foodnumber != 0) {
+  //     this.foodnumber = this.foodnumber - 1;
+  //   }
+  // }
 
 
   checkAvailability() {
     if (this.tokenvalue == null) {
 
-      Swal.fire(" Please LOGIN if you are Existing user or SIGNUP for Newuser");
+      Swal.fire({
+        text:
+        " Please LOGIN if you are Existing user or SIGNUP for Newuser",
+        // "<h5 style='color:red'>"++"</h5>"
+        confirmButtonColor: '#964B00',
+         background:'#efc96a',
+        
+        
+      })
     } else {
       const formData = this.homeForm.value;
       console.log("chlid:", formData.child, formData.roomType)
@@ -229,8 +240,6 @@ export class HomeComponent implements OnInit {
       var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
       console.log("nnnnn", noofdays);
 
-
-
       this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((res) => {
         console.log(res);
         this.roomData = res[0];
@@ -238,15 +247,28 @@ export class HomeComponent implements OnInit {
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
         this.roomValue;
-        this.router.navigate(["roomtype", {
-          "days": noofdays,
-          "adult": formData.adult,
-          "cIn": formData.checkIn,
-          "cOut": formData.checkOut,
-          "child": formData.child,
-          "roomType": formData.roomType,
-          "childAge": this.ageValue
-        }]);
+        this. roomBookingSummary= new BookingModel();
+    this. roomBookingSummary.checkin=formData.checkIn,
+    this.roomBookingSummary.checkout=formData.checkOut,
+    this.roomBookingSummary.noofdays=noofdays;
+    this.roomBookingSummary.adults=formData.adult;
+    this.roomBookingSummary.child=formData.child;
+    this.roomBookingSummary.childage=this.ageValue;
+    this.roomBookingSummary.roomtype=formData.roomType;
+    
+    console.log("___+++",this.roomBookingSummary)
+    this.bookingService.changeMessage(this.roomBookingSummary);
+        this.router.navigate(["roomtype", 
+        // {
+        //   "days": noofdays,
+        //   "adult": formData.adult,
+        //   "cIn": formData.checkIn,
+        //   "cOut": formData.checkOut,
+        //   "child": formData.child,
+        //   "roomType": formData.roomType,
+        //   "childAge": this.ageValue
+        // }
+      ]);
         
 
       });

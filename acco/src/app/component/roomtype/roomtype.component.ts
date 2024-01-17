@@ -1,5 +1,6 @@
 import { Component, Input, OnInit,} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BookingModel } from 'src/app/model/booking.model';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { GetchargedamenityService } from 'src/app/services/getchargedamenity.service';
@@ -15,16 +16,16 @@ export class RoomtypeComponent implements OnInit {
 
   roomData: any;
   chargedData: any;
-  days: any;
-  adult: any;
-  cIn: any;
-  cOut: any;
+  // days: any;
+  // adult: any;
+  // cIn: any;
+  // cOut: any;
   selectedRow: any;
-  child: any;
-  roomtype: any;
-  roomIds:any;
-  selectedAll: boolean = false;
-  count = 0;
+  // child: any;
+  // roomtype: any;
+  // roomIds:any;
+   selectedAll: boolean = false;
+  // count = 0;
    roomMap = new Map();
    priceMap = new Map();
    bedPrice = new Map();
@@ -34,7 +35,7 @@ export class RoomtypeComponent implements OnInit {
   currentSelected: {} | undefined;
    sumNumber: any;
   value: any;
-  childAge: any = [];
+  // childAge: any = [];
   noOfRoom: any = [];
   bedNo2BHK:any =[] ;
   bedNo3BHK:any =[] ;
@@ -53,16 +54,16 @@ bhk3="";
 tot="";
 occupancy="";
 sumWithDays:any;
-totlaCost:any;
+totalCost:any;
 roomBookingSummary:any;
-
-
+subscription!:Subscription;
+bookingData:any;
   constructor(
     private getroomlistservice: GetroomlistService,
     private getChargedAmenity: GetchargedamenityService,
     private homeroute: ActivatedRoute,
     private router: Router,
-    private bookingService:BookingServiceService
+    public bookingService:BookingServiceService
 
   ) {
 
@@ -78,29 +79,35 @@ roomBookingSummary:any;
     console.log("room:", this.roomData);
     console.log("value:", this.value)
     this.getChargedAmenities();
+    this.subscription =this.bookingService.currentValue.subscribe(data=>{
+      this.bookingData=data;
+      console.log("booked data",this.bookingData);
+      console.log("booked data",this.bookingData.checkin);
 
-    this.homeroute.params.subscribe((params: Params) =>
-      this.days = params[('days')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.adult = params[('adult')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.cIn = params[('cIn')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.cOut = params[('cOut')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.child = params[('child')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.childAge = params[('childAge')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.roomtype = params[('roomType')],);
+     })
 
-    console.log("days:", this.days)
-    console.log("adult:", this.adult)
-    console.log("cIn:", this.cIn)
-    console.log("cOut:", this.cOut)
-    console.log("child:", this.child)
-    console.log("childage:", this.childAge)
-    console.log("roomtype:", this.roomtype)
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.days = params[('days')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.adult = params[('adult')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.cIn = params[('cIn')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.cOut = params[('cOut')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.child = params[('child')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.childAge = params[('childAge')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.roomtype = params[('roomType')],);
+
+    // console.log("days:", this.days)
+    // console.log("adult:", this.adult)
+    // console.log("cIn:", this.cIn)
+    // console.log("cOut:", this.cOut)
+    // console.log("child:", this.child)
+    // console.log("childage:", this.childAge)
+    // console.log("roomtype:", this.roomtype)
 
     // for(let i=1;i<=this.roomData[1].avilable;i++){
     //   this.noOfRoom.push(i);
@@ -308,7 +315,7 @@ roomBookingSummary:any;
     this.sumNumber = v.reduce((acc: number, cur: any) => acc + Number(cur), 0)
     console.log("sum:", this.sumNumber);
   this.totalValue=this.sumNumber;
-  this.sumWithDays =this.sumNumber*this.days;
+  this.sumWithDays =this.sumNumber*this.bookingData.noofdays;
   console.log("sumdays:", this.sumWithDays);
   console.log("tot:", this.totalValue);
    this.sumUpWords="";
@@ -372,10 +379,10 @@ roomBookingSummary:any;
 
   this. totalBed= vbed.reduce((acc: number, cur: any) => acc + Number(cur), 0)
   console.log("sumbed:", this.totalBed);
-  this. totalBedAmount=this.totalBed*299*this.days;
+  this. totalBedAmount=this.totalBed*this.chargedData[0].charges*this.bookingData.noofdays;
   console.log("+++",this. totalBedAmount);
-this.totlaCost=this.sumWithDays+this.totalBedAmount;
-console.log("ttt+++",this.totlaCost);
+this.totalCost=this.sumWithDays+this.totalBedAmount;
+console.log("ttt+++",this.totalCost);
   }
 
 
@@ -383,12 +390,12 @@ console.log("ttt+++",this.totlaCost);
 
     console.log(data)
     this. roomBookingSummary= new BookingModel();
-    this. roomBookingSummary.checkin=this.cIn;
-    this.roomBookingSummary.checkout=this.cOut;
-    this.roomBookingSummary.noofdays=this.days;
-    this.roomBookingSummary.adults=this.adult;
-    this.roomBookingSummary.child=this.child;
-    this.roomBookingSummary.childage=this.childAge;
+    this. roomBookingSummary.checkin=this.bookingData.checkin;
+    this.roomBookingSummary.checkout=this.bookingData.checkout;
+    this.roomBookingSummary.noofdays=this.bookingData.noofdays;
+    this.roomBookingSummary.adults=this.bookingData.adults;
+    this.roomBookingSummary.child=this.bookingData.child;
+    this.roomBookingSummary.childage=this.bookingData.childage;
     this.roomBookingSummary.bhk2count=this.room2BHKCount;
     this. roomBookingSummary.bhk3count=this.room3BHKCount;
     this.roomBookingSummary.extrabed=this.totalBed;
@@ -397,16 +404,18 @@ console.log("ttt+++",this.totlaCost);
     this.roomBookingSummary.tax=this.roomData.tax;
     this.roomBookingSummary.maintenance=this.roomData.maintenance;
     this.roomBookingSummary.discount=0;
-    this.roomBookingSummary.price=this.totlaCost;   
-    this.roomBookingSummary.roomtype=this.roomtype;
+    this.roomBookingSummary.price=this.totalCost;   
+    this.roomBookingSummary.roomtype=this.bookingData.roomtype;
     
 console.log("___",this.roomBookingSummary)
 this.bookingService.changeMessage(this.roomBookingSummary);
 
-this.router.navigate(["bookingsummary",{"roomBookingSummary":this.roomBookingSummary,
-"checkIn": this.cIn
+this.router.navigate(["bookingsummary",
+// {"roomBookingSummary":this.roomBookingSummary,
+// "checkIn": this.cIn
 
-}]);
+// }
+]);
     // this.router.navigate([{"bookingsummary": this.roomBookingSummary
     //   "checkIn": this.cIn,
     //   "checkOut": this.cOut,

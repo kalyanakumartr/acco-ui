@@ -12,30 +12,31 @@ import { BookingServiceService } from 'src/app/services/booking-service.service'
 })
 export class BookingsummaryComponent implements OnInit {
   @Input()
-  getroomdetails!: BookingModel;
+  // getroomdetails!: BookingModel;
  
-  bhk: any;
-  roomid:any;
-  days: any;
-  amount: any;
-  in: any;
-  out: any;
-  adult: any;
-  total: any;
-  child:any;
-  roomtype:any;
-  childAge:any=[];
+  // bhk: any;
+  // roomid:any;
+  // days: any;
+  // amount: any;
+  // in: any;
+  // out: any;
+  // adult: any;
+  // total: any;
+  // child:any;
+  // roomtype:any;
+  // childAge:any=[];
    bookingData:any;
 
   subscription!:Subscription;
   totalwithalladded:any
-
+  roomBookingSummary:any;
   
 
   constructor(
     private homeroute: ActivatedRoute,
     private router: Router,
     public bookingservice:BookingServiceService
+    
   ) { }
 
   ngOnInit(): void {
@@ -59,8 +60,8 @@ export class BookingsummaryComponent implements OnInit {
     //   this.amount = params[('price')],);
     // this.homeroute.params.subscribe((params: Params) =>
     //   this.days = params[('nodays')],);
-    this.homeroute.params.subscribe((params: Params) =>
-      this.in = params[('checkIn')],);
+    // this.homeroute.params.subscribe((params: Params) =>
+    //   this.in = params[('checkIn')],);
     // this.homeroute.params.subscribe((params: Params) =>
     //   this.out = params[('checkOut')],);
     // this.homeroute.params.subscribe((params: Params) =>
@@ -76,7 +77,7 @@ export class BookingsummaryComponent implements OnInit {
     // console.log("name:", this.bhk);
     // console.log("nofdays:", this.days);
     // console.log("amount:", this.amount);
-    console.log("checkIn:", this.in);
+    // console.log("checkIn:", this.in);
     // console.log("checkOut:", this.out);
     // console.log("persons:", this.adult);
     // console.log("child&age:", this.child,this.childAge);
@@ -86,18 +87,39 @@ export class BookingsummaryComponent implements OnInit {
   }
 
   confirmBooking() {
-    this.router.navigate(["stepper", {
-      "roomid": this.roomid,
-      "noofbhk": this.bhk,
-      "days": this.days,
-      "adult": this.adult,
-      "cIn": this.in,
-      "cOut": this.out,
-      "price":this.amount,
-      "child":this.child,
-      "childage":this.childAge,
-      "roomtype":this.roomtype
-    }]);
+    this. roomBookingSummary= new BookingModel();
+    this. roomBookingSummary.checkin=this.bookingData.checkin;
+    this.roomBookingSummary.checkout=this.bookingData.checkout;
+    this.roomBookingSummary.noofdays=this.bookingData.noofdays;
+    this.roomBookingSummary.adults=this.bookingData.adults;
+    this.roomBookingSummary.child=this.bookingData.child;
+    this.roomBookingSummary.childage=this.bookingData.childage;
+    this.roomBookingSummary.bhk2count=this.bookingData.bhk2count;
+    this. roomBookingSummary.bhk3count=this.bookingData.bhk3count;
+    this.roomBookingSummary.extrabed=this.bookingData.totalBed;
+    this.roomBookingSummary.totalamount=this.bookingData.sumWithDays;
+    this.roomBookingSummary.totalbedamount=this.bookingData.totalBedAmount;
+    this.roomBookingSummary.tax=this.bookingData.tax;
+    this.roomBookingSummary.maintenance=this.bookingData.maintenance;
+    this.roomBookingSummary.discount=0;
+    this.roomBookingSummary.price=this.bookingData.price;   
+    this.roomBookingSummary.roomtype=this.bookingData.roomtype;
+    console.log("=====stepper",this.roomBookingSummary)
+    this.bookingservice.changeMessage(this.roomBookingSummary);
+    this.router.navigate(["stepper", 
+    // {
+    //   "roomid": this.roomid,
+    //   "noofbhk": this.bhk,
+    //   "days": this.days,
+    //   "adult": this.adult,
+    //   "cIn": this.in,
+    //   "cOut": this.out,
+    //   "price":this.amount,
+    //   "child":this.child,
+    //   "childage":this.childAge,
+    //   "roomtype":this.roomtype
+    // }
+  ]);
   }
 }
 

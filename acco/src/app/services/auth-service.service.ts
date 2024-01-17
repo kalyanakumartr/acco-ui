@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from '../environments/environments';
 import { UserModel } from '../model/auth.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -40,15 +41,23 @@ export class AuthServiceService {
          this.loggedIn.next(true);
     
         if (this.authresults.usertype == "Admin") {
+          Swal.fire(" Login Successfully");  
           this.router.navigate(["admin"])
           
         } else if (this.authresults.usertype == "Manager") {
+          Swal.fire(" Login Successfully");  
           this.router.navigate(["frontdesk"])
          
         } else {
-         
+          Swal.fire({
+            text:
+            " Login Successfully",
+            confirmButtonColor: '#964B00',
+            background:'#efc96a',
+          });   
           this.router.navigate(["mybookings"])
         }
+
   }
 }))
     

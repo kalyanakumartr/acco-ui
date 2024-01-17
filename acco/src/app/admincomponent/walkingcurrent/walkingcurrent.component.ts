@@ -83,7 +83,7 @@ export class WalkingcurrentComponent implements OnInit {
       to:['',Validators.required,],
       adult: ['1', [Validators.required,Validators.pattern("^[1-9][0-9]*$")]],
       children:['0',[Validators.required,Validators.max(6)]],
-      roomtype:['',Validators.required,],
+      roomtype:['1',Validators.required,],
       roleid:3
      
       
