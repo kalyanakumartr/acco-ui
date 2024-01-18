@@ -77,7 +77,8 @@ bookingData:any;
   ngOnInit(): void {
 
     console.log("room:", this.roomData);
-    console.log("value:", this.value)
+    console.log("tax:", this.roomData[2].tax);
+    // console.log("value:", this.value)
     this.getChargedAmenities();
     this.subscription =this.bookingService.currentValue.subscribe(data=>{
       this.bookingData=data;
@@ -285,14 +286,45 @@ bookingData:any;
          })
     console.log("length",Object.keys(roomArray[0]).length);
     console.log("rraaa",roomArray[0]);
-  
-  this.room2BHK=roomKeys[0];
-  this.room2BHKCount=roomValues[0];
-  this.room3BHK=roomKeys[1];
-  this.room3BHKCount=roomValues[1];
-  this.roomOccupancy=roomKeys[2];
-  this.roomOccuCount=roomValues[2];
-  
+   
+    this.roomMap.forEach((value: string, key: string)=> {
+      console.log(":::::",key,"++",value,)
+      switch ( key) {
+        case '2BHK':
+      // if(roomArray[0][key] == '2BHK' ) {
+        this.room2BHK=key;
+        this.room2BHKCount=value;
+        break;
+      // }
+      case '3BHK' :
+      // else if(roomArray[0][key] == '3BHK' ){
+        this.room3BHK=key;
+        this.room3BHKCount=value;
+        break;
+      // }else{
+      case  'Single Occupancy':
+        this.room2BHK=key;
+        this.room2BHKCount=value;
+        break;
+      case  'Double occupancy':
+          this.room2BHK=key;
+          this.room2BHKCount=value;
+          break;
+      case  'Triple Occupance ':
+            this.room2BHK=key;
+            this.room2BHKCount=value;
+            break;
+      }
+         })
+  // this.room2BHK=roomKeys[0];
+  // this.room2BHKCount=roomValues[0];
+  // this.room3BHK=roomKeys[1];
+  // this.room3BHKCount=roomValues[1];
+  // this.roomOccupancy=roomKeys[2];
+  // this.roomOccuCount=roomValues[2];
+  console.log("2bhk",this.room2BHKCount);
+  console.log("3bhk",this.room3BHKCount);
+  console.log("occu",this.roomOccuCount);
   // this.sumUpWords="";
   // if(Object.keys(roomArray[0]).length=1){
   //      this.sumUpWords="For"+ this.room2BHKCount+ "room of" + this.room2BHK;
@@ -387,7 +419,7 @@ console.log("ttt+++",this.totalCost);
 
 
   sendbookeddata(data: any) {
-
+   console.log("tax",this.roomData.tax) ;
     console.log(data)
     this. roomBookingSummary= new BookingModel();
     this. roomBookingSummary.checkin=this.bookingData.checkin;
@@ -398,11 +430,11 @@ console.log("ttt+++",this.totalCost);
     this.roomBookingSummary.childage=this.bookingData.childage;
     this.roomBookingSummary.bhk2count=this.room2BHKCount;
     this. roomBookingSummary.bhk3count=this.room3BHKCount;
-    this.roomBookingSummary.extrabed=this.totalBed;
+    this.roomBookingSummary.extrabed=this.totalBed==undefined?0:this.totalBed;
     this.roomBookingSummary.totalamount=this.sumWithDays;
-    this.roomBookingSummary.totalbedamount=this.totalBedAmount;
-    this.roomBookingSummary.tax=this.roomData.tax;
-    this.roomBookingSummary.maintenance=this.roomData.maintenance;
+    this.roomBookingSummary.totalbedamount=this.totalBedAmount==undefined?0:this.totalBedAmount;
+    this.roomBookingSummary.tax=this.roomData[0].tax;
+    this.roomBookingSummary.maintenance=this.roomData[0].maintenance;
     this.roomBookingSummary.discount=0;
     this.roomBookingSummary.price=this.totalCost;   
     this.roomBookingSummary.roomtype=this.bookingData.roomtype;

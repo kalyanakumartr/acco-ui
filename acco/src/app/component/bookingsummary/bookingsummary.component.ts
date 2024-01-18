@@ -98,7 +98,7 @@ export class BookingsummaryComponent implements OnInit {
     this. roomBookingSummary.bhk3count=this.bookingData.bhk3count;
     this.roomBookingSummary.extrabed=this.bookingData.totalBed;
     this.roomBookingSummary.totalamount=this.bookingData.sumWithDays;
-    this.roomBookingSummary.totalbedamount=this.bookingData.totalBedAmount;
+    this.roomBookingSummary.totalbedamount=this.bookingData.totalbedamount;
     this.roomBookingSummary.tax=this.bookingData.tax;
     this.roomBookingSummary.maintenance=this.bookingData.maintenance;
     this.roomBookingSummary.discount=0;

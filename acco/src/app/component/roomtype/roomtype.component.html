@@ -190,8 +190,8 @@
                                       </ng-container> 
                               
                             </div>
-                            <P style="font-size: smaller;"*ngIf="i.headcount >2">Rs.{{chargedData[0].charges}} per Bed per Day</P>
-                            <P style="font-size: smaller;"*ngIf="i.headcount >2">Maximum one extra bed for one room</P>
+                            <P style="font-size: smaller;"*ngIf="i.name== '2BHK' || i.name== '3BHK'">Rs.{{chargedData[0].charges}} per Bed per Day</P>
+                            <P style="font-size: smaller;"*ngIf="i.name== '2BHK' || i.name== '3BHK'">Maximum one extra bed for one room</P>
                     <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" > &nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- scope="col" rowspan="2" -->
                         <label> {{sumUpWords}}<br> {{bhk3}} <br> {{occupancy}} <br> {{tot}}</label><br>

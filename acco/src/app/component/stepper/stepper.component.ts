@@ -171,8 +171,8 @@ export class StepperComponent {
     // book.roomid=this.roomid;
     // book.roombhk=this.bhk;
     book.userid=this.userId;
-    book.bhk2count=this.bookingData.bhk2count;
-    book.bhk3count=this.bookingData.bhk3count;
+    book.bhk2count=this.bookingData.bhk2count==undefined?0:this.bookingData.bhk2count;
+    book.bhk3count=this.bookingData.bhk3count==undefined?0:this.bookingData.bhk3count;
     book.firstname=this.loginData.username;
     book.email=this.loginData.email
     book.phonenumber=this.loginData.phonenumber;    
@@ -180,7 +180,7 @@ export class StepperComponent {
     book.checkout=this.bookingData.checkout;
     book.adults= this.bookingData.adults;
     book.child=this.bookingData.child;
-    book.childage=this.bookingData.childage;
+    book.childage=this.bookingData.childage==undefined?0:this.bookingData.childage;
     book.roomtype=this.bookingData.roomtype;
     book.noofdays=this.bookingData.noofdays;
     book.price=this.bookingData.price;
@@ -197,7 +197,12 @@ export class StepperComponent {
     this.bookingService.booking(book).    
     subscribe( result=>{
             console.log(result);              
-        Swal.fire(" Booked Successfully");
+        Swal.fire({
+          text:
+          " Booked Successfully",          
+          confirmButtonColor: '#964B00',
+          background:'#efc96a',
+      });
         this.router.navigate(["home"]);
     })
   }
