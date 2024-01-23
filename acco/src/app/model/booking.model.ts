@@ -20,7 +20,7 @@ export class BookingModel {
     roomtype!:string;
     userid:any;  
     totalbedamount:any; 
-    
+    bookingid:any;
 
     roombhk!:string
     maintenance:any;

@@ -41,11 +41,20 @@ export class AuthServiceService {
          this.loggedIn.next(true);
     
         if (this.authresults.usertype == "Admin") {
-          Swal.fire(" Login Successfully");  
+          Swal.fire({
+            text:
+            " Login Successfully",
+            confirmButtonColor: '#964B00',
+            background:'#efc96a',
+          });  
           this.router.navigate(["admin"])
           
         } else if (this.authresults.usertype == "Manager") {
-          Swal.fire(" Login Successfully");  
+          Swal.fire({
+            text:
+            " Login Successfully",
+            confirmButtonColor: '#964B00',
+            background:'#efc96a',});  
           this.router.navigate(["frontdesk"])
          
         } else {

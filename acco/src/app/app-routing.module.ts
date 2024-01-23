@@ -23,6 +23,7 @@ import { ChangepasswordComponent } from './component/changepassword/changepasswo
 import { CancelbookingComponent } from './component/cancelbooking/cancelbooking.component';
 import { WalkingcurrentComponent } from './admincomponent/walkingcurrent/walkingcurrent.component';
 import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfuture.component';
+import { FrontdeskselectroomsComponent } from './admincomponent/frontdeskselectrooms/frontdeskselectrooms.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path:'cancelbooking',component:CancelbookingComponent},
   {path:'walkingcurrent',component:WalkingcurrentComponent},
   {path:'walkingfuture',component:WalkingfutureComponent},
+  {path:'selectrooms',component:FrontdeskselectroomsComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

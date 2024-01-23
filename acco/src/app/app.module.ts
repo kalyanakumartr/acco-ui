@@ -39,6 +39,8 @@ import { ChangepasswordComponent } from './component/changepassword/changepasswo
 import { CancelbookingComponent } from './component/cancelbooking/cancelbooking.component';
 import { WalkingcurrentComponent } from './admincomponent/walkingcurrent/walkingcurrent.component';
 import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfuture.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FrontdeskselectroomsComponent } from './admincomponent/frontdeskselectrooms/frontdeskselectrooms.component';
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfu
     ChangepasswordComponent,
     CancelbookingComponent,
     WalkingcurrentComponent,
-    WalkingfutureComponent
+    WalkingfutureComponent,
+    FrontdeskselectroomsComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfu
     BrowserAnimationsModule,
     MatRadioModule,
     MatStepperModule,
-    MatButtonModule
+    MatButtonModule,
+    NgMultiSelectDropDownModule.forRoot()
    
     
   ],
