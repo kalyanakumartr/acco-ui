@@ -14,6 +14,7 @@ export class FrontdeskselectroomsComponent {
   checkout:any;
   roomsListData:any
   dropdownList :any= [];
+  dropdownList1 :any= [];
 selectedItems :any=[];
 dropdownSettings :any= {};
   constructor( private homeroute: ActivatedRoute,
@@ -66,15 +67,22 @@ dropdownSettings :any= {};
   getroomslist(){
      console.log("daaaaaa",this.bookingid,this.checkin,this.checkout);
     let tmp : any =[];
+    let tmp1 : any =[];
     this.getguestdetail.getroomsList(this.bookingid,this.checkin,this.checkout).subscribe(res=>{
       console.table("0000",res[0]);
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
-      for(let i=0; i < this.roomsListData.length; i++) {
+      for(let i=0; i < 1; i++) {
         tmp.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
-        
+        // tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
       }
-      return this.dropdownList = tmp;     
+      this.dropdownList = tmp
+      for(let i=1; i <=1; i++) {
+       
+        tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
+      }
+      // return this.dropdownList = tmp , this.dropdownList1 = tmp1; ;     
+      this.dropdownList1 = tmp1;  
       
     });
   //   console.log("dropdownList",this.dropdownList); 

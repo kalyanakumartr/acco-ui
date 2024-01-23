@@ -86,6 +86,7 @@ logged(){
 }
 
   logout() {
+    
     localStorage.removeItem('token');
     this.router.navigate(["home"]) 
   }

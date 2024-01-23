@@ -3,13 +3,13 @@
     <div class="container">
         <form>
             <div class="form-group row">
-                <label for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
+                <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
                 <div class="col-sm-5">
                   <input type="text" readonly class="form-control-plaintext" id="bookingid" value={{bookingid}}>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Select Rooms</label>
+                <label  style="color:#964B00" for="inputPassword" class="col-sm-2 col-form-label">Select Rooms2BHK</label>
                 <div class="col-sm-5">
                   <!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> -->
                   <ng-multiselect-dropdown
@@ -23,14 +23,30 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="Proof" class="col-sm-2 col-form-label">Update Proof</label>
+                <label style="color:#964B00" for="inputPassword" class="col-sm-2 col-form-label">Select Rooms3BHK</label>
+                <div class="col-sm-5">
+                  <!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> -->
+                  <ng-multiselect-dropdown
+                    [placeholder]="'selectrooms'"
+                     [data]="dropdownList1"
+                    [(ngModel)]="selectedItems"
+                    [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)" 
+                    >
+                    </ng-multiselect-dropdown>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label style="color:#964B00" for="Proof" class="col-sm-2 col-form-label">Update Proof</label>
                 <div class="col-sm-1">
-                     <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i> 
-                 
                     
-                  
+                    <!-- <input type="text"  class="form-control-plaintext" > -->
+                    <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i>                  
+                 
                 </div>
               </div>
         </form>
+        <button  type="submit" class="btn btn-light btn-elevate mr-2 margin-left" style="color: #964B00;background-color:#efc96a ;">
+            Submit</button>
 
     </div>
