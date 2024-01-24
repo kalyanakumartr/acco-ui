@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../environments/environments';
 import { GetRoomList } from '../model/getroomlist.model';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +24,12 @@ export class GetroomlistService {
   setData(roomData: any) { 
     this.apiRoom.next(roomData)
   }
+
+  roomlogic(adult:any):Observable<any>{
+    console.log("I am roomlogic"); 
+
+    return this.http.get("http://localhost:3001/booking/getlogic?adult="+adult);
+
+  }
+
 }

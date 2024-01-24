@@ -1,0 +1,45 @@
+<div class="outer">
+
+    <app-navbar></app-navbar>
+    <div class="container mt-0">
+
+        <table class="table table-borderless text-center ">
+            <thead>
+                <tr >
+                    <th class="align-middle" rowspan="2" >Room Choices</th>
+                    <th class="align-middle"  rowspan="2" >Occupancy</th>
+                    <th class="align-middle"  rowspan="2">No.of Rooms</th>
+                    <th class="align-middle"  colspan="3">Flat Type</th>
+                    <th class="align-middle"  rowspan="2">Extra Bed</th>
+                    <th class="align-middle"  rowspan="2">Price</th>
+                    <th class="align-middle"  rowspan="2">Total Amount</th>
+                    <th class="align-middle"  rowspan="2">Action</th>
+                </tr>
+                <tr>
+                    
+                    <th>1BHK</th>
+                    <th>2BHK</th>
+                    <th>3BHK</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
+                    <td>{{i.optiontype=="R1"?"Our Recommendation":"Other Choices"}}</td>
+                    <td>{{i.adult}}</td>
+                    <td>{{i.noofrooms}}</td>
+                    <td>{{i.bhktype1}}</td>
+                    <td>{{i.bhktype2}}</td>
+                    <td>{{i.bhktype3}}</td>
+                    <td>{{i.bed}}</td>
+                    <td>&#8377;&nbsp;{{i.Price}}</td>
+                    <td>&#8377;&nbsp;   {{i.totalamount}}</td>
+                   <td> <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
+                    class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

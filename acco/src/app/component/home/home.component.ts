@@ -240,9 +240,10 @@ export class HomeComponent implements OnInit {
       var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
       console.log("nnnnn", noofdays);
 
-      this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((res) => {
-        console.log(res);
-        this.roomData = res[0];
+      // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((res) => {
+        this.getroomlistservice.roomlogic(formData.adult).subscribe((result)=>{
+        console.log(result);
+        this.roomData = result;
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
@@ -258,7 +259,7 @@ export class HomeComponent implements OnInit {
     
     console.log("___+++",this.roomBookingSummary)
     this.bookingService.changeMessage(this.roomBookingSummary);
-        this.router.navigate(["roomtype", 
+        this.router.navigate(["roomlogic", 
         // {
         //   "days": noofdays,
         //   "adult": formData.adult,
