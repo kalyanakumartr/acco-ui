@@ -39,7 +39,7 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">Email<span class="text-danger">*</span></label>
-                                                <input formControlName="email"type="text" placeholder="Email">
+                                                <input #email formControlName="email"type="text" placeholder="Email">
                                             </div>
                                             <small *ngIf="walkingCurrentForm.controls['email'].dirty && walkingCurrentForm.hasError('required','email')"
                                                 class="text-danger form-inline mt-0 ml-5">*email is required</small>
@@ -52,7 +52,9 @@
                                             <div class="input-field">
                                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                                 <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label>
-                                                <input formControlName="phonenumber"type="text" placeholder="PhoneNumber">
+                                                <input #phone formControlName="phonenumber"type="text" placeholder="PhoneNumber">
+                                                <span> <i style="font-size: 20px; margin-top: 20px;margin-left: 5px;color:#964B00" class="fa sharp fa-solid fa-check" (click)="checkemail(phone.value)"></i></span>
+
                                             </div>
                                             <small *ngIf="walkingCurrentForm.controls['phonenumber'].dirty && walkingCurrentForm.hasError('required','phonenumber')"
                                                 class="text-danger form-inline mt-0 ml-5">*phonenumber is required</small>
