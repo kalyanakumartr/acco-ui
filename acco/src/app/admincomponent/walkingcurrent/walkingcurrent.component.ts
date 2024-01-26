@@ -29,11 +29,13 @@ export class WalkingcurrentComponent implements OnInit {
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
   userData: any;
+  walkingRoomCheck!: FormGroup;
 
   constructor(private fb: FormBuilder,
     private roomTypeService: GetroomtypeService,
     private registerService: RegisterServiceService,
-    private emailservice: EmailcheckService
+    private emailservice: EmailcheckService,
+    private router:Router
 
   ) { }
 
@@ -82,16 +84,26 @@ export class WalkingcurrentComponent implements OnInit {
       state: ['', Validators.required,],
       country: ['', Validators.required,],
       pincode: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      // from: ['', Validators.required,],
+      // to: ['', Validators.required,],
+      // adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
+      // children: ['0', [Validators.required, Validators.max(6)]],
+      // roomtype: ['1', Validators.required,],
+      // roleid: 3
+    });
+
+    this.walkingRoomCheck =this.fb.group({
       from: ['', Validators.required,],
       to: ['', Validators.required,],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       children: ['0', [Validators.required, Validators.max(6)]],
       roomtype: ['1', Validators.required,],
       roleid: 3
-    });
+
+    })
 
   }
-
+  
 
 
   walkingCurrentFormProcess() {
@@ -106,18 +118,11 @@ export class WalkingcurrentComponent implements OnInit {
     this.newuser.city = formData.city;
     this.newuser.state = formData.state;
     this.newuser.country = formData.country;
-    this.newuser.roleid = formData.roleid;
      this.newuser.username = "";
     this. newuser.password = "";
      this. newuser.cpassword = "";
-    
-
-    this.booking.checkin = formData.from;
-    this.booking.checkout = formData.to;
-    this.booking.adults = formData.adult;
-    this.booking.child = formData.children;
-    this.booking.roomtype = formData.roomtype;
-
+     this.newuser.roleid=3;
+ 
     if (this.walkingCurrentForm.valid) {
 
       console.log("123",this.newuser);
@@ -130,6 +135,18 @@ export class WalkingcurrentComponent implements OnInit {
         })
     }
   }
+  walkingRoomCheckProcess(){
+    const formData = this.walkingRoomCheck.value;
+    this.booking.checkin = formData.from;
+    this.booking.checkout = formData.to;
+    this.booking.adults = formData.adult;
+    this.booking.child = formData.children;
+    this.booking.roomtype = formData.roomtype;
+    if (this.walkingRoomCheck.valid) {
+      console.log("123",this.booking);
+      this.router.navigate(["roomlogic"])
+  }
+}
 
   // Swal.fire("Success");
   // if(this.walkingcurrentForm.valid){
