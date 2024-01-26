@@ -46,6 +46,7 @@ export class BookingsummaryComponent implements OnInit {
       this.bookingData=data;
       console.log("booked data",this.bookingData);
       console.log("booked data",this.bookingData.checkin);
+      console.log("booked amount",this.bookingData.totalamount);
 
      })
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookingModel } from 'src/app/model/booking.model';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 
@@ -10,15 +11,16 @@ import { GetroomlistService } from 'src/app/services/getroomlist.service';
 })
 export class RoomlogicComponent {
 
-  roomData:any
+  roomData: any
   subscription: any;
-  bookingData:any;
-  optiontype:any;
+  bookingData: any;
+  optiontype: any;
+  roomBookingSummary:any;
 
- constructor(
-    private getroomlistservice: GetroomlistService,   
+  constructor(
+    private getroomlistservice: GetroomlistService,
     private router: Router,
-    public bookingService:BookingServiceService
+    public bookingService: BookingServiceService
 
   ) {
     getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)
@@ -27,21 +29,34 @@ export class RoomlogicComponent {
   ngOnInit(): void {
 
     console.log("room:", this.roomData);
-    this.subscription =this.bookingService.currentValue.subscribe(data=>{
-      this.bookingData=data;
-      console.log("booked data",this.bookingData);
-      console.log("booked data",this.bookingData.checkin);
+    this.subscription = this.bookingService.currentValue.subscribe(data => {
+      this.bookingData = data;
+      console.log("booked data", this.bookingData);
+      console.log("booked data", this.bookingData.checkin);
 
-     })
-     this. optiontype = this.roomData.optiontype == "R1" ? "Our Recommendation" :"Your Choice" ;
-     }
+    })
+    this.optiontype = this.roomData.optiontype == "R1" ? "Our Recommendation" : "Your Choice";
+  }
 
 
-     sendbookeddata(data:any){
-      console.log("recieved",data)
-     }
-    }
+  sendbookeddata(data: any) {
+    console.log("recieved", data);
+    console.log("recieved", data.totalamount);
+    this. roomBookingSummary= new BookingModel();
+    this. roomBookingSummary.checkin=this.bookingData.checkin;
+    this.roomBookingSummary.checkout=this.bookingData.checkout;
+    this.roomBookingSummary.noofdays=this.bookingData.noofdays;
+    this.roomBookingSummary.adults=this.bookingData.adults;
+    this.roomBookingSummary.child=this.bookingData.child;
+    this.roomBookingSummary.childage=this.bookingData.childage;
+    this.roomBookingSummary.totalamount=data.totalamount;
+    this.bookingService.changeMessage(this.roomBookingSummary);
+    this.router.navigate(["bookingsummary",
 
-    
+    ]);
+  }
+}
+
+
 
 

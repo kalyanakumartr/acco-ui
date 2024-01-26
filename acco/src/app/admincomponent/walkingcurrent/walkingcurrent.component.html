@@ -45,6 +45,7 @@
                                                 class="text-danger form-inline mt-0 ml-5">*email is required</small>
                                                 <small *ngIf="walkingCurrentForm.controls['email'].dirty && walkingCurrentForm.hasError('pattern','email')"
                                                 class="text-danger form-inline mt-0 ml-5">*email is invalid</small>
+                                                
                                         </div>
                                    </div>
                                     <div class="col-md-4">
@@ -54,7 +55,6 @@
                                                 <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label>
                                                 <input #phone formControlName="phonenumber"type="text" placeholder="PhoneNumber">
                                                 <span> <i style="font-size: 20px; margin-top: 20px;margin-left: 5px;color:#964B00" class="fa sharp fa-solid fa-check" (click)="checkemail(phone.value)"></i></span>
-
                                             </div>
                                             <small *ngIf="walkingCurrentForm.controls['phonenumber'].dirty && walkingCurrentForm.hasError('required','phonenumber')"
                                                 class="text-danger form-inline mt-0 ml-5">*phonenumber is required</small>

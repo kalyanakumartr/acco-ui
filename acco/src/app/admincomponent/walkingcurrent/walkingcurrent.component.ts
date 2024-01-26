@@ -88,9 +88,6 @@ export class WalkingcurrentComponent implements OnInit {
       children: ['0', [Validators.required, Validators.max(6)]],
       roomtype: ['1', Validators.required,],
       roleid: 3
-
-
-
     });
 
   }
@@ -109,8 +106,11 @@ export class WalkingcurrentComponent implements OnInit {
     this.newuser.city = formData.city;
     this.newuser.state = formData.state;
     this.newuser.country = formData.country;
-    // this.newuser.username = formData.username;
     this.newuser.roleid = formData.roleid;
+     this.newuser.username = "";
+    this. newuser.password = "";
+     this. newuser.cpassword = "";
+    
 
     this.booking.checkin = formData.from;
     this.booking.checkout = formData.to;
@@ -120,13 +120,13 @@ export class WalkingcurrentComponent implements OnInit {
 
     if (this.walkingCurrentForm.valid) {
 
-      console.log(this.newuser);
+      console.log("123",this.newuser);
       console.log(this.booking);
 
       this.registerService.register(this.newuser).
         subscribe(result => {
           console.log(result);
-          this.walkingCurrentForm.reset();
+           this.walkingCurrentForm.reset();
         })
     }
   }
@@ -153,9 +153,11 @@ export class WalkingcurrentComponent implements OnInit {
   checkemail(value: any) {
     console.log("email", value)
     this.walkingCurrentForm.reset();
+    Swal.fire(" phonenumber is  not register");
     this.emailservice.emailverify(value).subscribe((result) => {
       this.userData = result[0];
       console.log("userdata",this.userData)
+      // Swal.fire(" phonenumber is  register");
       this.walkingCurrentForm.controls['email'].setValue(this.userData.email);
       this.walkingCurrentForm.controls['firstname'].setValue(this.userData.firstname);
       this.walkingCurrentForm.controls['lastname'].setValue(this.userData.lastname);
@@ -165,6 +167,8 @@ export class WalkingcurrentComponent implements OnInit {
       this.walkingCurrentForm.controls['state'].setValue(this.userData.state);
       this.walkingCurrentForm.controls['country'].setValue(this.userData.country);
       this.walkingCurrentForm.controls['pincode'].setValue(this.userData.pincode);
+      this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
+      Swal.fire(" phonenumber is  register");
 
 
     })
