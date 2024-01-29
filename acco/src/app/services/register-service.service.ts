@@ -16,9 +16,9 @@ export class RegisterServiceService {
     return this.http.post<UserModel>(`${environment.registerURL}`, user);
   }
 
-  // registerWalking(user:UserModel):Observable<UserModel>{
-  //   console.log("I am walkingregister");    
-  //   return this.http.post<UserModel>(`${environment.registerURL}`, user);
-  // }
+  updateUser(user:UserModel):Observable<UserModel>{
+    console.log("I am updateuser");    
+    return this.http.post<UserModel>("http://localhost:3001/users/updateuser", user);
+  }
   
 }

@@ -47,7 +47,11 @@ export class ChangepasswordComponent implements OnInit{
          console.log(result);
          
           this.passwordForm.reset();
-          Swal.fire( this.res.message);      
+          Swal.fire({
+            text:result.message,
+            confirmButtonColor: '#964B00',
+            background:'#efc96a',
+          });    
           //  this.router.navigate(["login"])
        
       })

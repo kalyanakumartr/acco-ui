@@ -53,7 +53,31 @@ this.getUser(this.userid);
 
 }
 
+
+
+getUser(userid:any){
+  this.getuserservice.getUserById(userid)
+  // .subscribe((res)=>{
+    .subscribe((result)=>{
+    console.log("getuser:",result);
+   this.getUserData=result[0];
+   console.log("email",this.getUserData.email)
+this.updateForm.controls['email'].setValue(this.getUserData.email);
+this.updateForm.controls['firstname'].setValue(this.getUserData.firstname);
+this.updateForm.controls['lastname'].setValue(this.getUserData.lastname);
+this.updateForm.controls['address1'].setValue(this.getUserData.address1);
+this.updateForm.controls['address2'].setValue(this.getUserData.address2);
+this.updateForm.controls['city'].setValue(this.getUserData.city);
+this.updateForm.controls['country'].setValue(this.getUserData.country);
+this.updateForm.controls['state'].setValue(this.getUserData.state);
+this.updateForm.controls['phonenumber'].setValue(this.getUserData.phonenumber);
+this.updateForm.controls['username'].setValue(this.getUserData.username);
+  });
+}
+
+
 updateProcess(){
+  console.log("aaaaaaaaa")
   const updateuser = new UserModel() ;
   const formData = this.updateForm.value;
   updateuser.userid=this.loginData.userid;
@@ -69,32 +93,25 @@ updateProcess(){
   updateuser.username = formData.username;
  
   // Swal.fire("Success");
-if(this.updateForm.valid){
-console.log(updateuser);
+// if(this.updateForm.valid){
+  console.log("updateeeeeee",);
+console.log("update",updateuser);
 
-this.registerService.register(updateuser).    
+this.registerService.updateUser(updateuser).    
 subscribe( result=>{
  
    console.log(result);
     // alert("login sucessful"); 
     this.updateForm.reset();
-    Swal.fire(" Registered Successfully");      
+    Swal.fire({
+      text:result.message,
+      confirmButtonColor: '#964B00',
+      background:'#efc96a',
+    });      
     //  this.router.navigate(["login"])
  
 })
-}
+// }
 }
 
-getUser(userid:any){
-  this.getuserservice.getUserById(userid)
-  // .subscribe((res)=>{
-    .subscribe((result)=>{
-    console.log("getuser:",result);
-   this.getUserData=result;
-   this.register=new FormGroup({
-    firstname: new FormControl(this.getUserData.firstname),
-   })
-console.log("register",this.register)
-  });
-}
 }
