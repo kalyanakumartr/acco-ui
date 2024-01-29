@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {  IDropdownSettings,  } from 'ng-multiselect-dropdown';
+import { FileuploadService } from 'src/app/services/fileupload.service';
 import { GetguestdetailService } from 'src/app/services/getguestdetail.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-frontdeskselectrooms',
@@ -17,9 +19,12 @@ export class FrontdeskselectroomsComponent {
   dropdownList1 :any= [];
 selectedItems :any=[];
 dropdownSettings :any= {};
+file: File  | null= null;
+
   constructor( private homeroute: ActivatedRoute,
     private getguestdetail:GetguestdetailService,
     private router: Router,
+    private fileUploadService:FileuploadService,
      ){
    
     
@@ -73,13 +78,13 @@ dropdownSettings :any= {};
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
       for(let i=0; i < 1; i++) {
-        tmp.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
+        tmp.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnoss });
         // tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
       }
       this.dropdownList = tmp
       for(let i=1; i <=1; i++) {
        
-        tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
+        tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnoss });
       }
       // return this.dropdownList = tmp , this.dropdownList1 = tmp1; ;     
       this.dropdownList1 = tmp1;  
@@ -87,4 +92,23 @@ dropdownSettings :any= {};
     });
   //   console.log("dropdownList",this.dropdownList); 
    }
+
+   onChange(event:any) { 
+    this.file = event.target.files[0]; 
+} 
+   uploadFileToActivity() {
+    console.log("file to upload")
+    this.fileUploadService.fileUpload(this.file!).subscribe(data => {
+      console.log("file000",data);
+      Swal.fire({
+        text:data.message,
+        confirmButtonColor: '#964B00',
+        background:'#efc96a',
+      });
+      // }, error => {
+      //   console.log(error);
+        
+      // });
+    });
+  }
 }

@@ -23,7 +23,7 @@ export class WalkingcurrentComponent implements OnInit {
   submitted = false;
   visibleRoom: any;
   formData: any;
-  newuser = new UserModel();
+  walkinguser = new UserModel();
   booking = new BookingModel();
 
   Todaydate = "2023-03-12"
@@ -109,32 +109,38 @@ export class WalkingcurrentComponent implements OnInit {
   walkingCurrentFormProcess() {
 
     const formData = this.walkingCurrentForm.value;
-    this.newuser.firstname = formData.firstname;
-    this.newuser.lastname = formData.lastname;
-    this.newuser.email = formData.email;
-    this.newuser.phonenumber = formData.phonenumber;
-    this.newuser.address1 = formData.address1;
-    this.newuser.address2 = formData.address2;
-    this.newuser.city = formData.city;
-    this.newuser.state = formData.state;
-    this.newuser.country = formData.country;
-     this.newuser.username = "";
-    this. newuser.password = "";
-     this. newuser.cpassword = "";
-     this.newuser.roleid=3;
+    this.walkinguser.firstname = formData.firstname;
+    this.walkinguser.lastname = formData.lastname;
+    this.walkinguser.email = formData.email;
+    this.walkinguser.phonenumber = formData.phonenumber;
+    this.walkinguser.address1 = formData.address1;
+    this.walkinguser.address2 = formData.address2;
+    this.walkinguser.city = formData.city;
+    this.walkinguser.state = formData.state;
+    this.walkinguser.country = formData.country;
+    this.walkinguser.pincode = formData.pincode;
+    this.walkinguser.username = "";
+    this.walkinguser.password = "";
+    this.walkinguser.cpassword = "";
+    this.walkinguser.roleid=3;
  
-    if (this.walkingCurrentForm.valid) {
-
-      console.log("123",this.newuser);
-      console.log(this.booking);
-
-      this.registerService.register(this.newuser).
-        subscribe(result => {
-          console.log(result);
-           this.walkingCurrentForm.reset();
+     if (this.walkingCurrentForm.valid) {
+      console.log("123",this.walkinguser);
+         this.registerService.register(this.walkinguser).
+        subscribe(res => {
+          console.log("res",res); 
+          let result=res;        
+            this.walkingCurrentForm.reset();
+            Swal.fire({
+              text:res.message,
+              confirmButtonColor: '#964B00',
+              background:'#efc96a',
+            }); 
         })
-    }
+     }
   }
+
+
   walkingRoomCheckProcess(){
     const formData = this.walkingRoomCheck.value;
     this.booking.checkin = formData.from;
@@ -142,6 +148,7 @@ export class WalkingcurrentComponent implements OnInit {
     this.booking.adults = formData.adult;
     this.booking.child = formData.children;
     this.booking.roomtype = formData.roomtype;
+    console.log("booking",this.booking);
     if (this.walkingRoomCheck.valid) {
       console.log("123",this.booking);
       this.router.navigate(["roomlogic"])

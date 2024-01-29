@@ -15,5 +15,10 @@ export class RegisterServiceService {
     console.log("I am register");    
     return this.http.post<UserModel>(`${environment.registerURL}`, user);
   }
+
+  // registerWalking(user:UserModel):Observable<UserModel>{
+  //   console.log("I am walkingregister");    
+  //   return this.http.post<UserModel>(`${environment.registerURL}`, user);
+  // }
   
 }

@@ -36,9 +36,9 @@ export class SignupComponent implements OnInit{
        country: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
       phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
       email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      username:['',[Validators.required,Validators.pattern("^[A-Za-z0-9-,@.]{3,15}$")]],
-      password: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]{3,8}$")]],
-      confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]{3,8}$")]],
+      username:['',[Validators.required,Validators.pattern("^[A-Za-z0-9-,@.]$")]],
+      password: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]$")]],
+      confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]$")]],
       roleid:3
     
      
@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit{
         // alert("login sucessful"); 
         this.signupForm.reset();
         Swal.fire({
-          text:" Registered Successfully",
+          text:result.message,
           confirmButtonColor: '#964B00',
           background:'#efc96a',
         });      
