@@ -40,18 +40,28 @@
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.child}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Total no of Rooms {{bookingData.bhk2count}} and {{bookingData.bhk3count}}
+                        <td class="align-middle " style="border-color: #964B00;">1BHKCount
                         </td>
-                        <td class="align-middle " style="border-color: #964B00;">Rs.{{bookingData.totalamount}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.bhk1count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle " style="border-color: #964B00;">2BHKCount
+                        </td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.bhk2count}}</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle " style="border-color: #964B00;">3BHKCount
+                        </td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.bhk3count}}</td>
                     </tr>
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Extra Bed Count</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.extrabed}}</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td class="align-middle " style="border-color: #964B00;">Extra Bed Amount</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.totalbedamount}}</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Discount</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.discount}}</td>
@@ -61,8 +71,8 @@
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.maintenance}}</td>
                     </tr>
                      <tr>
-                        <td class="align-middle " style="border-color: #964B00;">Total Amount</td>
-                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.totalamount}}</td>
+                        <td class="align-middle " style="border-color: #964B00;">Price</td>
+                        <td class="align-middle " style="border-color: #964B00;">{{bookingData.price}}</td>
                     </tr> 
                     <tr>
                         <td class="align-middle " style="border-color: #964B00;">Tax</td>
@@ -70,7 +80,7 @@
                     </tr>
                     <tr>
                         <td style="border-color: #964B00;" scope="col">Invoice</td>
-                        <td style="border-color: #964B00;" scope="col">Rs.{{totalwithalladded}}</td>
+                        <td style="border-color: #964B00;" scope="col">Rs.{{bookingData.totalamount}}</td>
                     </tr>
                 </tbody>
             </table>

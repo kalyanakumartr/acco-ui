@@ -171,9 +171,17 @@ export class StepperComponent {
     // book.roomid=this.roomid;
     // book.roombhk=this.bhk;
     book.userid=this.userId;
-    book.bhk2count=this.bookingData.bhk2count==undefined?0:this.bookingData.bhk2count;
-    book.bhk3count=this.bookingData.bhk3count==undefined?0:this.bookingData.bhk3count;
+    book.bhk1count=this.bookingData.bhk1count;
+    book.bhk2count=this.bookingData.bhk2count;
+    book.bhk3count=this.bookingData.bhk3count;
     book.firstname=this.loginData.username;
+    book.lastname=this.loginData.lastname==undefined?0:this.loginData.lastname;
+    book.address1=this.loginData.address1==undefined?0:this.loginData.address1;
+    book.address2=this.loginData.address2==undefined?0:this.loginData.address2;
+    book.city=this.loginData.city==undefined?0:this.loginData.city;
+    book.state=this.loginData.state==undefined?0:this.loginData.state;
+    book.country=this.loginData.country==undefined?0:this.loginData.country;
+    book.pincode=this.loginData.pincode==undefined?0:this.loginData.pincode;
     book.email=this.loginData.email
     book.phonenumber=this.loginData.phonenumber;    
     book.checkin=this.bookingData.checkin;
@@ -185,7 +193,8 @@ export class StepperComponent {
     book.noofdays=this.bookingData.noofdays;
     book.price=this.bookingData.price;
     book.tax=this.bookingData.tax;
-    book.totalprice=this.bookingData.price;
+    book.bed=this.bookingData.extrabed;
+    book.totalprice=this.bookingData.totalamount;
     // book.totalprice=this.totalprice;
     book.name=this.loginData.username
     

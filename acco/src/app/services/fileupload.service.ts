@@ -9,12 +9,15 @@ export class FileuploadService {
 
   constructor(private http:HttpClient ) {}
   
-  fileUpload(fileToUpload: File): Observable<any> {
+  fileUpload(images: File,bookingid:any): Observable<any> {
     console.log("I am fileupload");
+    console.log("img",images ,bookingid);
     const endpoint = "http://localhost:3001/booking/idbookingproof";
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
-    return this.http.post(endpoint, formData, )
+    const formData = new FormData();
+    formData.append('images ',images,bookingid);
+    formData.append('bookingid ',bookingid);
+    console.log("000000",bookingid);
+    return this.http.post(endpoint, formData)
       // .map(() => { return true; })
       // .catch((e) => this.handleError(e));
 }

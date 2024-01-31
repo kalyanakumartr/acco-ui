@@ -48,8 +48,17 @@ export class RoomlogicComponent {
     this.roomBookingSummary.noofdays=this.bookingData.noofdays;
     this.roomBookingSummary.adults=this.bookingData.adults;
     this.roomBookingSummary.child=this.bookingData.child;
-    this.roomBookingSummary.childage=this.bookingData.childage;
-    this.roomBookingSummary.totalamount=data.totalamount;
+    this.roomBookingSummary.roomtype=this.bookingData.roomtype;
+    this.roomBookingSummary.childage=this.bookingData.childage==undefined?0:this.bookingData.childage;;
+    this.roomBookingSummary.bhk1count=data.bhktype1;
+    this.roomBookingSummary.bhk2count=data.bhktype2;
+    this.roomBookingSummary.bhk3count=data.bhktype3;
+    this.roomBookingSummary.extrabed=data.bed;
+    this.roomBookingSummary.discount=0;
+    this.roomBookingSummary.maintenance=0;
+    this.roomBookingSummary.price=data.Price*this.bookingData.noofdays;
+    this.roomBookingSummary.tax=0;
+    this.roomBookingSummary.totalamount=this.roomBookingSummary.price+this.roomBookingSummary.tax;
     this.bookingService.changeMessage(this.roomBookingSummary);
     this.router.navigate(["bookingsummary",
 

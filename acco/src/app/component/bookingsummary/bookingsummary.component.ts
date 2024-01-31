@@ -30,7 +30,7 @@ export class BookingsummaryComponent implements OnInit {
   subscription!:Subscription;
   totalwithalladded:any
   roomBookingSummary:any;
-  
+  totPricewithDays:any;
 
   constructor(
     private homeroute: ActivatedRoute,
@@ -82,8 +82,8 @@ export class BookingsummaryComponent implements OnInit {
     // console.log("checkOut:", this.out);
     // console.log("persons:", this.adult);
     // console.log("child&age:", this.child,this.childAge);
-   
-    this.totalwithalladded=this.bookingData.totalamount+this.bookingData.totalbedamount
+    // this.totPricewithDays=this.bookingData.price*this.bookingData.nofdays
+    // this.totalwithalladded=this.bookingData.totPricewithDays+this.bookingData.tax
  
   }
 
@@ -95,14 +95,15 @@ export class BookingsummaryComponent implements OnInit {
     this.roomBookingSummary.adults=this.bookingData.adults;
     this.roomBookingSummary.child=this.bookingData.child;
     this.roomBookingSummary.childage=this.bookingData.childage;
+    this.roomBookingSummary.bhk1count=this.bookingData.bhk1count;
     this.roomBookingSummary.bhk2count=this.bookingData.bhk2count;
     this. roomBookingSummary.bhk3count=this.bookingData.bhk3count;
-    this.roomBookingSummary.extrabed=this.bookingData.totalBed;
-    this.roomBookingSummary.totalamount=this.bookingData.sumWithDays;
-    this.roomBookingSummary.totalbedamount=this.bookingData.totalbedamount;
+    this.roomBookingSummary.extrabed=this.bookingData.extrabed;
+    this.roomBookingSummary.totalamount=this.bookingData.totalamount;
+    // this.roomBookingSummary.totalbedamount=this.bookingData.totalbedamount;
     this.roomBookingSummary.tax=this.bookingData.tax;
     this.roomBookingSummary.maintenance=this.bookingData.maintenance;
-    this.roomBookingSummary.discount=0;
+    this.roomBookingSummary.discount=this.bookingData.discount;
     this.roomBookingSummary.price=this.bookingData.price;   
     this.roomBookingSummary.roomtype=this.bookingData.roomtype;
     console.log("=====stepper",this.roomBookingSummary)

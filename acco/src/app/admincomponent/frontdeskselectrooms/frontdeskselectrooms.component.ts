@@ -19,7 +19,7 @@ export class FrontdeskselectroomsComponent {
   dropdownList1 :any= [];
 selectedItems :any=[];
 dropdownSettings :any= {};
-file: File  | null= null;
+images: File  | null= null;
 
   constructor( private homeroute: ActivatedRoute,
     private getguestdetail:GetguestdetailService,
@@ -78,13 +78,13 @@ file: File  | null= null;
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
       for(let i=0; i < 1; i++) {
-        tmp.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnoss });
+        tmp.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos});
         // tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
       }
       this.dropdownList = tmp
       for(let i=1; i <=1; i++) {
        
-        tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnoss });
+        tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
       }
       // return this.dropdownList = tmp , this.dropdownList1 = tmp1; ;     
       this.dropdownList1 = tmp1;  
@@ -94,12 +94,13 @@ file: File  | null= null;
    }
 
    onChange(event:any) { 
-    this.file = event.target.files[0]; 
+    this.images = event.target.files[0]; 
 } 
    uploadFileToActivity() {
+    
     console.log("file to upload")
-    this.fileUploadService.fileUpload(this.file!).subscribe(data => {
-      console.log("file000",data);
+    this.fileUploadService.fileUpload(this.images!,this.bookingid).subscribe(data => {
+      // console.log("file000",data);
       Swal.fire({
         text:data.message,
         confirmButtonColor: '#964B00',

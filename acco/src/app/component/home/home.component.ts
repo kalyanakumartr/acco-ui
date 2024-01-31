@@ -254,7 +254,7 @@ export class HomeComponent implements OnInit {
     this.roomBookingSummary.noofdays=noofdays;
     this.roomBookingSummary.adults=formData.adult;
     this.roomBookingSummary.child=formData.child;
-    this.roomBookingSummary.childage=this.ageValue;
+    this.roomBookingSummary.childage=this.ageValue==undefined?0:this.ageValue;
     this.roomBookingSummary.roomtype=formData.roomType;
     
     console.log("___+++",this.roomBookingSummary)

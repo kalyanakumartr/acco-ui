@@ -4,7 +4,8 @@ export class BookingModel {
     checkout!:string
     noofdays!:string
     adults!:string
-    child!:string   
+    child!:string  
+    bhk1count:any 
     bhk2count:any
     bhk3count:any
     extrabed:any
@@ -21,6 +22,14 @@ export class BookingModel {
     userid:any;  
     totalbedamount:any; 
     bookingid:any;
+    lastname!:string;
+    address1!:string;
+    address2!:string;
+    city!:string;
+    state!:string;
+    country!:string;
+    pincode:any;
+    bed:any;
 
     roombhk!:string
     maintenance:any;
