@@ -25,10 +25,10 @@ export class GetroomlistService {
     this.apiRoom.next(roomData)
   }
 
-  roomlogic(adult:any):Observable<any>{
+  roomlogic(adult:any,checkIn:any,checkOut:any,):Observable<any>{
     console.log("I am roomlogic"); 
 
-    return this.http.get("http://localhost:3001/booking/getlogic?adult="+adult);
+    return this.http.get("http://localhost:3001/booking/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
 
   }
 

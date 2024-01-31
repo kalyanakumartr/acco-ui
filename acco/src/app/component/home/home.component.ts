@@ -240,8 +240,8 @@ export class HomeComponent implements OnInit {
       var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
       console.log("nnnnn", noofdays);
 
-      // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((res) => {
-        this.getroomlistservice.roomlogic(formData.adult).subscribe((result)=>{
+      // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
+        this.getroomlistservice.roomlogic(formData.adult,formData.checkIn,formData.checkIn).subscribe((result)=>{
         console.log(result);
         this.roomData = result;
         this.getroomlistservice.setData(this.roomData)

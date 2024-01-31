@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {  IDropdownSettings,  } from 'ng-multiselect-dropdown';
 import { FileuploadService } from 'src/app/services/fileupload.service';
@@ -11,26 +12,33 @@ import Swal from 'sweetalert2';
   styleUrls: ['./frontdeskselectrooms.component.scss']
 })
 export class FrontdeskselectroomsComponent {
+  selectRoomForm!:FormGroup
   bookingid:any;
   checkin:any;
   checkout:any;
   roomsListData:any
   dropdownList :any= [];
   dropdownList1 :any= [];
-selectedItems :any=[];
+bhk2 :any=[];
 dropdownSettings :any= {};
+roomMap = new Map();
+bhk3:any=[];
+bhk23:any=[];
 images: File  | null= null;
+ 
 
   constructor( private homeroute: ActivatedRoute,
     private getguestdetail:GetguestdetailService,
     private router: Router,
     private fileUploadService:FileuploadService,
+    private fb: FormBuilder,
      ){
    
     
   }
 
   ngOnInit(): void {
+    
     // this.getroomslist();
     this.homeroute.params.subscribe((params: Params) =>
        this.bookingid = params[('bookingid')],);
@@ -39,7 +47,11 @@ images: File  | null= null;
        this.homeroute.params.subscribe((params: Params) =>
        this.checkout = params[('checkout')],);
   
-  
+       this.selectRoomForm= this.fb.group({
+        bookingid: this.bookingid,
+        bhk2:['',],
+       bhk3:['',],
+      })
   // this.dropdownList = [
   //       { item_id: 1, item_text: 'Mumbai' },
   //       { item_id: 2, item_text: 'Bangaluru' },
@@ -47,7 +59,7 @@ images: File  | null= null;
   //       { item_id: 4, item_text: 'Navsari' },
   //       { item_id: 5, item_text: 'New Delhi' }
   // ];
-  this.selectedItems = [
+  this.bhk2 = [
     // { item_id: 2, item_text: 'Bangaluru' },
     //     { item_id: 3, item_text: 'Pune' },
   ];
@@ -59,13 +71,29 @@ images: File  | null= null;
     // unSelectAllText: 'UnSelect All',
     itemsShowLimit: 5,
     // allowSearchFilter: true,
-    limitSelection: 4
+    // limitSelection: 4
   };
   
    this.getroomslist();
   }
   onItemSelect(item: any) {
-    console.log(item);
+    
+    console.log("1111",item);
+    // for (let index = 0; index < item.length; index++) {
+    //   const user = item[index];
+      // this.selectedItems = []
+    //   this.selectedItems.push(item)
+    // // }
+    // console.log("0000",this.selectedItems)
+    // this.roomIdArray=[];
+    // this.roomIdArray.push(item);
+    // console.log("2222",this.roomIdArray);
+    // this.roomMap.set("",item);
+    // console.log("2222888",this.roomMap);
+    //  for ( let value of this.roomMap.values()) {
+    //         console.log("aa:",value);
+          
+    //      }
   }
 
 
@@ -78,16 +106,32 @@ images: File  | null= null;
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
       for(let i=0; i < 1; i++) {
-        tmp.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos});
+        const roomidlist=this.roomsListData[i].roomid.flat();
+       console.log("rrrsdddd",roomidlist);
+       var roomids= this.roomsListData[i].roomid.split(',');
+
+       console.log("rrr",roomids);
+       
+       var roomnos= this.roomsListData[i].roomnos.split(',');
+       console.log(roomnos);
+       
+        tmp.push({ item_id:roomids , item_text: roomnos});
+        console.log("tmp",tmp)
         // tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
       }
-      this.dropdownList = tmp
+      this.dropdownList = tmp[0].item_id;
+      // const drop=this.dropdownList.flat();
+      // console.log("tmp----", drop)
       for(let i=1; i <=1; i++) {
-       
-        tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
+        var roomids= this.roomsListData[i].roomid.split(',');
+        console.log(roomids);
+        var roomnos= this.roomsListData[i].roomnos.split(',');
+        console.log(roomnos);
+        
+        tmp1.push({ item_id:roomids , item_text: roomnos });
       }
       // return this.dropdownList = tmp , this.dropdownList1 = tmp1; ;     
-      this.dropdownList1 = tmp1;  
+      this.dropdownList1 = tmp1[0].item_id;  
       
     });
   //   console.log("dropdownList",this.dropdownList); 
@@ -112,4 +156,11 @@ images: File  | null= null;
       // });
     });
   }
+
+  roomCheckin(){
+    const formData = this.selectRoomForm.value;
+    console.log("form",formData);
+
+  }
+
 }

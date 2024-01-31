@@ -14,8 +14,8 @@ export class FileuploadService {
     console.log("img",images ,bookingid);
     const endpoint = "http://localhost:3001/booking/idbookingproof";
     const formData = new FormData();
-    formData.append('images ',images,bookingid);
-    formData.append('bookingid ',bookingid);
+    formData.append('images',images);
+    formData.append('bookingid',bookingid);
     console.log("000000",bookingid);
     return this.http.post(endpoint, formData)
       // .map(() => { return true; })
