@@ -24,6 +24,7 @@ dropdownSettings :any= {};
 roomMap = new Map();
 bhk3:any=[];
 bhk23:any=[];
+arrayRoom:any=[];
 images: File  | null= null;
  
 
@@ -52,6 +53,7 @@ images: File  | null= null;
         bhk2:['',],
        bhk3:['',],
       })
+     
   // this.dropdownList = [
   //       { item_id: 1, item_text: 'Mumbai' },
   //       { item_id: 2, item_text: 'Bangaluru' },
@@ -106,13 +108,13 @@ images: File  | null= null;
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
       for(let i=0; i < 1; i++) {
-        const roomidlist=this.roomsListData[i].roomid.flat();
+        const roomidlist=this.roomsListData[i].roomid.replace("[", "");
        console.log("rrrsdddd",roomidlist);
-       var roomids= this.roomsListData[i].roomid.split(',');
+       var roomids= roomidlist.split(',');
 
        console.log("rrr",roomids);
        
-       var roomnos= this.roomsListData[i].roomnos.split(',');
+       var roomnos= this.roomsListData[i].roomnos.replace("[", "").split(',');
        console.log(roomnos);
        
         tmp.push({ item_id:roomids , item_text: roomnos});
@@ -160,6 +162,8 @@ images: File  | null= null;
   roomCheckin(){
     const formData = this.selectRoomForm.value;
     console.log("form",formData);
+    this.arrayRoom=this.bhk2.concat(this.bhk3);
+    console.log("1111concaat",this.arrayRoom);
 
   }
 
