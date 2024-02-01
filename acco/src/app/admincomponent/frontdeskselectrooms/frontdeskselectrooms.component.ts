@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {  IDropdownSettings,  } from 'ng-multiselect-dropdown';
+import { BookingModel } from 'src/app/model/booking.model';
 import { FileuploadService } from 'src/app/services/fileupload.service';
 import { GetguestdetailService } from 'src/app/services/getguestdetail.service';
+import { GetroomlistService } from 'src/app/services/getroomlist.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -33,6 +35,7 @@ images: File  | null= null;
     private router: Router,
     private fileUploadService:FileuploadService,
     private fb: FormBuilder,
+    private getroomlistservice: GetroomlistService,
      ){
    
     
@@ -160,11 +163,25 @@ images: File  | null= null;
   }
 
   roomCheckin(){
+    const book = new BookingModel() ;
     const formData = this.selectRoomForm.value;
     console.log("form",formData);
+    
     this.arrayRoom=this.bhk2.concat(this.bhk3);
     console.log("1111concaat",this.arrayRoom);
-
+    book.bookingid=formData.bookingid;
+    book.roomid=this.arrayRoom;
+    console.log("book",book);
+    
+    this.getroomlistservice.roomconfirm(book).subscribe((result)=>{
+      console.log("res",result);
+      
+      Swal.fire({
+        text:result.message,
+        confirmButtonColor: '#964B00',
+        background:'#efc96a',
+      });
+    })
   }
 
 }

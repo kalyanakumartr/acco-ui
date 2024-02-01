@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../environments/environments';
 import { GetRoomList } from '../model/getroomlist.model';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { BookingModel } from '../model/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,14 @@ export class GetroomlistService {
     console.log("I am roomlogic"); 
 
     return this.http.get("http://localhost:3001/booking/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
+
+  }
+
+  roomconfirm(data:BookingModel):Observable<BookingModel>{
+    console.log("I am confirm"); 
+    console.log("I am confirm",data); 
+
+    return this.http.post<BookingModel>("http://localhost:3001/booking/checkinconfirm",data);
 
   }
 

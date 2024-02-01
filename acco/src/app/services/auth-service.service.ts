@@ -57,6 +57,15 @@ export class AuthServiceService {
             background:'#efc96a',});  
           this.router.navigate(["frontdesk"])
          
+        } 
+        else if (this.authresults.usertype == "FrontOfficeExecutive") {
+          Swal.fire({
+            text:
+            this.authresults.message,
+            confirmButtonColor: '#964B00',
+            background:'#efc96a',});  
+          this.router.navigate(["frontdesk"])
+         
         } else {
           Swal.fire({
             text:

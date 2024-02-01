@@ -30,6 +30,7 @@ export class BookingModel {
     country!:string;
     pincode:any;
     bed:any;
+    message:any;
 
     roombhk!:string
     maintenance:any;
