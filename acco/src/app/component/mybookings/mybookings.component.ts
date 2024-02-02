@@ -7,6 +7,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { GetUserServiceService } from 'src/app/services/get-user-service.service';
 import { RoleService } from 'src/app/services/role.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mybookings',
@@ -23,6 +24,7 @@ export class MybookingsComponent  implements OnInit{
   constructor (private roleService:RoleService,
     public authService:AuthServiceService,
     private getuserservice:GetUserServiceService,
+    private bookingService:BookingServiceService,
     )
       {
         authService.apiData$.subscribe(data => this.loginData = data)
@@ -45,7 +47,6 @@ export class MybookingsComponent  implements OnInit{
       this.userid=this.loginData.userid;
       console.log("id:",this.userid);
        this.getMyBooking(this.userid);
-
        
     }
     getMyBooking(userid:any){
@@ -58,11 +59,26 @@ export class MybookingsComponent  implements OnInit{
       });
         
       }
+
+      cancelBooking(id:any){
+        console.log("cancel");
+        const book = new BookingModel() ;
+        book.bookingid=id;
+        book.userid= this.userid
+        this.bookingService.bookingCancel(book).subscribe( result=>{   
+              console.log("res",result);
+                    Swal.fire({
+            text:result.message,
+            confirmButtonColor: '#964B00',
+            background:'#efc96a',
+          });
+        })
+      }
         
       }
 
 
-function data(value: string): void {
-  throw new Error('Function not implemented.');
-}
+// function data(value: string): void {
+//   throw new Error('Function not implemented.');
+// }
 

@@ -198,10 +198,6 @@ export class StepperComponent {
     // book.totalprice=this.totalprice;
     book.name=this.loginData.username
     
-    
-   
-   
-    
     console.log(book);
     this.bookingService.booking(book).    
     subscribe( result=>{

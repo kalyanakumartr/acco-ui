@@ -28,4 +28,11 @@ export class BookingServiceService {
         console.log("i am in book service")
           this.messageSource.next(book);
       }
+
+
+     bookingCancel(book:BookingModel):Observable<BookingModel>{
+        console.log("I am bookingcancel");
+        console.log("cancel",book);
+        return this.http.post<BookingModel>("http://localhost:3001/booking/bookingcancel",book);
+      }
 }

@@ -28,6 +28,7 @@ export class GetroomlistService {
 
   roomlogic(adult:any,checkIn:any,checkOut:any,):Observable<any>{
     console.log("I am roomlogic"); 
+    console.log("roomlogic",adult,checkIn,checkOut); 
 
     return this.http.get("http://localhost:3001/booking/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
 

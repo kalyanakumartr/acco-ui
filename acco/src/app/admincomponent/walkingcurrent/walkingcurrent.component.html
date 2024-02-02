@@ -172,7 +172,7 @@
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <label style="color:#964B00">From<span class="text-danger">*</span></label>
-                                    <input formControlName="from" type="datetime-local" #input [(ngModel)]="Todaydate"
+                                    <input formControlName="checkin" type="datetime-local" #input [(ngModel)]="Todaydate"
                                         [min]="Todaydate" placeholder="From">
                                 </div>
                                 <!-- <small *ngIf="walkingCurrentForm.controls['from'].dirty && walkingCurrentForm.hasError('required','from')"
@@ -185,7 +185,7 @@
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <label style="color:#964B00">To<span class="text-danger">*</span></label>
-                                    <input formControlName="to" type="datetime-local" [(ngModel)]="outDate"
+                                    <input formControlName="checkout" type="datetime-local" [(ngModel)]="outDate"
                                         [min]="outDate" placeholder="To">
                                 </div>
                                 <!-- <small *ngIf="walkingCurrentForm.controls['to'].dirty && walkingCurrentForm.hasError('required','to')"

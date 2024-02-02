@@ -35,7 +35,7 @@ export class RoomlogicComponent {
       console.log("booked data", this.bookingData.checkin);
 
     })
-    this.optiontype = this.roomData.optiontype == "R1" ? "Our Recommendation" : "Your Choice";
+    // this.optiontype = this.roomData.optiontype == "R1" ? "Our Recommendation" : "Your Choice";
   }
 
 

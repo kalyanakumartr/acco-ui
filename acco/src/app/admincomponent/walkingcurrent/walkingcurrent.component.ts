@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
 import { BookingModel } from 'src/app/model/booking.model';
+import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { EmailcheckService } from 'src/app/services/emailcheck.service';
+import { GetroomlistService } from 'src/app/services/getroomlist.service';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 
@@ -25,6 +27,8 @@ export class WalkingcurrentComponent implements OnInit {
   formData: any;
   walkinguser = new UserModel();
   booking = new BookingModel();
+  roomData:any;
+  roomBookingSummary:any
 
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
@@ -35,9 +39,11 @@ export class WalkingcurrentComponent implements OnInit {
     private roomTypeService: GetroomtypeService,
     private registerService: RegisterServiceService,
     private emailservice: EmailcheckService,
-    private router:Router
+    private router:Router,
+    private getroomlistservice: GetroomlistService,
+    public bookingService:BookingServiceService
 
-  ) { }
+  ) {getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
   date1 = new Date();
   currentyear = this.date1.getUTCFullYear();
@@ -93,8 +99,8 @@ export class WalkingcurrentComponent implements OnInit {
     });
 
     this.walkingRoomCheck =this.fb.group({
-      from: ['', Validators.required,],
-      to: ['', Validators.required,],
+      checkin: ['', Validators.required,],
+      checkout: ['', Validators.required,],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       children: ['0', [Validators.required, Validators.max(6)]],
       roomtype: ['1', Validators.required,],
@@ -143,17 +149,42 @@ export class WalkingcurrentComponent implements OnInit {
 
   walkingRoomCheckProcess(){
     const formData = this.walkingRoomCheck.value;
-    this.booking.checkin = formData.from;
-    this.booking.checkout = formData.to;
+    this.booking.checkin = formData.checkin;
+    this.booking.checkout = formData.checkout;
     this.booking.adults = formData.adult;
     this.booking.child = formData.children;
     this.booking.roomtype = formData.roomtype;
+    var inDate = new Date(formData.checkin);
+    var OutDate = new Date(formData.checkout);
+
+    var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
+    console.log("nnnnn", noofdays);
     console.log("booking",this.booking);
     if (this.walkingRoomCheck.valid) {
       console.log("123",this.booking);
+      this.getroomlistservice.roomlogic(formData.adult,formData.checkin,formData.checkout).subscribe((result)=>{
+        console.log(result);
+        this.roomData = result[0];
+        this.getroomlistservice.setData(this.roomData)
+         console.log("++++roomData:", this.roomData);
+        console.log("0 value:", this.roomData);
+        this.router.navigate(["roomlogic" ]);
+        });
+    }
+    this. roomBookingSummary= new BookingModel();
+    this. roomBookingSummary.checkin=formData.checkin,
+    this.roomBookingSummary.checkout=formData.checkout,
+    this.roomBookingSummary.noofdays=noofdays;
+    this.roomBookingSummary.adults=formData.adult;
+    this.roomBookingSummary.child=formData.children;
+    this.roomBookingSummary.childage=this.ageValue==undefined?0:this.ageValue;
+    this.roomBookingSummary.roomtype=formData.roomtype;
+    
+    console.log("___+++",this.roomBookingSummary)
+    this.bookingService.changeMessage(this.roomBookingSummary);
       this.router.navigate(["roomlogic"])
   }
-}
+
 
   // Swal.fire("Success");
   // if(this.walkingcurrentForm.valid){
@@ -175,6 +206,8 @@ export class WalkingcurrentComponent implements OnInit {
   //   }
 
   checkemail(value: any) {
+    
+
     console.log("email", value)
     this.walkingCurrentForm.reset();
     Swal.fire(" phonenumber is  not register");
@@ -192,7 +225,16 @@ export class WalkingcurrentComponent implements OnInit {
       this.walkingCurrentForm.controls['country'].setValue(this.userData.country);
       this.walkingCurrentForm.controls['pincode'].setValue(this.userData.pincode);
       this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
+      // localStorage.clear();
+      localStorage.removeItem('currentuserid');
+      const currentuser = new UserModel() ;
+      currentuser.userid=this.userData.userid;
+      currentuser.firstname=this.userData.firstname;
+const jsondata=JSON.stringify(currentuser);
+      localStorage.setItem('currentuserid',jsondata);
+      // localStorage.setItem('currentusername',this.userData.firstname);
       Swal.fire(" phonenumber is  register");
+      
 
 
     })
