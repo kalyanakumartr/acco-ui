@@ -47,6 +47,8 @@ export class BookingsummaryComponent implements OnInit {
       console.log("booked data",this.bookingData);
       console.log("booked data",this.bookingData.checkin);
       console.log("booked amount",this.bookingData.totalamount);
+      console.log("mode",this.bookingData.modeoftypeid);
+
 
      })
 
@@ -106,22 +108,20 @@ export class BookingsummaryComponent implements OnInit {
     this.roomBookingSummary.discount=this.bookingData.discount;
     this.roomBookingSummary.price=this.bookingData.price;   
     this.roomBookingSummary.roomtype=this.bookingData.roomtype;
+    this.roomBookingSummary.modeoftypeid=this.bookingData.modeoftypeid;
+    console.log("=====stepper1111",this.roomBookingSummary.modeoftypeid)
+
+
     console.log("=====stepper",this.roomBookingSummary)
+    console.log("=====stepper1111",this.roomBookingSummary.modeoftypeid)
+
     this.bookingservice.changeMessage(this.roomBookingSummary);
-    this.router.navigate(["stepper", 
-    // {
-    //   "roomid": this.roomid,
-    //   "noofbhk": this.bhk,
-    //   "days": this.days,
-    //   "adult": this.adult,
-    //   "cIn": this.in,
-    //   "cOut": this.out,
-    //   "price":this.amount,
-    //   "child":this.child,
-    //   "childage":this.childAge,
-    //   "roomtype":this.roomtype
-    // }
-  ]);
+    if(this.roomBookingSummary.modeoftypeid==1){
+    this.router.navigate(["stepper",  ]);
+    }else{
+      this.router.navigate(["roomfromwalkin",  ]);
+    
+    }
   }
 }
 

@@ -173,13 +173,13 @@ images: File  | null= null;
     book.roomid=this.arrayRoom;
     console.log("book",book);
     
-    this.getroomlistservice.roomconfirm(book).subscribe((result)=>{
+    this.getroomlistservice.roomconfirm(book).subscribe(result=>{
       console.log("res",result);
       
       Swal.fire({
-        text:result.message,
         confirmButtonColor: '#964B00',
         background:'#efc96a',
+        text:result.message,
       });
     })
   }

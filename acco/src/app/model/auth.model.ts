@@ -15,4 +15,5 @@ export class UserModel {
     roleid:any;
     pincode!:string;
   message!: string ;
+  modeoftypeid:any;
 }

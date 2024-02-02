@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
   finalOutday: any;
   tokenvalue: any;
   visibleRoom: any;
-  roomBookingSummary:any;
+  roomBooking:any;
   ngOnInit(): void {
 
     this.showRoomType();
@@ -248,17 +248,19 @@ export class HomeComponent implements OnInit {
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
         this.roomValue;
-        this. roomBookingSummary= new BookingModel();
-    this. roomBookingSummary.checkin=formData.checkIn,
-    this.roomBookingSummary.checkout=formData.checkOut,
-    this.roomBookingSummary.noofdays=noofdays;
-    this.roomBookingSummary.adults=formData.adult;
-    this.roomBookingSummary.child=formData.child;
-    this.roomBookingSummary.childage=this.ageValue==undefined?0:this.ageValue;
-    this.roomBookingSummary.roomtype=formData.roomType;
+        this. roomBooking= new BookingModel();
+    this. roomBooking.checkin=formData.checkIn,
+    this.roomBooking.checkout=formData.checkOut,
+    this.roomBooking.noofdays=noofdays;
+    this.roomBooking.adults=formData.adult;
+    this.roomBooking.child=formData.child;
+    this.roomBooking.childage=this.ageValue==undefined?0:this.ageValue;
+    this.roomBooking.roomtype=formData.roomType;
+    this.roomBooking.modeoftypeid=1;
+
     
-    console.log("___+++",this.roomBookingSummary)
-    this.bookingService.changeMessage(this.roomBookingSummary);
+    console.log("___+++",this.roomBooking)
+    this.bookingService.changeMessage(this.roomBooking);
         this.router.navigate(["roomlogic", 
         // {
         //   "days": noofdays,

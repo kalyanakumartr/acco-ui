@@ -194,6 +194,8 @@ export class StepperComponent {
     book.price=this.bookingData.price;
     book.tax=this.bookingData.tax;
     book.bed=this.bookingData.extrabed;
+    book.modeoftypeid=this.bookingData.modeoftypeid;
+
     book.totalprice=this.bookingData.totalamount;
     // book.totalprice=this.totalprice;
     book.name=this.loginData.username

@@ -15,7 +15,7 @@ export class RoomlogicComponent {
   subscription: any;
   bookingData: any;
   optiontype: any;
-  roomBookingSummary:any;
+  roomBookingSumm:any;
 
   constructor(
     private getroomlistservice: GetroomlistService,
@@ -33,6 +33,8 @@ export class RoomlogicComponent {
       this.bookingData = data;
       console.log("booked data", this.bookingData);
       console.log("booked data", this.bookingData.checkin);
+      console.log("mode", this.bookingData.modeoftypeid);
+
 
     })
     // this.optiontype = this.roomData.optiontype == "R1" ? "Our Recommendation" : "Your Choice";
@@ -42,24 +44,25 @@ export class RoomlogicComponent {
   sendbookeddata(data: any) {
     console.log("recieved", data);
     console.log("recieved", data.totalamount);
-    this. roomBookingSummary= new BookingModel();
-    this. roomBookingSummary.checkin=this.bookingData.checkin;
-    this.roomBookingSummary.checkout=this.bookingData.checkout;
-    this.roomBookingSummary.noofdays=this.bookingData.noofdays;
-    this.roomBookingSummary.adults=this.bookingData.adults;
-    this.roomBookingSummary.child=this.bookingData.child;
-    this.roomBookingSummary.roomtype=this.bookingData.roomtype;
-    this.roomBookingSummary.childage=this.bookingData.childage==undefined?0:this.bookingData.childage;;
-    this.roomBookingSummary.bhk1count=data.bhktype1;
-    this.roomBookingSummary.bhk2count=data.bhktype2;
-    this.roomBookingSummary.bhk3count=data.bhktype3;
-    this.roomBookingSummary.extrabed=data.bed;
-    this.roomBookingSummary.discount=0;
-    this.roomBookingSummary.maintenance=0;
-    this.roomBookingSummary.price=data.Price*this.bookingData.noofdays;
-    this.roomBookingSummary.tax=0;
-    this.roomBookingSummary.totalamount=this.roomBookingSummary.price+this.roomBookingSummary.tax;
-    this.bookingService.changeMessage(this.roomBookingSummary);
+    this. roomBookingSumm= new BookingModel();
+    this. roomBookingSumm.checkin=this.bookingData.checkin;
+    this.roomBookingSumm.checkout=this.bookingData.checkout;
+    this.roomBookingSumm.noofdays=this.bookingData.noofdays;
+    this.roomBookingSumm.adults=this.bookingData.adults;
+    this.roomBookingSumm.child=this.bookingData.child;
+    this.roomBookingSumm.roomtype=this.bookingData.roomtype;
+    this.roomBookingSumm.childage=this.bookingData.childage==undefined?0:this.bookingData.childage;;
+    this.roomBookingSumm.bhk1count=data.bhktype1;
+    this.roomBookingSumm.bhk2count=data.bhktype2;
+    this.roomBookingSumm.bhk3count=data.bhktype3;
+    this.roomBookingSumm.extrabed=data.bed;
+    this.roomBookingSumm.discount=0;
+    this.roomBookingSumm.maintenance=0;
+    this.roomBookingSumm.price=data.Price*this.bookingData.noofdays;
+    this.roomBookingSumm.tax=0;
+    this.roomBookingSumm.modeoftypeid=this.bookingData.modeoftypeid;
+    this.roomBookingSumm.totalamount=this.roomBookingSumm.price+this.roomBookingSumm.tax;
+    this.bookingService.changeMessage(this.roomBookingSumm);
     this.router.navigate(["bookingsummary",
 
     ]);

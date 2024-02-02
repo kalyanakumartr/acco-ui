@@ -42,6 +42,7 @@ import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfu
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FrontdeskselectroomsComponent } from './admincomponent/frontdeskselectrooms/frontdeskselectrooms.component';
 import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
+import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
     WalkingcurrentComponent,
     WalkingfutureComponent,
     FrontdeskselectroomsComponent,
-    RoomlogicComponent
+    RoomlogicComponent,
+    RoomfromwalkinComponent
   ],
   imports: [
     BrowserModule,

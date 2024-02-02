@@ -27,8 +27,8 @@ export class WalkingcurrentComponent implements OnInit {
   formData: any;
   walkinguser = new UserModel();
   booking = new BookingModel();
-  roomData:any;
-  roomBookingSummary:any
+  roomData: any;
+  roomBookingSum: any
 
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
@@ -39,11 +39,11 @@ export class WalkingcurrentComponent implements OnInit {
     private roomTypeService: GetroomtypeService,
     private registerService: RegisterServiceService,
     private emailservice: EmailcheckService,
-    private router:Router,
+    private router: Router,
     private getroomlistservice: GetroomlistService,
-    public bookingService:BookingServiceService
+    public bookingService: BookingServiceService
 
-  ) {getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
+  ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
   date1 = new Date();
   currentyear = this.date1.getUTCFullYear();
@@ -98,7 +98,7 @@ export class WalkingcurrentComponent implements OnInit {
       // roleid: 3
     });
 
-    this.walkingRoomCheck =this.fb.group({
+    this.walkingRoomCheck = this.fb.group({
       checkin: ['', Validators.required,],
       checkout: ['', Validators.required,],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
@@ -109,7 +109,7 @@ export class WalkingcurrentComponent implements OnInit {
     })
 
   }
-  
+
 
 
   walkingCurrentFormProcess() {
@@ -128,61 +128,64 @@ export class WalkingcurrentComponent implements OnInit {
     this.walkinguser.username = "";
     this.walkinguser.password = "";
     this.walkinguser.cpassword = "";
-    this.walkinguser.roleid=3;
- 
-     if (this.walkingCurrentForm.valid) {
-      console.log("123",this.walkinguser);
-         this.registerService.register(this.walkinguser).
+    this.walkinguser.roleid = 3;
+    this.walkinguser.modeoftypeid = 2
+
+    if (this.walkingCurrentForm.valid) {
+      console.log("123", this.walkinguser);
+      this.registerService.register(this.walkinguser).
         subscribe(res => {
-          console.log("res",res); 
-          let result=res;        
-            this.walkingCurrentForm.reset();
-            Swal.fire({
-              text:res.message,
-              confirmButtonColor: '#964B00',
-              background:'#efc96a',
-            }); 
+          console.log("res", res);
+          let result = res;
+          this.walkingCurrentForm.reset();
+          Swal.fire({
+            text: res.message,
+            confirmButtonColor: '#964B00',
+            background: '#efc96a',
+          });
         })
-     }
+    }
   }
 
 
-  walkingRoomCheckProcess(){
+  walkingRoomCheckProcess() {
     const formData = this.walkingRoomCheck.value;
     this.booking.checkin = formData.checkin;
     this.booking.checkout = formData.checkout;
     this.booking.adults = formData.adult;
     this.booking.child = formData.children;
     this.booking.roomtype = formData.roomtype;
+    this.booking.modeoftypeid = 2
     var inDate = new Date(formData.checkin);
     var OutDate = new Date(formData.checkout);
 
     var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
     console.log("nnnnn", noofdays);
-    console.log("booking",this.booking);
+    console.log("booking", this.booking);
     if (this.walkingRoomCheck.valid) {
-      console.log("123",this.booking);
-      this.getroomlistservice.roomlogic(formData.adult,formData.checkin,formData.checkout).subscribe((result)=>{
+      console.log("123", this.booking);
+      this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout).subscribe((result) => {
         console.log(result);
         this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
-         console.log("++++roomData:", this.roomData);
+        console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
-        this.router.navigate(["roomlogic" ]);
-        });
+      });
     }
-    this. roomBookingSummary= new BookingModel();
-    this. roomBookingSummary.checkin=formData.checkin,
-    this.roomBookingSummary.checkout=formData.checkout,
-    this.roomBookingSummary.noofdays=noofdays;
-    this.roomBookingSummary.adults=formData.adult;
-    this.roomBookingSummary.child=formData.children;
-    this.roomBookingSummary.childage=this.ageValue==undefined?0:this.ageValue;
-    this.roomBookingSummary.roomtype=formData.roomtype;
-    
-    console.log("___+++",this.roomBookingSummary)
-    this.bookingService.changeMessage(this.roomBookingSummary);
-      this.router.navigate(["roomlogic"])
+    this.roomBookingSum = new BookingModel();
+    this.roomBookingSum.checkin = formData.checkin,
+      this.roomBookingSum.checkout = formData.checkout,
+      this.roomBookingSum.noofdays = noofdays;
+    this.roomBookingSum.adults = formData.adult;
+    this.roomBookingSum.child = formData.children;
+    this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;
+    this.roomBookingSum.roomtype = formData.roomtype;
+    this.roomBookingSum.modeoftypeid = 2;
+
+
+    console.log("___+++", this.roomBookingSum)
+    this.bookingService.changeMessage(this.roomBookingSum);
+    this.router.navigate(["roomlogic"])
   }
 
 
@@ -206,14 +209,14 @@ export class WalkingcurrentComponent implements OnInit {
   //   }
 
   checkemail(value: any) {
-    
+
 
     console.log("email", value)
     this.walkingCurrentForm.reset();
     Swal.fire(" phonenumber is  not register");
     this.emailservice.emailverify(value).subscribe((result) => {
       this.userData = result[0];
-      console.log("userdata",this.userData)
+      console.log("userdata", this.userData)
       // Swal.fire(" phonenumber is  register");
       this.walkingCurrentForm.controls['email'].setValue(this.userData.email);
       this.walkingCurrentForm.controls['firstname'].setValue(this.userData.firstname);
@@ -227,14 +230,25 @@ export class WalkingcurrentComponent implements OnInit {
       this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
       // localStorage.clear();
       localStorage.removeItem('currentuserid');
-      const currentuser = new UserModel() ;
-      currentuser.userid=this.userData.userid;
-      currentuser.firstname=this.userData.firstname;
-const jsondata=JSON.stringify(currentuser);
-      localStorage.setItem('currentuserid',jsondata);
-      // localStorage.setItem('currentusername',this.userData.firstname);
+
+      const currentuser = new UserModel();
+      currentuser.userid = this.userData.userid;
+      currentuser.firstname = this.userData.firstname;
+      currentuser.lastname = this.userData.lastname;
+      currentuser.phonenumber = this.userData.phonenumber;
+      currentuser.email = this.userData.email;
+      currentuser.pincode = this.userData.pincode;
+      currentuser.address1 = this.userData.address1;
+      currentuser.address2 = this.userData.address2;
+      currentuser.city = this.userData.city;
+      currentuser.state = this.userData.state;
+      currentuser.country = this.userData.country;
+
+
+      const jsondata = JSON.stringify(currentuser);
+      localStorage.setItem('currentuserid', jsondata);
       Swal.fire(" phonenumber is  register");
-      
+
 
 
     })

@@ -25,6 +25,7 @@ import { WalkingcurrentComponent } from './admincomponent/walkingcurrent/walking
 import { WalkingfutureComponent } from './admincomponent/walkingfuture/walkingfuture.component';
 import { FrontdeskselectroomsComponent } from './admincomponent/frontdeskselectrooms/frontdeskselectrooms.component';
 import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
+import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -52,6 +53,8 @@ const routes: Routes = [
   {path:'walkingfuture',component:WalkingfutureComponent},
   {path:'selectrooms',component:FrontdeskselectroomsComponent},
   {path:'roomlogic',component:RoomlogicComponent},
+  {path:'roomfromwalkin',component:RoomfromwalkinComponent},
+
 
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

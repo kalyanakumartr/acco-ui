@@ -31,6 +31,7 @@ export class BookingModel {
     pincode:any;
     bed:any;
     message:any;
+    modeoftypeid:any;
 
     roombhk!:string
     maintenance:any;
