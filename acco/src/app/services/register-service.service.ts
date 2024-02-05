@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserModel } from '../model/auth.model';
 import { environment } from '../environments/environments';
 
@@ -8,7 +8,7 @@ import { environment } from '../environments/environments';
   providedIn: 'root'
 })
 export class RegisterServiceService {
-
+ 
   
   constructor(private http:HttpClient) { }
   register(user:UserModel):Observable<UserModel>{
@@ -19,6 +19,7 @@ export class RegisterServiceService {
   updateUser(user:UserModel):Observable<UserModel>{
     console.log("I am updateuser");    
     return this.http.post<UserModel>("http://localhost:3001/users/updateuser", user);
+    
   }
   
 }

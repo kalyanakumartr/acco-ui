@@ -34,4 +34,9 @@ export class GetUserServiceService {
     console.log("I am changepasword");    
     return this.http.post<UserModel>("http://localhost:3001/authentication/changepassword",user);
   }
+
+  canceledBooking(id: any): Observable<any>{
+    console.log("getMybooking");     
+    return this.http.get<any>("http://localhost:3001/booking/getcanceledbooking?userid="+id);
+  }
 }

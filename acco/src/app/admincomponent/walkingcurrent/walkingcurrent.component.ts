@@ -213,7 +213,11 @@ export class WalkingcurrentComponent implements OnInit {
 
     console.log("email", value)
     this.walkingCurrentForm.reset();
-    Swal.fire(" phonenumber is  not register");
+    Swal.fire({
+            text: "Phonenumber not Registered",
+            confirmButtonColor: '#964B00',
+            background: '#efc96a',
+          });
     this.emailservice.emailverify(value).subscribe((result) => {
       this.userData = result[0];
       console.log("userdata", this.userData)
@@ -247,7 +251,11 @@ export class WalkingcurrentComponent implements OnInit {
 
       const jsondata = JSON.stringify(currentuser);
       localStorage.setItem('currentuserid', jsondata);
-      Swal.fire(" phonenumber is  register");
+      Swal.fire({
+        text: result.message,
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+      });
 
 
 

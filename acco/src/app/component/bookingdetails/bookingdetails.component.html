@@ -1,0 +1,143 @@
+<div class="outer">
+    <app-navbar></app-navbar>
+    <div class="container mt-0">
+        <div>
+            <h2 style="color:#964B00"> Booking Details</h2>
+        </div>
+        <div>
+            <table class="table table-borderless ">
+                <thead>
+                    <tr>
+                        <th>
+                        <h3  style="color:#964B00"> Customer Information</h3>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4  style="color:#964B00"> Customer Name:{{loginData.firstname|titlecase}}</h4>
+                            <h4  style="color:#964B00"> Phone Number:{{loginData.phonenumber}}</h4>
+                            <h4  style="color:#964B00"> Email:{{loginData.email}}</h4>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>
+                        <h3  style="color:#964B00"> Booking Information</h3>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4  style="color:#964B00"> Checkin:{{bookingData.checkin | date:'dd-MM-yyyy HH:mm a'}}</h4>
+                            <h4  style="color:#964B00"> Checkout:{{bookingData.checkout | date:'dd-MM-yyyy HH:mm a'}}</h4>
+                            <h4  style="color:#964B00"> Flat Type:{{bookingData.roomtype}}</h4>
+                            <h4  style="color:#964B00">Total Cost :{{bookingData.totalprice}}</h4>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>
+                        <h3  style="color:#964B00"> Booking Allotment</h3>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4  style="color:#964B00"> No. of Adults:{{bookingData.adults }}</h4>
+                            <h4  style="color:#964B00"> No. of Child:{{bookingData.child }}</h4>
+                            <h4  style="color:#964B00"> Booking No.:{{bookingData.bookingid}}</h4>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>
+                        <h3  style="color:#964B00"> Facilities</h3>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!-- <h4  style="color:#964B00"> No. of Adults:{{bookingData.adults }}</h4>
+                            <h4  style="color:#964B00"> No. of Child:{{bookingData.child }}</h4>
+                            <h4  style="color:#964B00"> Booking No.:{{bookingData.bookingid}}</h4> -->
+                            
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>
+                        <h3  style="color:#964B00"> Other Services</h3>
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!-- <h4  style="color:#964B00"> No. of Adults:{{bookingData.adults }}</h4>
+                            <h4  style="color:#964B00"> No. of Child:{{bookingData.child }}</h4>
+                            <h4  style="color:#964B00"> Booking No.:{{bookingData.bookingid}}</h4> -->
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div>
+            <h2  style="color:#964B00"> Customer Information</h2>
+        </div>
+        <div>
+            <h3  style="color:#964B00"> Customer Name:{{loginData.firstname|titlecase}}</h3>
+            <h3  style="color:#964B00"> Phone Number:{{loginData.phonenumber}}</h3>
+            <h3  style="color:#964B00"> Email:{{loginData.email}}</h3>
+        </div>
+        <div>
+            <h2  style="color:#964B00"> Booking Information</h2>
+        </div>
+        <div>
+            <h3  style="color:#964B00"> Checkin:{{bookingData.checkin | date:'dd-MM-yyyy HH:mm a'}}</h3>
+            <h3  style="color:#964B00"> Checkout:{{bookingData.checkout | date:'dd-MM-yyyy HH:mm a'}}</h3>
+            <h3  style="color:#964B00"> Flat Type:{{bookingData.roomtype}}</h3>
+            <h3  style="color:#964B00">Total Cost :{{bookingData.totalprice}}</h3>
+        </div>
+        <div>
+            <h2  style="color:#964B00"> Booking Allotment</h2>
+        </div>
+        <div>
+            <h3  style="color:#964B00"> No. of Adults:{{bookingData.adults }}</h3>
+            <h3  style="color:#964B00"> No. of Child:{{bookingData.child }}</h3>
+            <h3  style="color:#964B00"> Booking No.:{{bookingData.bookingid}}</h3>
+            
+        </div>
+        <div>
+            <h2  style="color:#964B00"> Facilities</h2>
+        </div>
+        <div>
+            
+            
+        </div>
+        <div>
+            <h2  style="color:#964B00"> Other Services</h2>
+        </div>
+        <div>
+            
+            
+        </div> -->
+        <div class="text-center">
+            <button routerLink="/mybookings" type="submit" class="btn btn-light btn-elevate mr-2 ">
+                Back</button>
+            <button type="submit" class="btn btn-light btn-elevate mr-2 ">
+                Print</button>
+
+        </div>
+    </div>
+</div>

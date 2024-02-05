@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { GetUserServiceService } from 'src/app/services/get-user-service.service';
@@ -14,11 +15,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./profiledetails.component.scss']
 })
 export class ProfiledetailsComponent implements OnInit{
+  private apiData = new BehaviorSubject<any>(null);
+  public apiData$ = this.apiData.asObservable();
   updateForm!:FormGroup;
 loginData:any;
 userid:any;
 getUserData:any;
 register:any;
+  
+  // static apiData$: any;
   constructor(private fb: FormBuilder,
     private http: HttpClient, 
     private router: Router,
@@ -101,6 +106,7 @@ this.registerService.updateUser(updateuser).
 subscribe( result=>{
  
    console.log(result);
+  //  this.setData(result)
     // alert("login sucessful"); 
     this.updateForm.reset();
     Swal.fire({
@@ -113,5 +119,8 @@ subscribe( result=>{
 })
 // }
 }
+// setData(updateData: any) {
+//   this.apiData.next(updateData)
+// }
 
 }

@@ -18,7 +18,7 @@ export class AuthServiceService {
  session:boolean=false;
  loginData:any;
  
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  // private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
   constructor(private http: HttpClient,private router:Router,
@@ -38,7 +38,7 @@ export class AuthServiceService {
         console.log("++++", this.loginData)
         localStorage.setItem('token', this.authresults.accesstoken);
         console.log(this.authresults.accesstoken, this.authresults.usertype);
-         this.loggedIn.next(true);
+        //  this.loggedIn.next(true);
     
         if (this.authresults.usertype == "Admin") {
           Swal.fire({
@@ -86,9 +86,9 @@ export class AuthServiceService {
     this.apiData.next(loginData)
   }
 
-  get isUserLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
+//   get isUserLoggedIn() {
+//     return this.loggedIn.asObservable();
+//   }
   
 logged(){
   return localStorage.getItem('token');
