@@ -204,12 +204,11 @@ export class StepperComponent {
     this.bookingService.booking(book).    
     subscribe( result=>{
             console.log(result);              
-        Swal.fire({
-          text:
-          " Booked Successfully",          
-          confirmButtonColor: '#964B00',
-          background:'#efc96a',
-      });
+            Swal.fire({
+              text:result.message,
+              confirmButtonColor: '#964B00',
+              background:'#efc96a',
+            }); 
         this.router.navigate(["home"]);
     })
   }

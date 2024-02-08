@@ -18,7 +18,7 @@ export class RegisterServiceService {
 
   updateUser(user:UserModel):Observable<UserModel>{
     console.log("I am updateuser");    
-    return this.http.post<UserModel>("http://localhost:3001/users/updateuser", user);
+    return this.http.post<UserModel>(`${environment.updateuser}`, user);
     
   }
   

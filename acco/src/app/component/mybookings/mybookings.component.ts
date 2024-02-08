@@ -21,7 +21,8 @@ export class MybookingsComponent  implements OnInit{
   userid:any;
   loginData:any;
   bookingData:any;
-  roomBooking:any
+  roomBooking:any;
+  cancelResult:any;
   // static apiData$: any;
   
  
@@ -52,7 +53,7 @@ export class MybookingsComponent  implements OnInit{
     ngOnInit(): void {
       this.userid=this.loginData.userid;
       console.log("id:",this.userid);
-      this.bookingData="";
+      // this.bookingData="";
        this.getMyBooking(this.userid);
        
        
@@ -65,22 +66,23 @@ export class MybookingsComponent  implements OnInit{
         console.log(result);
          
        this.bookingData=result;
-       console.log("(((((",this.bookingData);
-       console.log("((((()))",this.bookingData[0].checkin);
-       console.log("((((()))adults",this.bookingData[0].adults);
+      //  console.log("(((((",this.bookingData);
+      //  console.log("((((()))",this.bookingData[0].checkin);
+      //  console.log("((((()))adults",this.bookingData[0].adults);
       //  this.setData(this.bookingData)
       });
         
       }
 
   cancelBooking(id:any){
-    
+    // this.cancelResult="";
         console.log("cancel");
         const book = new BookingModel() ;
         book.bookingid=id;
         book.userid= this.userid
         this.bookingService.bookingCancel(book).subscribe( result=>{   
               console.log("res",result);
+              // this.cancelResult=result;
                     Swal.fire({
             text:result.message,
             confirmButtonColor: '#964B00',

@@ -29,6 +29,8 @@ export class RoomlogicComponent {
   ngOnInit(): void {
 
     console.log("room:", this.roomData);
+    console.log("roomlogic:", this.roomData[0].logicid);
+    
     this.subscription = this.bookingService.currentValue.subscribe(data => {
       this.bookingData = data;
       console.log("booked data", this.bookingData);

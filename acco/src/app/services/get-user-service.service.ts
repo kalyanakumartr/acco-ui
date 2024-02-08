@@ -22,21 +22,21 @@ export class GetUserServiceService {
 
   getUserById(id: any):Observable<any>{
     console.log("getuser by id");
-    return this.http.get<any>("http://localhost:3001/users/getuserwithuserid?userid="+id);
+    return this.http.get<any>(`${environment.getuserwithuserid}`+id);
   }
 
   myBooking(id: any): Observable<any>{
     console.log("getMybooking");     
-    return this.http.get<any>("http://localhost:3001/booking/getbookingwithuserid?userid="+id);
+    return this.http.get<any>(`${environment.getbookingwithuserid}`+id);
   }
 
   changePassword(user:UserModel):Observable<UserModel>{
     console.log("I am changepasword");    
-    return this.http.post<UserModel>("http://localhost:3001/authentication/changepassword",user);
+    return this.http.post<UserModel>(`${environment.changepassword}`,user);
   }
 
   canceledBooking(id: any): Observable<any>{
     console.log("getMybooking");     
-    return this.http.get<any>("http://localhost:3001/booking/getcanceledbooking?userid="+id);
+    return this.http.get<any>(`${environment.getcanceledbooking}`+id);
   }
 }

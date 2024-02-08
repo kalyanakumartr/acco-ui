@@ -108,7 +108,7 @@ subscribe( result=>{
    console.log(result);
   //  this.setData(result)
     // alert("login sucessful"); 
-    this.updateForm.reset();
+    // this.updateForm.reset();
     Swal.fire({
       text:result.message,
       confirmButtonColor: '#964B00',

@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class EmailcheckService {
       console.log("email check",data)
       let params = new HttpParams().append("phonenumber",  data)
       // let queryParams = new HttpParams(data);
-          return this.http.get("http://localhost:3001/booking/emailverify",{params});
+          return this.http.get(`${environment.phonenumVerfiy}`,{params});
         }
   }
 

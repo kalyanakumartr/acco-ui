@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BookingModel } from '../model/booking.model';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class GetguestdetailService {
 
   getGuestData(date: any): Observable<any> {
 console.log("date is passing",date)
-    return this.http.get("http://localhost:3001/users/getguestdetail?checkin="+date);
+    return this.http.get(`${environment.getguestdetail}`+date);
   }
 
 //get roomslistapi
@@ -27,7 +28,7 @@ console.log("date is passing",date)
 
   bookRoomList(book:BookingModel):Observable<BookingModel>{
       console.log("I am booking");
-      return this.http.post<BookingModel>("http://localhost:3001/booking/checkinconfirm",book);
+      return this.http.post<BookingModel>(`${environment.checkinconfirm}`,book);
     }
   }
    

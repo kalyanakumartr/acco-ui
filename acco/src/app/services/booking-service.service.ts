@@ -33,6 +33,6 @@ export class BookingServiceService {
      bookingCancel(book:BookingModel):Observable<BookingModel>{
         console.log("I am bookingcancel");
         console.log("cancel",book);
-        return this.http.post<BookingModel>("http://localhost:3001/booking/bookingcancel",book);
+        return this.http.post<BookingModel>(`${environment.bookingCancel}`,book);
       }
 }
