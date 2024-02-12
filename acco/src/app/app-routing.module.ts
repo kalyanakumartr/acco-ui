@@ -27,6 +27,7 @@ import { FrontdeskselectroomsComponent } from './admincomponent/frontdeskselectr
 import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
 import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 import { BookingdetailsComponent } from './component/bookingdetails/bookingdetails.component';
+import { ContactusComponent } from './component/contactus/contactus.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -56,6 +57,7 @@ const routes: Routes = [
   {path:'roomlogic',component:RoomlogicComponent},
   {path:'roomfromwalkin',component:RoomfromwalkinComponent},
   {path:'bookingdetails',component:BookingdetailsComponent},
+  {path:'contactus',component:ContactusComponent},
   
 
 

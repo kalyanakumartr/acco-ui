@@ -44,6 +44,7 @@ import { FrontdeskselectroomsComponent } from './admincomponent/frontdeskselectr
 import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
 import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 import { BookingdetailsComponent } from './component/bookingdetails/bookingdetails.component';
+import { ContactusComponent } from './component/contactus/contactus.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { BookingdetailsComponent } from './component/bookingdetails/bookingdetai
     RoomlogicComponent,
     RoomfromwalkinComponent,
     BookingdetailsComponent,
+    ContactusComponent,
    
   ],
   imports: [
