@@ -45,6 +45,7 @@ import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
 import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 import { BookingdetailsComponent } from './component/bookingdetails/bookingdetails.component';
 import { ContactusComponent } from './component/contactus/contactus.component';
+// import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { ContactusComponent } from './component/contactus/contactus.component';
     RoomfromwalkinComponent,
     BookingdetailsComponent,
     ContactusComponent,
+    // MatchpasswordComponent,
    
   ],
   imports: [

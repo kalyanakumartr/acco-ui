@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserModel } from 'src/app/model/auth.model';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 import Swal from 'sweetalert2';
+import { matchpassword } from '../matchpassword/matchpassword.component';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
 export class SignupComponent implements OnInit{
   signupForm!:FormGroup;
   user =new UserModel();
+ 
   
   
   
@@ -42,8 +44,23 @@ export class SignupComponent implements OnInit{
       roleid:3
     
      
-    });
+    },
+    {
+       validators: matchpassword
+    }
+    );
   }
+
+  // const matchpassword : ValidatorFn = (control: AbstractControl):ValidationErrors|null =>{
+
+  //   let password = control.get('password');
+  //   let confirmpassword = control.get('confirmpassword');
+  //   if(password && confirmpassword && password?.value != confirmpassword?.value){
+  //      return {
+  //          passwordmatcherror : true }
+  //   }
+  //  return null; 
+  // }
 
     signupFormProcess(){
       const newuser = new UserModel() ;
