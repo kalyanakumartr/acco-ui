@@ -28,6 +28,10 @@ import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
 import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 import { BookingdetailsComponent } from './component/bookingdetails/bookingdetails.component';
 import { ContactusComponent } from './component/contactus/contactus.component';
+import { ForgotpasswordotpComponent } from './component/forgotpasswordotp/forgotpasswordotp.component';
+import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
+import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
+
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -58,6 +62,10 @@ const routes: Routes = [
   {path:'roomfromwalkin',component:RoomfromwalkinComponent},
   {path:'bookingdetails',component:BookingdetailsComponent},
   {path:'contactus',component:ContactusComponent},
+  {path:'forgotpassword',component:ForgotpasswordstepperComponent},
+  {path:'forgotpasswordotp',component:ForgotpasswordotpComponent},
+  {path:'forgotpasswordform',component:ForgotpasswordformComponent},
+
   
 
 

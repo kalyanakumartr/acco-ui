@@ -45,6 +45,10 @@ import { RoomlogicComponent } from './component/roomlogic/roomlogic.component';
 import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfromwalkin.component';
 import { BookingdetailsComponent } from './component/bookingdetails/bookingdetails.component';
 import { ContactusComponent } from './component/contactus/contactus.component';
+import { ForgotpasswordotpComponent } from './component/forgotpasswordotp/forgotpasswordotp.component';
+import { NgOtpInputModule } from  'ng-otp-input';
+import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
+import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -80,6 +84,9 @@ import { ContactusComponent } from './component/contactus/contactus.component';
     RoomfromwalkinComponent,
     BookingdetailsComponent,
     ContactusComponent,
+    ForgotpasswordstepperComponent,
+    ForgotpasswordotpComponent,
+    ForgotpasswordformComponent,
     // MatchpasswordComponent,
    
   ],
@@ -98,6 +105,7 @@ import { ContactusComponent } from './component/contactus/contactus.component';
     MatRadioModule,
     MatStepperModule,
     MatButtonModule,
+    NgOtpInputModule,
     NgMultiSelectDropDownModule.forRoot()
    
     
