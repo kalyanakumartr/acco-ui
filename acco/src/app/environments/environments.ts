@@ -18,6 +18,7 @@ checkinconfirm:'http://localhost:3001/booking/checkinconfirm',
 getguestdetail:'http://localhost:3001/users/getguestdetail?checkin=',
 roomtype:'http://localhost:3001/booking/roomtype',
 updateuser:'http://localhost:3001/users/updateuser',
+addcontact:'http://localhost:3001/users/addcontact'
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',

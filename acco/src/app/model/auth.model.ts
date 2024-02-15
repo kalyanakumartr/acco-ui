@@ -16,4 +16,5 @@ export class UserModel {
     pincode!:string;
   message!: string ;
   modeoftypeid:any;
+  name!:string;
 }

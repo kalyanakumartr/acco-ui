@@ -11,9 +11,9 @@
              
               <span >
                
-                <a *ngIf="!authService.logged()" href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/login">Login</a>&nbsp;
-                <a *ngIf="!authService.logged() "href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" routerLink="/signup">Signup</a>&nbsp;
-                <a *ngIf="authService.logged()" (click)="logout()" href="#"  style="color: #964B00; font-weight: bold ;font-size: medium;" >Logout</a>
+                <a *ngIf="!authService.logged()" href="#"   routerLink="/login">Login</a>&nbsp;
+                <a *ngIf="!authService.logged() "href="#"   routerLink="/signup">Signup</a>&nbsp;
+                <a *ngIf="authService.logged()" (click)="logout()" href="#"   >Logout</a>
                 
                
 

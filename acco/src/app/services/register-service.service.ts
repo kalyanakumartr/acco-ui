@@ -21,5 +21,12 @@ export class RegisterServiceService {
     return this.http.post<UserModel>(`${environment.updateuser}`, user);
     
   }
+
+
+  contactus(user:UserModel):Observable<UserModel>{
+    console.log("I am contact");   
+    console.log("I am contactuser",user);   
+    return this.http.post<UserModel>(`${environment.addcontact}`, user);
+  }
   
 }
