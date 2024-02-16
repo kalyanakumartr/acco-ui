@@ -9,13 +9,18 @@ import { ForOtp } from '../model/otp.model';
 export class GenerateOTPService {
 
   constructor(private http:HttpClient) { }
-  genOTP(otp:ForOtp):Observable<any>{
+  genOTP(data:any):Observable<any>{
     console.log("I am otpgenerate");
     
-    return this.http.post("http://localhost:3001/users/generateOTP",otp);
+    return this.http.get("http://localhost:3001/email/generateOTP?email="+data);
   }
   verifyOTP(verify:ForOtp){
     console.log("I am verifyOTP");
       return this.http.post("http://localhost:3001/users/verifyOTP",verify);
+  }
+  verifyOTPwithemail(email:any,otp:any){
+    console.log(email,otp)
+    console.log("I am verifyOTP");
+      return this.http.post("http://localhost:3001/email/verifyOTP",{email:email,inputotp:otp});
   }
 }

@@ -3,7 +3,7 @@
     <div class="container mt-0">
         <img src="assets/imagescontact.jpg" style="width:100%;height:300px; ">
     </div>
-</div>
+
 <div>
     <div class="row">
         <div class="col-sm-6" style="margin-left: 5%;margin-top: 3%;font-weight: bold;">
@@ -50,7 +50,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6" style="margin-left: 5%;color:#964B00;margin-top: 3%;font-weight: bold;background-color: #fce2a5;">
+    <div class="col-sm-6" style="margin-left: 5%;color:#964B00;margin-top: 3%;margin-bottom: 20px; font-weight: bold;background-color: #fce2a5;">
       <h2 style="margin-top: 3%;">Send Us A Message</h2>
       <h4>Contact Us <br> Fields marked with an * are required</h4>
       <form [formGroup]="contactForm" (ngSubmit)="contactFormProcess()">
@@ -95,15 +95,20 @@
                               class="text-danger form-inline  mt-0">*Messsage is invalid</small>
           </div>
           <div  class="text-center">
-            <button  type="submit" class="btn btn-light btn-elevate mr-2 " >
+            <button style="margin-bottom: 30px;"  type="submit" class="btn btn-light btn-elevate mr-2 " >
                 Submit</button>
               
            </div> 
       </form>
+      <div>
+        
+      </div>
+
     </div>
    <div  style="margin-left: 3%;margin-top: 3%;">
     Want to place map
    </div> 
 </div>
 
+</div>
 </div>
