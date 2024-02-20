@@ -42,6 +42,12 @@ export class LoginComponent implements OnInit {
    
     this.authService.login(this.loginForm.value).subscribe(result => {
       
+      console.log(result);
+      Swal.fire({
+        text:result.message,
+        confirmButtonColor: '#964B00',
+        background:'#efc96a',
+      });    
       // console.log(result);
       //  console.log(result.usertype)
       // if (result.accesstoken) {

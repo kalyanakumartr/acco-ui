@@ -16,13 +16,15 @@ export class ForgotpasswordotpComponent {
   mailsent: any;
   otpdata:any
   apidata:any;
-
+  timeLeft: number = 10;
+  interval:any;
+  enableresendotp:Boolean=false;
   constructor(private fb: FormBuilder,private activatedroute:ActivatedRoute,private generateotp: GenerateOTPService,private router:Router) {}
 
 
   ngOnInit(): void {
     
-   
+   this.startTimer();
     this.activatedroute.params.subscribe((params: Params) =>
        this.mailsent = params[('mailsent')],);
        console.log("mail",this.mailsent)
@@ -30,10 +32,12 @@ export class ForgotpasswordotpComponent {
 
   otp!: string;
   showOtpComponent = true;
+ 
   @ViewChild("ngOtpInput", { static: false }) ngOtpInput: any ; config = { allowNumbersOnly: true, length: 6, isPasswordInput: false, disableAutoFocus: false, placeholder: "*", inputStyles: { width: "25px", height: "25px", }, };
   onOtpChange(item:any){
     console.log("getdata",item)
     this.otpdata=item
+
   }
 
   verifyotp(){
@@ -47,7 +51,7 @@ export class ForgotpasswordotpComponent {
         confirmButtonColor: '#964B00',
         background:'#efc96a',
       }); 
-      this.router.navigate(['forgotpasswordform'])
+      this.router.navigate(['forgotpasswordform',{"addmail":this.mailsent}])
     }else {
       Swal.fire({
         text:this.apidata.message,
@@ -58,4 +62,32 @@ export class ForgotpasswordotpComponent {
       
     })
   }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        // this.timeLeft = 60;
+        this.enableresendotp=true 
+        this.timeLeft = 60;
+        // clearInterval(this.interval);
+
+      }
+    },1000)
+  }
+
+  sendotp(){
+    this.enableresendotp=false;
+    this.generateotp.genOTP(this.mailsent).subscribe((result) => {
+      console.log(result);
+      Swal.fire({
+        text:result.message,
+        confirmButtonColor: '#964B00',
+        background:'#efc96a',
+      });      
+  })
+  
+  }
+
 }

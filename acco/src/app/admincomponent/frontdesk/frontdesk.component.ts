@@ -31,7 +31,6 @@ constructor( private getguestdetail:GetguestdetailService,private router: Router
 }
 
 ngOnInit(): void {
-  this.calggapi(this.TodayDate);
  
   if (this.currentmonth < 10) {
       this.finalmonth = "0" + this.currentmonth;
@@ -44,7 +43,7 @@ ngOnInit(): void {
       this.finalday = this.currentday;
     }
   this.TodayDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday ;
-
+  this.calggapi(this.TodayDate);
   
 }
 
