@@ -4,7 +4,8 @@
             <div class="offset-md-1 col-lg-3 col-md-5 offset-lg-2 offset-md-4">
                 <div class="panel border bg-white">
                     <div class="panel-heading">
-                        <h3 class="pt-1 font-weight-bold" style="color:#964B00">Register Yourself </h3>
+                        <h3 class="pt-1 font-weight-bold" style="color:#964B00">
+                            <span><img src="assets/index_logo.jpg" > </span>Register Yourself </h3>
                     </div>
                     <div class="panel-body p-3" >
                         <form [formGroup]="signupForm" (ngSubmit)="signupFormProcess()">
@@ -165,7 +166,8 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">Password:</label> -->
-                                            <input formControlName="password" type="password" placeholder="Password">
+                                            <input formControlName="password" [type]="type" placeholder="Password">
+                                            <span (click)="hideShowPass()" class="fa {{eyeIcon}} " style="color:#964B00"></span>
                                         </div>
                                         <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"  
                               class="text-danger form-inline  mt-0">*password is required</small>
@@ -179,14 +181,15 @@
                                         <div class="input-field">
                                             <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                             <!-- <label style="color:#964B00">ConfirmPassword:</label> -->
-                                            <input  formControlName="confirmpassword" type="password"  placeholder="ConfirmPassword">
+                                            <input  formControlName="confirmpassword" [type]="type1"  placeholder="ConfirmPassword">
+                                            <span (click)="hideShowPass1()" class="fa {{eyeIcon1}} " style="color:#964B00"></span>
                                         </div>
                                         <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required','confirmpassword')"  
                               class="text-danger form-inline  mt-0">*confirmpassword is required</small>
                               <small *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('pattern','confirmpassword')"  
                               class="text-danger form-inline  mt-0">*confirmpassword is required</small>
                               <small class="text-danger form-inline  mt-0" *ngIf="signupForm.errors?.['passwordmatcherror']">Password does not match </small>
-                                        
+                                     
                                         
                                     </div>                                    
                                 </div>                                

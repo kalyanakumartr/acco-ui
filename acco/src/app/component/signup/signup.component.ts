@@ -16,7 +16,12 @@ import { matchpassword } from '../matchpassword/matchpassword.component';
 export class SignupComponent implements OnInit{
   signupForm!:FormGroup;
   user =new UserModel();
- 
+  eyeIcon: string = 'fa-eye-slash';
+  isText: boolean = false;
+  type: string = "password";
+  eyeIcon1: string = 'fa-eye-slash';
+  isText1: boolean = false;
+  type1: string = "password";
   
   
   
@@ -61,7 +66,16 @@ export class SignupComponent implements OnInit{
   //   }
   //  return null; 
   // }
-
+  hideShowPass() {
+    this.isText = !this.isText;
+    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
+    this.isText ? (this.type = 'text') : (this.type = 'password');
+  }
+  hideShowPass1() {
+    this.isText1 = !this.isText1;
+    this.isText1 ? (this.eyeIcon1 = 'fa-eye') : (this.eyeIcon1 = 'fa-eye-slash');
+    this.isText1 ? (this.type1 = 'text') : (this.type1 = 'password');
+  }
     signupFormProcess(){
       const newuser = new UserModel() ;
       const formData = this.signupForm.value;

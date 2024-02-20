@@ -8,7 +8,7 @@
     width:700px;
     box-shadow: 20px 20px 80px rgb(218,218,218);
     border-radius: 12px;
-    margin-top: 50px;
+     margin-top: 10px;
 }
 .panel-heading{
     text-align: center;
@@ -58,11 +58,13 @@ input[type='text'],input[type='password']{
     box-shadow: none;
 }
 img{
-    width:40px;
+    width:130px;
     height:40px;
     object-fit: cover;
-    border-radius:50%;
-    position:relative
+    // border-radius:50%;
+    position:relative;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 // .border{

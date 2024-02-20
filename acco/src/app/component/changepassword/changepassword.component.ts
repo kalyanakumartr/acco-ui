@@ -7,6 +7,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { GetUserServiceService } from 'src/app/services/get-user-service.service';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 import Swal from 'sweetalert2';
+import { matchpassword } from '../matchpassword/matchpassword.component';
 
 @Component({
   selector: 'app-changepassword',
@@ -28,9 +29,13 @@ export class ChangepasswordComponent implements OnInit{
     }
   ngOnInit(): void {
     this.passwordForm = this.fb.group({
-      password: ['', Validators.required],
-      cpassword: ['', Validators.required],
-    });
+      password: ['', [ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
+      confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
+    },
+    {
+      validators: matchpassword
+   }
+    );
   }
   passwordProcess(){
     const newuser = new UserModel() ;

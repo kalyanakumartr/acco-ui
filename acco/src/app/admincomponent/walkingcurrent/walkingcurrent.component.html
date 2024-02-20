@@ -15,12 +15,12 @@
                                     <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
                                     <input formControlName="firstname" type="text" placeholder="FirstName">
                                 </div>
-                                <small
+                                <small style="margin-left: 3px;"
                                     *ngIf="walkingCurrentForm.controls['firstname'].dirty && walkingCurrentForm.hasError('required','firstname')"
-                                    class="text-danger form-inline mt-0 ml-5">*firstName is required</small>
+                                    class="text-danger form-inline  ">*firstname is required</small>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['firstname'].dirty && walkingCurrentForm.hasError('pattern','firstname')"
-                                    class="text-danger form-inline mt-0 ml-5">*firstName is invalid</small>
+                                    class="text-danger form-inline ">*firstName is invalid</small>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -32,7 +32,7 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['lastname'].dirty && walkingCurrentForm.hasError('required','lastname')"
-                                    class="text-danger form-inline mt-0 ml-5 ">*lastName is required</small>
+                                    class="text-danger form-inline  ">*lastName is required</small>
                             </div>
                         </div>
                     </div>
@@ -46,10 +46,10 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['email'].dirty && walkingCurrentForm.hasError('required','email')"
-                                    class="text-danger form-inline mt-0 ml-5">*email is required</small>
+                                    class="text-danger form-inline ">*email is required</small>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['email'].dirty && walkingCurrentForm.hasError('pattern','email')"
-                                    class="text-danger form-inline mt-0 ml-5">*email is invalid</small>
+                                    class="text-danger form-inline ">*email is invalid</small>
 
                             </div>
                         </div>
@@ -65,10 +65,10 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['phonenumber'].dirty && walkingCurrentForm.hasError('required','phonenumber')"
-                                    class="text-danger form-inline mt-0 ml-5">*phonenumber is required</small>
+                                    class="text-danger form-inline ">*phonenumber is required</small>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['phonenumber'].dirty && walkingCurrentForm.hasError('pattern','phonenumber')"
-                                    class="text-danger form-inline mt-0 ml-5 ">*phonenumber is invalid</small>
+                                    class="text-danger form-inline  ">*phonenumber is invalid</small>
                             </div>
                         </div>
                     </div>
@@ -82,10 +82,10 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['address1'].dirty && walkingCurrentForm.hasError('required','address1')"
-                                    class="text-danger form-inline mt-0 ml-5 ">*address1 is required</small>
+                                    class="text-danger form-inline  ">*address1 is required</small>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['address1'].dirty && walkingCurrentForm.hasError('pattern','address1')"
-                                    class="text-danger form-inline mt-0 ml-5 ">*Address1 is invalid</small>
+                                    class="text-danger form-inline  ">*Address1 is invalid</small>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -97,7 +97,7 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['address2'].dirty && walkingCurrentForm.hasError('required','address2')"
-                                    class="text-danger form-inline mt-0 ml-5">*address2 is required</small>
+                                    class="text-danger form-inline ">*address2 is required</small>
                             </div>
                         </div>
                     </div>
@@ -111,10 +111,10 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['city'].dirty && walkingCurrentForm.hasError('required','city')"
-                                    class="text-danger form-inline mt-0 ml-5">*city is required</small>
+                                    class="text-danger form-inline ">*city is required</small>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['city'].dirty && walkingCurrentForm.hasError('pattern','city')"
-                                    class="text-danger form-inline mt-0 ml-5">*city is invalid</small>
+                                    class="text-danger form-inline ">*city is invalid</small>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -126,7 +126,7 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['state'].dirty && walkingCurrentForm.hasError('required','state')"
-                                    class="text-danger form-inline mt-0 ml-5 ">*state is required</small>
+                                    class="text-danger form-inline  ">*state is required</small>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['country'].dirty && walkingCurrentForm.hasError('required','country')"
-                                    class="text-danger form-inline mt-0 ml-5 ">*country is required</small>
+                                    class="text-danger form-inline  ">*country is required</small>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -152,7 +152,10 @@
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['pincode'].dirty && walkingCurrentForm.hasError('required','pincode')"
-                                    class="text-danger form-inline mt-0 ml-5">*pincode is required</small>
+                                    class="text-danger form-inline ">*pincode is required</small>
+                                    <small
+                                    *ngIf="walkingCurrentForm.controls['pincode'].dirty && walkingCurrentForm.hasError('pattern','pincode')"
+                                    class="text-danger form-inline ">*pincode is invalid</small>
                             </div>
                         </div>
                     </div>
@@ -214,12 +217,12 @@
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Children<small>(0-9years)</small></label>
+                                    <label style="color:#964B00">Children<small style="margin-left: 0px;">(0-9years)</small></label>
                                     <input formControlName="children" (change)="ValueEntered(childVal.value)" #childVal
                                         (click)="clickon()" placeholder="Children" type="number" value="0" min="0"
                                         max="6" style="width:170px" />
                                     <ng-container *ngIf="visible">
-                                        <div class="card" style="width: 15rem;align-items: right;">
+                                        <div class="card" style="width: 15rem;margin-left: 100px;">
                                             <ul class="list-group list-group-flush">
                                                 <li *ngFor="let array of samArray;let i = index"
                                                     class="list-group-item">Age of Child{{array}}
