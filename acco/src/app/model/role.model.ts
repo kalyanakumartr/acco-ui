@@ -5,4 +5,5 @@ roleid:any;
 rolename!:string;
 shortname!:string;
 status!:boolean;
+
 }

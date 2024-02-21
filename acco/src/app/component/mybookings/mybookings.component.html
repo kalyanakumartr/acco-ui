@@ -34,7 +34,7 @@
           <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Booking History</h4>
           
           <div >
-            <table class="table table-striped table-bordered" >
+            <table class="table table-striped table-bordered"   >
               <thead>
                 <tr>
                   <th style="border-color: #964B00; color:#964B00;" scope="col">From</th>
@@ -49,7 +49,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr style="color: #964B00;" *ngFor="let i of bookingData">
+                <tr style="color: #964B00;" *ngFor="let i of dataObs$ | async">
                   <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.adults}}
@@ -67,12 +67,23 @@
             </table>
             <div class="page">
               
-              <mat-paginator 
+              <mat-paginator  
               #paginator
-                [pageSizeOptions]="[2,5,10]" 
+              [pageSize]="5"
+                [pageSizeOptions]="[5,10,15]" 
                 showFirstLastButtons
                 >
         </mat-paginator>
+       
+        <!-- <mat-paginator 
+        #paginator
+        [length]="100"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+              showFirstLastButtons
+</mat-paginator> -->
+
             </div>
             
       </div>    

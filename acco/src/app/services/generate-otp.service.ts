@@ -12,7 +12,7 @@ export class GenerateOTPService {
   genOTP(data:any):Observable<any>{
     console.log("I am otpgenerate");
     
-    return this.http.get("http://localhost:3001/email/generateOTP?email="+data);
+    return this.http.get("http://localhost:3001/users/generateOTP?email="+data);
   }
   verifyOTP(verify:ForOtp){
     console.log("I am verifyOTP");
@@ -21,6 +21,6 @@ export class GenerateOTPService {
   verifyOTPwithemail(email:any,otp:any){
     console.log(email,otp)
     console.log("I am verifyOTP");
-      return this.http.post("http://localhost:3001/email/verifyOTP",{email:email,inputotp:otp});
+      return this.http.post("http://localhost:3001/users/verifyOTP",{email:email,inputotp:otp});
   }
 }

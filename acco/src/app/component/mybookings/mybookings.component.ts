@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { BookingModel } from 'src/app/model/booking.model';
+import { MyBooking } from 'src/app/model/mybooking.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { GetUserServiceService } from 'src/app/services/get-user-service.service';
@@ -20,34 +21,40 @@ export class MybookingsComponent  implements OnInit{
   // public apiData$ = this.apiData.asObservable();
   userid:any;
   loginData:any;
-  bookingData:any;
+   bookingData:any;
   roomBooking:any;
   cancelResult:any;
+  page = 4;
   // static apiData$: any;
-  
- 
+  booking:MyBooking[]=[];
+   public databookingData =new MatTableDataSource<MyBooking>();
 
+    dataObs$!: Observable<any>;
+
+
+   
   constructor (private roleService:RoleService,
     public authService:AuthServiceService,
     private getuserservice:GetUserServiceService,
     private bookingService:BookingServiceService,
     private router: Router,
+    private _changeDetectorRef: ChangeDetectorRef
     )
       {
         authService.apiData$.subscribe(data => this.loginData = data)
         
       }
       
-      @ViewChild('paginator')
+      @ViewChild('paginator' )
   paginator!: MatPaginator;
       
 
-      // PageSizes=[3,5,7];
+       PageSizes=[5,10,15];
       
-
+     
 
       ngAfterViewInit(){
-        // this.bookingData.paginator=this.paginator;
+         this.databookingData.paginator=this.paginator;
 
       }
     ngOnInit(): void {
@@ -55,7 +62,7 @@ export class MybookingsComponent  implements OnInit{
       console.log("id:",this.userid);
       // this.bookingData="";
        this.getMyBooking(this.userid);
-       
+       this.setPagination(this.bookingData);
        
     }
     getMyBooking(userid:any){
@@ -64,12 +71,15 @@ export class MybookingsComponent  implements OnInit{
       // .subscribe((res)=>{
         .subscribe((result)=>{
         console.log(result);
-         
+         this.databookingData.data=result;
+         console.log("))))00000",this.databookingData.data)
        this.bookingData=result;
-      //  console.log("(((((",this.bookingData);
+        console.log("(((((",this.bookingData);
+        
       //  console.log("((((()))",this.bookingData[0].checkin);
       //  console.log("((((()))adults",this.bookingData[0].adults);
       //  this.setData(this.bookingData)
+     
       });
         
       }
@@ -88,8 +98,6 @@ export class MybookingsComponent  implements OnInit{
             confirmButtonColor: '#964B00',
             background:'#efc96a',
           });
-          this.getMyBooking(this.userid);
-
         })
       }
 
@@ -113,6 +121,16 @@ export class MybookingsComponent  implements OnInit{
         
       ]);
 
+      }
+
+      
+
+      setPagination(data:any) {
+        console.log("++++1111",MyBooking)
+        this.databookingData = new MatTableDataSource<any>(data);
+        this._changeDetectorRef.detectChanges();
+        this.databookingData.paginator = this.paginator;
+        this.dataObs$ = this.databookingData.connect();
       }
 
       }

@@ -30,7 +30,7 @@ export class GetroomlistService {
     console.log("I am roomlogic"); 
     console.log("roomlogic",adult,checkIn,checkOut); 
 
-    return this.http.get("http://localhost:3001/booking/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
+    return this.http.get("http://localhost:3001/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
 
   }
 
@@ -38,7 +38,7 @@ export class GetroomlistService {
     console.log("I am confirm"); 
     console.log("I am confirm",data); 
 
-    return this.http.post<BookingModel>("http://localhost:3001/booking/checkinconfirm",data);
+    return this.http.post<BookingModel>(`${environment.checkinconfirm}`,data);
 
   }
 

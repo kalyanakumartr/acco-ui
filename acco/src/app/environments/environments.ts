@@ -8,17 +8,18 @@ registerURL:'http://localhost:3001/users/adduser',
 // bookingURL:'http://localhost:3001/booking/addbooking',
 booking:'http://localhost:3001/booking/addbookingwithchild',
 bookingCancel:'http://localhost:3001/booking/bookingcancel',
-phonenumVerfiy:'http://localhost:3001/booking/emailverify',
-idbookingproof:'http://localhost:3001/booking/idbookingproof',
+phonenumVerfiy:'http://localhost:3001/email/emailverify',
+idbookingproof:'http://localhost:3001/users/idbookingproof',
 getbookingwithuserid:'http://localhost:3001/booking/getbookingwithuserid?userid=',
 getuserwithuserid:'http://localhost:3001/users/getuserwithuserid?userid=',
 changepassword:'http://localhost:3001/authentication/changepassword',
 getcanceledbooking:'http://localhost:3001/booking/getcanceledbooking?userid=',
 checkinconfirm:'http://localhost:3001/booking/checkinconfirm',
 getguestdetail:'http://localhost:3001/users/getguestdetail?checkin=',
-roomtype:'http://localhost:3001/booking/roomtype',
+roomtype:'http://localhost:3001/room/roomtype',
 updateuser:'http://localhost:3001/users/updateuser',
-addcontact:'http://localhost:3001/users/addcontact'
+addcontact:'http://localhost:3001/users/addcontact',
+getlogic:'http://localhost:3001/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut'
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',
