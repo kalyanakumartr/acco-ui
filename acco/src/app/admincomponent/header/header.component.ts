@@ -12,16 +12,18 @@ export class HeaderComponent {
 
   constructor(private http: HttpClient, private router: Router,
     // private getUserService:GetUserServiceService,
-    public authService:AuthServiceService){
-      
-      
-    }
-  logout(){
+    public authService: AuthServiceService) {
+
+
+  }
+  logout() {
     //   //  localStorage.removeItem('token');
     //    this.router.navigate(["home"]) 
     //    console.log("++","logout sucessfully")
-       
-       this.authService.logout();
-  
-      }
+
+    this.authService.logout();
+    this.router.navigate(["home"])
+
+
+  }
 }

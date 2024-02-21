@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
   userName: string = "";
   password: string = "";
   loginForm!: FormGroup;
-  
+
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthServiceService) { }
   ngOnInit(): void {
-    
+
     this.loginForm = this.fb.group({
-      username:['',[Validators.required,Validators.pattern("^[A-Za-z0-9-,@.]{3,15}$")]],
-      password: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]{3,8}$")]],
+      username: ['', [Validators.required, Validators.pattern("^[A-Za-z0-9-,@.]{3,15}$")]],
+      password: ['', [Validators.required, Validators.pattern("^[a-zA-z0-9]{3,8}$")]],
     });
 
   }
@@ -39,15 +39,25 @@ export class LoginComponent implements OnInit {
   }
 
   loginProcess() {
-   
+
     this.authService.login(this.loginForm.value).subscribe(result => {
-      
+
       console.log(result);
-      Swal.fire({
-        text:result.message,
-        confirmButtonColor: '#964B00',
-        background:'#efc96a',
-      });    
+    },
+      error => {
+        Swal.fire({
+          text: error.message,
+          confirmButtonColor: '#964B00',
+          background: '#efc96a',
+        });
+      }
+    )
+
+      // Swal.fire({
+      //   text:result.message,
+      //   confirmButtonColor: '#964B00',
+      //   background:'#efc96a',
+      // });    
       // console.log(result);
       //  console.log(result.usertype)
       // if (result.accesstoken) {
@@ -56,7 +66,7 @@ export class LoginComponent implements OnInit {
       //   console.log("++++", this.loginData)
       //   localStorage.setItem('token', result.accesstoken);
       //   console.log(result.accesstoken, result.usertype);
-      
+
       //   if (result.usertype == "Admin") {
       //     this.router.navigate(["admin"])
       //   } else if (result.usertype == "Manager") {
@@ -74,17 +84,17 @@ export class LoginComponent implements OnInit {
         //   Swal.fire(result.message);           
         //   this.loginForm.reset();
         //   this.router.navigate(["home"])
-      })
+      }
 
 
-    // },
-    //   error => {
-    //     Swal.fire("Invalid Credentials");
-    //   }
-    // )
+  // },
+  //   error => {
+  //     Swal.fire("Invalid Credentials");
+  //   }
+  // )
 
 
 
-  }
+}
 
- }
+ 

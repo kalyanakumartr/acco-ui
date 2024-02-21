@@ -14,71 +14,80 @@ export class AuthServiceService {
 
   private apiData = new BehaviorSubject<any>(null);
   public apiData$ = this.apiData.asObservable();
-  authresults:any;
- session:boolean=false;
- loginData:any;
- 
+  authresults: any;
+  session: boolean = false;
+  loginData: any;
+
   // private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
-  constructor(private http: HttpClient,private router:Router,
-   
-    ) { }
+  constructor(private http: HttpClient, private router: Router,
+
+  ) { }
 
   login(data: any): Observable<any> {
     console.log("I am server");
     return this.http.post(`${environment.authURL}`, data)
-    .pipe(map(result =>{
-      console.log(result);
-      this.authresults=result;
-      console.log(this.authresults.usertype)
-      if (this.authresults.accesstoken) {
-        this.loginData = result;
-        this.setData(this.loginData)
-        console.log("++++", this.loginData)
-        localStorage.setItem('token', this.authresults.accesstoken);
-        console.log(this.authresults.accesstoken, this.authresults.usertype);
-        //  this.loggedIn.next(true);
-    
-        if (this.authresults.usertype == "Admin") {
-          Swal.fire({
-            text:
-            this.authresults.message,
-            confirmButtonColor: '#964B00',
-            background:'#efc96a',
-          });  
-          this.router.navigate(["admin"])
-          
-        } else if (this.authresults.usertype == "Manager") {
-          Swal.fire({
-            text:
-            this.authresults.message,
-            confirmButtonColor: '#964B00',
-            background:'#efc96a',});  
-          this.router.navigate(["frontdesk"])
-         
-        } 
-        else if (this.authresults.usertype == "FrontOfficeExecutive") {
-          Swal.fire({
-            text:
-            this.authresults.message,
-            confirmButtonColor: '#964B00',
-            background:'#efc96a',});  
-          this.router.navigate(["frontdesk"])
-         
+      .pipe(map(result => {
+        console.log(result);
+        this.authresults = result;
+        console.log(this.authresults.usertype)
+        if (this.authresults.accesstoken) {
+          this.loginData = result;
+          this.setData(this.loginData)
+          console.log("++++", this.loginData)
+          localStorage.setItem('token', this.authresults.accesstoken);
+          console.log(this.authresults.accesstoken, this.authresults.usertype);
+          //  this.loggedIn.next(true);
+
+          if (this.authresults.usertype == "Admin") {
+            Swal.fire({
+              text:
+                this.authresults.message,
+              confirmButtonColor: '#964B00',
+              background: '#efc96a',
+            });
+            this.router.navigate(["admin"])
+
+          } else if (this.authresults.usertype == "Manager") {
+            Swal.fire({
+              text:
+                this.authresults.message,
+              confirmButtonColor: '#964B00',
+              background: '#efc96a',
+            });
+            this.router.navigate(["frontdesk"])
+
+          }
+          else if (this.authresults.usertype == "FrontOfficeExecutive") {
+            Swal.fire({
+              text:
+                this.authresults.message,
+              confirmButtonColor: '#964B00',
+              background: '#efc96a',
+            });
+            this.router.navigate(["frontdesk"])
+
+          } else {
+            Swal.fire({
+              text:
+                this.authresults.message,
+              confirmButtonColor: '#964B00',
+              background: '#efc96a',
+            });
+            this.router.navigate(["mybookings"])
+          }
+
         } else {
           Swal.fire({
             text:
-            this.authresults.message,
+              this.authresults.message,
             confirmButtonColor: '#964B00',
-            background:'#efc96a',
-          });   
-          this.router.navigate(["mybookings"])
+            background: '#efc96a',
+          });
         }
+      }))
 
-  }
-}))
-    
 
   };
 
@@ -86,18 +95,18 @@ export class AuthServiceService {
     this.apiData.next(loginData)
   }
 
-//   get isUserLoggedIn() {
-//     return this.loggedIn.asObservable();
-//   }
-  
-logged(){
-  return localStorage.getItem('token');
-}
+  //   get isUserLoggedIn() {
+  //     return this.loggedIn.asObservable();
+  //   }
+
+  logged() {
+    return localStorage.getItem('token');
+  }
 
   logout() {
-    
+
     localStorage.removeItem('token');
-    this.router.navigate(["home"]) 
+    this.router.navigate(["home"])
   }
 }
 

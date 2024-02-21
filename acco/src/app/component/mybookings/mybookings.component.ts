@@ -88,6 +88,8 @@ export class MybookingsComponent  implements OnInit{
             confirmButtonColor: '#964B00',
             background:'#efc96a',
           });
+          this.getMyBooking(this.userid);
+
         })
       }
 
