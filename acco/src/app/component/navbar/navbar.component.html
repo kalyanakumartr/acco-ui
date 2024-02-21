@@ -12,7 +12,7 @@
               <span >
                
                 <a *ngIf="!authService.logged()" href="#"   routerLink="/login">Login</a>&nbsp;
-                <a *ngIf="!authService.logged() "href="#"   routerLink="/signup">Signup</a>&nbsp;
+                <a *ngIf="!authService.logged() "href="#"   (click)="signup()">Signup</a>&nbsp;
                 <a *ngIf="authService.logged()" (click)="logout()" href="#"   >Logout</a>
                 
                

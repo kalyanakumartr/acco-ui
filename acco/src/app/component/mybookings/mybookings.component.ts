@@ -24,7 +24,6 @@ export class MybookingsComponent  implements OnInit{
    bookingData:any;
   roomBooking:any;
   cancelResult:any;
-  page = 4;
   // static apiData$: any;
   booking:MyBooking[]=[];
    public databookingData =new MatTableDataSource<MyBooking>();

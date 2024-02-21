@@ -34,6 +34,10 @@ export class NavbarComponent implements OnInit {
     this. username = this.tokenvalue == null ? "Hi" : this.loginData.username;
     console.log("name:",this.username);
   }
+
+  signup(){
+    this.router.navigate(["signup",{roleid:3}])
+  }
    
   logout(){
   //   //  localStorage.removeItem('token');

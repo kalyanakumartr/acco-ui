@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { UserModel } from 'src/app/model/auth.model';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
@@ -22,6 +22,7 @@ export class SignupComponent implements OnInit{
   eyeIcon1: string = 'fa-eye-slash';
   isText1: boolean = false;
   type1: string = "password";
+  roleid:any
   
   
   
@@ -29,9 +30,14 @@ export class SignupComponent implements OnInit{
       private http: HttpClient, 
       private router: Router,
       private registerService:RegisterServiceService,
+      private activatedroute:ActivatedRoute
       
       ){}
   ngOnInit():void{
+    this.activatedroute.params.subscribe((params: Params) =>
+    this.roleid = params[('roleid')],);
+    console.log("role",this.roleid)
+
     this.signupForm = this.fb.group({
       firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
       lastname: ['', [Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
@@ -46,7 +52,7 @@ export class SignupComponent implements OnInit{
       username:['',[Validators.required,Validators.pattern("^[A-Za-z0-9-,@.]*$")]],
       password: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
       confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
-      roleid:3
+      roleid:this.roleid
     
      
     },
