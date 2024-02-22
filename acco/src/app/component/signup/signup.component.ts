@@ -82,7 +82,8 @@ export class SignupComponent implements OnInit{
     this.isText1 ? (this.eyeIcon1 = 'fa-eye') : (this.eyeIcon1 = 'fa-eye-slash');
     this.isText1 ? (this.type1 = 'text') : (this.type1 = 'password');
   }
-    signupFormProcess(){
+    
+  signupFormProcess(){
       const newuser = new UserModel() ;
       const formData = this.signupForm.value;
       newuser.firstname = formData.firstname;

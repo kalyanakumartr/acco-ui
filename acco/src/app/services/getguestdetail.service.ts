@@ -26,10 +26,10 @@ console.log("date is passing",date)
         return this.http.get("http://localhost:3001/room/getroomslist?bookingid="+bookingid+"&checkin="+checkin+"&checkout="+checkout);
       }
 
-  bookRoomList(book:BookingModel):Observable<BookingModel>{
-      console.log("I am booking");
-      return this.http.post<BookingModel>(`${environment.checkinconfirm}`,book);
-    }
+  // bookRoomList(book:BookingModel):Observable<BookingModel>{
+  //     console.log("I am booking");
+  //     return this.http.post<BookingModel>(`${environment.checkinconfirm}`,book);
+  //   }
   }
    
 

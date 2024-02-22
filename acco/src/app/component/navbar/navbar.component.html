@@ -1,98 +1,100 @@
 <div class="outer">
-<div class="container mt-2"> 
-   
-        <div class="row app-container p-2"> 
-            <div class="col-lg-10 offset-md-0  centerTest" > 
-                <img src="assets/index_logo.jpg" style= "width:250px;height:100px; ">  <span id="text" class="p-2" >Welcome to MaduraaServices</span>                  
-                
-              
-            </div>
-            <div style="flex: 1; text-align: right; vertical-align: bottom; margin-top:80px ">
-             
-              <span >
-               
-                <a *ngIf="!authService.logged()" href="#"   routerLink="/login">Login</a>&nbsp;
-                <a *ngIf="!authService.logged() "href="#"   (click)="signup()">Signup</a>&nbsp;
-                <a *ngIf="authService.logged()" (click)="logout()" href="#"   >Logout</a>
-                
-               
+  <div class="container mt-2">
 
-                
-               </span>
-             
-            </div> 
-            
-           
-       
+    <div class="row app-container p-2">
+      <div class="col-lg-10 offset-md-0  centerTest">
+        <img src="assets/index_logo.jpg" style="width:250px;height:100px; "> <span id="text" class="p-2">Welcome to
+          MaduraaServices</span>
+
+
+      </div>
+      <div style="flex: 1; text-align: right; vertical-align: bottom; margin-top:80px ">
+
+        <span>
+
+          <a *ngIf="!authService.logged()"  routerLink="/login">Login</a>&nbsp;
+          <a *ngIf="!authService.logged() "  (click)="signup()" class="pointer" >Signup</a>&nbsp;
+          <a *ngIf="authService.logged()" (click)="logout()" class="pointer" >Logout</a>
+
+        </span>
+
+      </div>
+
+
+
 
     </div>
-   
 
-        <nav class="navbar navbar-expand-lg navbar-light ">
-            <!-- <img src="assets/logo.jpg" style= "width:120px;height:40px"> -->
-            <!-- <a class="navbar-brand"></a>      -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> 
-           
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button>
-                  <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
-                </li>
-                <li class="nav-item active">
-                  <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/mybookings">BOOKINGS</button>
-                <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
-              </li>
-                <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/facitilies">FACITILIES</button>
-                  <!-- <a class="nav-link" href="#" style="color:#964B00">Facilities</a> -->
-                </li>
-               
-                <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/tariff">TARIFF</button>
-                  <!-- <a class="nav-link " href="#" style="color:#964B00">Tariff</a> -->
-                </li>
-                <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/fooditem">FOOD</button>
-                    <!-- <a class="nav-link " href="#" style="color:#964B00">Food</a> -->
-                  </li>
-                  <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/placetovisit">PLACES TO VISIT</button>
-                    <!-- <a class="nav-link " href="#" style="color:#964B00">Places to Visit</a> -->
-                  </li>
-                  <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >TRAVEL</button>
-                    <!-- <a class="nav-link " href="#" style="color:#964B00">Travel</a> -->
-                  </li>
-                  <li class="nav-item active">
-                    <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/contactus">CONTACT US</button>
-                    <!-- <a class="nav-link " href="#" style="color:#964B00">Contact Us</a> -->
-                  </li>
-              </ul>
-              
-                <div class="nav-item dropdown  " >
-                   <span >{{username|titlecase}}
-                  
-                    <i class="fa fa-fw fa-user" ></i>
-                   </span>
-                   
-        
-                      <!-- {{loginData.username| uppercase}} -->
-                      
-                 
-                  
-                </div>
-                
-               
-               
-            </div>
-          </nav>
-    
-    
+
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <!-- <img src="assets/logo.jpg" style= "width:120px;height:40px"> -->
+      <!-- <a class="navbar-brand"></a>      -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button>
+            <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
+          </li>
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
+              routerLink="/mybookings">BOOKINGS</button>
+            <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
+          </li>
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
+              routerLink="/facitilies">FACITILIES</button>
+            <!-- <a class="nav-link" href="#" style="color:#964B00">Facilities</a> -->
+          </li>
+
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
+              routerLink="/tariff">TARIFF</button>
+            <!-- <a class="nav-link " href="#" style="color:#964B00">Tariff</a> -->
+          </li>
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
+              routerLink="/fooditem">FOOD</button>
+            <!-- <a class="nav-link " href="#" style="color:#964B00">Food</a> -->
+          </li>
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
+              routerLink="/placetovisit">PLACES TO VISIT</button>
+            <!-- <a class="nav-link " href="#" style="color:#964B00">Places to Visit</a> -->
+          </li>
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit">TRAVEL</button>
+            <!-- <a class="nav-link " href="#" style="color:#964B00">Travel</a> -->
+          </li>
+          <li class="nav-item active">
+            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/contactus">CONTACT
+              US</button>
+            <!-- <a class="nav-link " href="#" style="color:#964B00">Contact Us</a> -->
+          </li>
+        </ul>
+
+        <div class="nav-item dropdown  ">
+          <span>{{username|titlecase}}
+
+            <i class="fa fa-fw fa-user"></i>
+          </span>
+
+
+          <!-- {{loginData.username| uppercase}} -->
+
+
+
+        </div>
+
+
+
+      </div>
+    </nav>
+
+
+  </div>
 </div>
-</div>
-  
-
-

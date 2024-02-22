@@ -87,24 +87,24 @@ getroomslist(bookingid:any,checkin:any,checkout:any){
 
 }
 
-bookingRoom(){
-  const book = new BookingModel() ;
-  book.bookingid=this.bookingid;
-  book.checkin=this.checkin;
-  book.checkout=this.checkout;
-console.log("booook",book);
-    // const basic= this.Basicform.value
-  this.getguestdetail.bookRoomList(book).    
-  subscribe( result=>{
-          console.log(result);              
-      Swal.fire({
-        text:
-        " Booked Successfully",          
-        confirmButtonColor: '#964B00',
-        background:'#efc96a',
-    });
-      this.router.navigate(["home"]);
-  })
-}
+// bookingRoom(){
+//   const book = new BookingModel() ;
+//   book.bookingid=this.bookingid;
+//   book.checkin=this.checkin;
+//   book.checkout=this.checkout;
+// console.log("booook",book);
+//     // const basic= this.Basicform.value
+//   this.getguestdetail.bookRoomList(book).    
+//   subscribe( result=>{
+//           console.log(result);              
+//       Swal.fire({
+//         text:
+//         " Booked Successfully",          
+//         confirmButtonColor: '#964B00',
+//         background:'#efc96a',
+//     });
+//       this.router.navigate(["home"]);
+//   })
+// }
 
 }

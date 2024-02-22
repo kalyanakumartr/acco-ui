@@ -37,6 +37,7 @@ export class NavbarComponent implements OnInit {
 
   signup(){
     this.router.navigate(["signup",{roleid:3}])
+   
   }
    
   logout(){
