@@ -111,13 +111,14 @@ images: File  | null= null;
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
       for(let i=0; i < 1; i++) {
-        const roomidlist=this.roomsListData[i].roomid.replace("[", "");
+        const roomidlist=this.roomsListData[i].roomid.replace("[", "",).replace("]","");
+       
        console.log("rrrsdddd",roomidlist);
        var roomids= roomidlist.split(',');
 
        console.log("rrr",roomids);
        
-       var roomnos= this.roomsListData[i].roomnos.replace("[", "").split(',');
+       var roomnos= this.roomsListData[i].roomnos.replace("[", "").replace("]", "").split(',');
        console.log(roomnos);
        
         tmp.push({ item_id:roomids , item_text: roomnos});
@@ -128,9 +129,10 @@ images: File  | null= null;
       // const drop=this.dropdownList.flat();
       // console.log("tmp----", drop)
       for(let i=1; i <=1; i++) {
-        var roomids= this.roomsListData[i].roomid.split(',');
+        const roomidlist1=this.roomsListData[i].roomid.replace("[", "",).replace("]","");
+        var roomids= roomidlist1.split(',');
         console.log(roomids);
-        var roomnos= this.roomsListData[i].roomnos.split(',');
+        var roomnos= roomidlist1.split(',');
         console.log(roomnos);
         
         tmp1.push({ item_id:roomids , item_text: roomnos });

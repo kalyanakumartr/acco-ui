@@ -39,14 +39,14 @@ export class SignupComponent implements OnInit{
     console.log("role",this.roleid)
 
     this.signupForm = this.fb.group({
-      firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
-      lastname: ['', [Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
+      firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]{3,15}$")]],
+      lastname: ['', [Validators.required,Validators.pattern("^[a-zA-Z ]*$")]],
        address1: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
        address2: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
-       city: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
-       state: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
-       pincode:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
-       country: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
+       city: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]*$")]],
+       state: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]*$")]],
+       pincode:['',[Validators.required,Validators.pattern("^[0-9]{6}$")]],
+       country: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]*$")]],
       phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
       email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       username:['',[Validators.required,Validators.pattern("^[A-Za-z0-9-,@.]*$")]],

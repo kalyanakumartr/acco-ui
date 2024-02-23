@@ -37,6 +37,7 @@ export class AuthServiceService {
           this.setData(this.loginData)
           console.log("++++", this.loginData)
           localStorage.setItem('token', this.authresults.accesstoken);
+          localStorage.setItem('roleid', this.authresults.roleid);
           console.log(this.authresults.accesstoken, this.authresults.usertype);
           //  this.loggedIn.next(true);
 
