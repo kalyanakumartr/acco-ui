@@ -153,7 +153,7 @@
                                             <input formControlName="phonenumber" type="text" placeholder="Phonenumber">
                                         </div>
                                         <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('required','phonenumber')"  
-                              class="text-danger form-inline  mt-0">*phonenumber is required</small>
+                              class="text-danger form-inline  mt-0">*phonenumber is required </small>
                               <small *ngIf="signupForm.controls['phonenumber'].dirty && signupForm.hasError('pattern','phonenumber')"  
                               class="text-danger form-inline  mt-0">*phonenumber is invalid</small>
                                         
@@ -170,9 +170,12 @@
                                             <span (click)="hideShowPass()" class="fa {{eyeIcon}} " style="color:#964B00"></span>
                                         </div>
                                         <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"  
-                              class="text-danger form-inline  mt-0">*password is required</small>
+                              class="text-danger form-inline  mt-0">*password is required </small>
                               <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('pattern','password')"  
-                              class="text-danger form-inline  mt-0">*password is invalid</small>
+                              class="text-danger form-inline  mt-0">*password is invalid,
+                              <!-- <br>Should be atleast 8 characters long
+                              <br>Should contain one number,<br>one character ,<br> one special character -->
+                              </small>
                                         
                                     </div>
                                </div>
