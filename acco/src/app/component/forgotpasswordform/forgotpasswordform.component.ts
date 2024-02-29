@@ -32,8 +32,8 @@ export class ForgotpasswordformComponent {
     
     this.forgotpasswordform = this.fb.group({
       email:this.addemail,
-      password: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]{3,8}$")]],
-      confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]{3,8}$")]],
+      password: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9@.&_]{3,15}$")]],
+      confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9@.&_]{3,15}$")]],
 
 
     },
