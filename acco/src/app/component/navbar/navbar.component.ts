@@ -37,8 +37,8 @@ export class NavbarComponent implements OnInit {
 
   signup(){
     this.router.navigate(["signup",{roleid:3}])
-   
   }
+  
    
   logout(){
   //   //  localStorage.removeItem('token');
@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
   //    console.log("++","logout sucessfully")
      
      this.authService.logout();
-     this.router.navigate(["home"]) 
+     this.router.navigate(["login"]) 
 
     }
   

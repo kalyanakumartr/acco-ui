@@ -62,6 +62,15 @@ calggapi(seldate:any){
   // this.getroomslist(78,2024-1-19,2024-1-20);
 }
 
+updateproof(id:any){
+  this.router.navigate(["updateproof", 
+  {
+    "bookingid": id,
+    
+   } ])
+
+}
+
 getroomslist(bookingid:any,checkin:any,checkout:any){
    this.router.navigate(["selectrooms", 
   {

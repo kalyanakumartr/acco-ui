@@ -31,6 +31,7 @@ import { ContactusComponent } from './component/contactus/contactus.component';
 import { ForgotpasswordotpComponent } from './component/forgotpasswordotp/forgotpasswordotp.component';
 import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
 import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
+import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotpasswordstepperComponent},
   {path:'forgotpasswordotp',component:ForgotpasswordotpComponent},
   {path:'forgotpasswordform',component:ForgotpasswordformComponent},
+  {path:'updateproof',component:UpdateproofComponent},
 
   
 

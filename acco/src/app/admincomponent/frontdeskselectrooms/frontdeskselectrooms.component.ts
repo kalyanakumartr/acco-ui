@@ -27,13 +27,11 @@ roomMap = new Map();
 bhk3:any=[];
 bhk23:any=[];
 arrayRoom:any=[];
-images: File  | null= null;
  
 
   constructor( private homeroute: ActivatedRoute,
     private getguestdetail:GetguestdetailService,
     private router: Router,
-    private fileUploadService:FileuploadService,
     private fb: FormBuilder,
     private getroomlistservice: GetroomlistService,
      ){
@@ -144,25 +142,7 @@ images: File  | null= null;
   //   console.log("dropdownList",this.dropdownList); 
    }
 
-   onChange(event:any) { 
-    this.images = event.target.files[0]; 
-} 
-   uploadFileToActivity() {
-    
-    console.log("file to upload")
-    this.fileUploadService.fileUpload(this.images!,this.bookingid).subscribe(data => {
-      // console.log("file000",data);
-      Swal.fire({
-        text:data.message,
-        confirmButtonColor: '#964B00',
-        background:'#efc96a',
-      });
-      // }, error => {
-      //   console.log(error);
-        
-      // });
-    });
-  }
+  
 
   roomCheckin(){
     const book = new BookingModel() ;

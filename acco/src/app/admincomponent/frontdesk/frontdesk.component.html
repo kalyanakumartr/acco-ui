@@ -6,7 +6,7 @@
         <h4>Guests Status {{TodayDate}}</h4>
       </div>
       <div class="col-lg-5" style="display: flex;margin-top: 5px;">
-        <p class="square "style="margin-left:10px"></p>
+        <p class="square " style="margin-left:10px"></p>
         <span style="margin-left: 2px;">Completed</span>
 
         <p class="square1" style="margin-left:10px"></p>
@@ -38,7 +38,9 @@
               <th style="border-color: #964B00; color:#964B00;" scope="col">CheckoutTime</th>
               <th style="border-color: #964B00; color:#964B00;" scope="col">ActualCheckInTime</th>
               <th style="border-color: #964B00; color:#964B00;" scope="col">CheckRoom</th>
+              <th style="border-color: #964B00; color:#964B00;" scope="col">Proof</th>
               <th style="border-color: #964B00; color:#964B00;" scope="col">Status</th>
+
             </tr>
           </thead>
           <tbody>
@@ -47,28 +49,31 @@
               <td class="align-middle " style="border-color: #964B00;">{{i.roomid==0?"":i.roomid}}
               <td class="align-middle " style="border-color: #964B00;">{{i.bhk1count}}
               <td class="align-middle " style="border-color: #964B00;">{{i.bhk2count}}
-              <td class="align-middle " style="border-color: #964B00;">{{i.bhk3count}}                  
+              <td class="align-middle " style="border-color: #964B00;">{{i.bhk3count}}
               <td class="align-middle " style="border-color: #964B00;">{{i.firstname | titlecase}}
               <td class="align-middle " style="border-color: #964B00;">{{i.phonenumber}}
               <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
               <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
               <td class="align-middle " style="border-color: #964B00;">{{i.acheckin | date:'dd-MM-yyyy HH:mm a'}}
               <td class="align-middle " style="border-color: #964B00;">
-               <i class="fa fa-fw fa-edit" style="color:#964B00;" (click)= getroomslist(i.bookingid,i.checkin,i.checkout) >   </i>
-                 
-                </td>
+                <i class="fa fa-fw fa-edit" style="color:#964B00;"
+                  (click)=getroomslist(i.bookingid,i.checkin,i.checkout)> </i>
+              </td>
+              <td class="align-middle " style="border-color: #964B00;">
+                <i class="fa fa-fw fa-edit" style="color:#964B00;"
+                  (click)=updateproof(i.bookingid)> </i>
+              </td>
               <td class="align-middle " style="border-color: #964B00;">
                 <!-- <pclass="square1"></p> -->
                 <div [ngClass]="i.color == 'Green'?'square':i.color == 'Orange'?'square1':'square2'"></div>
           </tbody>
         </table>
 
-       
-      </div>
-    </div> 
-   
-      
-       
-  </div>
-  </div>
 
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
