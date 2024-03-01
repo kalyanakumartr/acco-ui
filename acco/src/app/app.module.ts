@@ -50,6 +50,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
 import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
 import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
 import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
+import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfuture/roomfromwalkinfuture.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -89,6 +90,7 @@ import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.c
     ForgotpasswordotpComponent,
     ForgotpasswordformComponent,
     UpdateproofComponent,
+    RoomfromwalkinfutureComponent
     // MatchpasswordComponent,
    
   ],

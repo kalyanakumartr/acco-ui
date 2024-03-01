@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookingModel } from 'src/app/model/booking.model';
 import { ForOtp } from 'src/app/model/otp.model';
@@ -9,20 +9,19 @@ import { BookingServiceService } from 'src/app/services/booking-service.service'
 import { GenerateOTPService } from 'src/app/services/generate-otp.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-roomfromwalkin',
-  templateUrl: './roomfromwalkin.component.html',
-  styleUrls: ['./roomfromwalkin.component.scss']
+  selector: 'app-roomfromwalkinfuture',
+  templateUrl: './roomfromwalkinfuture.component.html',
+  styleUrls: ['./roomfromwalkinfuture.component.scss']
 })
-export class RoomfromwalkinComponent {
-
+export class RoomfromwalkinfutureComponent {
   userId: any;
   verifymsg: any;
   loginData: any;
   name: any;
   subscription!: Subscription;
   bookingData: any;
+  Basicform: any;
 
   constructor(private builder: FormBuilder,
     private stepperroute: ActivatedRoute,
@@ -53,7 +52,6 @@ export class RoomfromwalkinComponent {
 
   }
 
-
   Emailcheck = this.builder.group({
     EmailVerification: this.builder.group({
       name: this.builder.control('', Validators.required),
@@ -69,9 +67,9 @@ export class RoomfromwalkinComponent {
 
     }),
   })
-  get Basicform() {
-    return this.Emailcheck.get("EmailVerification") as FormGroup;
-  }
+  // get Basicform() {
+  //   return this.Emailcheck.get("EmailVerification") as FormGroup;
+  // }
   get PaymentForm() {
     return this.Emailcheck.get("Payment") as FormGroup;
   }
@@ -82,59 +80,60 @@ export class RoomfromwalkinComponent {
 
   }
 
-  generateOTP() {
-    const newotp = new ForOtp();
-    const basic = this.Basicform.value
-    newotp.name = basic.name;
-    newotp.phonenumber = basic.phonenumber;
-    newotp.email = basic.email;
-    newotp.otptype = "email"
-    this.otpService.genOTP(newotp).
-      subscribe(result => {
-        console.log(result);
-        Swal.fire({
-          text:
-            " OTP generated Successfully",
-          confirmButtonColor: '#964B00',
-          background: '#efc96a',
-        });
+  // generateOTP() {
+  //   const newotp = new ForOtp();
+  //   const basic = this.Basicform.value
+  //   newotp.name = basic.name;
+  //   newotp.phonenumber = basic.phonenumber;
+  //   newotp.email = basic.email;
+  //   newotp.otptype = "email"
+  //   this.otpService.genOTP(newotp).
+  //     subscribe(result => {
+  //       console.log(result);
+  //       Swal.fire({
+  //         text:
+  //           " OTP generated Successfully",
+  //         confirmButtonColor: '#964B00',
+  //         background: '#efc96a',
+  //       });
 
 
 
-      })
+  //     })
 
-  }
+  // }
 
-  verifyOTP() {
-    const verifyotp = new ForOtp();
-    const basic = this.Basicform.value
-    verifyotp.inputotp = basic.otp;
-    verifyotp.userid = this.userId;
+  // verifyOTP() {
+  //   const verifyotp = new ForOtp();
+  //   const basic = this.Basicform.value
+  //   verifyotp.inputotp = basic.otp;
+  //   verifyotp.userid = this.userId;
 
-    console.log(verifyotp)
-    this.otpService.verifyOTP(verifyotp).
-      subscribe(res => {
-        console.log(res);
-        this.verifymsg = res;
-        console.log(this.verifymsg.message);
-        if (this.verifymsg.status == true) {
-          Swal.fire(this.verifymsg.message);
+  //   console.log(verifyotp)
+  //   this.otpService.verifyOTP(verifyotp).
+  //     subscribe(res => {
+  //       console.log(res);
+  //       this.verifymsg = res;
+  //       console.log(this.verifymsg.message);
+  //       if (this.verifymsg.status == true) {
+  //         Swal.fire(this.verifymsg.message);
 
-        } else {
-          Swal.fire(this.verifymsg.message);
-        }
-
-
-      }
-      )
-  }
+  //       } else {
+  //         Swal.fire(this.verifymsg.message);
+  //       }
 
 
-  confirmBooking() {
+  //     }
+  //     )
+  // }
+
+
+
+  confirmBookingFuture() {
     const book = new BookingModel();
     const walkinuser = JSON.parse(localStorage.getItem('currentuserid') || '{}');
     console.log("walkinusr", walkinuser.firstname);
-    const basic = this.Basicform.value
+    // const basic = this.Basicform.value
     book.userid = walkinuser.userid;
     book.bhk1count = this.bookingData.bhk1count;
     book.bhk2count = this.bookingData.bhk2count;
@@ -178,4 +177,5 @@ export class RoomfromwalkinComponent {
         this.router.navigate(["frontdesk"]);
       })
   }
+
 }

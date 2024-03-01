@@ -32,6 +32,7 @@ import { ForgotpasswordotpComponent } from './component/forgotpasswordotp/forgot
 import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
 import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
 import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
+import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfuture/roomfromwalkinfuture.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,7 @@ const routes: Routes = [
   {path:'forgotpasswordotp',component:ForgotpasswordotpComponent},
   {path:'forgotpasswordform',component:ForgotpasswordformComponent},
   {path:'updateproof',component:UpdateproofComponent},
+  {path:'roomfromwalkinfuture',component:RoomfromwalkinfutureComponent},
 
   
 

@@ -15,7 +15,7 @@
                                     <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
                                     <input formControlName="firstname" type="text" placeholder="FirstName">
                                 </div>
-                                <small style="margin-left: 3px;"
+                                <small 
                                     *ngIf="walkingCurrentForm.controls['firstname'].dirty && walkingCurrentForm.hasError('required','firstname')"
                                     class="text-danger form-inline  ">*firstname is required</small>
                                 <small
@@ -175,8 +175,8 @@
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <label style="color:#964B00">From<span class="text-danger">*</span></label>
-                                    <input formControlName="checkin" type="datetime-local" #input [(ngModel)]="Todaydate"
-                                        [min]="Todaydate" placeholder="From">
+                                    <input  formControlName="checkin"  #input [(ngModel)]="Todaydate"
+                                       [min]="Todaydate"  [max]="Todaydate" placeholder="From">
                                 </div>
                                 <!-- <small *ngIf="walkingCurrentForm.controls['from'].dirty && walkingCurrentForm.hasError('required','from')"
                                                 class="text-danger form-inline mt-0 ">*form is required</small> -->

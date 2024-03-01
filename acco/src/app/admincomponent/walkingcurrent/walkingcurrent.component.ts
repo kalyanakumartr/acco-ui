@@ -29,7 +29,7 @@ export class WalkingcurrentComponent implements OnInit {
   booking = new BookingModel();
   roomData: any;
   roomBookingSum: any
-
+  
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
   userData: any;
@@ -89,7 +89,7 @@ export class WalkingcurrentComponent implements OnInit {
       city: ['', Validators.required],
       state: ['', Validators.required,],
       country: ['', Validators.required,],
-      pincode: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      pincode: ['', [Validators.required, Validators.pattern("^[0-9]{6}$")]],
       // from: ['', Validators.required,],
       // to: ['', Validators.required,],
       // adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],

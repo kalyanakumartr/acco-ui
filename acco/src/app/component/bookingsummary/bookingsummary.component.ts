@@ -118,8 +118,11 @@ export class BookingsummaryComponent implements OnInit {
     this.bookingservice.changeMessage(this.roomBookingSummary);
     if(this.roomBookingSummary.modeoftypeid==1){
     this.router.navigate(["stepper",  ]);
-    }else{
+    }else  if(this.roomBookingSummary.modeoftypeid==2){
       this.router.navigate(["roomfromwalkin",  ]);
+    
+    }else  {
+      this.router.navigate(["roomfromwalkinfuture",  ]);
     
     }
   }
