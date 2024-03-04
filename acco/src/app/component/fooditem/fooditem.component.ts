@@ -17,6 +17,7 @@ export class FooditemComponent implements OnInit{
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
   value = 50
+  food:any;
  
   role:fooditem[]=[];
     public displayedColumns =['fooditemid','fooditem','foodcategory','avilabletime','price','status'];
@@ -41,7 +42,9 @@ showfooditem(){
     this.fooditemService.getfooditem()
   // .subscribe((res)=>{
     .subscribe((res)=>{
-    console.log(res);    
+    console.log(res);   
+    this.food=res; 
+    console.log("res",this.food);    
     this.dataSource.data=res;    
     console.log("datasource1",this.dataSource.data); 
   });

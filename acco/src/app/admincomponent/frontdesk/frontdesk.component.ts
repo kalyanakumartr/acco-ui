@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { BookingModel } from 'src/app/model/booking.model';
 import { GetguestdetailService } from 'src/app/services/getguestdetail.service';
 import Swal from 'sweetalert2';
@@ -23,11 +26,24 @@ guestData:any;
 bookingid:any;
 checkin:any;
 checkout:any;
-
-constructor( private getguestdetail:GetguestdetailService,private router: Router,){
+public databookingData =new MatTableDataSource<any>();
+  dataObs$!: Observable<any>;
+constructor( private getguestdetail:GetguestdetailService,private router: Router,
+  private _changeDetectorRef: ChangeDetectorRef,
+  ){
   // getguestdetail.getGuest$.subscribe(res => this.guestData = res);
   // console.log(this.guestData)
   
+}
+
+@ViewChild('paginator')
+paginator!: MatPaginator;
+
+ngAfterViewInit(){
+  this.databookingData.paginator=this.paginator;
+
+  // this.bookingData.paginator=this.paginator;
+
 }
 
 ngOnInit(): void {
@@ -44,7 +60,7 @@ ngOnInit(): void {
     }
   this.TodayDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday ;
   this.calggapi(this.TodayDate);
-  
+  this.setPagination(this.guestData);
 }
 
 
@@ -54,6 +70,7 @@ calggapi(seldate:any){
   this.getguestdetail.getGuestData(seldate).subscribe(res=>{
     console.table("0000",res[0]);
     this.guestData=res[0]
+    this.databookingData.data=res[0];
     console.log("guestdata",this.guestData);
   });
   //  this.bookingid=this.guestData.bookingid;
@@ -62,6 +79,12 @@ calggapi(seldate:any){
   // this.getroomslist(78,2024-1-19,2024-1-20);
 }
 
+setPagination(data:any) {
+  this.databookingData = new MatTableDataSource<any>(data);
+  this._changeDetectorRef.detectChanges();
+  this.databookingData.paginator = this.paginator;
+  this.dataObs$ = this.databookingData.connect();
+}
 updateproof(id:any){
   this.router.navigate(["updateproof", 
   {
