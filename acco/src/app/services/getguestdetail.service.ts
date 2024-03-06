@@ -30,6 +30,12 @@ console.log("date is passing",date)
   //     console.log("I am booking");
   //     return this.http.post<BookingModel>(`${environment.checkinconfirm}`,book);
   //   }
+
+  getGuestCancelData(date: any): Observable<any> {
+    console.log("date is passing",date)
+        return this.http.get("http://localhost:3001/users/getguestbookingstatuscancel?checkin="+date);
+      }
+
   }
    
 

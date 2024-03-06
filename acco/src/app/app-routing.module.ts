@@ -10,7 +10,7 @@ import { BookingComponent } from './admincomponent/booking/booking.component';
 import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
-import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
+
 import { TariffComponent } from './component/tariff/tariff.component';
 import { BookingsummaryComponent } from './component/bookingsummary/bookingsummary.component';
 import { StepperComponent } from './component/stepper/stepper.component';
@@ -33,6 +33,8 @@ import { ForgotpasswordformComponent } from './component/forgotpasswordform/forg
 import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
 import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
 import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfuture/roomfromwalkinfuture.component';
+import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
+import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,7 @@ const routes: Routes = [
   {path:'fooditem',component:FooditemComponent},  
   {path:'role',component:RoleComponent},
   {path:'roomtype',component:RoomtypeComponent},
-  {path:'placetovisit',component:PlacetovisitComponent},
+ 
   {path:'bookingsummary',component:BookingsummaryComponent},
   {path:'stepper',component:StepperComponent},
   {path:'admin',component:AdminComponent},
@@ -69,6 +71,8 @@ const routes: Routes = [
   {path:'forgotpasswordform',component:ForgotpasswordformComponent},
   {path:'updateproof',component:UpdateproofComponent},
   {path:'roomfromwalkinfuture',component:RoomfromwalkinfutureComponent},
+  {path:'canceledbookingfoe',component:CanceledbookingfoeComponent},
+  {path:'placetovisit',component:PlacetovisitComponent},
 
   
 

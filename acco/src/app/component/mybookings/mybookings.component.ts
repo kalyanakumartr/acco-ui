@@ -98,6 +98,7 @@ export class MybookingsComponent  implements OnInit{
             background:'#efc96a',
           });
         })
+        this.getMyBooking(this.userid);
       }
 
       // setData(bookingData: any) {
