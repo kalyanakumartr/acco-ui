@@ -75,16 +75,17 @@
                 <div [ngClass]="i.color == 'Green'?'square':i.color == 'Orange'?'square1':'square2'"></div>
           </tbody>
         </table>
-        <div class="page" >
+       
 
-          <mat-paginator
-           #paginator 
-           [pageSizeOptions]="[5,10,15]" 
-           [pageSize]="5"
-           showFirstLastButtons>
-          </mat-paginator>
-        </div>
+      </div>
+      <div class="page" >
 
+        <mat-paginator
+         #paginator 
+         [pageSizeOptions]="[5,10,15]" 
+         [pageSize]="5"
+         showFirstLastButtons>
+        </mat-paginator>
       </div>
     </div>
 
