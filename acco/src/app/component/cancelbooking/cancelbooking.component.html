@@ -39,6 +39,7 @@
             <table class="table table-borderless text-center" >
               <thead>
                 <tr>
+                  <th class="align-middle "style=" color:#964B00;" rowspan="2">BookingId</th>
                   <th class="align-middle "style=" color:#964B00;" rowspan="2">From</th>
                   <th class="align-middle "style=" color:#964B00;" rowspan="2">To</th>
                   <th class="align-middle "style=" color:#964B00;" rowspan="2">Adult</th>
@@ -46,7 +47,7 @@
                   <th class="align-middle "style=" color:#964B00;" colspan="3">Flat Type</th>
                   <th class="align-middle "style=" color:#964B00;" rowspan="2">FlatNo</th>
                   <th class="align-middle "style=" color:#964B00;" rowspan="2">Totalcost</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">BookingId</th>
+                  
                   <!-- <th style="border-color: #964B00; color:#964B00;" scope="col">Option</th> -->
                 </tr>
                 <tr style="color: #964B00;">
@@ -59,6 +60,7 @@
               </thead>
               <tbody>
                 <tr style="color: #964B00;" *ngFor="let i of dataObs$ | async">
+                  <td class="align-middle " style="border-color: #964B00;">{{i.bookingid}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.adults}}
@@ -68,7 +70,7 @@
                   <td class="align-middle " style="border-color: #964B00;">{{i.bhk3count}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.roomid}}
                   <td class="align-middle " style="border-color: #964B00;">{{i.totalprice}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.bookingid}}
+                 
                   <!-- <td class="align-middle " style="border-color: #964B00;"> <a >View/</a><a  (click)="cancelBooking(i.bookingid)">Cancel</a> -->
                     
                     
