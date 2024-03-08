@@ -24,7 +24,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
-import { PlacetovisitComponent } from './admincomponent/placetovisit/placetovisit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetdetailsInterceptor } from './services/getdetails.interceptor';
 import { TariffComponent } from './component/tariff/tariff.component';
@@ -52,6 +51,8 @@ import { ForgotpasswordformComponent } from './component/forgotpasswordform/forg
 import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
 import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfuture/roomfromwalkinfuture.component';
 import { SpinnerComponent } from './component/spinner/spinner.component';
+import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
+import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -92,7 +93,8 @@ import { SpinnerComponent } from './component/spinner/spinner.component';
     ForgotpasswordformComponent,
     UpdateproofComponent,
     RoomfromwalkinfutureComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CanceledbookingfoeComponent
     // MatchpasswordComponent,
    
   ],
