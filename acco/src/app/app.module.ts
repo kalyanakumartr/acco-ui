@@ -51,6 +51,7 @@ import { ForgotpasswordstepperComponent } from './component/forgotpasswordsteppe
 import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
 import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
 import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfuture/roomfromwalkinfuture.component';
+import { SpinnerComponent } from './component/spinner/spinner.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -90,7 +91,8 @@ import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfu
     ForgotpasswordotpComponent,
     ForgotpasswordformComponent,
     UpdateproofComponent,
-    RoomfromwalkinfutureComponent
+    RoomfromwalkinfutureComponent,
+    SpinnerComponent
     // MatchpasswordComponent,
    
   ],

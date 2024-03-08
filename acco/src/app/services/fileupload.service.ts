@@ -8,6 +8,7 @@ import { environment } from '../environments/environments';
 })
 export class FileuploadService {
 
+
   constructor(private http:HttpClient ) {}
   
   fileUpload(images: File,bookingid:any): Observable<any> {
@@ -21,5 +22,9 @@ export class FileuploadService {
     return this.http.post(endpoint, formData)
       // .map(() => { return true; })
       // .catch((e) => this.handleError(e));
+}
+getimage(id:any){
+  return this.http.get('http://localhost:3001/booking/getimage?bookingid='+id);
+ 
 }
 }

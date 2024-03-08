@@ -157,12 +157,15 @@ arrayRoom:any=[];
     
     this.getroomlistservice.roomconfirm(book).subscribe(result=>{
       console.log("res",result);
+    this.selectRoomForm.reset();
    
       Swal.fire({
         confirmButtonColor: '#964B00',
         background:'#efc96a',
         text:result.message,
       });
+
+      this.router.navigate(["frontdesk"]);
     })
   }
 

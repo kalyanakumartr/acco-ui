@@ -30,7 +30,7 @@ export class GetroomlistService {
     console.log("I am roomlogic"); 
     console.log("roomlogic",adult,checkIn,checkOut); 
 
-    return this.http.get("http://localhost:3001/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut);
+    return this.http.get("http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
 
   }
 

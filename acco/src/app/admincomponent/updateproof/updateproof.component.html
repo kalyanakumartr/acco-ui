@@ -19,11 +19,26 @@
                 <div class="col-sm-5">
                     
                     <input formControlName="upload"  class="form-control-plaintext " type="file" id="upload"  (change)="onChange($event)"  >
+                    
                     <!-- <button  class="button " id="upload" (click)="uploadFileToActivity()"><i class="fa fa-fw fa-arrow-up" style="color:#964B00; "  ></i>  </button>  -->
                     <!-- <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i>                   -->
                  
                 </div>
+                
               </div>
+              <div class="form-group row">
+                <label style="color:#964B00" for="Proof" class="col-sm-2 col-form-label">File Name</label>
+
+                <div class="col-sm-2" style="margin-top: 5px;">
+                    
+                  <div><img src={{imageUrll}} class="images"  ></div>
+                    <!-- <button  class="button " id="upload" (click)="uploadFileToActivity()"><i class="fa fa-fw fa-arrow-up" style="color:#964B00; "  ></i>  </button>  -->
+                    <!-- <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i>                   -->
+                 
+                </div>
+                
+              </div>
+              
               <button [disabled]=selectRoomForm.invalid (click)="uploadFileToActivity()" type="submit" class="btn btn-light btn-elevate mr-2 margin-left" style="color: #964B00;background-color:#efc96a ;"
         >
              Submit</button>

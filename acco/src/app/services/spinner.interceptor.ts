@@ -4,7 +4,8 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { SpinnerService } from './spinner.service';
@@ -14,7 +15,7 @@ export class GetdetailsInterceptor implements HttpInterceptor {
 
   constructor(private spinnerService: SpinnerService) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const localToken = localStorage.getItem('token');
     request = request.clone({
       setHeaders: {
@@ -22,6 +23,7 @@ export class GetdetailsInterceptor implements HttpInterceptor {
 
       }
     })
+    // 
     this.spinnerService.requestStarted();
     return next.handle(request).pipe(tap(async (event: HttpEvent < any > ) => {
       if (event instanceof HttpResponse) {
@@ -34,4 +36,10 @@ export class GetdetailsInterceptor implements HttpInterceptor {
 }
     
   }
+
+  
+    
+    
+    
+
 

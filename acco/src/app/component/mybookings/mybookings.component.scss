@@ -11,8 +11,13 @@
     height:100%;
     background-image: linear-gradient(45deg, #efc96a,white);
 }
-a{
-    text-decoration: underline;
+td{
+    // text-decoration: underline;
+   
+  }
+  td a:hover{
+    cursor: pointer;
+    color:  #f47a08;
   }
   table{
     color:#964B00;
