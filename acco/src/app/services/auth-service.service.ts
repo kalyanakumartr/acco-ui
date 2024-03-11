@@ -69,7 +69,8 @@ export class AuthServiceService {
             });
             this.router.navigate(["frontdesk"])
 
-          } else {
+          } 
+          else if (this.authresults.usertype == "Customer"){
             Swal.fire({
               text:
                 this.authresults.message,
@@ -79,15 +80,19 @@ export class AuthServiceService {
             this.router.navigate(["mybookings"])
           }
 
-        } else {
-          Swal.fire({
-            text:
-              this.authresults.message,
-            confirmButtonColor: '#964B00',
-            background: '#efc96a',
-          });
-        }
+        } 
+        // else {
+        //   Swal.fire({
+        //     text:
+        //      "Invalid credentials,please check your username and password",
+        //     // this.authresults.message,
+        //     confirmButtonColor: '#964B00',
+        //     background: '#efc96a',
+        //   });
+        // }
+       
       }))
+      
 
 
   };

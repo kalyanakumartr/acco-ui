@@ -13,6 +13,7 @@ export class UserModel {
     password!: string;
     cpassword!:string;
     roleid:any;
+    opassword:any;
     pincode!:string;
   message!: string ;
   modeoftypeid:any;

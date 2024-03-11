@@ -29,6 +29,7 @@ export class ChangepasswordComponent implements OnInit{
     }
   ngOnInit(): void {
     this.passwordForm = this.fb.group({
+      oldpassword:['', [ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
       password: ['', [ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
       confirmpassword: ['',[ Validators.required,Validators.pattern("^[a-zA-z0-9]*$")]],
     },
@@ -41,8 +42,9 @@ export class ChangepasswordComponent implements OnInit{
     const newuser = new UserModel() ;
     const formData = this.passwordForm.value;
     newuser.userid = this.loginData.userid;
+    newuser.opassword=formData.oldpassword
     newuser.password = formData.password;
-    newuser.cpassword = formData.cpassword;
+    newuser.cpassword = formData.confirmpassword;
     if(this.passwordForm.valid){
       console.log(newuser);
   

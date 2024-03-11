@@ -22,11 +22,11 @@ export class ContactusComponent implements OnInit{
     ){}
 ngOnInit():void{
   this.contactForm = this.fb.group({
-    name: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
+    name: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]{3,15}$")]],
     email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
-    city: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
-    message: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
+    city: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]*$")]],
+    message: ['', [ Validators.required,Validators.pattern("^[a-zA-Z ]*$")]],
   })
 }
 
