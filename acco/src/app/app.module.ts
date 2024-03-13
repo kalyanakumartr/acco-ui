@@ -53,6 +53,7 @@ import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfu
 import { SpinnerComponent } from './component/spinner/spinner.component';
 import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
+import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -94,7 +95,8 @@ import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe
     UpdateproofComponent,
     RoomfromwalkinfutureComponent,
     SpinnerComponent,
-    CanceledbookingfoeComponent
+    CanceledbookingfoeComponent,
+    ManageflatsComponent
     // MatchpasswordComponent,
    
   ],

@@ -5,7 +5,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { every } from 'rxjs';
 import { FileuploadService } from 'src/app/services/fileupload.service';
 import Swal from 'sweetalert2';
-import { saveAs } from 'file-saver';
+
+//  import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-updateproof',
@@ -20,8 +21,9 @@ export class UpdateproofComponent {
   filedata: any;
   filename: any;
   imageUrl: any;
-  imageUrll:any;
+  imageUrll: any;
   thumbnail: any;
+    proofshow:boolean=false;
 
 
 
@@ -47,22 +49,30 @@ export class UpdateproofComponent {
     })
 
     this.getimage();
-this.getimagenew(Event);
+    // this.getimagenew(Event);
   }
 
-  getimagenew(event:any){
-if(event.target.files)
-{
-  var render=new FileReader();
-  render.readAsDataURL(event.target.files[0]);
-  render.onload=(event:any)=>{
-    this.imageUrl=event.target.result;
-  }
-}
-  }
+  // getimagenew(event: any) {
+  //   if (event.target.files) {
+  //     var render = new FileReader();
+  //     render.readAsDataURL(event.target.files[0]);
+  //     render.onload = (event: any) => {
+  //       this.imageUrl = event.target.result;
+  //     }
+  //   }
+  // }
   onChange(event: any) {
     this.images = event.target.files[0];
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.images!);
+  
+    this.getimage();
   }
+  
+  
   uploadFileToActivity() {
     console.log("file to upload")
     if (this.selectRoomForm.valid) {
@@ -73,6 +83,7 @@ if(event.target.files)
           confirmButtonColor: '#964B00',
           background: '#efc96a',
         });
+        this.getimage();
         // }, error => {
         //   console.log(error);
 
@@ -82,38 +93,39 @@ if(event.target.files)
   }
 
   getimage() {
-    this.imageUrl='http://localhost:3001/booking/getidproofimage?bookingid='+this.bookingid;
-            // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imageUrl}`);
- 
+    this.imageUrl = 'http://localhost:3001/booking/getidproofimage?bookingid=' + this.bookingid;
+    this.proofshow=true;
+    // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.imageUrl}`);
+
 
     // this.fileUploadService.getimage(this.bookingid).subscribe(data => {
-      // if (data) {
-        // console.log("image", data);
-        // this.filedata = data;
-        // this.filename = this.filedata.FileName1;
-        // console.log("filename", this.filename);
+    // if (data) {
+    // console.log("image", data);
+    // this.filedata = data;
+    // this.filename = this.filedata.FileName1;
+    // console.log("filename", this.filename);
 
-        // var bytes = data; 
-        // console.log("bytes",bytes);
-        // get from server
-        // let imageBinary = bytes; //image binary data response from api
-        // let imageBase64String = btoa(bytes);
-        // this.imageUrl = 'data:image/jpeg;base64,' + data;
-                // this.imageUrl = 'data:image/jpeg;base64,' + data;
-        // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(this.imageUrl);
-        
-        // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/jpeg;base64, ,${this.imageUrl}`);
-        // use this in <img src="..."> binding
+    // var bytes = data; 
+    // console.log("bytes",bytes);
+    // get from server
+    // let imageBinary = bytes; //image binary data response from api
+    // let imageBase64String = btoa(bytes);
+    // this.imageUrl = 'data:image/jpeg;base64,' + data;
+    // this.imageUrl = 'data:image/jpeg;base64,' + data;
+    // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(this.imageUrl);
 
-        //       let imageBinary = this.filedata.imageFileBinary; //image binary data response from api
-        // let imageBase64String= btoa(imageBinary);
-        // this.imageUrl = 'data:image/jpeg;base64,' + imageBase64String;
+    // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/jpeg;base64, ,${this.imageUrl}`);
+    // use this in <img src="..."> binding
 
-        //rename imageFileBinary to imageUrl
+    //       let imageBinary = this.filedata.imageFileBinary; //image binary data response from api
+    // let imageBase64String= btoa(imageBinary);
+    // this.imageUrl = 'data:image/jpeg;base64,' + imageBase64String;
 
-      }
-    // })
+    //rename imageFileBinary to imageUrl
 
   }
+  // })
+
+}
 
 

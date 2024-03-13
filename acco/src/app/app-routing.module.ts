@@ -35,6 +35,7 @@ import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.c
 import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfuture/roomfromwalkinfuture.component';
 import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
+import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
 // import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 
@@ -75,6 +76,9 @@ const routes: Routes = [
   {path:'roomfromwalkinfuture',component:RoomfromwalkinfutureComponent},
    {path:'canceledbookingfoe',component:CanceledbookingfoeComponent},
    {path:'placetovisit',component:PlacetovisitComponent},
+   {path:'manageflats',component:ManageflatsComponent},
+
+
 
   
 

@@ -1,10 +1,13 @@
 <div class="outer">
     <app-header></app-header>
     <div class="container">
-      <form [formGroup]="selectRoomForm">
 
           <!-- (ngSubmit)="roomCheckin()" -->
           <!-- <form name="selectRoomForm"> -->
+            <div class="row">
+            <div class="col">
+              <form [formGroup]="selectRoomForm">
+
             <div class="form-group row">
                 <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
                 <div class="col-sm-5">
@@ -31,7 +34,7 @@
 
                 <div class="col-sm-2" style="margin-top: 5px;">
                     
-                  <div><img src={{imageUrl}} class="images"  ></div>
+                  <div><img height="100px" width="100px" src={{imageUrl}} class="images"  ></div>
                     <!-- <button  class="button " id="upload" (click)="uploadFileToActivity()"><i class="fa fa-fw fa-arrow-up" style="color:#964B00; "  ></i>  </button>  -->
                     <!-- <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i>                   -->
                  
@@ -42,7 +45,15 @@
               <button [disabled]=selectRoomForm.invalid (click)="uploadFileToActivity()" type="submit" class="btn btn-light btn-elevate mr-2 margin-left" style="color: #964B00;background-color:#efc96a ;"
         >
              Submit</button>
-      </form>
+            </form>
+             </div>
+
+             <div *ngIf="proofshow" class=" col" style="height: 400px;width: 500px;margin:10px 10px 10px 10px;">
+              <img style="height: 400px; width: 400px;" src={{imageUrl}}>
+            </div>
+
+            </div>
+      
   
        
     </div>
