@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {  IDropdownSettings,  } from 'ng-multiselect-dropdown';
 import { BookingModel } from 'src/app/model/booking.model';
@@ -50,7 +50,7 @@ arrayRoom:any=[];
        this.checkout = params[('checkout')],);
   
        this.selectRoomForm= this.fb.group({
-        bookingid: this.bookingid,
+        bookingid: [this.bookingid,Validators.required],
         bhk2:['',],
        bhk3:['',],
       })

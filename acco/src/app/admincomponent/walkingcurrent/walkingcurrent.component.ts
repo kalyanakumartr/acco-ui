@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { City, Country, State } from 'country-state-city';
 import { first } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
 import { BookingModel } from 'src/app/model/booking.model';
@@ -56,6 +57,19 @@ export class WalkingcurrentComponent implements OnInit {
   finalmonth: any;
   finalday: any;
   finalOutday: any;
+
+  @ViewChild('country') country!: ElementRef
+  @ViewChild('city') city!: ElementRef
+  @ViewChild('state') state!: ElementRef
+  name = 'Angular ' + VERSION.major;
+  countries = Country.getAllCountries();
+  states: any = null;
+  cities: any = null;
+
+  selectedCountry: any;
+  selectedState: any;
+  selectedCity: any;
+
   ngOnInit(): void {
 
     this.showRoomType();
@@ -86,9 +100,9 @@ export class WalkingcurrentComponent implements OnInit {
       phonenumber: ['', [Validators.required, Validators.pattern("^[0-9]{0,10}$")]],
       address1: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
       address2: ['', Validators.required,],
-      city: ['', Validators.required],
-      state: ['', Validators.required,],
-      country: ['', Validators.required,],
+      city: ['null', Validators.required],
+      state: ['null', Validators.required,],
+      country: ['null', Validators.required,],
       pincode: ['', [Validators.required, Validators.pattern("^[0-9]{6}$")]],
       // from: ['', Validators.required,],
       // to: ['', Validators.required,],
@@ -111,6 +125,28 @@ export class WalkingcurrentComponent implements OnInit {
   }
 
 
+  onCountryChange($event: any): void {
+    this.states = State.getStatesOfCountry(JSON.parse(this.country.nativeElement.value).isoCode);
+    this.selectedCountry = JSON.parse(this.country.nativeElement.value);
+    this.cities = this.selectedState = this.selectedCity = null;
+    console.log("country", this.selectedCountry)
+  }
+
+  onStateChange($event: any): void {
+    this.cities = City.getCitiesOfState(JSON.parse(this.country.nativeElement.value).isoCode, JSON.parse(this.state.nativeElement.value).isoCode)
+    this.selectedState = JSON.parse(this.state.nativeElement.value);
+    this.selectedCity = null;
+    console.log("state", this.selectedState)
+
+
+  }
+
+  onCityChange($event: any): void {
+    this.selectedCity = JSON.parse(this.city.nativeElement.value)
+    console.log("city", this.selectedCity)
+
+  }
+
 
   walkingCurrentFormProcess() {
 
@@ -121,9 +157,9 @@ export class WalkingcurrentComponent implements OnInit {
     this.walkinguser.phonenumber = formData.phonenumber;
     this.walkinguser.address1 = formData.address1;
     this.walkinguser.address2 = formData.address2;
-    this.walkinguser.city = formData.city;
-    this.walkinguser.state = formData.state;
-    this.walkinguser.country = formData.country;
+    this.walkinguser.city = this.selectedCity.name;
+    this.walkinguser.state = this.selectedState.name;
+    this.walkinguser.country = this.selectedCountry.name;
     this.walkinguser.pincode = formData.pincode;
     this.walkinguser.username = "";
     this.walkinguser.password = "";

@@ -1,6 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { City, Country, State } from 'country-state-city';
 import { first } from 'rxjs';
 import { UserModel } from 'src/app/model/auth.model';
 import { BookingModel } from 'src/app/model/booking.model';
@@ -19,63 +20,78 @@ import Swal from 'sweetalert2';
   styleUrls: ['./walkingfuture.component.scss']
 })
 export class WalkingfutureComponent implements OnInit {
-  walkingFutureForm!:FormGroup;
-  user =new UserModel();   
+  walkingFutureForm!: FormGroup;
+  user = new UserModel();
   submitted = false;
-  visibleRoom:any;
+  visibleRoom: any;
   formData: any;
-  walkinguserFuture = new UserModel() ;
+  walkinguserFuture = new UserModel();
   booking = new BookingModel();
   roomData: any;
   roomBookingSum: any
   userData: any;
   walkingRoomCheckFuture!: FormGroup;
-  Todaydate="2023-03-12"
-  outDate="2023-03-12"
+  Todaydate = "2023-03-12"
+  outDate = "2023-03-12"
 
 
   constructor(private fb: FormBuilder,
-    private roomTypeService:GetroomtypeService,
-    private registerService:RegisterServiceService,
+    private roomTypeService: GetroomtypeService,
+    private registerService: RegisterServiceService,
     private emailservice: EmailcheckService,
     private router: Router,
     private getroomlistservice: GetroomlistService,
     public bookingService: BookingServiceService
 
-    ){getroomlistservice.apiRoom$.subscribe(data => this.roomData = data)}
+  ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
-    date1=new Date();
-    currentyear=this.date1.getUTCFullYear();
-    currentmonth=this.date1.getUTCMonth() +1;
-    currentday=this.date1.getUTCDate();
-    checkoutday=this.date1.getDate() + 1;
-    currentmin=this.date1.getMinutes();
-    currenthour=this.date1.getHours();
-   
-    finalmonth:any;
-    finalday:any;
-    finalOutday:any;
-  ngOnInit():void{
+  date1 = new Date();
+  currentyear = this.date1.getUTCFullYear();
+  currentmonth = this.date1.getUTCMonth() + 1;
+  currentday = this.date1.getUTCDate();
+  checkoutday = this.date1.getDate() + 1;
+  currentmin = this.date1.getMinutes();
+  currenthour = this.date1.getHours();
 
-    this. showRoomType();
-   if(this.currentmonth<10){
-    this.finalmonth="0" +this.currentmonth;
-  }else{
-    this.finalmonth=this.currentmonth;
-  }
-  if(this.currentday<10){
-    this.finalday="0" +this.currentday ;
-  }else{
-    this.finalday=this.currentday;
-  }
-  if(this.checkoutday<10){
-    this.finalOutday="0" +this.checkoutday ;
-  }else{
-    this.finalOutday=this.checkoutday;
-  }
-  
-  this.Todaydate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday +" "+this.currenthour+":"+this.currentmin;
-  this.outDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalOutday +" "+this.currenthour+":"+this.currentmin;
+  finalmonth: any;
+  finalday: any;
+  finalOutday: any;
+
+
+  @ViewChild('country') country!: ElementRef
+  @ViewChild('city') city!: ElementRef
+  @ViewChild('state') state!: ElementRef
+  name = 'Angular ' + VERSION.major;
+  countries = Country.getAllCountries();
+  states: any = null;
+  cities: any = null;
+
+  selectedCountry: any;
+  selectedState: any;
+  selectedCity: any;
+
+
+  ngOnInit(): void {
+
+    this.showRoomType();
+    if (this.currentmonth < 10) {
+      this.finalmonth = "0" + this.currentmonth;
+    } else {
+      this.finalmonth = this.currentmonth;
+    }
+    if (this.currentday < 10) {
+      this.finalday = "0" + this.currentday;
+    } else {
+      this.finalday = this.currentday;
+    }
+    if (this.checkoutday < 10) {
+      this.finalOutday = "0" + this.checkoutday;
+    } else {
+      this.finalOutday = this.checkoutday;
+    }
+
+    this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday + " " + this.currenthour + ":" + this.currentmin;
+    this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday + " " + this.currenthour + ":" + this.currentmin;
 
 
 
@@ -84,15 +100,15 @@ export class WalkingfutureComponent implements OnInit {
 
 
     this.walkingFutureForm = this.fb.group({
-      firstname: ['', [ Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
+      firstname: ['', [Validators.required, Validators.pattern("^[a-zA-Z]{3,15}$")]],
       lastname: ['', Validators.required],
-      email:['',[ Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      phonenumber: ['',[Validators.required,Validators.pattern("^[0-9]{0,10}$")]],
-      address1: ['',[ Validators.required,Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
+      email: ['', [Validators.required, Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      phonenumber: ['', [Validators.required, Validators.pattern("^[0-9]{0,10}$")]],
+      address1: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9,./ ]*$")]],
       address2: ['', Validators.required,],
-      city: ['', Validators.required,],
-      state: ['', Validators.required,],
-      country: ['', Validators.required,],
+      city: ['null', Validators.required,],
+      state: ['null', Validators.required,],
+      country: ['null', Validators.required,],
       pincode: ['', [Validators.required, Validators.pattern("^[0-9]{6}$")]],
       // from:['',Validators.required],
       // to:['',Validators.required],
@@ -100,7 +116,7 @@ export class WalkingfutureComponent implements OnInit {
       // children:['0',[Validators.required,Validators.pattern("^[0-9]*$")]],
       // roomtype:['',Validators.required,],
       // roleid:3
-     
+
     });
 
     this.walkingRoomCheckFuture = this.fb.group({
@@ -112,30 +128,51 @@ export class WalkingfutureComponent implements OnInit {
       roleid: 3
 
     });
-    
+
   }
 
-   
+
+  onCountryChange($event: any): void {
+    this.states = State.getStatesOfCountry(JSON.parse(this.country.nativeElement.value).isoCode);
+    this.selectedCountry = JSON.parse(this.country.nativeElement.value);
+    this.cities = this.selectedState = this.selectedCity = null;
+    console.log("country", this.selectedCountry)
+  }
+
+  onStateChange($event: any): void {
+    this.cities = City.getCitiesOfState(JSON.parse(this.country.nativeElement.value).isoCode, JSON.parse(this.state.nativeElement.value).isoCode)
+    this.selectedState = JSON.parse(this.state.nativeElement.value);
+    this.selectedCity = null;
+    console.log("state", this.selectedState)
 
 
-    walkingFutureFormProcess(){
-      const formData = this.walkingFutureForm.value;
-      this.walkinguserFuture.firstname = formData.firstname;
-      this.walkinguserFuture.lastname = formData.lastname;
-      this.walkinguserFuture.email = formData.email;
-      this.walkinguserFuture.phonenumber = formData.phonenumber;
-      this.walkinguserFuture.address1 = formData.address1;
-      this.walkinguserFuture.address2 = formData.address2;
-      this.walkinguserFuture.city = formData.city;
-      this.walkinguserFuture.state = formData.state;
-      this.walkinguserFuture.country = formData.country;
-      this.walkinguserFuture.pincode = formData.pincode;
-      this.walkinguserFuture.username = "";
+  }
+
+  onCityChange($event: any): void {
+    this.selectedCity = JSON.parse(this.city.nativeElement.value)
+    console.log("city", this.selectedCity)
+
+  }
+
+
+  walkingFutureFormProcess() {
+    const formData = this.walkingFutureForm.value;
+    this.walkinguserFuture.firstname = formData.firstname;
+    this.walkinguserFuture.lastname = formData.lastname;
+    this.walkinguserFuture.email = formData.email;
+    this.walkinguserFuture.phonenumber = formData.phonenumber;
+    this.walkinguserFuture.address1 = formData.address1;
+    this.walkinguserFuture.address2 = formData.address2;
+    this.walkinguserFuture.city = this.selectedCity.name;
+    this.walkinguserFuture.state = this.selectedState.name;
+    this.walkinguserFuture.country = this.selectedCountry.name;
+    this.walkinguserFuture.pincode = formData.pincode;
+    this.walkinguserFuture.username = "";
     this.walkinguserFuture.password = "";
     this.walkinguserFuture.cpassword = "";
     this.walkinguserFuture.roleid = 3;
     this.walkinguserFuture.modeoftypeid = 3;
-      
+
     if (this.walkingFutureForm.valid) {
       console.log("123", this.walkinguserFuture);
       this.registerService.register(this.walkinguserFuture).
@@ -150,23 +187,23 @@ export class WalkingfutureComponent implements OnInit {
           });
         })
     }
-      }
-    
-      // Swal.fire("Success");
+  }
+
+  // Swal.fire("Success");
   // if(this.walkingcurrentForm.valid){
   //   console.log(this.user);
 
   //   this.WalkingcurentService.register(newuser).    
   //   subscribe( result=>{
-     
+
   //      console.log(result);
   //       // alert("login sucessful"); 
   //       this.WalkincurrentForm.reset();
   //       Swal.fire(" Registered Successfully");
-      
-        
+
+
   //       // this.router.navigate(["signup"])
-     
+
   //   })
   // }
   //   }
@@ -179,10 +216,10 @@ export class WalkingfutureComponent implements OnInit {
     console.log("email", value)
     this.walkingFutureForm.reset();
     Swal.fire({
-            text: "Phonenumber not Registered",
-            confirmButtonColor: '#964B00',
-            background: '#efc96a',
-          });
+      text: "Phonenumber not Registered",
+      confirmButtonColor: '#964B00',
+      background: '#efc96a',
+    });
     this.emailservice.emailverify(value).subscribe((result) => {
       this.userData = result[0];
       console.log("userdata", this.userData)
@@ -269,15 +306,15 @@ export class WalkingfutureComponent implements OnInit {
   }
 
 
-  showRoomType(){
+  showRoomType() {
     this.roomTypeService.getRoomType()
-    // .subscribe((res)=>{
-      .subscribe((result)=>{
-      console.log("roomtype:",result);    
-       this. visibleRoom=result;
-       console.log("walkingfuture",this.visibleRoom);
-    });
-  
+      // .subscribe((res)=>{
+      .subscribe((result) => {
+        console.log("roomtype:", result);
+        this.visibleRoom = result;
+        console.log("walkingfuture", this.visibleRoom);
+      });
+
 
   }
 
