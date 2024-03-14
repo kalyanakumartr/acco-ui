@@ -15,4 +15,8 @@ export class GetroomtypeService {
        
     return this.http.get(`${environment.roomtype}`);
   }
+
+  getManageRoom(): Observable<any>{
+    return this.http.get<any>("http://localhost:3001/room/getroom");
+  }
 }

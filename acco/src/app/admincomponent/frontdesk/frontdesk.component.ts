@@ -85,6 +85,9 @@ setPagination(data:any) {
   this.databookingData.paginator = this.paginator;
   this.dataObs$ = this.databookingData.connect();
 }
+
+
+
 updateproof(id:any){
   this.router.navigate(["updateproof", 
   {
@@ -138,5 +141,15 @@ getroomslist(bookingid:any,checkin:any,checkout:any){
 //       this.router.navigate(["home"]);
 //   })
 // }
+
+
+
+checkOutTime(id:any){
+  this.router.navigate(["checkouttime", 
+  {
+    "bookingid": id,
+    
+   } ])
+}
 
 }

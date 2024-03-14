@@ -1,5 +1,42 @@
 <div class="outer">
     <app-header></app-header>
     <div class="container">
+
+        <h2 style="margin-top: 5px;color:#964B00">Flats Maintenance</h2>
+        <!-- <div class="tbl-container pt-2"> -->
+        <div class="row tbl-fixed">
+
+            <table class="table table-borderless text-center">
+
+                <thead>
+                    <tr>
+                        <th class="align-middle " style=" color:#964B00;" rowspan="2">FlatNumber</th>
+                        <th class="align-middle " style=" color:#964B00;" rowspan="2">FlatType</th>
+                        <th class="align-middle " style=" color:#964B00;" rowspan="3">Status</th>
+                        <th class="align-middle " style=" color:#964B00;" rowspan="2">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="color: #964B00;" *ngFor="let i of dataObs$ | async">
+                         <td class="align-middle " style="border-color: #964B00;">{{i.roomno}}
+                        <td class="align-middle " style="border-color: #964B00;">{{i.noofbhk}}
+                        <td class="align-middle " style="border-color: #964B00;">{{i.status}}
+                        <td class="align-middle " style="border-color: #964B00;">
+                                <i class="fa fa-fw fa-edit" style="color:#964B00;"
+                                  > </i>
+                              </td>
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="page">
+
+            <mat-paginator #paginator [pageSizeOptions]="[5,10,15]" [pageSize]="5" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+        <!-- </div> -->
+
+
     </div>
 </div>

@@ -202,7 +202,7 @@ export class WalkingcurrentComponent implements OnInit {
       console.log("123", this.booking);
       this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout).subscribe((result) => {
         console.log(result);
-        this.roomData = result[0];
+        this.roomData = result[1];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);

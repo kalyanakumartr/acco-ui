@@ -36,6 +36,7 @@ import { RoomfromwalkinfutureComponent } from './admincomponent/roomfromwalkinfu
 import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
+import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foecheckouttime.component';
 // import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 
@@ -77,6 +78,7 @@ const routes: Routes = [
    {path:'canceledbookingfoe',component:CanceledbookingfoeComponent},
    {path:'placetovisit',component:PlacetovisitComponent},
    {path:'manageflats',component:ManageflatsComponent},
+   {path:'checkouttime',component:FoecheckouttimeComponent},
 
 
 

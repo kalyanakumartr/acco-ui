@@ -54,6 +54,7 @@ import { SpinnerComponent } from './component/spinner/spinner.component';
 import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
+import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foecheckouttime.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -96,7 +97,8 @@ import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.c
     RoomfromwalkinfutureComponent,
     SpinnerComponent,
     CanceledbookingfoeComponent,
-    ManageflatsComponent
+    ManageflatsComponent,
+    FoecheckouttimeComponent
     // MatchpasswordComponent,
    
   ],

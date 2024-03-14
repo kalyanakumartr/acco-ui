@@ -221,7 +221,7 @@ export class WalkingfutureComponent implements OnInit {
       background: '#efc96a',
     });
     this.emailservice.emailverify(value).subscribe((result) => {
-      this.userData = result[0];
+      this.userData = result[1];
       console.log("userdata", this.userData)
       // Swal.fire(" phonenumber is  register");
       this.walkingFutureForm.controls['email'].setValue(this.userData.email);

@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
-    public bookingService:BookingServiceService
+    public bookingService: BookingServiceService
 
   ) { }
 
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
   finalOutday: any;
   tokenvalue: any;
   visibleRoom: any;
-  roomBooking:any;
+  roomBooking: any;
   ngOnInit(): void {
 
     this.showRoomType();
@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
   facilities: boolean = true
   samArray: any = []
   childAge: any = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  
+
 
   ValueEntered(value: any) {
     // console.log("djhckjkasj")
@@ -140,36 +140,36 @@ export class HomeComponent implements OnInit {
     this.visible = !this.visible
   }
 
-  childAgeMap = new Map<string,string>;
-  ageValue:any;
-  onSelected(value: any,e:any) {
-      this.childAgeMap.set(e,value);
-     
+  childAgeMap = new Map<string, string>;
+  ageValue: any;
+  onSelected(value: any, e: any) {
+    this.childAgeMap.set(e, value);
+
     //   this.childMap.forEach((value: string, key: string) => {
     //     console.log("++++",key, value);})
     //   for ( let value of this.childMap.values()) {
     //     console.log("aa:",value);
     // }
-      
-      console.log("childage:", this.childAgeMap);
 
-      // this.childMap.forEach((value: string, key: string) => {
-      //       console.log("++++",key, value);
-      //       this.selectedAge[key]=value;
-      //     })
-      const arr = [Array.from(this.childAgeMap).reduce((acc, curr) => ({ 
-        ...acc, 
-        [curr[0]]: curr[1] 
+    console.log("childage:", this.childAgeMap);
+
+    // this.childMap.forEach((value: string, key: string) => {
+    //       console.log("++++",key, value);
+    //       this.selectedAge[key]=value;
+    //     })
+    const arr = [Array.from(this.childAgeMap).reduce((acc, curr) => ({
+      ...acc,
+      [curr[0]]: curr[1]
     }), Object.create(null))];
-    
-    console.log("rrr",arr[0]);
+
+    console.log("rrr", arr[0]);
     this.ageValue = Object.values(arr[0]);
-    console.log("age++",this.ageValue )
-           
+    console.log("age++", this.ageValue)
+
     // this.selectedAge.push(value)
     //  console.log("age:", this.selectedAge);
 
- }
+  }
 
 
   // FirstFloor: boolean = true;
@@ -224,57 +224,71 @@ export class HomeComponent implements OnInit {
 
       Swal.fire({
         text:
-        " Please LOGIN if you are Existing user or SIGNUP for Newuser",
+          " Please LOGIN if you are Existing user or SIGNUP for Newuser",
         // "<h5 style='color:red'>"++"</h5>"
         confirmButtonColor: '#964B00',
-         background:'#efc96a',
-        
-        
+        background: '#efc96a',
+
+
       })
     } else {
       const formData = this.homeForm.value;
-      console.log("chlid:", formData.child, formData.roomType)
+      console.log("chlid:", formData.child, formData.roomType, formData.checkIn, formData.checkOut)
       var inDate = new Date(formData.checkIn);
       var OutDate = new Date(formData.checkOut);
 
-      var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
-      console.log("nnnnn", noofdays);
-      console.log("nnnnn", formData.checkIn);
+      // var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
 
+      // var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
 
+      // console.log("nnnnn", noofdays);
+      // console.log("nnnnn", formData.checkIn);
+      var diff=OutDate.getTime() - inDate.getTime();
+      var days = Math.floor(diff / (60 * 60 * 24 * 1000));
+      var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+      console.log("diff", diff);
+      console.log("days", days);
+      console.log("hours", hours);
+
+      if(hours>2){
+        var totalDays=days+1
+      }else{
+        var totalDays=days;
+      }
+      console.log("toldays",totalDays)
       // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
-        this.getroomlistservice.roomlogic(formData.adult,formData.checkIn,formData.checkOut).subscribe((result)=>{
+      this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut).subscribe((result) => {
         console.log(result);
         this.roomData = result[1];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
         this.roomValue;
-        this. roomBooking= new BookingModel();
-    this. roomBooking.checkin=formData.checkIn,
-    this.roomBooking.checkout=formData.checkOut,
-    this.roomBooking.noofdays=noofdays;
-    this.roomBooking.adults=formData.adult;
-    this.roomBooking.child=formData.child;
-    this.roomBooking.childage=this.ageValue==undefined?0:this.ageValue;
-    this.roomBooking.roomtype=formData.roomType;
-    this.roomBooking.modeoftypeid=1;
+        this.roomBooking = new BookingModel();
+        this.roomBooking.checkin = formData.checkIn,
+          this.roomBooking.checkout = formData.checkOut,
+          this.roomBooking.noofdays =  totalDays;
+        this.roomBooking.adults = formData.adult;
+        this.roomBooking.child = formData.child;
+        this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
+        this.roomBooking.roomtype = formData.roomType;
+        this.roomBooking.modeoftypeid = 1;
 
-    
-    console.log("___+++",this.roomBooking)
-    this.bookingService.changeMessage(this.roomBooking);
-        this.router.navigate(["roomlogic", 
-        // {
-        //   "days": noofdays,
-        //   "adult": formData.adult,
-        //   "cIn": formData.checkIn,
-        //   "cOut": formData.checkOut,
-        //   "child": formData.child,
-        //   "roomType": formData.roomType,
-        //   "childAge": this.ageValue
-        // }
-      ]);
-        
+
+        console.log("___+++", this.roomBooking)
+        this.bookingService.changeMessage(this.roomBooking);
+        this.router.navigate(["roomlogic",
+          // {
+          //   "days": noofdays,
+          //   "adult": formData.adult,
+          //   "cIn": formData.checkIn,
+          //   "cOut": formData.checkOut,
+          //   "child": formData.child,
+          //   "roomType": formData.roomType,
+          //   "childAge": this.ageValue
+          // }
+        ]);
+
 
       });
     }

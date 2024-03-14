@@ -37,7 +37,8 @@
               <th class="align-middle "style=" color:#964B00;" rowspan="2">CinTime</th>
               <th class="align-middle "style=" color:#964B00;" rowspan="2">CoutTime</th>
               <th class="align-middle "style=" color:#964B00;" rowspan="2">ACInTime</th>
-              <th class="align-middle "style=" color:#964B00;" rowspan="2">CheckRoom</th>
+              <th class="align-middle "style=" color:#964B00;" rowspan="2">ACOutTime</th>
+              <th class="align-middle "style=" color:#964B00;" rowspan="2">SelectRoom</th>
               <th class="align-middle "style=" color:#964B00;" rowspan="2">Proof</th>
               <th class="align-middle "style=" color:#964B00;" rowspan="2">Status</th>
 
@@ -62,6 +63,10 @@
               <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
               <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
               <td class="align-middle " style="border-color: #964B00;">{{i.acheckin | date:'dd-MM-yyyy HH:mm a'}}
+              <td class="align-middle " style="border-color: #964B00;">
+                  <i class="fa fa-fw fa-edit" style="color:#964B00;"
+                  (click)=checkOutTime(i.bookingid)> </i>
+              </td>
               <td class="align-middle " style="border-color: #964B00;">
                 <i class="fa fa-fw fa-edit" style="color:#964B00;"
                   (click)=getroomslist(i.bookingid,i.checkin,i.checkout)> </i>

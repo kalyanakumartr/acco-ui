@@ -1,0 +1,34 @@
+<div class="outer">
+    <app-header></app-header>
+    <div class="container">
+        <form [formGroup]="selectRoomForm" (ngSubmit)="roomCheckOut()">
+            <!-- (ngSubmit)="roomCheckin()" -->
+            <div class="form-group row">
+              <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
+              <div class="col-sm-5">
+                <input type="text" readonly class="form-control-plaintext" id="bookingid" value={{bookingid}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label style="color:#964B00" for="inputPassword" class="col-sm-2 col-form-label">CheckOutTime</label>
+              <div class="col-sm-2">
+                <input formControlName="checkout" type="datetime-local" [(ngModel)]="Todaydate"
+                                        [min]="Todaydate" placeholder="To">
+                
+      
+              </div>
+            </div>
+            
+      
+            <button [disabled]=selectRoomForm.invalid type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
+              style="color: #964B00;background-color:#efc96a;margin-top: 80px;">
+              <!-- (click)="uploadFileToActivity()" -->
+              Submit</button>
+            <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
+              style="color: #964B00;background-color:#efc96a ;margin-top: 80px ;">
+              Back</button>
+          </form>
+
+    </div>
+    </div>
+

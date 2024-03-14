@@ -35,4 +35,8 @@ export class BookingServiceService {
         console.log("cancel",book);
         return this.http.post<BookingModel>(`${environment.bookingCancel}`,book);
       }
+
+    checkOut(id:any,cout:any):Observable<any>{
+      return this.http.post<any>("http://localhost:3001/booking/actualcheckout",{bookingid:id,acheckout:cout});
+    }
 }
