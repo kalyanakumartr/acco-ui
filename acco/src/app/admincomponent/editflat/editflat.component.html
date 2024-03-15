@@ -1,0 +1,62 @@
+<div class="outer">
+    <app-header></app-header>
+    <div class="container">
+
+        <h2 style="margin-top: 5px;color:#964B00">Edit Flats</h2>
+
+            <form [formGroup]="editflatform">
+
+                <div class="form-group row">
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
+                    <div class="col-sm-5">
+                        <input formControlName="bookingid" type="text" readonly class="form-control-plaintext"
+                            id="bookingid" value={{bookingid}}>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label style="color:#964B00" for="flattype" class="col-sm-2 col-form-label">flattype</label>
+                    <div class="col-sm-5">
+                        <input formControlName="flattype" type="text" readonly class="form-control-plaintext"
+                            id="flattype" value={{flattype}}>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">flatstatus</label>
+                    <div class="col-sm-5">
+                        <input formControlName="flatstatus" type="text" readonly class="form-control-plaintext"
+                            id="flatstatus" value={{flatstatus}}>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">updatestatus</label>
+                    <div class="col-sm-5">
+                        <input formControlName="updatestatus" type="text"  class="form-control-plaintext"
+                            id="updatestatus" >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">reason</label>
+                    <div class="col-sm-5">
+                       <textarea formControlName="reason" class="form-control"></textarea>
+                        <small *ngIf="editflatform.controls['message'].dirty && editflatform.hasError('required','message')"  
+                                          class="text-danger form-inline  mt-0">*Messsage is required</small>
+                      <small *ngIf="editflatform.controls['message'].dirty && editflatform.hasError('pattern','message')"  
+                                          class="text-danger form-inline  mt-0">*Messsage is invalid</small>
+                    </div>
+                </div>
+
+                <button [disabled]=editflatform.invalid (click)="editflatdata()" type="submit"
+                    class="btn btn-light btn-elevate mr-2 margin-left "
+                    style="color: #964B00;background-color:#efc96a;margin-top: 10px;margin-bottom: 10px;">
+                    Submit</button>
+
+            </form>
+       
+
+
+    </div>
+</div>

@@ -56,5 +56,14 @@ setPagination(data:any) {
   this.dataroomData.paginator = this.paginator;
   this.dataObs$ = this.dataroomData.connect();
 }
+editflat(id:any,room:any,status:any){
+  this.router.navigate(['editflat',
+  {
+    "bookingid": id,
+    'flattype':room,
+    "flatstatus":status
+    
+   }])
+}
 
 }

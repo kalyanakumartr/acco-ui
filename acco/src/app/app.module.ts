@@ -55,6 +55,7 @@ import { PlacetovisitComponent } from './component/placetovisit/placetovisit.com
 import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
 import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foecheckouttime.component';
+import { EditflatComponent } from './admincomponent/editflat/editflat.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -98,7 +99,8 @@ import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foech
     SpinnerComponent,
     CanceledbookingfoeComponent,
     ManageflatsComponent,
-    FoecheckouttimeComponent
+    FoecheckouttimeComponent,
+    EditflatComponent
     // MatchpasswordComponent,
    
   ],

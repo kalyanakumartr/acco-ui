@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="input-group mb-1">
-                                <div class="input-field">
+                                <div class="input-field" style="margin-top: -20px;">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <!-- <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label> -->
                                     <input #phone formControlName="phonenumber" type="text" placeholder="PhoneNumber">
@@ -112,7 +112,7 @@
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <!-- <label style="color:#964B00">Country</label> -->
                                     <!-- <input formControlName="country" type="text" placeholder="Country"> -->
-                                    <select formControlName="country" #country name="country" id="country" (change)="onCountryChange($event)" >
+                                    <select style="color: gray;" formControlName="country" #country name="country" id="country" (change)="onCountryChange($event)" >
                                                
                                         <option [value]="null">-- Select Your Country --</option>
                                         <option *ngFor="let country of countries" [value]="country | json" >
@@ -134,7 +134,7 @@
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <!-- <label style="color:#964B00">State</label> -->
                                     <!-- <input formControlName="state" type="text" placeholder="State"> -->
-                                    <select formControlName="state"  #state name="state" id="state" (change)="onStateChange($event)">
+                                    <select style="color: gray;" formControlName="state"  #state name="state" id="state" (change)="onStateChange($event)">
                                         <option [value]="null">-- Select Your State --</option>
                                         <option *ngFor="let state of states" [value]="state | json">
                                             {{ state.name }}
@@ -154,7 +154,7 @@
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <!-- <label style="color:#964B00">City</label> -->
                                     <!-- <input formControlName="city" type="text" placeholder="City"> -->
-                                    <select formControlName="city"  #city name="city" id="city" (change)="onCityChange($event)">
+                                    <select style="color: gray;" formControlName="city"  #city name="city" id="city" (change)="onCityChange($event)">
                                         <option [value]="null">-- Select Your City --</option>
                                         <option *ngFor="let city of cities" [value]="city | json">
                                             {{ city.name }}
