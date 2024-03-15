@@ -8,12 +8,13 @@
                 <form [formGroup]="walkingFutureForm" (ngSubmit)="walkingFutureFormProcess()">
                     <!-- (ngSubmit)="walkingCurrentFormProcess()"> -->
                     <div class="form-group pt-0 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">FirstName<span class="text-danger">*</span></label> -->
                                     <input formControlName="firstname" type="text" placeholder="FirstName">
+                                    <span class="text-danger">*</span>
                                 </div>
                                 <small 
                                     *ngIf="walkingFutureForm.controls['firstname'].dirty && walkingFutureForm.hasError('required','firstname')"
@@ -23,11 +24,11 @@
                                     class="text-danger form-inline ">*firstName is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">LastName</label>
+                                    <!-- <label style="color:#964B00">LastName</label> -->
                                     <input formControlName="lastname" type="text" placeholder="LastName">
                                 </div>
                                 <small
@@ -37,12 +38,13 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Email<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">Email<span class="text-danger">*</span></label> -->
                                     <input #email formControlName="email" type="text" placeholder="Email">
+                                    <span class="text-danger">*</span>
                                 </div>
                                 <small
                                     *ngIf="walkingFutureForm.controls['email'].dirty && walkingFutureForm.hasError('required','email')"
@@ -53,12 +55,13 @@
 
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label> -->
                                     <input #phone formControlName="phonenumber" type="text" placeholder="PhoneNumber">
+                                    <span class="text-danger">*</span>
                                     <span> <i style="font-size: 20px; margin-top: 20px;margin-left: 5px;color:#964B00"
                                             class="fa sharp fa-solid fa-check"
                                             (click)="checkphone(phone.value)"></i></span>
@@ -73,12 +76,13 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Address1<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">Address1<span class="text-danger">*</span></label> -->
                                     <input formControlName="address1" type="text" placeholder="Address1">
+                                    <span class="text-danger">*</span>
                                 </div>
                                 <small
                                     *ngIf="walkingFutureForm.controls['address1'].dirty && walkingFutureForm.hasError('required','address1')"
@@ -88,11 +92,11 @@
                                     class="text-danger form-inline  ">*Address1 is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Address2</label>
+                                    <!-- <label style="color:#964B00">Address2</label> -->
                                     <input formControlName="address2" type="text" placeholder="Address2">
                                 </div>
                                 <small
@@ -102,11 +106,11 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Country</label>
+                                    <!-- <label style="color:#964B00">Country</label> -->
                                     <!-- <input formControlName="country" type="text" placeholder="Country"> -->
                                     <select formControlName="country" #country name="country" id="country" (change)="onCountryChange($event)" >
                                                
@@ -124,11 +128,11 @@
                                     class="text-danger form-inline ">*country is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">State</label>
+                                    <!-- <label style="color:#964B00">State</label> -->
                                     <!-- <input formControlName="state" type="text" placeholder="State"> -->
                                     <select formControlName="state"  #state name="state" id="state" (change)="onStateChange($event)">
                                         <option [value]="null">-- Select Your State --</option>
@@ -144,11 +148,11 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">City</label>
+                                    <!-- <label style="color:#964B00">City</label> -->
                                     <!-- <input formControlName="city" type="text" placeholder="City"> -->
                                     <select formControlName="city"  #city name="city" id="city" (change)="onCityChange($event)">
                                         <option [value]="null">-- Select Your City --</option>
@@ -162,11 +166,11 @@
                                     class="text-danger form-inline  ">*city is required</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">pincode</label>
+                                    <!-- <label style="color:#964B00">pincode</label> -->
                                     <input formControlName="pincode" type="text" placeholder="Postal code">
                                 </div>
                                 <small
@@ -188,8 +192,8 @@
                 <div>
                     <form [formGroup]="walkingRoomCheckFuture" (ngSubmit)="walkingFutureRoomCheckProcess()">
     
-                        <div class="form-group pt-1 row justify-content-around">
-                            <div class="col-md-4">
+                        <div class="form-group pt-1 row justify-content-around mt-5">
+                            <div class="col-md-5">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
                                         <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
@@ -202,8 +206,8 @@
     
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="input-group mb-1">
+                            <div class="col-md-5">
+                                <div class="input-group mb-1 ">
                                     <div class="input-field">
                                         <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                         <label style="color:#964B00">To<span class="text-danger">*</span></label>
@@ -216,7 +220,7 @@
                             </div>
                         </div>
                         <div class="form-group pt-1 row justify-content-around">
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
                                         <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
@@ -232,7 +236,7 @@
                                         class="text-danger form-inline mt-0 ">*adult is invalid</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
                                         <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
@@ -268,7 +272,7 @@
                             </div>
                         </div>
                         <div class="form-group pt-1 row justify-content-around">
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
                                         <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->

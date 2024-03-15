@@ -8,12 +8,13 @@
                 <form [formGroup]="walkingCurrentForm" (ngSubmit)="walkingCurrentFormProcess()">
                     <!-- (ngSubmit)="walkingCurrentFormProcess()"> -->
                     <div class="form-group pt-0 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
-                                <div class="input-field">
+                                <div class="input-field ">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
-                                    <input formControlName="firstname" type="text" placeholder="FirstName" >
+                                    <!-- <label style="color:#964B00">FirstName<span class="text-danger">*</span></label> -->
+                                    <input formControlName="firstname" type="text" placeholder="FirstName" ><span class="text-danger">*</span>
+                                    
                                 </div>
                                 <small 
                                     *ngIf="walkingCurrentForm.controls['firstname'].dirty && walkingCurrentForm.hasError('required','firstname')"
@@ -23,11 +24,11 @@
                                     class="text-danger form-inline ">*firstName is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">LastName</label>
+                                    <!-- <label style="color:#964B00">LastName</label> -->
                                     <input formControlName="lastname" type="text" placeholder="LastName">
                                 </div>
                                 <small
@@ -37,12 +38,13 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Email<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">Email<span class="text-danger">*</span></label> -->
                                     <input #email formControlName="email" type="text" placeholder="Email">
+                                    <span class="text-danger">*</span>
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['email'].dirty && walkingCurrentForm.hasError('required','email')"
@@ -53,12 +55,13 @@
 
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
-                                <div class="input-field">
+                                <div class="input-field ">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">Phonenumber<span class="text-danger">*</span></label> -->
                                     <input #phone formControlName="phonenumber" type="text" placeholder="PhoneNumber">
+                                    <span class="text-danger">*</span>
                                     <span> <i style="font-size: 20px; margin-top: 20px;margin-left: 5px;color:#964B00"
                                             class="fa sharp fa-solid fa-check"
                                             (click)="checkemail(phone.value)"></i></span>
@@ -73,12 +76,13 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
-                                <div class="input-field">
+                                <div class="input-field ">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Address1<span class="text-danger">*</span></label>
+                                    <!-- <label style="color:#964B00">Address1<span class="text-danger">*</span></label> -->
                                     <input formControlName="address1" type="text" placeholder="Address1">
+                                    <span class="text-danger">*</span>
                                 </div>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['address1'].dirty && walkingCurrentForm.hasError('required','address1')"
@@ -88,11 +92,11 @@
                                     class="text-danger form-inline  ">*Address1 is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Address2</label>
+                                    <!-- <label style="color:#964B00">Address2</label> -->
                                     <input formControlName="address2" type="text" placeholder="Address2">
                                 </div>
                                 <small
@@ -102,11 +106,11 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">Country</label>
+                                    <!-- <label style="color:#964B00">Country</label> -->
                                     <!-- <input formControlName="city" type="text" placeholder="Country"> -->
                                     <select formControlName="country" #country name="country" id="country" (change)="onCountryChange($event)" >
                                                
@@ -124,11 +128,11 @@
                                     class="text-danger form-inline ">*country is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">State</label>
+                                    <!-- <label style="color:#964B00">State</label> -->
                                     <!-- <input formControlName="state" type="text" placeholder="State"> -->
                                     <select formControlName="state"  #state name="state" id="state" (change)="onStateChange($event)">
                                         <option [value]="null">-- Select Your State --</option>
@@ -144,11 +148,11 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">City</label>
+                                    <!-- <label style="color:#964B00">City</label> -->
                                     <!-- <input formControlName="city" type="text" placeholder="City"> -->
                                     <select formControlName="city"  #city name="city" id="city" (change)="onCityChange($event)">
                                         <option [value]="null">-- Select Your City --</option>
@@ -162,11 +166,11 @@
                                     class="text-danger form-inline  ">*city is required</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                    <label style="color:#964B00">pincode</label>
+                                    <!-- <label style="color:#964B00">pincode</label> -->
                                     <input formControlName="pincode" type="text" placeholder="Postal code">
                                 </div>
                                 <small
@@ -188,27 +192,29 @@
                 <div>
                 <form [formGroup]="walkingRoomCheck" (ngSubmit)="walkingRoomCheckProcess()">
 
-                    <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                    <div class="form-group pt-1 row justify-content-around mt-5">
+                        <div class="col-md-5">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <label style="color:#964B00">From<span class="text-danger">*</span></label>
                                     <input  formControlName="checkin"  #input [(ngModel)]="Todaydate"
                                        [min]="Todaydate"  [max]="Todaydate" placeholder="From">
+                                       <!-- <span class="text-danger">*</span> -->
                                 </div>
                                 <!-- <small *ngIf="walkingCurrentForm.controls['from'].dirty && walkingCurrentForm.hasError('required','from')"
                                                 class="text-danger form-inline mt-0 ">*form is required</small> -->
 
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <label style="color:#964B00">To<span class="text-danger">*</span></label>
                                     <input formControlName="checkout" type="datetime-local" [(ngModel)]="outDate"
                                         [min]="outDate" placeholder="To">
+                                        <!-- <span class="text-danger">*</span> -->
                                 </div>
                                 <!-- <small *ngIf="walkingCurrentForm.controls['to'].dirty && walkingCurrentForm.hasError('required','to')"
                                                 class="text-danger form-inline mt-0 ">*to is required</small> -->
@@ -216,13 +222,14 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
                                     <label style="color:#964B00">Adult<span class="text-danger">*</span></label>
                                     <input formControlName="adult" type="number" class="adultInput" placeholder="Adult"
                                         value="1" min="1" max="" />
+                                        <!-- <span class="text-danger">*</span> -->
                                 </div>
                                 <small
                                     *ngIf="walkingRoomCheck.controls['adult'].dirty && walkingRoomCheck.hasError('required','adult')"
@@ -232,7 +239,7 @@
                                     class="text-danger form-inline mt-0 ">*adult is invalid</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
@@ -240,6 +247,7 @@
                                     <input formControlName="children" (change)="ValueEntered(childVal.value)" #childVal
                                         (click)="clickon()" placeholder="Children" type="number" value="0" min="0"
                                         max="6" style="width:170px" />
+                                        <!-- <span class="text-danger">* </span> -->
                                     <ng-container *ngIf="visible">
                                         <div class="card" style="width: 15rem;margin-left: 100px;">
                                             <ul class="list-group list-group-flush">
@@ -268,7 +276,7 @@
                         </div>
                     </div>
                     <div class="form-group pt-1 row justify-content-around">
-                        <div class="col-md-10">
+                        <div class="col-md-11">
                             <div class="input-group mb-1">
                                 <div class="input-field">
                                     <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
