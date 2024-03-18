@@ -59,7 +59,7 @@ setPagination(data:any) {
 editflat(id:any,room:any,status:any){
   this.router.navigate(['editflat',
   {
-    "bookingid": id,
+    "flatid": id,
     'flattype':room,
     "flatstatus":status
     

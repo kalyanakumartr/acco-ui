@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class EditflatComponent {
 
-  bookingid: any;
+  flatid: any;
   flattype:any;
   flatstatus:any;
 
@@ -28,7 +28,7 @@ export class EditflatComponent {
 
     // this.getroomslist();
     this.homeroute.params.subscribe((params: Params) =>
-      this.bookingid = params[('bookingid')],);
+      this.flatid = params[('flatid')],);
 
     this.homeroute.params.subscribe((params: Params) =>
       this.flattype = params[('flattype')],);
@@ -40,7 +40,7 @@ export class EditflatComponent {
 
 
     this.editflatform = this.fb.group({
-      bookingid: [this.bookingid, Validators.required],
+      bookingid: [this.flatid, Validators.required],
       flattype: [this.flattype, Validators.required],
       flatstatus: [this.flatstatus, Validators.required],
       updatestatus: ['', Validators.required],

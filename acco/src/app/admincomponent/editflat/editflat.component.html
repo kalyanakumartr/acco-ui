@@ -2,44 +2,67 @@
     <app-header></app-header>
     <div class="container">
 
-        <h2 style="margin-top: 5px;color:#964B00">Edit Flats</h2>
+        <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Edit Flats</h2>
 
             <form [formGroup]="editflatform">
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
+                    <label style="color:#964B00" for="flatid" class="col-sm-2 col-form-label">FlatId</label>
                     <div class="col-sm-5">
-                        <input formControlName="bookingid" type="text" readonly class="form-control-plaintext"
-                            id="bookingid" value={{bookingid}}>
+                        <input formControlName="flatid" type="text" readonly class="form-control-plaintext"
+                            id="flatid" value={{flatid}}>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="flattype" class="col-sm-2 col-form-label">flattype</label>
+                    <label style="color:#964B00" for="flattype" class="col-sm-2 col-form-label">FlatType</label>
                     <div class="col-sm-5">
                         <input formControlName="flattype" type="text" readonly class="form-control-plaintext"
                             id="flattype" value={{flattype}}>
+                            <!-- <select formControlName="flattype"  >
+                                <option [value]="null">-- Select  --</option>
+                                <option readonly class="form-control-plaintext" id="flattype" value={{flattype}}>
+                                    {{flattype}}
+                                </option>
+                                <option [value]="null">3BHK</option>
+                            </select> -->
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">flatstatus</label>
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">FlatStatus</label>
                     <div class="col-sm-5">
                         <input formControlName="flatstatus" type="text" readonly class="form-control-plaintext"
                             id="flatstatus" value={{flatstatus}}>
+                            <!-- <select formControlName="flatstatus"  >
+                                <option [value]="null">-- Select  --</option>
+                                <option readonly class="form-control-plaintext" id="flatstatus" value={{flatstatus}}>
+                                    {{flatstatus}}
+                                </option>
+                                <option [value]="null">Blocked</option>
+                                <option [value]="null">Avaliable</option>
+                            </select> -->
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">updatestatus</label>
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">UpdateStatus</label>
                     <div class="col-sm-5">
                         <input formControlName="updatestatus" type="text"  class="form-control-plaintext"
                             id="updatestatus" >
+                            <!-- <select formControlName="flatstatus"  >
+                                <option [value]="null">-- Select  --</option>
+                                <option readonly class="form-control-plaintext" id="flatstatus" value={{flatstatus}}>
+                                    {{flatstatus}}
+                                </option>
+                                <option [value]="null">Blocked</option>
+                                <option [value]="null">Avaliable</option>
+                            </select> -->
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">reason</label>
+                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">Reason</label>
                     <div class="col-sm-5">
                        <textarea formControlName="reason" class="form-control"></textarea>
                         <small *ngIf="editflatform.controls['message'].dirty && editflatform.hasError('required','message')"  
@@ -53,6 +76,9 @@
                     class="btn btn-light btn-elevate mr-2 margin-left "
                     style="color: #964B00;background-color:#efc96a;margin-top: 10px;margin-bottom: 10px;">
                     Submit</button>
+                <button routerLink="/manageflats" type="submit" class="btn btn-light btn-elevate mr-2 margin-left "
+                    style="color: #964B00;background-color:#efc96a ;margin-top: 10px;margin-bottom: 10px;">
+                    Back</button>
 
             </form>
        
