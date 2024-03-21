@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class FoecheckouttimeComponent implements OnInit {
   selectRoomForm!:FormGroup
   bookingid:any;
-
+ statusid=7;
   date1 = new Date();
   currentyear = this.date1.getUTCFullYear();
   currentmonth = this.date1.getUTCMonth() + 1;
@@ -69,7 +69,7 @@ export class FoecheckouttimeComponent implements OnInit {
   }
 
   roomCheckOut(){
-    this.getbookingservice.checkOut(this.bookingid,this.Todaydate).subscribe(result=>{
+    this.getbookingservice.checkOut(this.bookingid,this.Todaydate,this.statusid).subscribe(result=>{
       console.log("res",result);
     // this.selectRoomForm.reset();
    
@@ -79,7 +79,7 @@ export class FoecheckouttimeComponent implements OnInit {
         text:result.message,
       });
 
-      // this.router.navigate(["frontdesk"]);
+      this.router.navigate(["frontdesk"]);
     })
   }
 }

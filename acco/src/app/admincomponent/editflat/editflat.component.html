@@ -2,7 +2,7 @@
     <app-header></app-header>
     <div class="container">
 
-        <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Edit Flats</h2>
+        <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Update Flat Status</h2>
 
             <form [formGroup]="editflatform">
 
@@ -47,17 +47,18 @@
 
                 <div class="form-group row">
                     <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">UpdateStatus</label>
-                    <div class="col-sm-5">
-                        <input formControlName="updatestatus" type="text"  class="form-control-plaintext"
-                            id="updatestatus" >
-                            <!-- <select formControlName="flatstatus"  >
-                                <option [value]="null">-- Select  --</option>
-                                <option readonly class="form-control-plaintext" id="flatstatus" value={{flatstatus}}>
+                    <div class="col-sm-1">
+                        <!-- <input formControlName="updatestatus" type="text"  class="form-control-plaintext"
+                            id="updatestatus" > -->
+                            <select formControlName="updatestatus"  >
+                                <option [value]="0">-- Select Status  --</option>
+                                <!-- <option readonly class="form-control-plaintext" id="flatstatus" value={{flatstatus}}>
                                     {{flatstatus}}
-                                </option>
-                                <option [value]="null">Blocked</option>
-                                <option [value]="null">Avaliable</option>
-                            </select> -->
+                                </option> -->
+                                <option [value]="1">Avaliable</option>
+                                <option [value]="2">HouseKeeping</option>
+                                <option [value]="3">OnRepair</option>
+                            </select>
                     </div>
                 </div>
 

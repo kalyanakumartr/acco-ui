@@ -89,6 +89,7 @@ export class UpdateproofComponent {
 
         // });
       });
+      // this.selectRoomForm.reset();
     }
   }
 

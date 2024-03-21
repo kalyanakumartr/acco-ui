@@ -43,7 +43,7 @@ export class EditflatComponent {
       bookingid: [this.flatid, Validators.required],
       flattype: [this.flattype, Validators.required],
       flatstatus: [this.flatstatus, Validators.required],
-      updatestatus: ['', Validators.required],
+      updatestatus: ['0', Validators.required],
       reason: ['', Validators.required],
 
 
