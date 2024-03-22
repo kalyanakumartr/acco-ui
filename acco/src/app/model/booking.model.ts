@@ -37,6 +37,8 @@ export class BookingModel {
     maintenance:any;
     discount:any    
     verificationstatus!:string       
-    roomid!:string  
+    roomid!:string 
+    commands!:string; 
+    statusid:any;
 
 }

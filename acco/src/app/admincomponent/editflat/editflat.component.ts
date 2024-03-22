@@ -15,12 +15,12 @@ export class EditflatComponent {
 
   editflatform!: FormGroup;
 
-
-  constructor(
+constructor(
     private homeroute: ActivatedRoute,
     private fb: FormBuilder,
 
   ) { }
+  
 
 
   ngOnInit(): void {

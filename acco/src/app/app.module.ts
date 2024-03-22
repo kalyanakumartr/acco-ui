@@ -56,6 +56,7 @@ import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe
 import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
 import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foecheckouttime.component';
 import { EditflatComponent } from './admincomponent/editflat/editflat.component';
+import { CustomercancelComponent } from './component/customercancel/customercancel.component';
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -100,7 +101,8 @@ import { EditflatComponent } from './admincomponent/editflat/editflat.component'
     CanceledbookingfoeComponent,
     ManageflatsComponent,
     FoecheckouttimeComponent,
-    EditflatComponent
+    EditflatComponent,
+    CustomercancelComponent
     // MatchpasswordComponent,
    
   ],

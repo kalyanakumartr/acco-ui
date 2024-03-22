@@ -38,6 +38,7 @@ import { PlacetovisitComponent } from './component/placetovisit/placetovisit.com
 import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.component';
 import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foecheckouttime.component';
 import { EditflatComponent } from './admincomponent/editflat/editflat.component';
+import { CustomercancelComponent } from './component/customercancel/customercancel.component';
 // import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 
@@ -81,6 +82,8 @@ const routes: Routes = [
    {path:'manageflats',component:ManageflatsComponent},
    {path:'checkouttime',component:FoecheckouttimeComponent},
    {path:'editflat',component:EditflatComponent},
+   {path:'customercancel',component:CustomercancelComponent},
+
 
 
 

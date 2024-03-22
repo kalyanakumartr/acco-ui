@@ -39,4 +39,12 @@ export class BookingServiceService {
     checkOut(id:any,cout:any,sid:any):Observable<any>{
       return this.http.post<any>("http://localhost:3001/booking/actualcheckout",{bookingid:id,acheckout:cout,statusid:sid});
     }
-}
+
+    getcancelpolicy(): Observable<any>{
+      console.log("canelpolicy check ");
+      // return this.httpClient.get<Role[]>(`${environment.roleapiUrl}`);
+      return this.http.get<any>(`http://localhost:3001/booking/cancelpolicy`);
+      
+      
+    }
+  }

@@ -16,124 +16,131 @@ import Swal from 'sweetalert2';
   templateUrl: './mybookings.component.html',
   styleUrls: ['./mybookings.component.scss']
 })
-export class MybookingsComponent  implements OnInit{
+export class MybookingsComponent implements OnInit {
   // private apiData = new BehaviorSubject<any>(null);
   // public apiData$ = this.apiData.asObservable();
-  userid:any;
-  loginData:any;
-   bookingData:any;
-  roomBooking:any;
-  cancelResult:any;
+  userid: any;
+  loginData: any;
+  bookingData: any;
+  roomBooking: any;
+  cancelResult: any;
   // static apiData$: any;
-  booking:MyBooking[]=[];
-   public databookingData =new MatTableDataSource<MyBooking>();
+  booking: MyBooking[] = [];
+  public databookingData = new MatTableDataSource<MyBooking>();
 
-    dataObs$!: Observable<any>;
+  dataObs$!: Observable<any>;
 
 
-   
-  constructor (private roleService:RoleService,
-    public authService:AuthServiceService,
-    private getuserservice:GetUserServiceService,
-    private bookingService:BookingServiceService,
+
+  constructor(private roleService: RoleService,
+    public authService: AuthServiceService,
+    private getuserservice: GetUserServiceService,
+    private bookingService: BookingServiceService,
     private router: Router,
     private _changeDetectorRef: ChangeDetectorRef
-    )
-      {
-        authService.apiData$.subscribe(data => this.loginData = data)
-        
-      }
-      
-      @ViewChild('paginator' )
+  ) {
+    authService.apiData$.subscribe(data => this.loginData = data)
+
+  }
+
+  @ViewChild('paginator')
   paginator!: MatPaginator;
-      
 
-       PageSizes=[5,10,15];
-      
-     
 
-      ngAfterViewInit(){
-         this.databookingData.paginator=this.paginator;
+  PageSizes = [5, 10, 15];
 
-      }
-    ngOnInit(): void {
-      this.userid=this.loginData.userid;
-      console.log("id:",this.userid);
-      // this.bookingData="";
-       this.getMyBooking(this.userid);
-       this.setPagination(this.bookingData);
-       
-    }
-    getMyBooking(userid:any){
-      // this.bookingData.clear();
-      this.getuserservice.myBooking(userid)
+
+
+  ngAfterViewInit() {
+    this.databookingData.paginator = this.paginator;
+
+  }
+  ngOnInit(): void {
+    this.userid = this.loginData.userid;
+    console.log("id:", this.userid);
+    // this.bookingData="";
+    this.getMyBooking(this.userid);
+    this.setPagination(this.bookingData);
+
+  }
+  getMyBooking(userid: any) {
+    // this.bookingData.clear();
+    this.getuserservice.myBooking(userid)
       // .subscribe((res)=>{
-        .subscribe((result)=>{
+      .subscribe((result) => {
         console.log(result);
-         this.databookingData.data=result;
-         console.log("))))00000",this.databookingData.data)
-       this.bookingData=result;
-        console.log("(((((",this.bookingData);
-        
-      //  console.log("((((()))",this.bookingData[0].checkin);
-      //  console.log("((((()))adults",this.bookingData[0].adults);
-      //  this.setData(this.bookingData)
-     
+        this.databookingData.data = result;
+        console.log("))))00000", this.databookingData.data)
+        this.bookingData = result;
+        console.log("(((((", this.bookingData);
+
+        //  console.log("((((()))",this.bookingData[0].checkin);
+        //  console.log("((((()))adults",this.bookingData[0].adults);
+        //  this.setData(this.bookingData)
+
       });
-        
-      }
 
-  cancelBooking(id:any){
+  }
+
+  cancelBooking(id: any, checkin: any, checkout: any) {
     // this.cancelResult="";
-        console.log("cancel");
-        const book = new BookingModel() ;
-        book.bookingid=id;
-        book.userid= this.userid
-        this.bookingService.bookingCancel(book).subscribe( result=>{   
-              console.log("res",result);
-              // this.cancelResult=result;
-                    Swal.fire({
-            text:result.message,
-            confirmButtonColor: '#964B00',
-            background:'#efc96a',
-          });
-        })
-        this.getMyBooking(this.userid);
-      }
+    this.router.navigate(["customercancel", {
+      id: id,
+      fromdate: checkin,
+      todate: checkout,
+      userid:this.userid
+    }])
+  }
 
-      // setData(bookingData: any) {
-      //   this.apiData.next(bookingData)
-      // }
-        
-      bookingview(){
-        this. roomBooking= new BookingModel();
-        this. roomBooking.checkin=this.bookingData[0].checkin,
-        this.roomBooking.checkout=this.bookingData[0].checkout,
-        this.roomBooking.roomtype=this.bookingData[0].roomtype,
-        this.roomBooking.totalprice=this.bookingData[0].totalprice,
-        this. roomBooking.bookingid=this.bookingData[0].bookingid,
-        this. roomBooking.adults=this.bookingData[0].adults,
-        this. roomBooking.child=this.bookingData[0].child,
-        
-        console.log("0000000",this.roomBooking)
-        this.bookingService.changeMessage(this.roomBooking);
-        this.router.navigate(["bookingdetails", 
-        
-      ]);
+  //   console.log("cancel");
+  //   const book = new BookingModel();
+  //   book.bookingid = id;
+  //   book.userid = this.userid
+  //   this.bookingService.bookingCancel(book).subscribe(result => {
+  //     console.log("res", result);
+  //     // this.cancelResult=result;
+  //     Swal.fire({
+  //       text: result.message,
+  //       confirmButtonColor: '#964B00',
+  //       background: '#efc96a',
+  //     });
+  //   })
+  //   this.getMyBooking(this.userid);
+  // }
 
-      }
+  // setData(bookingData: any) {
+  //   this.apiData.next(bookingData)
+  // }
 
-      
+  bookingview() {
+    this.roomBooking = new BookingModel();
+    this.roomBooking.checkin = this.bookingData[0].checkin,
+      this.roomBooking.checkout = this.bookingData[0].checkout,
+      this.roomBooking.roomtype = this.bookingData[0].roomtype,
+      this.roomBooking.totalprice = this.bookingData[0].totalprice,
+      this.roomBooking.bookingid = this.bookingData[0].bookingid,
+      this.roomBooking.adults = this.bookingData[0].adults,
+      this.roomBooking.child = this.bookingData[0].child,
 
-      setPagination(data:any) {
-        console.log("++++1111",MyBooking)
-        this.databookingData = new MatTableDataSource<any>(data);
-        this._changeDetectorRef.detectChanges();
-        this.databookingData.paginator = this.paginator;
-        this.dataObs$ = this.databookingData.connect();
-      }
+      console.log("0000000", this.roomBooking)
+    this.bookingService.changeMessage(this.roomBooking);
+    this.router.navigate(["bookingdetails",
 
-      }
+    ]);
+
+  }
+
+
+
+  setPagination(data: any) {
+    console.log("++++1111", MyBooking)
+    this.databookingData = new MatTableDataSource<any>(data);
+    this._changeDetectorRef.detectChanges();
+    this.databookingData.paginator = this.paginator;
+    this.dataObs$ = this.databookingData.connect();
+  }
+
+}
 
 
 // function data(value: string): void {
