@@ -19,14 +19,30 @@ export class FrontdeskselectroomsComponent {
   checkin:any;
   checkout:any;
   roomsListData:any
+  bhks1:any;
+  bhks2:any;
+  bhks3:any;
+  bhk12:any;
+  rooms:any;
+  bhkp1!:number;
+  bhkp2!:number;
+
   dropdownList :any= [];
   dropdownList1 :any= [];
-bhk2 :any=[];
-dropdownSettings :any= {};
+  bhk2 :any=[];
+
+selected :any=[];
+dropdownSettings1 :any= {};
+dropdownSettings2 :any= {};
 roomMap = new Map();
 bhk3:any=[];
 bhk23:any=[];
 arrayRoom:any=[];
+selectedItems = []; 
+arr : any =[];
+arr1 : any =[];
+roomidlist:any=[];
+
  
 
   constructor( private homeroute: ActivatedRoute,
@@ -48,7 +64,22 @@ arrayRoom:any=[];
        this.checkin = params[('checkin')],);
        this.homeroute.params.subscribe((params: Params) =>
        this.checkout = params[('checkout')],);
-  
+       this.homeroute.params.subscribe((params: Params) =>
+       this.bhks1 = params[('bhk1')],);
+       this.homeroute.params.subscribe((params: Params) =>
+       this.bhks2 = params[('bhk2')],);
+       this.homeroute.params.subscribe((params: Params) =>
+       this.bhks3 = params[('bhk3')],);
+       this.homeroute.params.subscribe((params: Params) =>
+       this.rooms = params[('rooms')],);
+       this.bhkp1=parseInt(this.bhks1);
+       this.bhkp2=parseInt(this.bhks2);
+       this.bhk12=this.bhkp1 + this.bhkp2
+
+       console.log("bhk1",this.bhks1,"bhk2",this.bhks2,"bhk3",this.bhks3,"bhk12",this.bhk12)
+        console.log("rooms",this.rooms)
+      this.arrayRoom=this.rooms.split(",");
+
        this.selectRoomForm= this.fb.group({
         bookingid: [this.bookingid,Validators.required],
         bhk2:['',],
@@ -62,11 +93,27 @@ arrayRoom:any=[];
   //       { item_id: 4, item_text: 'Navsari' },
   //       { item_id: 5, item_text: 'New Delhi' }
   // ];
-  this.bhk2 = [
-    // { item_id: 2, item_text: 'Bangaluru' },
-    //     { item_id: 3, item_text: 'Pune' },
-  ];
-  this.dropdownSettings =  {
+  for(let i=0; i < this.arrayRoom.length; i++) {
+    var romnum=this.arrayRoom[i]
+    // const roomnum=romnum
+    this.arr.push(romnum);
+
+  }
+  console.log("array",this.arr);
+  this.arr1.push({ item_id:this.arr });
+  console.log("arr1",this.arr1)
+  if(this.arr1[0].length>0){
+  this.selected = this.arr1[0].item_id;
+  }else{
+    this.selected=this.bhk2;
+  }
+
+  console.log("selece",this.selected)
+  // this.selectedItems = [
+  //   { item_id: 1},
+  //   { item_id: 4}
+  // ];
+  this.dropdownSettings1 =  {
     singleSelection: false,
     idField: 'item_id',
     textField: 'item_text',
@@ -74,7 +121,18 @@ arrayRoom:any=[];
     // unSelectAllText: 'UnSelect All',
     itemsShowLimit: 5,
     // allowSearchFilter: true,
-    // limitSelection: 4
+    limitSelection: this.bhk12
+  };
+
+  this.dropdownSettings2=  {
+    singleSelection: false,
+    idField: 'item_id',
+    textField: 'item_text',
+    // selectAllText: 'Select All',
+    // unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 5,
+    // allowSearchFilter: true,
+    limitSelection: this.bhks3
   };
   
    this.getroomslist();
@@ -104,26 +162,42 @@ arrayRoom:any=[];
      console.log("daaaaaa",this.bookingid,this.checkin,this.checkout);
     let tmp : any =[];
     let tmp1 : any =[];
+    let tmp2 : any =[];
     this.getguestdetail.getroomsList(this.bookingid,this.checkin,this.checkout).subscribe(res=>{
       console.table("0000",res[0]);
       this.roomsListData=res[0];
       console.log("roomslistdata",this.roomsListData);
       for(let i=0; i < 1; i++) {
-        const roomidlist=this.roomsListData[i].roomid.replace("[", "",).replace("]","");
-       
-       console.log("rrrsdddd",roomidlist);
-       var roomids= roomidlist.split(',');
-
-       console.log("rrr",roomids);
-       
-       var roomnos= this.roomsListData[i].roomnos.replace("[", "").replace("]", "").split(',');
-       console.log(roomnos);
-       
-        tmp.push({ item_id:roomids , item_text: roomnos});
-        console.log("tmp",tmp)
-        // tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
+         this.roomidlist=this.roomsListData[i].roomnoss
+        // .replace("[", "",).replace("]","");
+      
+       console.log("rrrsdddd",this.roomidlist);
       }
-      this.dropdownList = tmp[0].item_id;
+
+      for (let obj of this.roomidlist) {
+        console.log("object:", obj);
+        for (let key in obj) {
+            console.log("key:", key, "value:", obj[key]);
+            tmp.push(key);
+            tmp1.push(obj[key]);
+            //   tmp1.push(item.value)
+        }
+    }
+      //  for (var type in this.roomidlist) {
+      //   var item:any = {};
+      //   item.key = type;
+      //   item.value = this.roomidlist[type];
+      //   tmp.push(item);
+      //   tmp1.push(item.value)
+      //   // jsonToBeUsed.push(item);
+      //  // tmp1.push({ item_id:this.roomsListData[i].roomid , item_text: this. roomsListData[i].roomnos });
+      //  }
+       
+        // tmp2.push({ item_id:tmp , item_text: tmp1});
+        console.log("tmp",tmp,"tmp1",tmp1)
+       
+       
+      this.dropdownList = tmp1;
       // const drop=this.dropdownList.flat();
       // console.log("tmp----", drop)
       for(let i=1; i <=1; i++) {
@@ -136,7 +210,7 @@ arrayRoom:any=[];
         tmp1.push({ item_id:roomids , item_text: roomnos });
       }
       // return this.dropdownList = tmp , this.dropdownList1 = tmp1; ;     
-      this.dropdownList1 = tmp1[0].item_id;  
+      this.dropdownList1 = tmp1[0].item_text;  
       
     });
   //   console.log("dropdownList",this.dropdownList); 
@@ -170,3 +244,7 @@ arrayRoom:any=[];
   }
 
 }
+function ConvertToInt(bhks1: any) {
+  throw new Error('Function not implemented.');
+}
+

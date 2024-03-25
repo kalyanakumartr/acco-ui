@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       error => {
         Swal.fire({
           text:
-           "Invalid credentials,please check your username and password",
+           "Invalid Credentials,Please check your username and password",
           // error.message,
           confirmButtonColor: '#964B00',
           background: '#efc96a',
