@@ -42,7 +42,7 @@ selectedItems = [];
 arr : any =[];
 arr1 : any =[];
 roomidlist:any=[];
-
+roomidlist1:any;
  
 
   constructor( private homeroute: ActivatedRoute,
@@ -163,6 +163,7 @@ roomidlist:any=[];
     let tmp : any =[];
     let tmp1 : any =[];
     let tmp2 : any =[];
+    let tmp3 : any =[];
     this.getguestdetail.getroomsList(this.bookingid,this.checkin,this.checkout).subscribe(res=>{
       console.table("0000",res[0]);
       this.roomsListData=res[0];
@@ -201,16 +202,30 @@ roomidlist:any=[];
       // const drop=this.dropdownList.flat();
       // console.log("tmp----", drop)
       for(let i=1; i <=1; i++) {
-        const roomidlist1=this.roomsListData[i].roomid.replace("[", "",).replace("]","");
-        var roomids= roomidlist1.split(',');
-        console.log(roomids);
-        var roomnos= roomidlist1.split(',');
-        console.log(roomnos);
-        
-        tmp1.push({ item_id:roomids , item_text: roomnos });
+        this. roomidlist1=this.roomsListData[i].roomnoss
+        // .roomid.replace("[", "",).replace("]","");
+        // var roomids= roomidlist1.split(',');
+        // console.log(roomids);
+        // var roomnos= roomidlist1.split(',');
+        // console.log(roomnos);
+        console.log("rrrsdddd1",this.roomidlist1);
       }
+      
+        for (let obj1 of this.roomidlist1) {
+         
+          console.log("object:", obj1);
+          for (let key in obj1) {
+              console.log("key:", key, "value:", obj1[key]);
+              tmp2.push(key);
+              tmp3.push(obj1[key]);
+              //   tmp1.push(item.value)
+          }
+      }
+      console.log("tmp",tmp2,"tmp1",tmp3)
+        // tmp1.push({ item_id:roomids , item_text: roomnos });
+    
       // return this.dropdownList = tmp , this.dropdownList1 = tmp1; ;     
-      this.dropdownList1 = tmp1[0].item_text;  
+      this.dropdownList1 = tmp3;  
       
     });
   //   console.log("dropdownList",this.dropdownList); 
