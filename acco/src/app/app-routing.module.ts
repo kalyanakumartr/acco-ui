@@ -45,6 +45,7 @@ import { CustomercancelComponent } from './component/customercancel/customercanc
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
+  {path:'adminlogin',component:LoginComponent},
   {path:'excelcreate',component:ExcelcreateComponent},
   {path:'home',component:HomeComponent},  
   {path:'signup',component:SignupComponent},

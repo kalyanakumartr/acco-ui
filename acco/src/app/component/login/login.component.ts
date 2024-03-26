@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
   password: string = "";
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthServiceService) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthServiceService) {
+    console.log("url",this.router.url)
+   }
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
@@ -40,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   loginProcess() {
 
-    this.authService.login(this.loginForm.value).subscribe(result => {
+    this.authService.login(this.loginForm.value,this.router.url).subscribe(result => {
 
       console.log(result);
     },

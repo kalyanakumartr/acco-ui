@@ -25,8 +25,9 @@ export class AuthServiceService {
 
   ) { }
 
-  login(data: any): Observable<any> {
+  login(data: any,url:any): Observable<any> {
     console.log("I am server");
+    console.log("recieved url",url)
     return this.http.post(`${environment.authURL}`, data)
       .pipe(map(result => {
         console.log(result);
@@ -41,7 +42,7 @@ export class AuthServiceService {
           console.log(this.authresults.accesstoken, this.authresults.usertype);
           //  this.loggedIn.next(true);
 
-          if (this.authresults.usertype == "Admin") {
+          if (this.authresults.usertype == "Admin" && url=="/adminlogin") {
             Swal.fire({
               text:
                 this.authresults.message,
@@ -70,7 +71,7 @@ export class AuthServiceService {
             this.router.navigate(["frontdesk"])
 
           } 
-          else if (this.authresults.usertype == "Customer"){
+          else if (this.authresults.usertype == "Customer"&& url=="/login"){
             Swal.fire({
               text:
                 this.authresults.message,
