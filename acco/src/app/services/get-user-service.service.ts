@@ -27,7 +27,7 @@ export class GetUserServiceService {
 
   myBooking(id: any): Observable<any>{
     console.log("getMybooking");     
-    return this.http.get<any>(`${environment.getbookingwithuserid}`+id);
+    return this.http.get<any>(`${environment.getbookingwithuseridonly}`+id);
   }
 
   changePassword(user:UserModel):Observable<UserModel>{

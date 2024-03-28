@@ -42,8 +42,10 @@ export class ForgotpasswordstepperComponent {
         text:result.message,
         confirmButtonColor: '#964B00',
         background:'#efc96a',
-      });      
-       this.router.navigate(['forgotpasswordotp',{"mailsent":emaildata.email}])
+      }); 
+      if(result.status == "200")  {  
+      this.router.navigate(['forgotpasswordotp',{"mailsent":emaildata.email}])
+      }
     })
 
   }

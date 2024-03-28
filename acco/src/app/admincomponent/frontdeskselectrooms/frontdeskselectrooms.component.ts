@@ -23,7 +23,8 @@ export class FrontdeskselectroomsComponent {
   bhks2: any;
   bhks3: any;
   bhk12: any;
-  rooms: any;
+  roomsid: any;
+  roomnos: any;
   bhkp1!: number;
   bhkp2!: number;
 
@@ -40,6 +41,8 @@ export class FrontdeskselectroomsComponent {
   arrayRoom: any = [];
   arrayRoom1: any = [];
   arrayRoom2: any = [];
+  arrayRoom3:any =[];
+  arrayRoom4:any =[];
   selectedItems = [];
   arr: any = [];
   arr1: any = [];
@@ -73,14 +76,17 @@ export class FrontdeskselectroomsComponent {
     this.homeroute.params.subscribe((params: Params) =>
       this.bhks3 = params[('bhk3')],);
     this.homeroute.params.subscribe((params: Params) =>
-      this.rooms = params[('rooms')],);
+      this.roomsid = params[('rooms')],);
+    this.homeroute.params.subscribe((params: Params) =>
+      this.roomnos = params[('roomnos')],);
     this.bhkp1 = parseInt(this.bhks1);
     this.bhkp2 = parseInt(this.bhks2);
     this.bhk12 = this.bhkp1 + this.bhkp2
 
     console.log("bhk1", this.bhks1, "bhk2", this.bhks2, "bhk3", this.bhks3, "bhk12", this.bhk12)
-    console.log("rooms", this.rooms)
-    this.arrayRoom = this.rooms.split(",");
+    console.log("rooms", this.roomnos)
+   
+    this.arrayRoom = this.roomnos.split(",");
 
     this.selectRoomForm = this.fb.group({
       bookingid: [this.bookingid, Validators.required],
@@ -166,17 +172,21 @@ export class FrontdeskselectroomsComponent {
     let tmp1: any = [];
 
     this.getguestdetail.getroomsList(this.bookingid, this.checkin, this.checkout).subscribe(res => {
-      console.table("0000", res[0]);
-      this.roomsListData = res[0];
-      console.log("roomslistdata", this.roomsListData);
-      for (let i = 0; i < 1; i++) {
-        this.roomidlist = this.roomsListData[i].roomnoss
-        // .replace("[", "",).replace("]","");
+      console.table("0000", res[0][0]);
+      this.roomsListData = res[0][0];
+      this.roomidlist=res[0][1];
+      console.log("roomslistdata111", this.roomsListData);
+      console.log("roomslistdata222", this.roomidlist);
+      console.log("roomslistdata", this.roomsListData.roomnoss);
+      console.log("roomslistdata2211", this.roomidlist.roomnoss);
+      // for (let i = 0; i < 1; i++) {
+      //   this.roomidlist = this.roomsListData[i].roomnoss
+      //   // .replace("[", "",).replace("]","");
 
-        console.log("rrrsdddd", this.roomidlist);
-      }
+      //   console.log("rrrsdddd", this.roomidlist);
+      // }
 
-      for (let obj of this.roomidlist) {
+      for (let obj of this.roomsListData.roomnoss) {
         console.log("object:", obj);
         for (let key in obj) {
           console.log("key:", key, "value:", obj[key]);
@@ -186,12 +196,12 @@ export class FrontdeskselectroomsComponent {
       console.log("tmp", tmp)
       this.dropdownList = tmp;
 
-      for (let i = 1; i <= 1; i++) {
-        this.roomidlist1 = this.roomsListData[i].roomnoss
-        console.log("rrrsdddd1", this.roomidlist1);
-      }
+      // for (let i = 1; i <= 1; i++) {
+      //   this.roomidlist1 = this.roomsListData[i].roomnoss
+      //   console.log("rrrsdddd1", this.roomidlist1);
+      // }
 
-      for (let obj1 of this.roomidlist1) {
+      for (let obj1 of this.roomidlist.roomnoss) {
         console.log("object:", obj1);
         for (let key in obj1) {
           console.log("key:", key, "value:", obj1[key]);
@@ -216,18 +226,30 @@ export class FrontdeskselectroomsComponent {
     const formData = this.selectRoomForm.value;
     console.log("form", formData);
     console.log("form1", formData.bhk2);
-
+    console.log("form1", formData.bhk3);
     // this.arrayRoom = formData.bhk2.item_id;
     // console.log("arrayroom", this.arrayRoom);
+    // this.arrayRoom=this.bhk2.concat(this.bhk3);
     for(let item of formData.bhk2){
       this.arrayRoom1.push(item.item_id);
       this.arrayRoom2.push(item.item_text);
     }
-    console.log("123", this.arrayRoom2);
     console.log("1111concaat", this.arrayRoom1);
+    console.log("123", this.arrayRoom2);
+
+    for(let item of formData.bhk3){
+      this.arrayRoom3.push(item.item_id);
+      this.arrayRoom4.push(item.item_text);
+    }
+    console.log("333bhk", this.arrayRoom3);
+    console.log("3bhk", this.arrayRoom4);
+
+    var totroomid=this.arrayRoom1.concat(this.arrayRoom3);
+    var totroomnoss=this.arrayRoom2.concat(this.arrayRoom4);
 
     book.bookingid = formData.bookingid;
-    book.roomid = this.arrayRoom1;
+    book.roomid = totroomid;
+    book.roomnos = totroomnoss
     console.log("book", book);
 
     this.getroomlistservice.roomconfirm(book).subscribe(result => {

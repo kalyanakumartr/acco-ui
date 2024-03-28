@@ -32,7 +32,7 @@ export class BookingModel {
     bed:any;
     message:any;
     modeoftypeid:any;
-
+ roomnos:any;
     roombhk!:string
     maintenance:any;
     discount:any    

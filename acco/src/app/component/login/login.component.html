@@ -20,13 +20,14 @@
                                     <input formControlName="username" required type="text" placeholder="UserName" >
                                     <!-- placeholder="UserName" -->
                                 </div>
-                            </div>
-                            <small
+                                <small
                                 *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
                                 class="text-danger form-inline  mt-0">*username is required</small>
                                 <small
                                 *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
                                 class="text-danger form-inline  mt-0">*username is invalid</small>
+                            </div>
+                            
                             <div class="form-group pt-3">
                                 <div class="input-field">
                                     <span class="fa fa-lock p-2" style="color:#964B00"></span>
@@ -35,13 +36,14 @@
                                     <!-- placeholder="Password" -->
                                     <span (click)="hideShowPass()" class="fa {{eyeIcon}} " style="color:#964B00"></span>
                                 </div>
-                            </div>
-                            <small
+                                <small
                                 *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
                                 class="text-danger form-inline ">*password is required</small>
                                 <small
                                 *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('pattern','password')"
                                 class="text-danger form-inline ">*password is invalid</small>
+                            </div>
+                            
                             <div class="form-inline fr mt-4">
                                 <a href="\forgotpassword" id="forgot" style="color:#964B00;">Forgot Password?</a>
                                 <!-- <a href="\changepassword" id="forgot" style="color:#964B00;flex: 1; text-align: right;">Change Password</a> -->
