@@ -195,8 +195,22 @@ export class WalkingcurrentComponent implements OnInit {
     var inDate = new Date(formData.checkin);
     var OutDate = new Date(formData.checkout);
 
-    var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
-    console.log("nnnnn", noofdays);
+    // var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
+    // console.log("nnnnn", noofdays);
+
+    var diff=OutDate.getTime() - inDate.getTime();
+    var days = Math.floor(diff / (60 * 60 * 24 * 1000));
+    var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+    console.log("diff", diff);
+    console.log("days", days);
+    console.log("hours", hours);
+
+    if(hours>2){
+      var totalDays=days+1
+    }else{
+      var totalDays=days;
+    }
+
     console.log("booking", this.booking);
     if (this.walkingRoomCheck.valid) {
       console.log("123", this.booking);
@@ -211,7 +225,7 @@ export class WalkingcurrentComponent implements OnInit {
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = formData.checkin,
       this.roomBookingSum.checkout = formData.checkout,
-      this.roomBookingSum.noofdays = noofdays;
+      this.roomBookingSum.noofdays = totalDays;
     this.roomBookingSum.adults = formData.adult;
     this.roomBookingSum.child = formData.children;
     this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;

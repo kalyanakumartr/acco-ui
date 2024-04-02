@@ -178,7 +178,7 @@ export class FrontdeskselectroomsComponent {
       console.log("roomslistdata111", this.roomsListData);
       console.log("roomslistdata222", this.roomidlist);
       console.log("roomslistdata", this.roomsListData.roomnoss);
-      console.log("roomslistdata2211", this.roomidlist.roomnoss);
+      // console.log("roomslistdata2211", this.roomidlist.roomnoss);
       // for (let i = 0; i < 1; i++) {
       //   this.roomidlist = this.roomsListData[i].roomnoss
       //   // .replace("[", "",).replace("]","");

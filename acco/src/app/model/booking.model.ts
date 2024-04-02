@@ -40,5 +40,5 @@ export class BookingModel {
     roomid!:string 
     commands!:string; 
     statusid:any;
-
+    stastustype:any;
 }

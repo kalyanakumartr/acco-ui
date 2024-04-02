@@ -16,7 +16,7 @@ export class EditflatComponent {
   flattype: any;
   flatstatus: any;
   roomStatus: any;
-
+  type: string = "room"
   editflatform!: FormGroup;
 
   constructor(
@@ -58,7 +58,9 @@ export class EditflatComponent {
   }
 
   showRoomStatus() {
-    this.roomTypeService.getRoomStatus()
+    // const book = new BookingModel();
+    // book.stastustype= "booking";
+    this.roomTypeService.getRoomStatus(this.type)
       // .subscribe((res)=>{
       .subscribe((result) => {
         console.log("roomstatus:", result);

@@ -21,10 +21,12 @@ export class GetroomtypeService {
     return this.http.get<any>("http://localhost:3001/room/getroom");
   }
 
-  getRoomStatus():Observable<any>{
-    console.log("GetRoomStatus"); 
+  getRoomStatus(type:any):Observable<any>{
+    console.log("GetRoomStatus",type); 
        
-    return this.http.get("http://localhost:3001/room/getstatus");
+    return this.http.get("http://localhost:3001/room/getstatus?stastustype="+type);
+    // http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
+
   }
 
   updateRoomStatus(book:BookingModel):Observable<BookingModel>{

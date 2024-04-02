@@ -221,7 +221,7 @@ export class WalkingfutureComponent implements OnInit {
       background: '#efc96a',
     });
     this.emailservice.emailverify(value).subscribe((result) => {
-      this.userData = result[1];
+      this.userData = result[0];
       console.log("userdata", this.userData)
       // Swal.fire(" phonenumber is  register");
       this.walkingFutureForm.controls['email'].setValue(this.userData.email);
@@ -276,14 +276,28 @@ export class WalkingfutureComponent implements OnInit {
     var inDate = new Date(formData.checkin);
     var OutDate = new Date(formData.checkout);
 
-    var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
-    console.log("nnnnn", noofdays);
+    // var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
+    // console.log("nnnnn", noofdays);
+
+    var diff=OutDate.getTime() - inDate.getTime();
+      var days = Math.floor(diff / (60 * 60 * 24 * 1000));
+      var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+      console.log("diff", diff);
+      console.log("days", days);
+      console.log("hours", hours);
+
+      if(hours>2){
+        var totalDays=days+1
+      }else{
+        var totalDays=days;
+      }
+
     console.log("booking", this.booking);
     if (this.walkingRoomCheckFuture.valid) {
       console.log("123", this.booking);
       this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout).subscribe((result) => {
         console.log(result);
-        this.roomData = result[0];
+        this.roomData = result[1];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
@@ -292,7 +306,7 @@ export class WalkingfutureComponent implements OnInit {
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = formData.checkin,
       this.roomBookingSum.checkout = formData.checkout,
-      this.roomBookingSum.noofdays = noofdays;
+      this.roomBookingSum.noofdays = totalDays;
     this.roomBookingSum.adults = formData.adult;
     this.roomBookingSum.child = formData.children;
     this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;
