@@ -73,7 +73,7 @@
             <td class="align-middle " style="border-color: #964B00;">{{i.roomid}}
             <td class="align-middle " style="border-color: #964B00;">{{i.totalprice}}
             <td class="align-middle " style="border-color: #964B00;"> 
-             <a style="a:hover{color: #f47a08;}" (click)="bookingview()">View </a>
+             <a style="a:hover{color: #f47a08;}" (click)="bookingview(i)">View </a>
              <a *ngIf="i.acheckin==null?!isDisabled:isDisabled" (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">/ Cancel</a>
 
 

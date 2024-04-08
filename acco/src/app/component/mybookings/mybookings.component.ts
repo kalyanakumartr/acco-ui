@@ -128,26 +128,26 @@ export class MybookingsComponent implements OnInit {
   //   this.apiData.next(bookingData)
   // }
 
-  bookingview() {
-   
+  bookingview(details:any) {
+   console.log("det",details)
     this.roomBooking = new BookingModel();
-    console.log("length",this.bookingData.length)
+    // console.log("length",this.bookingData.length)
   
     
     
    
-    for (var i=0;i<this.bookingData.length;i++) {
-      console.log("chck",this.bookingData[i].checkin)
-      this.roomBooking.checkin = this.bookingData[i].checkin      
-      this.roomBooking.checkout = this.bookingData[i].checkout
-      this.roomBooking.roomtype = this.bookingData[i].roomtype
-      this.roomBooking.totalprice = this.bookingData[i].totalprice
-      this.roomBooking.bookingid = this.bookingData[i].bookingid
-      this.roomBooking.adults = this.bookingData[i].adults
-      this.roomBooking.child = this.bookingData[i].child
+    // for (var i=0;i<this.bookingData.length;i++) {
+    //   console.log("chck",this.bookingData[i].checkin)
+      this.roomBooking.checkin = details.checkin      
+      this.roomBooking.checkout = details.checkout
+      this.roomBooking.roomtype = details.roomtype
+      this.roomBooking.totalprice = details.totalprice
+      this.roomBooking.bookingid = details.bookingid
+      this.roomBooking.adults = details.adults
+      this.roomBooking.child = details.child
    
        
-   }
+  //  }
   
       console.log("0000000", this.roomBooking)
    
