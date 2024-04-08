@@ -264,6 +264,14 @@ export class HomeComponent implements OnInit {
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
         this.roomValue;
+        if(this.roomData == 0){
+          Swal.fire({
+            confirmButtonColor: '#964B00',
+            background: '#efc96a',
+            text: "We are Sorry! currently all rooms are occupied ",
+          });
+        }else{
+        
         this.roomBooking = new BookingModel();
         this.roomBooking.checkin = formData.checkIn,
           this.roomBooking.checkout = formData.checkOut,
@@ -289,8 +297,9 @@ export class HomeComponent implements OnInit {
           // }
         ]);
 
-
+      }
       });
+    
     }
   }
 

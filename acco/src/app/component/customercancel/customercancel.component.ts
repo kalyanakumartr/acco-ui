@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BookingModel } from 'src/app/model/booking.model';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import Swal from 'sweetalert2';
@@ -23,6 +23,7 @@ export class CustomercancelComponent {
     private homeroute: ActivatedRoute,
     private fb: FormBuilder,
     private bookingService: BookingServiceService,
+    private router: Router,
 
 
   ) { }
@@ -75,6 +76,9 @@ cancelbooking(){
         confirmButtonColor: '#964B00',
         background: '#efc96a',
       });
+      this.router.navigate(["cancelbooking",
+      
+    ]);
     })
 }
 

@@ -28,7 +28,6 @@ export class ManageflatsComponent implements OnInit{
     ngAfterViewInit(){
       this.dataroomData.paginator=this.paginator;
     
-        
     }
 
     ngOnInit(): void {

@@ -17,21 +17,24 @@ import Swal from 'sweetalert2';
   styleUrls: ['./mybookings.component.scss']
 })
 export class MybookingsComponent implements OnInit {
-  // private apiData = new BehaviorSubject<any>(null);
-  // public apiData$ = this.apiData.asObservable();
+  // private apiData1 = new BehaviorSubject<any>(null);
+  // public apiData1$ = this.apiData1.asObservable();
+  
   userid: any;
   loginData: any;
   bookingData: any;
   roomBooking: any;
   cancelResult: any;
-  // static apiData$: any;
+ 
   booking: MyBooking[] = [];
   public databookingData = new MatTableDataSource<MyBooking>();
 
   dataObs$!: Observable<any>;
-
-
-
+   isDisabled: boolean = false;
+  //  endDate: Date = new Date('April  30, 2024 00:00:00');
+  // //  outDate: Date = new Date('April  30, 2024 00:00:00');
+  //  today = new Date();
+  
   constructor(private roleService: RoleService,
     public authService: AuthServiceService,
     private getuserservice: GetUserServiceService,
@@ -40,7 +43,8 @@ export class MybookingsComponent implements OnInit {
     private _changeDetectorRef: ChangeDetectorRef
   ) {
     authService.apiData$.subscribe(data => this.loginData = data)
-
+    
+    
   }
 
   @ViewChild('paginator')
@@ -58,10 +62,15 @@ export class MybookingsComponent implements OnInit {
   ngOnInit(): void {
     this.userid = this.loginData.userid;
     console.log("id:", this.userid);
+    
     // this.bookingData="";
     this.getMyBooking(this.userid);
     this.setPagination(this.bookingData);
-
+    // if (this.endDate < this.today ) {
+    //   this.isDisabled = false;
+    // }
+    
+   
   }
   getMyBooking(userid: any) {
     // this.bookingData.clear();
@@ -71,19 +80,26 @@ export class MybookingsComponent implements OnInit {
         console.log(result);
         this.databookingData.data = result;
         console.log("))))00000", this.databookingData.data)
+       
         this.bookingData = result;
+        // this.getuserservice.setData(this.bookingData)
         console.log("(((((", this.bookingData);
-
-        //  console.log("((((()))",this.bookingData[0].checkin);
-        //  console.log("((((()))adults",this.bookingData[0].adults);
-        //  this.setData(this.bookingData)
-
+      
+        // for(var i=0;i<this.bookingData.length;i++){
+        // //  console.log("((((()))",this.bookingData[i].checkin);
+        // //  console.log("((((()))000000",this.bookingData[i].checkout);
+        //  var data=this.bookingData[i].checkin;
+        //  console.log("data",data);
+        // }
+        
       });
 
   }
+ 
 
   cancelBooking(id: any, checkin: any, checkout: any) {
     // this.cancelResult="";
+   
     this.router.navigate(["customercancel", {
       id: id,
       fromdate: checkin,
@@ -113,19 +129,31 @@ export class MybookingsComponent implements OnInit {
   // }
 
   bookingview() {
+   
     this.roomBooking = new BookingModel();
-    this.roomBooking.checkin = this.bookingData[0].checkin,
-      this.roomBooking.checkout = this.bookingData[0].checkout,
-      this.roomBooking.roomtype = this.bookingData[0].roomtype,
-      this.roomBooking.totalprice = this.bookingData[0].totalprice,
-      this.roomBooking.bookingid = this.bookingData[0].bookingid,
-      this.roomBooking.adults = this.bookingData[0].adults,
-      this.roomBooking.child = this.bookingData[0].child,
-
+    console.log("length",this.bookingData.length)
+  
+    
+    
+   
+    for (var i=0;i<this.bookingData.length;i++) {
+      console.log("chck",this.bookingData[i].checkin)
+      this.roomBooking.checkin = this.bookingData[i].checkin      
+      this.roomBooking.checkout = this.bookingData[i].checkout
+      this.roomBooking.roomtype = this.bookingData[i].roomtype
+      this.roomBooking.totalprice = this.bookingData[i].totalprice
+      this.roomBooking.bookingid = this.bookingData[i].bookingid
+      this.roomBooking.adults = this.bookingData[i].adults
+      this.roomBooking.child = this.bookingData[i].child
+   
+       
+   }
+  
       console.log("0000000", this.roomBooking)
+   
     this.bookingService.changeMessage(this.roomBooking);
     this.router.navigate(["bookingdetails",
-
+    
     ]);
 
   }
