@@ -79,6 +79,11 @@ calggapi(seldate:any){
   // this.getroomslist(78,2024-1-19,2024-1-20);
 }
 
+
+
+
+
+
 setPagination(data:any) {
   this.databookingData = new MatTableDataSource<any>(data);
   this._changeDetectorRef.detectChanges();

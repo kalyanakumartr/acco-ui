@@ -63,6 +63,21 @@ img{
     // border-radius:10%;
     position:relative
 }
+a{
+    color: #964B00; 
+    // font-weight: bold ;
+    // font-size: medium;
+    
+}
+a:hover{
+    color:#f47a08
+}
+.pointer {
+    cursor: pointer;
+}
+.pointer:hover {
+    color:#f47a08;
+}
 // .border{
 //     border-top: 1px solid #aaa;
 //     position: relative;
