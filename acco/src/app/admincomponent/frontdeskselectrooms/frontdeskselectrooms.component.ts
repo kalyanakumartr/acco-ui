@@ -48,8 +48,8 @@ export class FrontdeskselectroomsComponent {
   arr1: any = [];
   roomidlist: any = [];
   roomidlist1: any;
-
-
+  isDisabled: boolean = false;
+  roomtypeid:any;
   constructor(private homeroute: ActivatedRoute,
     private getguestdetail: GetguestdetailService,
     private router: Router,
@@ -79,6 +79,9 @@ export class FrontdeskselectroomsComponent {
       this.roomsid = params[('rooms')],);
     this.homeroute.params.subscribe((params: Params) =>
       this.roomnos = params[('roomnos')],);
+    this.homeroute.params.subscribe((params: Params) =>
+      this.roomtypeid = params[('roomtype')],);
+    console.log("roomtypeid", this.roomtypeid)
     this.bhkp1 = parseInt(this.bhks1);
     this.bhkp2 = parseInt(this.bhks2);
     this.bhk12 = this.bhkp1 + this.bhkp2

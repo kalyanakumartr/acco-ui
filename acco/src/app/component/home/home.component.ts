@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
   select = null;
-
+  isDisabled: boolean = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
@@ -257,9 +257,9 @@ export class HomeComponent implements OnInit {
       }
       console.log("toldays",totalDays)
       // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
-      this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut).subscribe((result) => {
+      this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut,formData.roomType).subscribe((result) => {
         console.log(result);
-        this.roomData = result[1];
+        this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
@@ -274,12 +274,12 @@ export class HomeComponent implements OnInit {
         
         this.roomBooking = new BookingModel();
         this.roomBooking.checkin = formData.checkIn,
-          this.roomBooking.checkout = formData.checkOut,
-          this.roomBooking.noofdays =  totalDays;
+        this.roomBooking.checkout = formData.checkOut,
+        this.roomBooking.noofdays =  totalDays;
         this.roomBooking.adults = formData.adult;
         this.roomBooking.child = formData.child;
         this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
-        this.roomBooking.roomtype = formData.roomType;
+        this.roomBooking.roomtypeid = formData.roomType;
         this.roomBooking.modeoftypeid = 1;
 
 

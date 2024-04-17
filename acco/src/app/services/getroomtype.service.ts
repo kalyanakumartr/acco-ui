@@ -18,13 +18,13 @@ export class GetroomtypeService {
   }
 
   getManageRoom(): Observable<any>{
-    return this.http.get<any>("http://localhost:3001/room/getroom");
+    return this.http.get<any>(`${environment.getroom}`);
   }
 
   getRoomStatus(type:any):Observable<any>{
     console.log("GetRoomStatus",type); 
        
-    return this.http.get("http://localhost:3001/room/getstatus?stastustype="+type);
+    return this.http.get(`${environment.getstatus}`+type);
     // http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
 
   }
@@ -32,7 +32,7 @@ export class GetroomtypeService {
   updateRoomStatus(book:BookingModel):Observable<BookingModel>{
     console.log("I am updateroomstatus");
     console.log("updatestatus",book);
-    return this.http.post<BookingModel>("http://localhost:3001/room/roomupdatestatus",book);
+    return this.http.post<BookingModel>(`${environment.roomupdatestatus}`,book);
   }
 
 

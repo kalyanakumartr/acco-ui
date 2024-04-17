@@ -20,17 +20,18 @@ export class GetroomlistService {
     
     console.log("roomtype",roomType)
        
-    return this.http.get("http://localhost:3001/booking/getroomlist?adults="+adult+"&checkin="+checkIn+"&checkout="+checkOut+"&roomtypeid="+roomType);
+    return this.http.get(`${environment.getroomlist}`+adult+"&checkin="+checkIn+"&checkout="+checkOut+"&roomtypeid="+roomType);
   }
   setData(roomData: any) { 
     this.apiRoom.next(roomData)
   }
 
-  roomlogic(adult:any,checkIn:any,checkOut:any,):Observable<any>{
+  roomlogic(adult:any,checkIn:any,checkOut:any,roomtype:any):Observable<any>{
     console.log("I am roomlogic"); 
-    console.log("roomlogic",adult,checkIn,checkOut); 
+    console.log("roomlogic",adult,checkIn,checkOut,roomtype); 
 
-    return this.http.get("http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
+    return this.http.get(`${environment.getlogic}`+adult+"&cin="+checkIn+"&cout="+checkOut+"&roomtypeid="+roomtype);
+    // return this.http.get("http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
 
   }
 

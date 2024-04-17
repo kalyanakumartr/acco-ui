@@ -32,3 +32,14 @@
     background-color: #efc96a; 
     transform: translateX(2px); 
 } 
+input:disabled {
+    background: #dddddd;
+  }
+  
+input:disabled+label {
+    color: #dddddd;
+  }
+  input[type=text]+label {
+    float: left;
+  }
+

@@ -102,7 +102,7 @@ updateproof(id:any){
 
 }
 
-getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,rooms:any,roomnos:any){
+getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,rooms:any,roomnos:any,roomtypeid:any){
    this.router.navigate(["selectrooms", 
   {
     "bookingid": bookingid,
@@ -112,7 +112,8 @@ getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,r
     "bhk2":bhk2,
     "bhk3":bhk3,
     "rooms":rooms,
-    "roomnos":roomnos
+    "roomnos":roomnos,
+    "roomtype":roomtypeid
 
   
    } ])

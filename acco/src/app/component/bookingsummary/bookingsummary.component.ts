@@ -48,6 +48,7 @@ export class BookingsummaryComponent implements OnInit {
       console.log("booked data",this.bookingData.checkin);
       console.log("booked amount",this.bookingData.totalamount);
       console.log("mode",this.bookingData.modeoftypeid);
+      console.log("roomtype",this.bookingData.roomtypeid);
 
 
      })
@@ -107,10 +108,10 @@ export class BookingsummaryComponent implements OnInit {
     this.roomBookingSummary.maintenance=this.bookingData.maintenance;
     this.roomBookingSummary.discount=this.bookingData.discount;
     this.roomBookingSummary.price=this.bookingData.price;   
-    this.roomBookingSummary.roomtype=this.bookingData.roomtype;
+    this.roomBookingSummary.roomtypeid=this.bookingData.roomtypeid;
     this.roomBookingSummary.modeoftypeid=this.bookingData.modeoftypeid;
     console.log("=====stepper1111",this.roomBookingSummary.modeoftypeid)
-
+    console.log("=====stepper1111222222",this.roomBookingSummary.roomtypeid)
 
     console.log("=====stepper",this.roomBookingSummary)
     console.log("=====stepper1111",this.roomBookingSummary.modeoftypeid)

@@ -33,7 +33,7 @@ export class WalkingfutureComponent implements OnInit {
   walkingRoomCheckFuture!: FormGroup;
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
-
+  isDisabled: boolean = false;
 
   constructor(private fb: FormBuilder,
     private roomTypeService: GetroomtypeService,
@@ -271,7 +271,7 @@ export class WalkingfutureComponent implements OnInit {
     this.booking.checkout = formData.checkout;
     this.booking.adults = formData.adult;
     this.booking.child = formData.children;
-    this.booking.roomtype = formData.roomtype;
+    this.booking.roomtypeid = formData.roomtype;
     this.booking.modeoftypeid = 3;
     var inDate = new Date(formData.checkin);
     var OutDate = new Date(formData.checkout);
@@ -295,7 +295,7 @@ export class WalkingfutureComponent implements OnInit {
     console.log("booking", this.booking);
     if (this.walkingRoomCheckFuture.valid) {
       console.log("123", this.booking);
-      this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout).subscribe((result) => {
+      this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout,formData.roomtype).subscribe((result) => {
         console.log(result);
         this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
@@ -310,7 +310,7 @@ export class WalkingfutureComponent implements OnInit {
     this.roomBookingSum.adults = formData.adult;
     this.roomBookingSum.child = formData.children;
     this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;
-    this.roomBookingSum.roomtype = formData.roomtype;
+    this.roomBookingSum.roomtypeid = formData.roomtype;
     this.roomBookingSum.modeoftypeid = 3;
 
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,6 @@ export class GetchargedamenityService {
   getChargedData():Observable<any>{
     console.log("charged data api "); 
        
-    return this.http.get("http://localhost:3001/booking/getChargedAmenities");
+    return this.http.get(`${environment.getChargedAmenities}`);
   }
 }
