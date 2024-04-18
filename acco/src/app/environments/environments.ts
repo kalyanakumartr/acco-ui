@@ -37,6 +37,9 @@ getstatus:'http://localhost:3001/room/getstatus?stastustype=',
 roomupdatestatus:'http://localhost:3001/room/roomupdatestatus',
 getroomlist:'http://localhost:3001/booking/getroomlist?adults=',
 getidproofimage:'http://localhost:3001/booking/getidproofimage?bookingid=',
+addebreading:'http://localhost:3001/eb/addebreading',
+getebdata:'http://localhost:3001/eb/getebdata',
+updateebreading:'http://localhost:3001/eb/updateebreading',
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',

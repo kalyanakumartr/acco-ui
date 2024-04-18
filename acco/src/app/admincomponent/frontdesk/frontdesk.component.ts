@@ -156,11 +156,11 @@ getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,r
 
 
 
-checkOutTime(id:any){
+checkOutTime(id:any,roomtypeid:any){
   this.router.navigate(["checkouttime", 
   {
     "bookingid": id,
-    
+    "roomtypeid":roomtypeid
    } ])
 }
 

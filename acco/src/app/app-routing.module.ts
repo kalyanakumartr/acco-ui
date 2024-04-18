@@ -54,11 +54,10 @@ const routes: Routes = [
   {path:'booking',component:BookingComponent},  
   {path:'fooditem',component:FooditemComponent},  
   {path:'role',component:RoleComponent},
-  {path:'roomtype',component:RoomtypeComponent},
- 
+  {path:'roomtype',component:RoomtypeComponent}, 
   {path:'bookingsummary',component:BookingsummaryComponent},
   {path:'stepper',component:StepperComponent},
-  {path:'admin',component:AdminComponent},
+  {path:'admincomponent',component:AdminComponent},
   {path:'frontdesk',component:FrontdeskComponent},
   {path:'tariff',component:TariffComponent},
   {path:'userdetails',component:UserdetailsComponent},

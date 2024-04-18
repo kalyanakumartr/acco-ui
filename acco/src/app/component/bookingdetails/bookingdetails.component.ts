@@ -33,8 +33,10 @@ subscription: any;
      this.subscription = this.bookingService.currentValue.subscribe(data => {
       this.bookingData = data;
       console.log("booked data", this.bookingData);     
-       console.log("booked data", this.bookingData.adults);   
-      // console.log("id",this.bookingdata[0].bookingid);
+       console.log("booked data", this.bookingData.adults); 
+       console.log("booked data", this.bookingData.child); 
+      //  console.log("booked data", this.bookingData.child);  
+       console.log("type",this.bookingData.roomtypeid);
     })
    
   }

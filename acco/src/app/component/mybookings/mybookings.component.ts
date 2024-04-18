@@ -131,11 +131,12 @@ export class MybookingsComponent implements OnInit {
     //   console.log("chck",this.bookingData[i].checkin)
     this.roomBooking.checkin = details.checkin
     this.roomBooking.checkout = details.checkout
-    this.roomBooking.roomtype = details.roomtype
+    // this.roomBooking.roomtype = details.roomtype
     this.roomBooking.totalprice = details.totalprice
     this.roomBooking.bookingid = details.bookingid
     this.roomBooking.adults = details.adults
     this.roomBooking.child = details.child
+    this.roomBooking.roomtypeid = details.roomtypeid
 
 
     //  }

@@ -210,11 +210,11 @@ export class WalkingcurrentComponent implements OnInit {
     }else{
       var totalDays=days;
     }
-if(this.booking.roomtypeid==1){
-  var noofdays=totalDays;
-}else {
-  var noofdays=1;
-}
+// if(this.booking.roomtypeid==1){
+//   var noofdays=totalDays;
+// }else {
+//   var noofdays=1;
+// }
     console.log("booking", this.booking);
     if (this.walkingRoomCheck.valid) {
       console.log("123", this.booking);
@@ -228,8 +228,8 @@ if(this.booking.roomtypeid==1){
     }
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = formData.checkin,
-      this.roomBookingSum.checkout = formData.checkout,
-      this.roomBookingSum.noofdays = noofdays;
+    this.roomBookingSum.checkout = formData.checkout,
+    this.roomBookingSum.noofdays = totalDays;
     this.roomBookingSum.adults = formData.adult;
     this.roomBookingSum.child = formData.children;
     this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;

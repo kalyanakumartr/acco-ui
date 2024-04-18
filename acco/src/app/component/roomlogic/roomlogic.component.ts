@@ -46,6 +46,11 @@ export class RoomlogicComponent {
   sendbookeddata(data: any) {
     console.log("recieved", data);
     console.log("recieved", data.totalamount);
+    if(this.bookingData.roomtypeid==1){
+      var price=data.Price*this.bookingData.noofdays
+    }else{
+       price=data.Price
+    }
     this. roomBookingSumm= new BookingModel();
     this. roomBookingSumm.checkin=this.bookingData.checkin;
     this.roomBookingSumm.checkout=this.bookingData.checkout;
@@ -60,7 +65,8 @@ export class RoomlogicComponent {
     this.roomBookingSumm.extrabed=data.bed;
     this.roomBookingSumm.discount=0;
     this.roomBookingSumm.maintenance=0;
-    this.roomBookingSumm.price=data.Price*this.bookingData.noofdays;
+    this.roomBookingSumm.price=price;
+    // data.Price*this.bookingData.noofdays
     this.roomBookingSumm.tax=0;
     this.roomBookingSumm.modeoftypeid=this.bookingData.modeoftypeid;
     this.roomBookingSumm.totalamount=this.roomBookingSumm.price+this.roomBookingSumm.tax;

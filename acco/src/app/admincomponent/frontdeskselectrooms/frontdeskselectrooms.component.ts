@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IDropdownSettings, } from 'ng-multiselect-dropdown';
 import { BookingModel } from 'src/app/model/booking.model';
+import { EBModel } from 'src/app/model/eb.model';
+import { EbreadingService } from 'src/app/services/ebreading.service';
 import { FileuploadService } from 'src/app/services/fileupload.service';
 import { GetguestdetailService } from 'src/app/services/getguestdetail.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
@@ -15,6 +17,7 @@ import Swal from 'sweetalert2';
 })
 export class FrontdeskselectroomsComponent {
   selectRoomForm!: FormGroup
+  EBReadingForm!:FormGroup
   bookingid: any;
   checkin: any;
   checkout: any;
@@ -50,17 +53,43 @@ export class FrontdeskselectroomsComponent {
   roomidlist1: any;
   isDisabled: boolean = false;
   roomtypeid:any;
+
+  TodayDate="2022-12-11";
+  date1=new Date();
+  currentDate: any = new Date();
+  currentyear=this.date1.getUTCFullYear();
+  currentmonth=this.date1.getUTCMonth() +1;
+  currentday=this.date1.getUTCDate();
+  currentmin = this.date1.getMinutes();
+  currenthour = this.date1.getHours();
+  finalmonth:any;
+  finalday:any;
+
+
   constructor(private homeroute: ActivatedRoute,
     private getguestdetail: GetguestdetailService,
     private router: Router,
     private fb: FormBuilder,
     private getroomlistservice: GetroomlistService,
+    private getebservice:EbreadingService
   ) {
 
 
   }
 
   ngOnInit(): void {
+
+    if (this.currentmonth < 10) {
+      this.finalmonth = "0" + this.currentmonth;
+    } else {
+      this.finalmonth = this.currentmonth;
+    }
+    if (this.currentday < 10) {
+      this.finalday = "0" + this.currentday;
+    } else {
+      this.finalday = this.currentday;
+    }
+  this.TodayDate=this.currentyear +"-"+this.finalmonth +"-"+this.finalday + " " + this.currenthour + ":" + this.currentmin;
 
     // this.getroomslist();
     this.homeroute.params.subscribe((params: Params) =>
@@ -95,6 +124,12 @@ export class FrontdeskselectroomsComponent {
       bookingid: [this.bookingid, Validators.required],
       bhk2: ['',],
       bhk3: ['',],
+    })
+
+    this.EBReadingForm = this.fb.group({
+      bookingid: [this.bookingid, Validators.required],
+      openingdate: [this.TodayDate,Validators.required],
+      openingunit: ['',Validators.required],
     })
 
     // this.dropdownList = [
@@ -268,5 +303,32 @@ export class FrontdeskselectroomsComponent {
       this.router.navigate(["frontdesk"]);
     })
   }
+
+  EBReading(){
+    const eb = new EBModel();
+    const EBData = this.EBReadingForm.value;
+    console.log("openunit",EBData.openingunit);
+    console.log("opendate",EBData.openingdate);
+    console.log("bookingid",EBData.bookingid);
+    eb.bookingid=EBData.bookingid;
+    eb.openingdate=EBData.openingdate;
+    eb.openingunit=EBData.openingunit;
+
+    this.getebservice.readingEB(eb).subscribe(result => {
+      console.log("res", result);
+      this.EBReadingForm.reset();
+
+      Swal.fire({
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+        text: result.message,
+      });
+
+       this.router.navigate(["frontdesk"]);
+    })
+  }
+
+
+
 }
 
