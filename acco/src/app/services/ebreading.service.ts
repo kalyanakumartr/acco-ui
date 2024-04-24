@@ -19,7 +19,6 @@ export class EbreadingService {
 
   ebPrice():Observable<any>{
     console.log("Getebprice"); 
-       
     return this.http.get(`${environment.getebdata}`);
   }
   EBClosing(ebclose:EBModel):Observable<EBModel>{
@@ -27,4 +26,10 @@ export class EbreadingService {
     console.log("ebreding",ebclose);
     return this.http.post<EBModel>(`${environment.updateebreading}`,ebclose);
   }
+ 
+    ebOpeningReading(id:any):Observable<any>{
+      console.log("Getebopeningunit"); 
+      return this.http.get(`${environment.getebreading}`+id);
+    }
+
 }

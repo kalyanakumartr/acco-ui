@@ -31,6 +31,7 @@ export class FoecheckouttimeComponent implements OnInit {
   isDisabled: boolean = false;
   roomtypeid:any;
   price:any;
+  ebopeningunit:any;
 
   constructor( 
     private homeroute: ActivatedRoute,
@@ -83,6 +84,7 @@ export class FoecheckouttimeComponent implements OnInit {
       })
 
       this.getEBPrice();
+      this. getEBOpeningUnit();
   }
 
   roomCheckOut(){
@@ -96,7 +98,7 @@ export class FoecheckouttimeComponent implements OnInit {
         text:result.message,
       });
 
-      this.router.navigate(["frontdesk"]);
+      // this.router.navigate(["frontdesk"]);
     })
   }
 
@@ -105,12 +107,25 @@ export class FoecheckouttimeComponent implements OnInit {
     this.getebservice.ebPrice()
         // .subscribe((res)=>{
         .subscribe((result) => {
-          console.log("roomtype:", result);
+          // console.log("roomtype:", result);
           this.price = result;
           console.log("ebprice", this.price);
           console.log("ebprice", this.price[0].price);
         });
   }
+
+
+  getEBOpeningUnit(){
+    this.getebservice.ebOpeningReading(this.bookingid)
+        // .subscribe((res)=>{
+        .subscribe((result) => {
+          // console.log("roomtype:", result);
+          this.ebopeningunit = result;
+          console.log("ebopen", this.ebopeningunit);
+          console.log("ebopeningunit", this.ebopeningunit[0].openingunit);
+        });
+  }
+  
 
   EBClosing(){
     const eb = new EBModel();
@@ -119,7 +134,7 @@ export class FoecheckouttimeComponent implements OnInit {
     console.log("opendate",EBData.closingunit);
     console.log("bookingid",EBData.bookingid);
 
-    var total= EBData.closingunit-120
+    var total= EBData.closingunit-this.ebopeningunit[0].openingunit
     eb.bookingid=EBData.bookingid;
     eb.closingdate=EBData.closingdate;
     eb.closingunit=EBData.closingunit;

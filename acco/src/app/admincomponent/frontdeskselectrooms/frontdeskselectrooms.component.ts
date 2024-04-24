@@ -300,7 +300,7 @@ export class FrontdeskselectroomsComponent {
         text: result.message,
       });
 
-      this.router.navigate(["frontdesk"]);
+      // this.router.navigate(["frontdesk"]);
     })
   }
 

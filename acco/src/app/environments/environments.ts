@@ -40,6 +40,7 @@ getidproofimage:'http://localhost:3001/booking/getidproofimage?bookingid=',
 addebreading:'http://localhost:3001/eb/addebreading',
 getebdata:'http://localhost:3001/eb/getebdata',
 updateebreading:'http://localhost:3001/eb/updateebreading',
+getebreading:'http://localhost:3001/eb/getebreading?bookingid='
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',
