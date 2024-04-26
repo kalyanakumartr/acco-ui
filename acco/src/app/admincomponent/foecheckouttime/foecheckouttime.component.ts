@@ -74,6 +74,7 @@ export class FoecheckouttimeComponent implements OnInit {
       this.selectRoomForm= this.fb.group({
         bookingid: [this.bookingid,Validators.required],
         checkout:['',Validators.required],
+        
        
       })
 
@@ -98,7 +99,7 @@ export class FoecheckouttimeComponent implements OnInit {
         text:result.message,
       });
 
-      // this.router.navigate(["frontdesk"]);
+      this.router.navigate(["frontdesk"]);
     })
   }
 

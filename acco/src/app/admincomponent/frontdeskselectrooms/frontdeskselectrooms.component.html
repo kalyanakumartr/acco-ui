@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        
+         <!-- Column -->
         <h2 style="margin-top: 5px;color:#964B00">Select Room</h2>
         <form [formGroup]="selectRoomForm" (ngSubmit)="roomCheckin()">
           <!-- (ngSubmit)="roomCheckin()" -->
@@ -49,7 +49,7 @@
 
       </div>
       <div class="col" *ngIf="roomtypeid == 2?!isDisabled:isDisabled">
-       
+       <!-- Column -->
         <h2 style="margin-top: 5px;color:#964B00">EB Reading</h2>
         <form [formGroup]="EBReadingForm" (ngSubmit)="EBReading()">
           <div class="form-group row">
