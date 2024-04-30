@@ -19,22 +19,22 @@ import Swal from 'sweetalert2';
 export class MybookingsComponent implements OnInit {
   // private apiData1 = new BehaviorSubject<any>(null);
   // public apiData1$ = this.apiData1.asObservable();
-  
+
   userid: any;
   loginData: any;
   bookingData: any;
   roomBooking: any;
   cancelResult: any;
- 
+
   booking: MyBooking[] = [];
   public databookingData = new MatTableDataSource<MyBooking>();
 
   dataObs$!: Observable<any>;
-   isDisabled: boolean = false;
+  isDisabled: boolean = false;
   //  endDate: Date = new Date('April  30, 2024 00:00:00');
   // //  outDate: Date = new Date('April  30, 2024 00:00:00');
   //  today = new Date();
-  
+
   constructor(private roleService: RoleService,
     public authService: AuthServiceService,
     private getuserservice: GetUserServiceService,
@@ -43,8 +43,8 @@ export class MybookingsComponent implements OnInit {
     private _changeDetectorRef: ChangeDetectorRef
   ) {
     authService.apiData$.subscribe(data => this.loginData = data)
-    
-    
+
+
   }
 
   @ViewChild('paginator')
@@ -62,15 +62,15 @@ export class MybookingsComponent implements OnInit {
   ngOnInit(): void {
     this.userid = this.loginData.userid;
     console.log("id:", this.userid);
-    
+
     // this.bookingData="";
     this.getMyBooking(this.userid);
     this.setPagination(this.bookingData);
     // if (this.endDate < this.today ) {
     //   this.isDisabled = false;
     // }
-    
-   
+
+
   }
   getMyBooking(userid: any) {
     // this.bookingData.clear();
@@ -80,31 +80,26 @@ export class MybookingsComponent implements OnInit {
         console.log(result);
         this.databookingData.data = result;
         console.log("))))00000", this.databookingData.data)
-       
+
         this.bookingData = result;
         // this.getuserservice.setData(this.bookingData)
         console.log("(((((", this.bookingData);
-      
-        // for(var i=0;i<this.bookingData.length;i++){
-        // //  console.log("((((()))",this.bookingData[i].checkin);
-        // //  console.log("((((()))000000",this.bookingData[i].checkout);
-        //  var data=this.bookingData[i].checkin;
-        //  console.log("data",data);
-        // }
-        
+
+       
+
       });
 
   }
- 
+
 
   cancelBooking(id: any, checkin: any, checkout: any) {
     // this.cancelResult="";
-   
+
     this.router.navigate(["customercancel", {
       id: id,
       fromdate: checkin,
       todate: checkout,
-      userid:this.userid
+      userid: this.userid
     }])
   }
 
@@ -128,32 +123,29 @@ export class MybookingsComponent implements OnInit {
   //   this.apiData.next(bookingData)
   // }
 
-  bookingview(details:any) {
-   console.log("det",details)
+  bookingview(details: any) {
+    console.log("det", details)
     this.roomBooking = new BookingModel();
     // console.log("length",this.bookingData.length)
-  
-    
-    
-   
     // for (var i=0;i<this.bookingData.length;i++) {
     //   console.log("chck",this.bookingData[i].checkin)
-      this.roomBooking.checkin = details.checkin      
-      this.roomBooking.checkout = details.checkout
-      this.roomBooking.roomtype = details.roomtype
-      this.roomBooking.totalprice = details.totalprice
-      this.roomBooking.bookingid = details.bookingid
-      this.roomBooking.adults = details.adults
-      this.roomBooking.child = details.child
-   
-       
-  //  }
-  
-      console.log("0000000", this.roomBooking)
-   
+    this.roomBooking.checkin = details.checkin
+    this.roomBooking.checkout = details.checkout
+    // this.roomBooking.roomtype = details.roomtype
+    this.roomBooking.totalprice = details.totalprice
+    this.roomBooking.bookingid = details.bookingid
+    this.roomBooking.adults = details.adults
+    this.roomBooking.child = details.child
+    this.roomBooking.roomtypeid = details.roomtypeid
+
+
+    //  }
+
+    console.log("0000000", this.roomBooking)
+
     this.bookingService.changeMessage(this.roomBooking);
     this.router.navigate(["bookingdetails",
-    
+
     ]);
 
   }

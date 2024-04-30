@@ -47,7 +47,8 @@ export class RoomfromwalkinComponent {
       console.log("booked data tot", this.bookingData.price);
       console.log("booked data bhk2", this.bookingData.bhk2count);
       console.log("booked data bhk3", this.bookingData.bhk3count);
-      console.log("booked data bhk3", this.bookingData.childage);
+      console.log("booked data childage", this.bookingData.childage);
+      console.log("booked data roomtype", this.bookingData.roomtypeid);
     })
 
 
@@ -154,7 +155,7 @@ export class RoomfromwalkinComponent {
     book.adults = this.bookingData.adults;
     book.child = this.bookingData.child;
     book.childage = this.bookingData.childage == undefined ? 0 : this.bookingData.childage;
-    book.roomtype = this.bookingData.roomtype;
+    book.roomtypeid = this.bookingData.roomtypeid;
     book.noofdays = this.bookingData.noofdays;
     book.price = this.bookingData.price;
     book.tax = this.bookingData.tax;

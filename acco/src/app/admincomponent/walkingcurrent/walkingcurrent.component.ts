@@ -190,7 +190,7 @@ export class WalkingcurrentComponent implements OnInit {
     this.booking.checkout = formData.checkout;
     this.booking.adults = formData.adult;
     this.booking.child = formData.children;
-    this.booking.roomtype = formData.roomtype;
+    this.booking.roomtypeid = formData.roomtype;
     this.booking.modeoftypeid = 2
     var inDate = new Date(formData.checkin);
     var OutDate = new Date(formData.checkout);
@@ -210,13 +210,17 @@ export class WalkingcurrentComponent implements OnInit {
     }else{
       var totalDays=days;
     }
-
+// if(this.booking.roomtypeid==1){
+//   var noofdays=totalDays;
+// }else {
+//   var noofdays=1;
+// }
     console.log("booking", this.booking);
     if (this.walkingRoomCheck.valid) {
       console.log("123", this.booking);
-      this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout).subscribe((result) => {
+      this.getroomlistservice.roomlogic(formData.adult,formData.checkin,formData.checkout,formData.roomtype).subscribe((result) => {
         console.log(result);
-        this.roomData = result[1];
+        this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
@@ -224,12 +228,12 @@ export class WalkingcurrentComponent implements OnInit {
     }
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = formData.checkin,
-      this.roomBookingSum.checkout = formData.checkout,
-      this.roomBookingSum.noofdays = totalDays;
+    this.roomBookingSum.checkout = formData.checkout,
+    this.roomBookingSum.noofdays = totalDays;
     this.roomBookingSum.adults = formData.adult;
     this.roomBookingSum.child = formData.children;
     this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;
-    this.roomBookingSum.roomtype = formData.roomtype;
+    this.roomBookingSum.roomtypeid = formData.roomtype;
     this.roomBookingSum.modeoftypeid = 2;
 
 

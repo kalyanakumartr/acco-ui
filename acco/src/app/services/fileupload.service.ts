@@ -24,7 +24,7 @@ export class FileuploadService {
       // .catch((e) => this.handleError(e));
 }
 getimage(id:any){
-  return this.http.get('http://localhost:3001/booking/getidproofimage?bookingid='+id);
+  return this.http.get(`${environment.getidproofimage}`+id);
  
 }
 }

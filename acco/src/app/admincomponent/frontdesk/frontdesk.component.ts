@@ -79,6 +79,11 @@ calggapi(seldate:any){
   // this.getroomslist(78,2024-1-19,2024-1-20);
 }
 
+
+
+
+
+
 setPagination(data:any) {
   this.databookingData = new MatTableDataSource<any>(data);
   this._changeDetectorRef.detectChanges();
@@ -97,7 +102,7 @@ updateproof(id:any){
 
 }
 
-getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,rooms:any,roomnos:any){
+getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,rooms:any,roomnos:any,roomtypeid:any){
    this.router.navigate(["selectrooms", 
   {
     "bookingid": bookingid,
@@ -107,7 +112,8 @@ getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,r
     "bhk2":bhk2,
     "bhk3":bhk3,
     "rooms":rooms,
-    "roomnos":roomnos
+    "roomnos":roomnos,
+    "roomtype":roomtypeid
 
   
    } ])
@@ -150,11 +156,11 @@ getroomslist(bookingid:any,checkin:any,checkout:any,bhk1:any,bhk2:any,bhk3:any,r
 
 
 
-checkOutTime(id:any){
+checkOutTime(id:any,roomtypeid:any){
   this.router.navigate(["checkouttime", 
   {
     "bookingid": id,
-    
+    "roomtypeid":roomtypeid
    } ])
 }
 

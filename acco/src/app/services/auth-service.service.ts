@@ -49,7 +49,7 @@ export class AuthServiceService {
               confirmButtonColor: '#964B00',
               background: '#efc96a',
             });
-            this.router.navigate(["admin"])
+            this.router.navigate(["admincomponent"])
 
           } else if (this.authresults.usertype == "Manager") {
             Swal.fire({

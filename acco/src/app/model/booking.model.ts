@@ -18,7 +18,7 @@ export class BookingModel {
     price:any
     totalprice:any
     childage!:string;
-    roomtype!:string;
+    roomtypeid:any;
     userid:any;  
     totalbedamount:any; 
     bookingid:any;

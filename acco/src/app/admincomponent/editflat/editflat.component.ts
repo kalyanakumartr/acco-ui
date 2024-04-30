@@ -16,7 +16,7 @@ export class EditflatComponent {
   flattype: any;
   flatstatus: any;
   roomStatus: any;
-  type: string = "room"
+  type: string = '"room"'
   editflatform!: FormGroup;
 
   constructor(
