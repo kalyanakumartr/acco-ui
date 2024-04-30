@@ -5,7 +5,7 @@
       <div class="col-lg-3" style="margin-top: 7px;">
         <h4>Guests Status {{TodayDate}}</h4>
       </div>
-      <div class="col-lg-5" style="display: flex;margin-top: 5px;">
+      <div class="col-lg-4" style="display: flex;margin-top: 5px;">
         <p class="square " style="margin-left:10px"></p>
         <span style="margin-left: 2px;">Completed</span>
 
@@ -14,11 +14,17 @@
 
         <p class="square2" style="margin-left:10px"></p>
         <span style="margin-left: 2px;">TimeOut</span>
+
       </div>
-      <div class="col-lg-3" style="margin-top: 7px;">
+      <div class="col-lg-4" style=" margin-top: 7px;margin-left: 0px;">
         <label>Date</label>
-        <input type="date" #input [(ngModel)]="TodayDate" (change)="calggapi(input.value)" style="margin-left: 3%;">
+        <input type="date" #input [(ngModel)]="TodayDate" (change)="calggapi(input.value)" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>
+          <a  routerLink="/viewcalendar" class="pointer" >ViewCalendar</a>
+  
+        </span>
       </div>
+     
     </div>
     <div class="tbl-container pt-2">
       <div class="row tbl-fixed">

@@ -57,6 +57,11 @@ import { ManageflatsComponent } from './admincomponent/manageflats/manageflats.c
 import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foecheckouttime.component';
 import { EditflatComponent } from './admincomponent/editflat/editflat.component';
 import { CustomercancelComponent } from './component/customercancel/customercancel.component';
+import { ViewcalendarComponent } from './admincomponent/viewcalendar/viewcalendar.component';
+// import { CalendarModule, DateAdapter } from 'angular-calendar';
+// import { FlatpickrModule } from 'angularx-flatpickr';
+// import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 // import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
@@ -102,7 +107,8 @@ import { CustomercancelComponent } from './component/customercancel/customercanc
     ManageflatsComponent,
     FoecheckouttimeComponent,
     EditflatComponent,
-    CustomercancelComponent
+    CustomercancelComponent,
+    ViewcalendarComponent
     // MatchpasswordComponent,
    
   ],
@@ -125,7 +131,11 @@ import { CustomercancelComponent } from './component/customercancel/customercanc
     
     NgMultiSelectDropDownModule.forRoot()
    
-    
+    // FlatpickrModule.forRoot(),
+    // CalendarModule.forRoot({
+    //   provide: DateAdapter,
+    //   useFactory: adapterFactory
+    // })
   ],
   providers: [DatePipe,
     {
