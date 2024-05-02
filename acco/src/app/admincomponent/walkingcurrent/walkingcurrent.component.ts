@@ -266,15 +266,20 @@ export class WalkingcurrentComponent implements OnInit {
 
 
     console.log("email", value)
-    this.walkingCurrentForm.reset();
+     this.walkingCurrentForm.reset();
     Swal.fire({
             text: "Phonenumber not Registered",
             confirmButtonColor: '#964B00',
             background: '#efc96a',
           });
     this.emailservice.emailverify(value).subscribe((result) => {
-      this.userData = result[0];
+      this.userData = result.result[0];
       console.log("userdata", this.userData)
+      Swal.fire({
+        text: result.message,
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+      });
       // Swal.fire(" phonenumber is  register");
       this.walkingCurrentForm.controls['email'].setValue(this.userData.email);
       this.walkingCurrentForm.controls['firstname'].setValue(this.userData.firstname);
@@ -305,11 +310,11 @@ export class WalkingcurrentComponent implements OnInit {
 
       const jsondata = JSON.stringify(currentuser);
       localStorage.setItem('currentuserid', jsondata);
-      Swal.fire({
-        text: result.message,
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
-      });
+      // Swal.fire({
+      //   text: result.message,
+      //   confirmButtonColor: '#964B00',
+      //   background: '#efc96a',
+      // });
 
 
 
@@ -371,7 +376,7 @@ export class WalkingcurrentComponent implements OnInit {
 
     console.log("rrr", arr[0]);
     this.ageValue = Object.values(arr[0]);
-    console.log("age++", this.ageValue)
+    console.log("age++", this.ageValue) 
     // this.selectedAge.push(value)
     //  console.log("age:", this.selectedAge);
   }
