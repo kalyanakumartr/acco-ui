@@ -58,11 +58,10 @@ import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foech
 import { EditflatComponent } from './admincomponent/editflat/editflat.component';
 import { CustomercancelComponent } from './component/customercancel/customercancel.component';
 import { ViewcalendarComponent } from './admincomponent/viewcalendar/viewcalendar.component';
-// import { CalendarModule, DateAdapter } from 'angular-calendar';
-// import { FlatpickrModule } from 'angularx-flatpickr';
-// import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
-// import { MatchpasswordComponent } from './component/matchpassword/matchpassword.component';
 
 
 @NgModule({
@@ -128,14 +127,10 @@ import { ViewcalendarComponent } from './admincomponent/viewcalendar/viewcalenda
     MatStepperModule,
     MatButtonModule,
     NgOtpInputModule,
-    
+    FullCalendarModule,
     NgMultiSelectDropDownModule.forRoot()
    
-    // FlatpickrModule.forRoot(),
-    // CalendarModule.forRoot({
-    //   provide: DateAdapter,
-    //   useFactory: adapterFactory
-    // })
+
   ],
   providers: [DatePipe,
     {
