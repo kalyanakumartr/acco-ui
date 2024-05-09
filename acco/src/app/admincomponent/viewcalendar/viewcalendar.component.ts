@@ -26,9 +26,11 @@ export class ViewcalendarComponent implements OnInit {
   ) {  }
 
   ngOnInit(): void {
-
+    
     //  this.getCalenderMonthly();
   }
+
+  
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
@@ -36,8 +38,6 @@ export class ViewcalendarComponent implements OnInit {
     events:this.LoadEvents.bind(this)
     //  this.calenderItem
     // [
-      
-      
       
       // {
       //    title: 'event 1', date: '2024-05-01' },
@@ -55,18 +55,30 @@ export class ViewcalendarComponent implements OnInit {
       console.log(args.startStr);
 
       this.calenderService.getCalender().subscribe(result => {
-        this.calenderItem=result.result[0];
+       
+        console.log("result0",result);
+        this.calenderItem=result.results[0][0];
+        console.log("result",this.calenderItem);
+        console.log("result1",this.calenderItem.result)
         const events: EventInput[] = [];
-        for(let i of this.calenderItem){
+        for(let i of this.calenderItem.result){
           events.push({
             // id: val.bhk2count,
-            title: i.bhk2count,
-            date: i.indate.slice(0,10),
+            title: i.title,
+            date: i.date,
             color:i.color
-          });
+            // .slice(0,10)
+          },
+          // {
+          //   // id: val.bhk2count,
+          //   title: i.title,
+          //   date: i.date,
+          //   color:i.color
+          // }
+        );
         }
         //  result.result[0].forEach(function (val:any) {
-          console.log(result.result[0].length);
+           console.log(result.results[0].length);
           
           
           resolve(events);
