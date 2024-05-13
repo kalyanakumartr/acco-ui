@@ -57,11 +57,11 @@ export class ViewcalendarComponent implements OnInit {
       this.calenderService.getCalender().subscribe(result => {
        
         console.log("result0",result);
-        this.calenderItem=result.results[0][0];
+        this.calenderItem=result.result[0][0];
         console.log("result",this.calenderItem);
-        console.log("result1",this.calenderItem.result)
+        console.log("result1",this.calenderItem.tit)
         const events: EventInput[] = [];
-        for(let i of this.calenderItem.result){
+        for(let i of this.calenderItem.tit){
           events.push({
             // id: val.bhk2count,
             title: i.title,
@@ -77,8 +77,9 @@ export class ViewcalendarComponent implements OnInit {
           // }
         );
         }
+        console.log("events",events);
         //  result.result[0].forEach(function (val:any) {
-           console.log(result.results[0].length);
+           console.log(result.result.length);
           
           
           resolve(events);
