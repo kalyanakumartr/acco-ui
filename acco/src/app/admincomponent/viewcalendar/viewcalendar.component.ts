@@ -52,9 +52,30 @@ export class ViewcalendarComponent implements OnInit {
 
   async LoadEvents(args: EventSourceFuncArg): Promise<EventInput[]> {
     return new Promise<EventInput[]>((resolve) => {
-      console.log(args.startStr);
+      console.log("args",args);
+      console.log("endstr",args.endStr.slice(0,10))
+      console.log("start",args.startStr.slice(0,10))
+      console.log("end",args.end.getDate());
+      console.log(args.start.getFullYear(),"year",args.start.getDate(),"start",args.start.getMonth());
 
-      this.calenderService.getCalender().subscribe(result => {
+//       var month=args.start.getMonth();
+//       var date=args.start.getDate();
+//       var year=args.start.getFullYear();
+//       var enddate=args.end.getDate();
+// if(args.start.getDate()>20){
+//   month=month+1;
+// }
+// var monthEnd=args.end.getDate()
+// if(args.end.getDate()>20){
+//   monthEnd = monthEnd+1;
+// }
+
+// var startDate= year + "-" + month + "-" + date;
+// var endDate= year + "-" + month + "-" + enddate;
+
+// console.log("month",month);
+// console.log("startDate",startDate,"enddate",endDate);
+      this.calenderService.getCalender(args.startStr.slice(0,10),args.endStr.slice(0,10)).subscribe(result => {
        
         console.log("result0",result);
         this.calenderItem=result.result[0][0];

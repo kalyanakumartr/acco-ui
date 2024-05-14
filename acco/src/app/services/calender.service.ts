@@ -10,11 +10,12 @@ export class CalenderService {
 
   constructor(private http:HttpClient) { }
 
-  getCalender(): Observable<any>{
+  getCalender(start:String,end:String): Observable<any>{
     console.log("calender check ");
+    console.log(" check " ,start,end);
     
     // return this.http.get<any>(`${environment.getguestdetailmonthly}`);
     
-    return this.http.get<any>('http://localhost:3001/users/getguestdetailmonthly?checkin="2024-05-01"&checkout="2024-05-25"');
+    return this.http.get<any>('http://localhost:3001/users/getguestdetailmonthly?checkin='+start+"&checkout="+end);
   }
 }

@@ -25,7 +25,7 @@ export class GetroomtypeService {
     console.log("GetRoomStatus",type); 
        
     return this.http.get(`${environment.getstatus}`+type);
-    // http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
+  //  http://localhost:3001/logic/getlogic?adult="+adult+"&cin="+checkIn+"&cout="+checkOut);
 
   }
 
