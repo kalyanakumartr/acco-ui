@@ -49,7 +49,10 @@ export class ViewcalendarComponent implements OnInit {
     alert('date click! ' + arg.dateStr)
   }
 
-
+  start!: string ;
+  startDate!:string;
+  end!: string;
+  endDate!:string;
   async LoadEvents(args: EventSourceFuncArg): Promise<EventInput[]> {
     return new Promise<EventInput[]>((resolve) => {
       console.log("args",args);
@@ -75,7 +78,17 @@ export class ViewcalendarComponent implements OnInit {
 
 // console.log("month",month);
 // console.log("startDate",startDate,"enddate",endDate);
-      this.calenderService.getCalender(args.startStr.slice(0,10),args.endStr.slice(0,10)).subscribe(result => {
+
+this.start=args.startStr.slice(0,10);
+console.log("slice",this.start);
+
+this.startDate= '"' + this.start + '"';
+//this. startDate = '"'.concat(this.type).concat('"');
+console.log("startDate11",this.startDate)
+this.end =args.endStr.slice(0,10);
+this.endDate = '"' + this.end + '"'
+
+      this.calenderService.getCalender(this.startDate,this.endDate).subscribe(result => {
        
         console.log("result0",result);
         this.calenderItem=result.result[0][0];
