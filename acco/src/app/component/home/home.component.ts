@@ -256,6 +256,17 @@ export class HomeComponent implements OnInit {
         var totalDays=days;
       }
       console.log("toldays",totalDays)
+     if(days<=0){
+        Swal.fire({
+          text:
+            " Please verify your checkin and checkout dates",
+          // "<h5 style='color:red'>"++"</h5>"
+          confirmButtonColor: '#964B00',
+          background: '#efc96a',
+  
+  
+        })
+      }else{
       // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
       this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut,formData.roomType).subscribe((result) => {
         console.log(result);
@@ -301,6 +312,7 @@ export class HomeComponent implements OnInit {
       });
     
     }
+  }
   }
 
   showRoomType() {
