@@ -41,7 +41,7 @@ addebreading:'http://localhost:3001/eb/addebreading',
 getebdata:'http://localhost:3001/eb/getebdata',
 updateebreading:'http://localhost:3001/eb/updateebreading',
 getebreading:'http://localhost:3001/eb/getebreading?bookingid=',
-// getguestdetailmonthly:'http://localhost:3001/users/getguestdetailmonthly?checkin="2024-05-01"&checkout="2024-05-25',
+getguestdetailmonthly:'http://localhost:3001/users/getguestdetailmonthly?checkin=',
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',

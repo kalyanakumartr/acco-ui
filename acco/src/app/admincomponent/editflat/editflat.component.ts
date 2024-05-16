@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class EditflatComponent {
 
   flatid: any;
+  roomno:any;
   flattype: any;
   flatstatus: any;
   roomStatus: any;
@@ -35,6 +36,11 @@ export class EditflatComponent {
     // this.getroomslist();
     this.homeroute.params.subscribe((params: Params) =>
       this.flatid = params[('flatid')],);
+    console.log("flatid", this.flatid);
+
+    this.homeroute.params.subscribe((params: Params) =>
+      this.roomno = params[('roomno')],);
+    console.log("room", this.roomno);
 
     this.homeroute.params.subscribe((params: Params) =>
       this.flattype = params[('flattype')],);
@@ -47,6 +53,7 @@ export class EditflatComponent {
 
     this.editflatform = this.fb.group({
       flatid: [this.flatid, Validators.required],
+      roomno: [this.roomno, Validators.required],
       flattype: [this.flattype, Validators.required],
       flatstatus: [this.flatstatus, Validators.required],
       updatestatus: ['0', Validators.required],
