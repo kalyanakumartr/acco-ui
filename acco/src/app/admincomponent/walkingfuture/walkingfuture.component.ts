@@ -293,7 +293,17 @@ export class WalkingfutureComponent implements OnInit {
       }
 
     console.log("booking", this.booking);
-    if (this.walkingRoomCheckFuture.valid) {
+    if(days<=0){
+      Swal.fire({
+        text:
+          " Please verify your checkin and checkout dates",
+        // "<h5 style='color:red'>"++"</h5>"
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+
+
+      })
+    } else if (this.walkingRoomCheckFuture.valid) {
       console.log("123", this.booking);
       this.getroomlistservice.roomlogic(formData.adult, formData.checkin, formData.checkout,formData.roomtype).subscribe((result) => {
         console.log(result);
@@ -302,7 +312,7 @@ export class WalkingfutureComponent implements OnInit {
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
       });
-    }
+   
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = formData.checkin,
       this.roomBookingSum.checkout = formData.checkout,
@@ -318,6 +328,7 @@ export class WalkingfutureComponent implements OnInit {
     this.bookingService.changeMessage(this.roomBookingSum);
     this.router.navigate(["roomlogic"])
   }
+}
 
 
   showRoomType() {
