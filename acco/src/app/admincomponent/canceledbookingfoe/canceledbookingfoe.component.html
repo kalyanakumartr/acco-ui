@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row" style="color: #964B00;">
             <div class="col-lg-3" style="margin-top: 7px;">
-              <h4>Guests Cancel Status {{TodayDate}}</h4>
+              <h4>Guests Cancel Status </h4>
             </div>
             <!-- <div class="col-lg-5" style="display: flex;margin-top: 5px;">
               <p class="square " style="margin-left:10px"></p>
@@ -30,9 +30,13 @@
                   <tr>
                     <th class="align-middle "style=" color:#964B00;" rowspan="2">BookingId</th>
                     <!-- <th class="align-middle "style=" color:#964B00;" rowspan="2">RoomNo</th> -->
-                    <th class="align-middle "style=" color:#964B00;" colspan="3">Flat Type</th>
+                    <!-- <th class="align-middle "style=" color:#964B00;" colspan="3">Flat Type</th> -->
                     <!-- <th style=" color:#964B00;" scope="col">2BHK</th>
                     <th style=" color:#964B00;" scope="col">3BHK</th> -->
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">1BHK</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">2BHK</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">3BHK</th>
+
                     <th class="align-middle "style=" color:#964B00;" rowspan="2">Name</th>
                     <th class="align-middle "style=" color:#964B00;" rowspan="2">Phone</th>
                     <th class="align-middle "style=" color:#964B00;" rowspan="2">CinTime</th>
@@ -43,13 +47,13 @@
                     <th class="align-middle "style=" color:#964B00;" rowspan="2">Status</th> -->
       
                   </tr>
-                  <tr style="color: #964B00;">
+                  <!-- <tr style="color: #964B00;">
                           
                     <th>1BHK</th>
                     <th>2BHK</th>
                     <th>3BHK</th>
                    
-                </tr>
+                </tr> -->
                 </thead>
                 <tbody>
                   <tr style="color: #964B00;" *ngFor="let i of dataObs$ | async">
