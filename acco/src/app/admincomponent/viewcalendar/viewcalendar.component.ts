@@ -35,7 +35,15 @@ export class ViewcalendarComponent implements OnInit {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     dateClick: (arg) => this.handleDateClick(arg),
-    events:this.LoadEvents.bind(this)
+    events:[
+      { title: 'event 1', date: '2024-05-01',color:"#FF7043" },
+      { title: 'event 2', date: '2024-05-01',color:"#BF360C" },
+      { title: 'event 2', date: '2024-05-01',color:"#795548" },
+      { title: 'event 1', date: '2024-05-02',color:"#FF7043" },
+      { title: 'event 2', date: '2024-05-02',color:"#BF360C" },
+      { title: 'event 2', date: '2024-05-02',color:"#795548" },
+    ]
+    // this.LoadEvents.bind(this)
     //  this.calenderItem
     // [
       
@@ -98,11 +106,11 @@ this.endDate = '"' + this.end + '"'
         for(let i of this.calenderItem.tit){
           events.push({
             // id: val.bhk2count,
-            title: i.title,
+            title:  i.title,
             date: i.date,
-            color:i.color
+            color: i.color
             // .slice(0,10)
-          },
+          }
           // {
           //   // id: val.bhk2count,
           //   title: i.title,

@@ -1,71 +1,86 @@
 <div class="outer">
-    <div class="container">
-        <div class="row">
-            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-2">
-                <!-- offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3 -->
-                <div class="panel border bg-white ">
-                    <div class="panel-heading">
+    <div class="container mt-2">
 
-                        <h3 class="pt-3 font-weight-bold" style="color:#964B00">
-                            <span><img src="assets/index_logo.jpg"> </span>
-                            Login
-                        </h3>
-                    </div>
-                    <div class="panel-body p-3">
-                        <form [formGroup]="loginForm" (ngSubmit)="loginProcess()">
-                            <div class="form-group pt-3">
-                                <div class="input-field">
-                                    <span class="fa fa-user p-2" style="color:#964B00"></span>
-                                    <!-- <label style="color:#964B00">UserName</label> -->
-                                    <input formControlName="username" required type="text" placeholder="UserName" >
-                                    <!-- placeholder="UserName" -->
-                                </div>
-                                <small
-                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
-                                class="text-danger form-inline  mt-0">*username is required</small>
-                                <small
-                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
-                                class="text-danger form-inline  mt-0">*username is invalid</small>
+        <div class="row app-container p-2">
+            <div class="col-lg-10 offset-md-0  centerTest">
+                <img src="assets/index_logo.jpg" style="width:350px;height:100px; "> <span id="text" class="p-2">Welcome
+                    to
+                    MaduraaServices</span>
+
+
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-2">
+                        <!-- offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3 -->
+                        <div class="panel border bg-white ">
+                            <div class="panel-heading">
+
+                                <!-- <h3 class="pt-3 font-weight-bold" style="color:#964B00">
+                            <span><img src="assets/index_logo.jpg"> </span> -->
+                                <h3 class="pt-3 font-weight-bold" style="color:#964B00">
+                                    Login
+                                </h3>
                             </div>
-                            
-                            <div class="form-group pt-3">
-                                <div class="input-field">
-                                    <span class="fa fa-lock p-2" style="color:#964B00"></span>
-                                    <!-- <label style="color:#964B00">Password</label> -->
-                                    <input formControlName="password" [type]="type" placeholder="Password">
-                                    <!-- placeholder="Password" -->
-                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}} " style="color:#964B00"></span>
-                                </div>
-                                <small
-                                *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
-                                class="text-danger form-inline ">*password is required</small>
-                                <small
-                                *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('pattern','password')"
-                                class="text-danger form-inline ">*password is invalid</small>
+                            <div class="panel-body p-3">
+                                <form [formGroup]="loginForm" (ngSubmit)="loginProcess()">
+                                    <div class="form-group pt-3">
+                                        <div class="input-field">
+                                            <span class="fa fa-user " style="color:#964B00"></span>
+                                            <!-- <label style="color:#964B00">UserName</label> -->
+                                            <input formControlName="username" required type="text"
+                                                placeholder="UserName">
+                                            <!-- placeholder="UserName" -->
+                                        </div>
+                                        <small
+                                            *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                                            class="text-danger form-inline  mt-0">*username is required</small>
+                                        <small
+                                            *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
+                                            class="text-danger form-inline  mt-0">*username is invalid</small>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <div class="input-field">
+                                            <span class="fa fa-lock " style="color:#964B00"></span>
+                                            <!-- <label style="color:#964B00">Password</label> -->
+                                            <input formControlName="password" [type]="type" placeholder="Password">
+                                            <!-- placeholder="Password" -->
+                                            <span (click)="hideShowPass()" class="fa {{eyeIcon}} "
+                                                style="color:#964B00"></span>
+                                        </div>
+                                        <small
+                                            *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                                            class="text-danger form-inline ">*password is required</small>
+                                        <small
+                                            *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('pattern','password')"
+                                            class="text-danger form-inline ">*password is invalid</small>
+                                    </div>
+
+                                    <div class="form-inline fr mt-4">
+                                        <a href="\forgotpassword" id="forgot" style="color:#964B00;">Forgot
+                                            Password?</a>
+                                        <!-- <a href="\changepassword" id="forgot" style="color:#964B00;flex: 1; text-align: right;">Change Password</a> -->
+                                    </div>
+                                    <button [disabled]=loginForm.invalid type="submit"
+                                        class="btn btn-outline btn-block mt-4 w-100"
+                                        style="color:#964B00 ;background-color: #efc96a;">Login</button>
+                                    <div class="text-center pt-4 text-muted">Don't have an account? <a id="forgot"
+                                            class="pointer" (click)="signup()" style="color:#964B00">Sign up</a> </div>
+                                </form>
                             </div>
-                            
-                            <div class="form-inline fr mt-4">
-                                <a href="\forgotpassword" id="forgot" style="color:#964B00;">Forgot Password?</a>
-                                <!-- <a href="\changepassword" id="forgot" style="color:#964B00;flex: 1; text-align: right;">Change Password</a> -->
-                            </div>
-                            <button [disabled]=loginForm.invalid type="submit"
-                                class="btn btn-outline btn-block mt-4 w-100"
-                                style="color:#964B00 ;background-color: #efc96a;">Login</button>
-                            <div class="text-center pt-4 text-muted">Don't have an account? <a id="forgot"
-                                class="pointer"  (click)="signup()" style="color:#964B00">Sign up</a> </div>
-                        </form>
-                    </div>
-                    <!-- <div class="mx-3 my-2 py-2 bordert">
+                            <!-- <div class="mx-3 my-2 py-2 bordert">
                         <div class="text-center py-3">
                             <a href="https://wwww.facebook.com" target="_blank" class="px-2"> <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt=""> </a>
                             <a href="https://www.google.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt=""> </a>
                             <a href="https://www.github.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" alt=""> </a>
                         </div>
                     </div> -->
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
-
     </div>
-</div>
