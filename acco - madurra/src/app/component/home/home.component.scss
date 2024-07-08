@@ -1,0 +1,30 @@
+.outer{
+    // height:100vh;
+     background-image: linear-gradient(45deg, #efc96a,white);
+}
+.container{
+    background-color: #ffff;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+    border-radius: 4px;
+    width: 150%;
+    height:100%;
+    background-image: linear-gradient(45deg, #efc96a,white);
+}
+.adultinput{
+    width:150px;
+}
+.childinput{
+    width: 150px;
+}
+.modal-content{
+    background-image: linear-gradient(45deg, #efc96a,white);  
+   
+}
+.Swal.fire{
+    // icon: 'success';
+    background: red,
+  }
+
+    
+

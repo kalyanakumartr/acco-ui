@@ -1,0 +1,167 @@
+
+<app-header></app-header>
+<div class="outer">
+    <div class="container">
+        <div class="card ">
+            <div class="text-center ">
+                <h1>BOOKING</h1>
+    <form [formGroup]="bookingForm" (ngSubmit)="bookingFormProcess()">
+                <div class="row ">
+                        <div class="col-lg-3">
+                            <label>First Name</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <input formControlName="firstname" type="text" name="firstName" placeholder="FirstName" >
+                            <small   *ngIf="bookingForm.controls['firstname'].dirty && bookingForm.hasError('required','firstname')"  
+                            class="text-danger form-inline  mt-0">*firstName is required</small> 
+                          
+                        </div>
+                        <div class="col-lg-3">
+                            <label>LastName</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <input formControlName="lastname" type="text" name="lastName" placeholder="LastName" >
+                            <small  *ngIf="bookingForm.controls['lastname'].dirty && bookingForm.hasError('required','lastname')"  
+                             class="text-danger form-inline  mt-0" >*lastName is required</small>
+
+                        </div>
+    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Email</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <input formControlName="email" type="email" name="email" placeholder="Email" >
+                        <small  *ngIf="bookingForm.controls['email'].dirty && bookingForm.hasError('required','email')"  class="text-danger form-inline  mt-0" >*email is required</small>
+                    </div>
+                   
+                    <div class="col-lg-3">
+                        <label>Phone Number</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <input formControlName="phonenumber"  type="text" name="pnumber" placeholder="Phone Number" >
+                        <small  *ngIf="bookingForm.controls['phonenumber'].dirty && bookingForm.hasError('required','phonenumber')"  class="text-danger form-inline  mt-0" >*phonenumber is required</small>
+                    </div>
+    
+                   
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Address1</label>
+                </div>
+                <div class="col-lg-3">
+                    <input formControlName="address1" type="text" name="address1" placeholder="Address 1" >
+                    <small  *ngIf="bookingForm.controls['address1'].dirty && bookingForm.hasError('required','address1')"  class="text-danger form-inline  mt-0" >*address1 is required</small>
+                </div>
+                <div class="col-lg-3">
+                    <label>Address2</label>
+                </div>
+                <div class="col-lg-3">
+                    <input formControlName="address2" type="text" name="address2" placeholder="Address2" >
+                    <small  *ngIf="bookingForm.controls['address2'].dirty && bookingForm.hasError('required','address2')"   class="text-danger form-inline  mt-0" >*address2 is required</small>
+                </div>
+    
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <label>City</label>
+            </div>
+            <div class="col-lg-3">
+                <input formControlName="city" type="text" name="city" placeholder="City" >
+                <small *ngIf="bookingForm.controls['city'].dirty && bookingForm.hasError('required','city')" class="text-danger form-inline mt-0">*city is required</small>
+            </div>
+            <div class="col-lg-3">
+                <label>State</label>
+            </div>
+            <div class="col-lg-3">
+                <input  formControlName="state" type="text" name="state" placeholder="State" >
+                <small  *ngIf="bookingForm.controls['state'].dirty && bookingForm.hasError('required','state')"   class="text-danger form-inline  mt-0" >*state is required</small>
+            </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <label>Country</label>
+        </div>
+        <div class="col-lg-3">
+            <input  formControlName="country" type="text" name="city" placeholder="Country" >
+            <small  *ngIf="bookingForm.controls['country'].dirty && bookingForm.hasError('required','country')"   class="text-danger form-inline  mt-0" >*country is required</small>
+        </div>
+        <div class="col-lg-3">
+            <label>PinCode</label>
+        </div>
+        <div class="col-lg-3">
+            <input formControlName="pincode" type="text" name="pincode" placeholder="PinCode" >
+            <small  *ngIf="bookingForm.controls['pincode'].dirty && bookingForm.hasError('required','pincode')"   class="text-danger form-inline  mt-0" >*pincode is required</small>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <label>From</label>
+        </div>
+        <div class="col-lg-3">
+            
+            <input fromControlName="checkin" type="datetime-local" name="city" placeholder="From" >
+            <small  *ngIf="bookingForm.controls['checkin'].dirty && bookingForm.hasError('required','checkin')"   class="text-danger form-inline  mt-0" >*date is required</small>
+           
+            
+        </div>
+        <div class="col-lg-3">
+            <label>To</label>
+        </div>
+        <div class="col-lg-3">
+            <input  formControlName="checkout" type="datetime-local" name="fromto" placeholder="To"> 
+            
+            <small  *ngIf="bookingForm.controls['checkout'].dirty && bookingForm.hasError('required','checkout')"   class="text-danger form-inline  mt-0" >*date is required</small>
+            
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <label>Adults</label>
+        </div>
+        <div class="col-lg-3">
+            <input formControlName="adults" type="number" name="adults" placeholder="Adults" >
+            <small  *ngIf="bookingForm.controls['adults'].dirty && bookingForm.hasError('required','adults')"   class="text-danger form-inline  mt-0" >*adults is required</small>
+        </div>
+        <div class="col-lg-3">
+            <label>Children</label>
+        </div>
+        <div class="col-lg-3">
+            <input formControlName="children" type="number" name="children" placeholder="Children " >
+            <small  *ngIf="bookingForm.controls['children'].dirty && bookingForm.hasError('required','children')"   class="text-danger form-inline  mt-0" >*children is required</small>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <label>Room Type</label>
+        </div>
+        <div class="col-lg-3">
+            <select  formControlName="roomtype" id="room_type_id" name="room_type_id"  errordiv="room_type_id1" 
+            message="Select Room Type" class="roomtype" >	
+                <option value="12"  >Service Apartment</option>
+             <option value="7"  >Business Center</option>
+        </select>
+        </div>
+        </div>
+    
+    
+                <button  type="submit" class="btn btn-light btn-elevate mr-2 margin-left" >
+                      Save</button>
+                    <button type="button" class="btn btn-light btn-elevate mr-2 margin-left " onclick="reset()">
+                    Reset
+                  </button>
+                </form>
+                
+        </div>
+    
+    
+    </div>
+    </div>
+    
+
+</div>

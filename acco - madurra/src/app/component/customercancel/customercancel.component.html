@@ -1,0 +1,81 @@
+<div class="outer">
+    <app-navbar></app-navbar>
+    <div class="container ">
+
+        <div class="row">
+            <div class="col">
+                <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Cancellation Norms</h2>
+
+                <form [formGroup]="cancelform">
+
+                    <div class="form-group row">
+                        <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">Bookingid</label>
+                        <div class="col-sm-5">
+                            <input formControlName="bookingid" type="text" readonly class="form-control-plaintext"
+                                id="bookingid" value={{bookingid}}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label style="color:#964B00" for="checkin" class="col-sm-2 col-form-label">Checkin</label>
+                        <div class="col-sm-5">
+                            <input formControlName="checkin" type="text" readonly class="form-control-plaintext"
+                                id="checkin" value={{checkin}}>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label style="color:#964B00" for="checkout" class="col-sm-2 col-form-label">Checkout</label>
+                        <div class="col-sm-5">
+                            <input formControlName="checkout" type="text" readonly class="form-control-plaintext"
+                                id="checkout" value={{checkout}}>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label style="color:#964B00" for="reason" class="col-sm-2 col-form-label">Reason</label>
+                        <div class="col-sm-5">
+                            <textarea formControlName="reason" class="form-control"></textarea>
+                            <small
+                                *ngIf="cancelform.controls['reason'].dirty && cancelform.hasError('required','reason')"
+                                class="text-danger form-inline  mt-0">*Messsage is required</small>
+                            <small
+                                *ngIf="cancelform.controls['reason'].dirty && cancelform.hasError('pattern','reason')"
+                                class="text-danger form-inline  mt-0">*Messsage is invalid</small>
+                        </div>
+                    </div>
+
+                    <button [disabled]=cancelform.invalid (click)="cancelbooking()" type="submit"
+                        class="btn btn-light btn-elevate mr-2 margin-left "
+                        style="color: #964B00;background-color:#efc96a;margin-top: 10px;margin-bottom: 10px;">
+                        Cancel</button>
+                    <button routerLink="/mybookings" type="submit" class="btn btn-light btn-elevate mr-2 margin-left "
+                        style="color: #964B00;background-color:#efc96a ;margin-top: 10px;margin-bottom: 10px;">
+                        Back</button>
+                </form>
+            </div>
+            <div class="col">
+                <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Cancellation policy</h2>
+
+                <table class="table table-bordered text-center " style="width: 400px;height: 100px;">
+                    <thead>
+                        <tr style="color: #964B00;">
+                            <th class="align-middle" rowspan="2">No</th>
+                            <th class="align-middle" rowspan="2">Time of Cancellation</th>
+                            <th class="align-middle" rowspan="2">Cancellation percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="color: #964B00;" *ngFor="let i of cancelpolicydata let index = index;">
+                            <td>{{i.cancelpolicyid}}</td>
+                            <td>{{i.timeofcancel}}</td>
+                            <td>{{i.cancelpercentage}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,83 @@
+<div class="outer">
+  <app-header></app-header>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+         <!-- Column -->
+        <h2 style="margin-top: 5px;color:#964B00">Select Room</h2>
+        <form [formGroup]="selectRoomForm" (ngSubmit)="roomCheckin()">
+          <!-- (ngSubmit)="roomCheckin()" -->
+          <div class="form-group row">
+            <label style="color:#964B00" for="bookingid" class="col-sm-3 col-form-label">BookingId</label>
+            <div class="col-sm-5">
+              <input type="text" readonly class="form-control-plaintext" id="bookingid" value={{bookingid}}>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label style="color:#964B00" for="inputPassword" class="col-sm-3 col-form-label">Rooms2BHK</label>
+            <div class="col-sm-5">
+              <!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> -->
+              <ng-multiselect-dropdown [placeholder]="'selectrooms 2BHK'" [data]="dropdownList" [(ngModel)]="bhk2" 
+                [settings]="dropdownSettings1" formControlName="bhk2" >
+              </ng-multiselect-dropdown>
+    
+            </div>
+          </div>
+          <div class="form-group row">
+            <label style="color:#964B00" for="inputPassword" class="col-sm-3 col-form-label">Rooms3BHK</label>
+            <div class="col-sm-5">
+              <!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> -->
+              <ng-multiselect-dropdown [placeholder]="'selectrooms 3BHK'" [data]="dropdownList1" [(ngModel)]="bhk3"
+                [settings]="dropdownSettings2" formControlName="bhk3">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+          <!-- <div class="form-group row">
+            <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label" *ngIf="roomtypeid == 2?!isDisabled:isDisabled">EB unit</label>
+            <div class="col-sm-5">
+              <input  type="text" class="form-control-plaintext" id="bookingid" value="" *ngIf="roomtypeid == 2?!isDisabled:isDisabled">
+            </div>
+          </div> -->
+          <button [disabled]=selectRoomForm.invalid type="submit" class="btn btn-light btn-elevate mr-2 "
+            style="color: #964B00;background-color:#efc96a;margin-top: 80px;">
+            <!-- (click)="uploadFileToActivity()" -->
+            Submit</button>
+          <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2 "
+            style="color: #964B00;background-color:#efc96a ;margin-top:80px ;">
+            Back</button>
+        </form>
+
+      </div>
+      <div class="col" *ngIf="roomtypeid == 2?!isDisabled:isDisabled">
+       <!-- Column -->
+        <h2 style="margin-top: 5px;color:#964B00">EB Reading</h2>
+        <form [formGroup]="EBReadingForm" (ngSubmit)="EBReading()">
+          <div class="form-group row">
+            <label style="color:#964B00" for="bookingid" class="col-sm-3 col-form-label">BookingId</label>
+            <div class="col-sm-5">
+              <input type="text" readonly class="form-control-plaintext" id="bookingid" value={{bookingid}}>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label style="color:#964B00" for="openingdate" class="col-sm-3 col-form-label">OpeningDate</label>
+            <div class="col-sm-5">
+              <input   type="text" readonly  class="form-control-plaintext" id="openingdate" value={{TodayDate}}>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label style="color:#964B00" for="openingunit" class="col-sm-3 col-form-label">OpeningUnit</label>
+            <div class="col-sm-5">
+              <input  formControlName ="openingunit" type="text"  class="form-control-plaintext"  >
+            </div>
+          </div>
+        
+        <button [disabled]=EBReadingForm.invalid  type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
+        style="color: #964B00;background-color:#efc96a;margin-top: 80px;">
+          Submit</button>
+      <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
+        style="color: #964B00;background-color:#efc96a ;margin-top: 80px ;">
+        Back</button>
+      </form>
+      </div>
+    </div>
+  </div>

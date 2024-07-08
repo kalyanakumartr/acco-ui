@@ -1,0 +1,95 @@
+<div class="outer">
+    <app-header></app-header>
+    <div class="container">
+        <div class="row" style="color: #964B00;">
+            <div class="col-lg-3" style="margin-top: 7px;">
+              <h4>Guests Cancel Status {{TodayDate}}</h4>
+            </div>
+            <!-- <div class="col-lg-5" style="display: flex;margin-top: 5px;">
+              <p class="square " style="margin-left:10px"></p>
+              <span style="margin-left: 2px;">Completed</span>
+      
+              <p class="square1" style="margin-left:10px"></p>
+              <span style="margin-left: 2px;">TimeLeft</span>
+      
+              <p class="square2" style="margin-left:10px"></p>
+              <span style="margin-left: 2px;">TimeOut</span>
+            </div> -->
+            <div class="col-lg-3" style="margin-top: 7px;margin-left: 500px;">
+              <label>Date</label>
+              <input type="date" #input [(ngModel)]="TodayDate" (change)="cancelbookingstatus(input.value)" style="margin-left: 3%;">
+            </div>
+          </div>
+
+          <div class="tbl-container pt-2">
+            <div class="row tbl-fixed">
+      
+              <table class="table table-borderless text-center">
+      
+                <thead>
+                  <tr>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">BookingId</th>
+                    <!-- <th class="align-middle "style=" color:#964B00;" rowspan="2">RoomNo</th> -->
+                    <th class="align-middle "style=" color:#964B00;" colspan="3">Flat Type</th>
+                    <!-- <th style=" color:#964B00;" scope="col">2BHK</th>
+                    <th style=" color:#964B00;" scope="col">3BHK</th> -->
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">Name</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">Phone</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">CinTime</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">CoutTime</th>
+                    <!-- <th class="align-middle "style=" color:#964B00;" rowspan="2">ACInTime</th> -->
+                    <!-- <th class="align-middle "style=" color:#964B00;" rowspan="2">CheckRoom</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">Proof</th>
+                    <th class="align-middle "style=" color:#964B00;" rowspan="2">Status</th> -->
+      
+                  </tr>
+                  <tr style="color: #964B00;">
+                          
+                    <th>1BHK</th>
+                    <th>2BHK</th>
+                    <th>3BHK</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                  <tr style="color: #964B00;" *ngFor="let i of dataObs$ | async">
+                    <td class="align-middle " style="border-color: #964B00;">{{i.bookingid}}
+                    <!-- <td class="align-middle " style="border-color: #964B00;">{{i.roomid==0?"":i.roomid}} -->
+                    <td class="align-middle " style="border-color: #964B00;">{{i.bhk1count}}
+                    <td class="align-middle " style="border-color: #964B00;">{{i.bhk2count}}
+                    <td class="align-middle " style="border-color: #964B00;">{{i.bhk3count}}
+                    <td class="align-middle " style="border-color: #964B00;">{{i.firstname | titlecase}}
+                    <td class="align-middle " style="border-color: #964B00;">{{i.phonenumber}}
+                    <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
+                    <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
+                    <!-- <td class="align-middle " style="border-color: #964B00;">{{i.acheckin | date:'dd-MM-yyyy HH:mm a'}} -->
+                    <!-- <td class="align-middle " style="border-color: #964B00;">
+                      <i class="fa fa-fw fa-edit" style="color:#964B00;"
+                        (click)=getroomslist(i.bookingid,i.checkin,i.checkout)> </i>
+                    </td> -->
+                    <!-- <td class="align-middle " style="border-color: #964B00;">
+                      <i class="fa fa-fw fa-edit" style="color:#964B00;"
+                        (click)=updateproof(i.bookingid)> </i>
+                    </td> -->
+                    <!-- <td class="align-middle " style="border-color: #964B00;">
+                      <pclass="square1"></p>
+                      <div [ngClass]="i.color == 'Green'?'square':i.color == 'Orange'?'square1':'square2'"></div> -->
+                </tbody>
+              </table>
+              
+      
+            </div>
+            <div class="page" >
+      
+                <mat-paginator
+                 #paginator 
+                 [pageSizeOptions]="[5,10,15]" 
+                 [pageSize]="5"
+                 showFirstLastButtons>
+                </mat-paginator>
+              </div>
+          </div>
+      
+
+    </div>
+</div>

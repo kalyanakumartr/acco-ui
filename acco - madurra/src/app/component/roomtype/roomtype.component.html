@@ -1,0 +1,402 @@
+<div class="outer">
+    <app-navbar></app-navbar>
+    <div class="container mt-0">
+        <div class="row ">
+            <div class="col-sm-6 mt-2">
+                <h2 style="color:#964B00; font-weight:bold ;">Room Availability</h2>
+            </div>
+        </div>
+        <div class="container tbl-container">
+            <div class="row tbl-fixed">
+
+            <table class="table table-bordered ">
+                <thead >
+                    <tr>
+                        <!-- <th  style="border-color: #964B00;" scope="col">RoomCount</th> -->
+                        <th  style="border-color: #964B00;" scope="col">AccommodotionType</th>
+                        <th  style="border-color: #964B00;" scope="col">Guests</th>                       
+                        <!-- <th  style="border-color: #964B00;" scope="col">Tariff</th> -->                       
+                        <!-- <th  style="border-color: #964B00;" scope="col">SpecialCharges</th> -->
+                        <th  style="border-color: #964B00;" scope="col" >SelectRooms</th>
+                        <th  style="border-color: #964B00;" scope="col">SpecialCharges</th>
+                        <th style="border-color: #964B00;" scope="col"></th>
+                        <!-- <th  style="border-color: #964B00;" scope="col">Confirmation</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="color: #964B00;" *ngFor="let i of roomData let index = index;">
+                        <!-- <td class="align-middle" style="border-color: #964B00;" scope="row">{{i.roomcount}}</td> -->
+                        <td class="align-middle " style="border-color: #964B00;">{{i.name}}
+                            <small>- Rs.{{i.price}} /</small>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.headcount>3">Reccommended for {{i.des}} </tr>
+                    <tr scope="col" style="border-color: #964B00;" *ngIf="i.headcount<=3">Reccommended for 1 Room</tr>
+                    <div class="row">
+                        <div class="col">
+                            <tr scope="col">
+                                <h5>Bed room:1</h5>
+                            </tr>
+                            <img src="assets/hotelrooms1.jpg" style="width:120px;height:120px; ">
+                        </div>
+                        <div class="col">
+                            <tr scope="col">
+                                <h5>Bed room:2</h5>
+                            </tr>
+                            <img src="assets/hotelrooms2.jpg" style="width:120px;height:120px; ">
+                        </div>
+                    </div>
+
+
+                    </td>
+
+                    <td style="border-color: #964B00;" class="align-middle ">{{i.headcount}}</td>
+                    <!-- <td style="border-color: #964B00;" class="align-middle ">1</td> -->
+                    <!-- <td style="border-color: #964B00;" class="align-middle " >Rs{{i.price * count}}/-</td> -->
+                    <!-- <td style="border-color: #964B00;" class="align-middle ">{{i.roomsize}} sq.ft</td> -->
+
+                    <!-- <td style="border-color: #964B00; " class=" align-middle">
+                        <form>
+                            <div class="row pl-2 ">
+                                <label > {{chargedData[1].facilityname}}</label>&nbsp;&nbsp;
+                                <select >
+                                   
+                                    <option value="0">--Click Bed --</option>  
+                                    <option value="1">1  </option>
+                                       
+                                    
+                                  </select>
+                                <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed"  (change)="onChangeBed($event)">
+                                
+                                
+                                <div class="row pl-0">
+                                    <div class="form-check-inline"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button   style="color:#efc96a; background-color: #964B00;"
+                                            class="btn btn-sm outline" (click)="plus()" ><i
+                                                class="fa fa-plus"></i></button>&nbsp;&nbsp;
+                                                
+                                        <div class="form-check-inline">
+                                            <input style="border-color:#efc96a; width: 50px;" type="text"
+                                                class="form-control" [(ngModel)]="inputnumber">&nbsp;&nbsp;
+
+                                            <div class="form-check-inline">
+                                                <button  style="color:#efc96a; background-color: #964B00;"
+                                                    class="btn btn-sm outline" (click)="minus()"><i
+                                                        class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Bed</P>
+                           
+                            <div class="row pl-2">
+                                <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                                <label class="pt-2" for="breakfast"> {{chargedData[2].facilityname}}</label>&nbsp;
+                                <div class="row">
+
+                                    <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button style="color:#efc96a; background-color: #964B00;"
+                                            class="btn btn-sm outline" (click)="plus3()"><i
+                                                class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <input style="border-color:#efc96a; width: 50px;" type="text"
+                                                class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                            <div class="form-check-inline">
+                                                <button style="color:#efc96a; background-color: #964B00;"
+                                                    class="btn btn-sm outline" (click)="minus3()"><i
+                                                        class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <P style="font-size: smaller;">Rs.{{chargedData[2].charges}} per Person</P> 
+                             <div class="row pl-2">
+                                <input class="mr-1" type="checkbox" id="AC" name="AC" value="AC">
+                                <label class="mt-2" for="AC"> {{chargedData[0].facilityname}}</label>
+
+                            </div>
+                            <P style="font-size: smaller;">Rs.{{chargedData[0].charges}} per Room</P> 
+                        </form>
+
+                    </td> -->
+                    <td style="border-color: #964B00;" class="align-middle ">
+                        <div>
+                            <div >
+                                <!-- <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown" >
+                                    <span *ngIf="checkedList.length<=0">Select</span>
+                                    <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                </button> -->
+                                <!-- <div class="drop-show" *ngIf="showDropDown"> -->
+                                    <!-- <div  class="grid-container">
+                                       
+                                    <label *ngFor="let item of i.roomnos; ">
+                                        
+                                        <input  type="checkbox"  [(ngModel)]="item.checked" 
+                                            (change)="getSelectedValue( item.checked,item.roomid,item.price)" />
+                                        <span style="padding: 2px;">{{item.roomid}}</span>
+                                    </label>
+                                
+                                </div> -->
+                                <div>
+                                <ng-container *ngIf="i.headcount>3">    
+                                <select #room (change)="getSelectedValue(room.selectedIndex,i.name,i.price)"  >
+                                    <option value="0">--Click to Select--</option>  
+                                    <option  *ngFor=" e of [].constructor(i.avail); let ind = index "  > 
+                                        &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp;&#8377;&nbsp;{{(ind+1)*i.price}} </option>
+                                        <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
+                                   
+                                  </select>
+                                  </ng-container>
+                                  <ng-container *ngIf="i.headcount<=3">    
+                                    <select #room (change)="getSelectedValue(room.selectedIndex,i.name,i.price)" >
+                                        <option value="0">--Click to Select--</option>  
+                                        <option  *ngFor=" e of [].constructor(1); let ind = index "  > 
+                                            &nbsp;&nbsp;{{ind+1}}&nbsp;&nbsp;&nbsp;&nbsp;&#8377;&nbsp;{{(ind+1)*i.price}} </option>
+                                            <!-- &#8377;&nbsp;{{(ind+1)*i.price}} -->
+                                       
+                                      </select>
+                                      </ng-container>
+                                 
+                                  </div>
+                            </div>
+                        </div>
+
+                       
+                        <!-- <input class="text-center" type="checkbox" (change)="selectAll(i)" [checked]="selectedAll == true"> -->
+                    </td>
+                    
+                     <td style="border-color: #964B00; " class=" align-middle">
+                            <div class="row pl-2 " *ngIf="i.headcount >2 "  >
+                                
+                                <ng-container *ngIf="i.name == '2BHK'">  
+                                <!-- <label > {{chargedData[1].facilityname}}</label>&nbsp;&nbsp; -->
+                                <select #bed (change)="selectedBed(bed.value,i.name)" >
+                                    <option value="0">--Click Bed --</option>  
+                                    <option  *ngFor="let bd of bedNo2BHK;let bed = index">{{bed+1}} </option>
+                                                                    
+                                  </select>
+                                
+                                  </ng-container>
+                                   <ng-container *ngIf="i.name=='3BHK'">  
+                                   
+                                    <select #bed (change)="selectedBed(bed.value,i.name)">
+                                        <option value="0">--Click Bed --</option>  
+                                        <option  *ngFor="let bedextra of bedNo3BHK;let bedcount = index">{{bedcount+1}} </option>
+                                                                        
+                                      </select>
+                                      </ng-container> 
+                              
+                            </div>
+                            <P style="font-size: smaller;"*ngIf="i.name== '2BHK' || i.name== '3BHK'">Rs.{{chargedData[0].charges}} per Bed per Day</P>
+                            <P style="font-size: smaller;"*ngIf="i.name== '2BHK' || i.name== '3BHK'">Maximum one extra bed for one room</P>
+                    <td   *ngIf="index === 0" [attr.rowspan]="roomData.length" style="border-color: #964B00;" > &nbsp;&nbsp;&nbsp;&nbsp;
+                        <!-- scope="col" rowspan="2" -->
+                        <label> {{sumUpWords}}<br> {{bhk3}} <br> {{occupancy}} <br> {{tot}}</label><br>
+                        <!-- <label > total=&#8377;&nbsp;{{totalValue}} </label> -->
+                        <button (click)="sendbookeddata(i)" style="color:#efc96a; background-color: #964B00;width:100%"
+                            class="btn btn-outline"><i class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+
+                    </td>
+                    </tr>
+                   
+                    <!-- <tr>
+                        <th  class="align-middle" style="border-color: #964B00;" scope="row">2</th>
+                        <td style="border-color: #964B00;">3BHK
+                    <tr style="border-color: #964B00;" scope="col">Reccommended for 2 adults, and 1 child</tr>
+                    <div class="row">
+                        <div class="col-4">
+                            <tr scope="col">
+                                <h4>Bed room:1</h4>
+                            </tr>
+                            <img src="assets/hotelrooms1.jpg" style="width:120px;height:120px; ">
+                        </div>
+                        <div class="col-4">
+                            <tr scope="col">
+                                <h4>Bed room:2</h4>
+                            </tr>
+                            <img src="assets/hotelrooms2.jpg" style="width:120px;height:120px; ">
+                        </div>
+                        <div class="col-4">
+                            <tr scope="col">
+                                <h4>Bed room:3</h4>
+                            </tr>
+
+                            <img src="assets/rooms3.jpg" style="width:120px;height:120px; ">
+                        </div>
+
+                    </div>
+
+                    </td>
+
+                    <td style="border-color: #964B00;" class="align-middle">3</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">1</td>
+                    <td style="border-color: #964B00;" class="align-middle">4500</td>
+                    <td style="border-color: #964B00;" class="align-middle">900 sq.ft</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">
+                        <div class="row pl-2">
+
+                            <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+
+                            <label class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="row pl-2">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus1()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="number">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus1()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">150rs/person</P>
+                       
+                        <div class="row pl-2">
+                            <input class="mr-1" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                            <label class="pt-2" for="breakfast"> Breakfast</label>&nbsp;
+                            <div class="row">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus3()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">200Rs/person</P>
+                        <div class="row pl-2">
+                        <input class="mr-1"type="checkbox" id="AC" name="AC" value="AC">
+                        <label class="mt-2" for="AC"> AC</label>
+                    </div>
+
+
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle">&nbsp;&nbsp;&nbsp; &nbsp;
+
+                        <button style="color:#efc96a; background-color: #964B00;" class="btn btn-outline"><i
+                                class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+
+
+                    </td>
+
+                    </tr> -->
+                    <!-- <tr>
+                        <th class="align-middle" style="border-color: #964B00;" scope="row">3</th>
+                        <td style="border-color: #964B00;">Splited room
+
+                    <tr style="border-color: #964B00;" scope="col">Reccommended for 2 adults, and 1 child</tr>
+                    <tr style="border-color: #964B00;" scope="col">
+                        <h4>Bed room:1 splited</h4>
+                    </tr>
+                    <tr style="border-color: #964B00;" scope="col">
+                        <h4>Bed room:2 splited</h4>
+                    </tr>
+                    <tr style="border-color: #964B00;" scope="col">
+                        <h4>Bed room:3 splited</h4>
+                    </tr>
+
+
+
+                    <br>
+                    <tr>common Kitchen and living room</tr>
+
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle">3</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">1</td>
+                    <td style="border-color: #964B00;" class="align-middle">1500</td>
+                    <td style="border-color: #964B00;" class="align-middle">300 sq.ft</td>
+
+                    <td style="border-color: #964B00;" class="align-middle">
+                        <div class="row pl-2">
+                            <input class="mr-1" type="checkbox" id="bed" name="bed" value="bed">
+                            <label class="pt-2" for="bed"> Bed</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="row pl-2">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus2()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="bednumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus2()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">150rs/person</P>
+                       
+                        <div class="row pl-2">
+                            <input class="mr-2" type="checkbox" id="breakfast" name="breakfast" value="breakfast">
+                            <label class="pt-2 " for="breakfast">Breakfast</label>&nbsp;
+                            <div class="row pl-2">
+
+                                <div class="form-check-inline">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button style="color:#efc96a; background-color: #964B00;" class="btn btn-sm outline"
+                                        (click)="plus3()"><i class="fa fa-plus"></i></button>&nbsp;&nbsp;
+
+                                    <div class="form-check-inline">
+                                        <input style="border-color:#efc96a; width: 50px;" type="text"
+                                            class="form-control" [(ngModel)]="foodnumber">&nbsp;&nbsp;
+
+                                        <div class="form-check-inline">
+                                            <button style="color:#efc96a; background-color: #964B00;"
+                                                class="btn btn-sm outline" (click)="minus3()"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <P style="font-size: smaller;">200Rs/person</P>
+                   <div class="row pl-2">
+                        <input class= "mr-1" type="checkbox" id="AC" name="AC" value="AC">
+                        <label  class= "mt-2" for="AC"> AC</label>
+                    </div>
+                    </td>
+                    <td style="border-color: #964B00;" class="align-middle"> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <button style="color:#efc96a; background-color: #964B00;" class="btn btn-outline"><i
+                                class="fa fa-arrow-right"></i></button>&nbsp;&nbsp;
+
+                    </td>
+
+
+                    </tr> -->
+                    
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- <app-bookingsummary [getroomdetails]="roomBookingSummary"></app-bookingsummary> -->
