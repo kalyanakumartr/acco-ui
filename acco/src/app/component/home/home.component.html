@@ -39,9 +39,13 @@
               <div class="col-lg-6">
                 <h5 style="color:#964B00">Check-In</h5>
                 <div class="row">
-                  <div class="col-lg-6">
-                    <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate"
-                      >
+                  <div class="col-lg-6 " #timestyle style="display: flex;gap: 5px;">
+                     <!-- <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate">  -->
+                    <input formControlName="checkIn" type="date" [(ngModel)]="Todaydate"   placeholder="Select Date">
+                   
+                      <select [(ngModel)]="selectedTime" >
+                      <option *ngFor="let time of times" [value]="time">{{ time }}</option>
+                    </select>
                   </div>
                   <!-- <div class="col-lg-6">
                     <input formControlName="checkInTime" type="time">
@@ -53,7 +57,10 @@
                 <h5 style="color:#964B00">Check-Out</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input formControlName="checkOut" type="datetime-local" [(ngModel)]="outDate" [min]="outDate">
+                     <input formControlName="checkOut" type="datetime-local" [(ngModel)]="outDate" [min]="outDate"> 
+                 
+                     
+
                   </div>
                   <!-- <div class="col-lg-6">
                   <input formControlName="checkOutTime" type="time">
@@ -70,9 +77,9 @@
                     <input formControlName="adult" class="adultInput" type="number" value="1" min="1" max="" />
                   </div>
                 </div>
-                <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('required','adult')"  
+                <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('required','adult')"
                   class="text-danger form-inline  mt-0">*adult is required</small>
-                  <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('pattern','adult')"  
+                <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('pattern','adult')"
                   class="text-danger form-inline  mt-0">*adult is invalid</small>
               </div>
 
@@ -80,18 +87,18 @@
                 <h5 style="color:#964B00">Child <small>(0-9years)</small></h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input  (change)="ValueEntered(childVal.value)" #childVal  (click)="clickon()" style="width:170px" formControlName="child" class="childInput" type="number" min="0"
-                      max="6" />
+                    <input (change)="ValueEntered(childVal.value)" #childVal (click)="clickon()" style="width:170px"
+                      formControlName="child" class="childInput" type="number" min="0" max="6" />
                     <ng-container *ngIf="visible">
                       <div class="card" style="width: 12rem;">
-                        <ul class="list-group list-group-flush" >
+                        <ul class="list-group list-group-flush">
                           <li *ngFor="let array of samArray;let i = index" class="list-group-item">Age of Child{{array}}
-                            <select style="margin-left: 10px;" #age (change)="onSelected(age.value,array)"  >
+                            <select style="margin-left: 10px;" #age (change)="onSelected(age.value,array)">
                               <!-- #age (change)="onSelected(age.value)" -->
                               <option>--</option>
-                              <option *ngFor="let item of childAge ;let z = index"  [value]="item">{{item}}</option>
-                           </select>
-                           <!-- <small><div class="btn-group dropright" >
+                              <option *ngFor="let item of childAge ;let z = index" [value]="item">{{item}}</option>
+                            </select>
+                            <!-- <small><div class="btn-group dropright" >
                               <button   class=" dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -103,10 +110,10 @@
                         </ul>
                       </div>
                     </ng-container>
-                    <small *ngIf="homeForm.controls['child'].dirty && homeForm.hasError('required','child')"  
-                  class="text-danger form-inline  mt-0">*child is required</small>
-                  <small *ngIf="homeForm.controls['child'].dirty && homeForm.hasError('max','child')"  
-                  class="text-danger form-inline  mt-0">*child is invalid</small>
+                    <small *ngIf="homeForm.controls['child'].dirty && homeForm.hasError('required','child')"
+                      class="text-danger form-inline  mt-0">*child is required</small>
+                    <small *ngIf="homeForm.controls['child'].dirty && homeForm.hasError('max','child')"
+                      class="text-danger form-inline  mt-0">*child is invalid</small>
                   </div>
                 </div>
               </div>
@@ -117,9 +124,10 @@
                 <h5 style="color:#964B00">RoomType</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <select formControlName="roomType" >
-                      <option value="0" >--Select--</option>
-                      <option   *ngFor="let type of visibleRoom" [value]="type.roomtypeid" [disabled]="type.roomtypeid == 2 ?!isDisabled:isDisabled" >{{ type.roomcategory}}</option>
+                    <select formControlName="roomType">
+                      <option value="0">--Select--</option>
+                      <option *ngFor="let type of visibleRoom" [value]="type.roomtypeid"
+                        [disabled]="type.roomtypeid == 2 ?!isDisabled:isDisabled">{{ type.roomcategory}}</option>
 
                     </select>
                   </div>
@@ -131,7 +139,7 @@
                 <h5 style="color:#964B00 ">Check Availability</h5>
                 <div class="row">
                   <div class="col-lg-6">
-                    <button [disabled]=homeForm.invalid type="submit"  class="btn btn-outline " 
+                    <button [disabled]=homeForm.invalid type="submit" class="btn btn-outline "
                       style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability </button>
                     <!-- <form [formGroup]="modalForm" (ngSubmit)="modalProcess()" >
                            

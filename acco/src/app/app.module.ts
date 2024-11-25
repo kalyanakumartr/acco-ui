@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,8 +59,16 @@ import { EditflatComponent } from './admincomponent/editflat/editflat.component'
 import { CustomercancelComponent } from './component/customercancel/customercancel.component';
 import { ViewcalendarComponent } from './admincomponent/viewcalendar/viewcalendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { MatFormFieldModule } from '@angular/material/form-field';
+// import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 
 
@@ -107,7 +115,8 @@ import interactionPlugin from '@fullcalendar/interaction';
     FoecheckouttimeComponent,
     EditflatComponent,
     CustomercancelComponent,
-    ViewcalendarComponent
+    ViewcalendarComponent,
+
     // MatchpasswordComponent,
    
   ],
@@ -128,7 +137,17 @@ import interactionPlugin from '@fullcalendar/interaction';
     MatButtonModule,
     NgOtpInputModule,
     FullCalendarModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule,
+    // provideNativeDateAdapter,
+
    
 
   ],
@@ -139,6 +158,7 @@ import interactionPlugin from '@fullcalendar/interaction';
     multi:true
   }
 ],
+ schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

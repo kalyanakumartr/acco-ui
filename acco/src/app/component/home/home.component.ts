@@ -9,11 +9,21 @@ import Swal from 'sweetalert2';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { BookingModel } from 'src/app/model/booking.model';
+import { DateTime } from 'luxon';
+import {ChangeDetectionStrategy} from '@angular/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { NativeDateAdapter } from '@angular/material/core';
+import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   homeForm!: FormGroup;
@@ -31,8 +41,13 @@ export class HomeComponent implements OnInit {
   Todaydate = "2023-03-12"
   outDate = "2023-03-12"
   select = null;
+  value!: Date;
   isDisabled: boolean = false;
-
+  isDropdownOpen: boolean = false;
+  selectedDate: Date = new Date();
+  // selectedTime: Date | null = null;
+  times: string[] = [];
+  selectedTime:any ="12:30 AM";
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
@@ -56,7 +71,11 @@ export class HomeComponent implements OnInit {
   roomBooking: any;
   ngOnInit(): void {
 
+    this.generateTimeIntervals(); 
+    this.setCurrentTime();
+
     this.showRoomType();
+    console.log("datenow",this.selectedDate)
     this.tokenvalue = localStorage.getItem('token');
     if (this.currentmonth < 10) {
       this.finalmonth = "0" + this.currentmonth;
@@ -74,9 +93,10 @@ export class HomeComponent implements OnInit {
       this.finalOutday = this.checkoutday;
     }
 
-    this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday + " " + this.currenthour + ":" + this.currentmin;
+    this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday
+    //  + " " + this.currenthour + ":" + this.currentmin;
     this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday + " " + this.currenthour + ":" + this.currentmin;
-
+    // this.selectedTime= this.currenthour + ":" + this.currentmin;
 
     this.homeForm = this.fb.group({
       checkIn: ['', Validators.required],
@@ -87,6 +107,8 @@ export class HomeComponent implements OnInit {
       child: ['0', [Validators.required, Validators.max(6)]],
       roomType: ['1', Validators.required],
     })
+
+    
 
     // for(let i=1;i<=9;i++){
     //   this.childAge.push(i);
@@ -325,5 +347,53 @@ export class HomeComponent implements OnInit {
       });
 
   }
+  
+  
 
+  generateTimeIntervals() {
+    const intervals: string[] = [];
+    const start = 0; // Start at 12:00 AM
+    const end = 24 * 60; // End at 11:59 PM
+    const step = 15; // Interval in minutes
+
+    for (let i = start; i < end; i += step) {
+      const hours = Math.floor(i / 60);
+      const minutes = i % 60;
+
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour clock
+      const formattedMinutes = minutes.toString().padStart(2, '0'); // Add leading zero
+
+      intervals.push(`${formattedHours}:${formattedMinutes} ${ampm}`);
+    }
+
+    this.times = intervals; // Assign to times array
+  }
+
+  setCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour clock
+    const roundedMinutes = Math.ceil(minutes / 15) * 15; // Round up to the nearest 15 minutes
+
+    const formattedMinutes =
+      roundedMinutes === 60
+        ? '00'
+        : roundedMinutes.toString().padStart(2, '0'); // Handle hour overflow
+
+    const formattedTime =
+      roundedMinutes === 60
+        ?`${(formattedHours % 12) + 1 || 1}:00 ${ampm}`
+        :`${formattedHours}:${formattedMinutes} ${ampm}`;
+
+    this.selectedTime = formattedTime;
+    console.log('time now',this.selectedTime)
+  }
+
+  toggleTimeDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 }

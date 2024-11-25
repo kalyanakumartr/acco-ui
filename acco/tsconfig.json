@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    // "typeRoots": ["node_modules/@types"],
+    // "types": ["@ng-bootstrap/ng-bootstrap"],
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
