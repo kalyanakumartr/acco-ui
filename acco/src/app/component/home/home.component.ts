@@ -10,9 +10,9 @@ import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { BookingModel } from 'src/app/model/booking.model';
 import { DateTime } from 'luxon';
-import {ChangeDetectionStrategy} from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NativeDateAdapter } from '@angular/material/core';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   selectedDate: Date = new Date();
   // selectedTime: Date | null = null;
   times: string[] = [];
-  selectedTime:any ="12:30 AM";
+  selectedTime: any = "12:30 AM";
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
@@ -71,11 +71,11 @@ export class HomeComponent implements OnInit {
   roomBooking: any;
   ngOnInit(): void {
 
-    this.generateTimeIntervals(); 
+    this.generateTimeIntervals();
     this.setCurrentTime();
 
     this.showRoomType();
-    console.log("datenow",this.selectedDate)
+    console.log("datenow", this.selectedDate)
     this.tokenvalue = localStorage.getItem('token');
     if (this.currentmonth < 10) {
       this.finalmonth = "0" + this.currentmonth;
@@ -95,20 +95,21 @@ export class HomeComponent implements OnInit {
 
     this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday
     //  + " " + this.currenthour + ":" + this.currentmin;
-    this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday + " " + this.currenthour + ":" + this.currentmin;
+    this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    // + " " + this.currenthour + ":" + this.currentmin;
     // this.selectedTime= this.currenthour + ":" + this.currentmin;
 
     this.homeForm = this.fb.group({
       checkIn: ['', Validators.required],
-      // checkInTime: ['', Validators.required],
+      checkInTime: ['', Validators.required],
       checkOut: ['', Validators.required],
-      // checkOutTime: ['', Validators.required],
+      checkOutTime: ['', Validators.required],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       child: ['0', [Validators.required, Validators.max(6)]],
       roomType: ['1', Validators.required],
     })
 
-    
+
 
     // for(let i=1;i<=9;i++){
     //   this.childAge.push(i);
@@ -242,6 +243,7 @@ export class HomeComponent implements OnInit {
 
 
   checkAvailability() {
+    console.log("formdata",this.homeForm.value);
     if (this.tokenvalue == null) {
 
       Swal.fire({
@@ -265,76 +267,76 @@ export class HomeComponent implements OnInit {
 
       // console.log("nnnnn", noofdays);
       // console.log("nnnnn", formData.checkIn);
-      var diff=OutDate.getTime() - inDate.getTime();
+      var diff = OutDate.getTime() - inDate.getTime();
       var days = Math.floor(diff / (60 * 60 * 24 * 1000));
       var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
       console.log("diff", diff);
       console.log("days", days);
       console.log("hours", hours);
 
-      if(hours>2){
-        var totalDays=days+1
-      }else{
-        var totalDays=days;
+      if (hours > 2) {
+        var totalDays = days + 1
+      } else {
+        var totalDays = days;
       }
-      console.log("toldays",totalDays)
-     if(days<=0){
+      console.log("toldays", totalDays)
+      if (days <= 0) {
         Swal.fire({
           text:
             " Please verify your checkin and checkout dates",
           // "<h5 style='color:red'>"++"</h5>"
           confirmButtonColor: '#964B00',
           background: '#efc96a',
-  
-  
+
+
         })
-      }else{
-      // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
-      this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut,formData.roomType).subscribe((result) => {
-        console.log(result);
-        this.roomData = result[0];
-        this.getroomlistservice.setData(this.roomData)
-        console.log("++++roomData:", this.roomData);
-        console.log("0 value:", this.roomData);
-        this.roomValue;
-        if(this.roomData == 0){
-          Swal.fire({
-            confirmButtonColor: '#964B00',
-            background: '#efc96a',
-            text: "We are Sorry! currently all rooms are occupied ",
-          });
-        }else{
-        
-        this.roomBooking = new BookingModel();
-        this.roomBooking.checkin = formData.checkIn,
-        this.roomBooking.checkout = formData.checkOut,
-        this.roomBooking.noofdays =  totalDays;
-        this.roomBooking.adults = formData.adult;
-        this.roomBooking.child = formData.child;
-        this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
-        this.roomBooking.roomtypeid = formData.roomType;
-        this.roomBooking.modeoftypeid = 1;
+      } else {
+        // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
+        this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((result) => {
+          console.log(result);
+          this.roomData = result[0];
+          this.getroomlistservice.setData(this.roomData)
+          console.log("++++roomData:", this.roomData);
+          console.log("0 value:", this.roomData);
+          this.roomValue;
+          if (this.roomData == 0) {
+            Swal.fire({
+              confirmButtonColor: '#964B00',
+              background: '#efc96a',
+              text: "We are Sorry! currently all rooms are occupied ",
+            });
+          } else {
+
+            this.roomBooking = new BookingModel();
+            this.roomBooking.checkin = formData.checkIn,
+              this.roomBooking.checkout = formData.checkOut,
+              this.roomBooking.noofdays = totalDays;
+            this.roomBooking.adults = formData.adult;
+            this.roomBooking.child = formData.child;
+            this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
+            this.roomBooking.roomtypeid = formData.roomType;
+            this.roomBooking.modeoftypeid = 1;
 
 
-        console.log("___+++", this.roomBooking)
-        this.bookingService.changeMessage(this.roomBooking);
-        this.router.navigate(["roomlogic",
-          // {
-          //   "days": noofdays,
-          //   "adult": formData.adult,
-          //   "cIn": formData.checkIn,
-          //   "cOut": formData.checkOut,
-          //   "child": formData.child,
-          //   "roomType": formData.roomType,
-          //   "childAge": this.ageValue
-          // }
-        ]);
+            console.log("___+++", this.roomBooking)
+            this.bookingService.changeMessage(this.roomBooking);
+            this.router.navigate(["roomlogic",
+              // {
+              //   "days": noofdays,
+              //   "adult": formData.adult,
+              //   "cIn": formData.checkIn,
+              //   "cOut": formData.checkOut,
+              //   "child": formData.child,
+              //   "roomType": formData.roomType,
+              //   "childAge": this.ageValue
+              // }
+            ]);
+
+          }
+        });
 
       }
-      });
-    
     }
-  }
   }
 
   showRoomType() {
@@ -347,14 +349,14 @@ export class HomeComponent implements OnInit {
       });
 
   }
-  
-  
+
+
 
   generateTimeIntervals() {
     const intervals: string[] = [];
     const start = 0; // Start at 12:00 AM
     const end = 24 * 60; // End at 11:59 PM
-    const step = 15; // Interval in minutes
+    const step = 30; // Interval in minutes
 
     for (let i = start; i < end; i += step) {
       const hours = Math.floor(i / 60);
@@ -386,11 +388,11 @@ export class HomeComponent implements OnInit {
 
     const formattedTime =
       roundedMinutes === 60
-        ?`${(formattedHours % 12) + 1 || 1}:00 ${ampm}`
-        :`${formattedHours}:${formattedMinutes} ${ampm}`;
+        ? `${(formattedHours % 12) + 1 || 1}:00 ${ampm}`
+        : `${formattedHours}:${formattedMinutes} ${ampm}`;
 
     this.selectedTime = formattedTime;
-    console.log('time now',this.selectedTime)
+    console.log('time now', this.selectedTime)
   }
 
   toggleTimeDropdown() {

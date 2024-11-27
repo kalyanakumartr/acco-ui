@@ -32,35 +32,31 @@
 
       </div>
       <div class="col-sm-6">
-        <h3 style="color:#964B00">Check Availability</h3>
-        <div class="panel-body p-0">
+        <h3 style="color:#964B00; margin-top: 10px;">Check Availability</h3>
+        <div class="panel-body p-4">
           <form [formGroup]="homeForm" (ngSubmit)="checkAvailability()">
             <div class="form-group pt-0 row justify-content-around">
-              <div class="col-lg-6">
+              <div class="col-md-6">
                 <h5 style="color:#964B00">Check-In</h5>
                 <div class="row">
-                  <div class="col-lg-6 " #timestyle style="display: flex;gap: 5px;">
-                     <!-- <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate">  -->
-                    <input formControlName="checkIn" type="date" [(ngModel)]="Todaydate"   placeholder="Select Date">
-                   
-                      <select [(ngModel)]="selectedTime" >
+                  <div class="col-lg-6" style="display: flex;gap: 5px;">
+                    <!-- <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate">  -->
+                    <input formControlName="checkIn" type="date" [(ngModel)]="Todaydate" placeholder="Select Date">
+                    <select formControlName="checkInTime" [(ngModel)]="selectedTime">
                       <option *ngFor="let time of times" [value]="time">{{ time }}</option>
                     </select>
                   </div>
-                  <!-- <div class="col-lg-6">
-                    <input formControlName="checkInTime" type="time">
-                  </div> -->
                 </div>
               </div>
 
-              <div class="col-lg-6">
+              <div class="col-md-6">
                 <h5 style="color:#964B00">Check-Out</h5>
                 <div class="row">
-                  <div class="col-lg-6">
-                     <input formControlName="checkOut" type="datetime-local" [(ngModel)]="outDate" [min]="outDate"> 
-                 
-                     
-
+                  <div class="col-lg-6" style="display: flex;gap: 5px;">
+                    <input formControlName="checkOut" type="date" [(ngModel)]="outDate" placeholder="Select Date">
+                    <select formControlName="checkOutTime" [(ngModel)]="selectedTime">
+                      <option *ngFor="let timess of times" [value]="timess">{{ timess }}</option>
+                    </select>
                   </div>
                   <!-- <div class="col-lg-6">
                   <input formControlName="checkOutTime" type="time">
@@ -84,7 +80,7 @@
               </div>
 
               <div class="col-lg-6">
-                <h5 style="color:#964B00">Child <small>(0-9years)</small></h5>
+                <h5 style="color:#964B00">Child (0-9years)</h5>
                 <div class="row">
                   <div class="col-lg-6">
                     <input (change)="ValueEntered(childVal.value)" #childVal (click)="clickon()" style="width:170px"
@@ -136,11 +132,11 @@
               </div>
 
               <div class="col-lg-6">
-                <h5 style="color:#964B00 ">Check Availability</h5>
+                <!-- <h5 style="color:#964B00 ">Check Availability</h5> -->
                 <div class="row">
                   <div class="col-lg-6">
-                    <button [disabled]=homeForm.invalid type="submit" class="btn btn-outline "
-                      style="color:#964B00 ;background-color: #efc96a;border-radius: 15px;">Check Availability </button>
+                    <button [disabled]=homeForm.invalid type="submit" #btn class="btn btn-outline ">Check Availability
+                    </button>
                     <!-- <form [formGroup]="modalForm" (ngSubmit)="modalProcess()" >
                            
                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"

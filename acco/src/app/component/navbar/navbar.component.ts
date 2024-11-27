@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
     
     this.tokenvalue=localStorage.getItem('token');
     console.log("navtoken",this.tokenvalue)
-    this. username = this.tokenvalue == null ? "Hi" : this.loginData.username;
+    this. username = this.tokenvalue == null ? "Welcome" : this.loginData.username;
     console.log("name:",this.username);
   }
 

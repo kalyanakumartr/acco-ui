@@ -1,71 +1,100 @@
-.outer{
+.outer {
     // height:100vh;
-     background-image: linear-gradient(45deg, #efc96a,white);
+    background-image: linear-gradient(45deg, #efc96a, white);
 }
+
 //css for container
-.container{
+.container {
     background-color: #ffff;
     border-radius: 0.3rem;
-    box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+    box-shadow: rgba(0, 0, 0, 0.08)0px 1px 8px;
     border-radius: 4px;
     width: 150%;
-    height:100%;
-    background-image: linear-gradient(45deg, #efc96a,white);
+    height: 100%;
+    background-image: linear-gradient(45deg, #efc96a, white);
 }
+
 //css for nav bar
 .navbar-light {
     background-color: #efc96a;
-    width:101%
+    width: 101%
 }
+
 // css for welcome to maduraservices
-#text{
-    color:#964B00;
-    font-style: italic;
+#text {
+    color: #964B00;
     font-weight: bold;
     font-size: 40px;
     text-align: center;
+    font-family: Georgia, serif;
+
 }
 
 // css for navbar button
-#btn{
-    color:#964B00;
-     background-color:#efc96a;
+#btn {
+    color: #964B00;
+    background-color: #efc96a;
+    font-family: Georgia, serif;
+    font-weight: bold;
+
     //  font-weight: bold
 }
+
 //css for user icon
-#icon{
-    background-image: linear-gradient(45deg, #efc96a,white);
+#icon {
+    background-image: linear-gradient(45deg, #efc96a, white);
 }
-.dropdown-item{
+
+.dropdown-item {
     color: #964B00;
 }
-#navbarDropdown{
-    color:#964B00
+
+#navbarDropdown {
+    color: #964B00
 }
-#btn:hover{
-    color:#f47a08
+
+#btn:hover {
+    color: #f47a08
 }
-a{
-    color: #964B00; 
-    font-weight: bold ;
+#greetings{
+    font-weight: bold;
     font-size: medium;
+    font-family: Georgia, serif;
+
 }
-a:hover{
-    color:#f47a08
+
+a {
+    color: #964B00;
+    font-weight: bold;
+    font-size: medium;
+    font-family: Georgia, serif;
 }
-span{
-    color: #964B00; 
+a { text-decoration: none; }
+
+
+a:hover {
+    color: #f47a08
 }
-span:hover{
-    color:#f47a08
+
+span {
+    color: #964B00;
 }
-i{
-    color: #964B00; 
+
+span:hover {
+    color: #f47a08
 }
-i:hover{
-    color:#f47a08
+
+i {
+    color: #964B00;
 }
-.pointer {cursor: pointer;}
+
+i:hover {
+    color: #f47a08
+}
+
+.pointer {
+    cursor: pointer;
+}
 
 
 // .nav-item {

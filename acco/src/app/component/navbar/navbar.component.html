@@ -12,7 +12,7 @@
 
         <span>
 
-          <a *ngIf="!authService.logged()"  routerLink="/login">Login</a>&nbsp;
+          <a *ngIf="!authService.logged()"  routerLink="/login"  class="pointer">Login</a>&nbsp;
           <a *ngIf="!authService.logged() "  (click)="signup()" class="pointer" >Signup</a>&nbsp;
           <a *ngIf="authService.logged()" (click)="logout()" class="pointer" >Logout</a>
 
@@ -47,7 +47,7 @@
           </li>
           <li class="nav-item active">
             <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/facitilies">FACITILIES</button>
+              routerLink="/facitilies">FACILITIES</button>
             <!-- <a class="nav-link" href="#" style="color:#964B00">Facilities</a> -->
           </li>
 
@@ -56,11 +56,11 @@
               routerLink="/tariff">TARIFF</button>
             <!-- <a class="nav-link " href="#" style="color:#964B00">Tariff</a> -->
           </li>
-          <li class="nav-item active">
+          <!-- <li class="nav-item active">
             <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
               routerLink="/fooditem">FOOD</button>
-            <!-- <a class="nav-link " href="#" style="color:#964B00">Food</a> -->
-          </li>
+             <a class="nav-link " href="#" style="color:#964B00">Food</a> 
+          </li> -->
           <li class="nav-item active">
             <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
               routerLink="/placetovisit">PLACES TO VISIT</button>
@@ -80,7 +80,7 @@
         <div class="nav-item dropdown  ">
           <span>{{username|titlecase}}
 
-            <i class="fa fa-fw fa-user"></i>
+            <i #greetings class="fa fa-fw fa-user"></i>
           </span>
 
 
