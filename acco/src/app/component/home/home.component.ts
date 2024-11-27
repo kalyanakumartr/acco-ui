@@ -311,8 +311,8 @@ export class HomeComponent implements OnInit {
           } else {
 
             this.roomBooking = new BookingModel();
-            this.roomBooking.checkin = formData.checkIn,
-              this.roomBooking.checkout = formData.checkOut,
+            this.roomBooking.checkin = checkingIn,
+              this.roomBooking.checkout = checkingOut,
               this.roomBooking.noofdays = totalDays;
             this.roomBooking.adults = formData.adult;
             this.roomBooking.child = formData.child;
