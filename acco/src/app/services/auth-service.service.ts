@@ -78,7 +78,7 @@ export class AuthServiceService {
               confirmButtonColor: '#964B00',
               background: '#efc96a',
             });
-            this.router.navigate(["mybookings"])
+            this.router.navigate(["home"])
           }
 
         } 
