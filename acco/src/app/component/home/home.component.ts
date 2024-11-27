@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   selectedDate: Date = new Date();
   // selectedTime: Date | null = null;
   times: string[] = [];
-  selectedTime: any = "12:30 AM";
+  selectedTime: any;
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
@@ -258,8 +258,11 @@ export class HomeComponent implements OnInit {
     } else {
       const formData = this.homeForm.value;
       console.log("chlid:", formData.child, formData.roomType, formData.checkIn, formData.checkOut)
-      var inDate = new Date(formData.checkIn);
-      var OutDate = new Date(formData.checkOut);
+      var checkingIn=`${formData.checkIn} ${formData.checkInTime}`;
+      var checkingOut=`${formData.checkOut} ${formData.checkOutTime}`;
+
+      var inDate = new Date(checkingIn);
+      var OutDate = new Date(checkingOut);
 
       // var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
 
@@ -273,7 +276,7 @@ export class HomeComponent implements OnInit {
       console.log("diff", diff);
       console.log("days", days);
       console.log("hours", hours);
-
+      console.log("checkincheckout",checkingIn,checkingOut);
       if (hours > 2) {
         var totalDays = days + 1
       } else {
@@ -292,7 +295,7 @@ export class HomeComponent implements OnInit {
         })
       } else {
         // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
-        this.getroomlistservice.roomlogic(formData.adult, formData.checkIn, formData.checkOut, formData.roomType).subscribe((result) => {
+        this.getroomlistservice.roomlogic(formData.adult, checkingIn, checkingOut, formData.roomType).subscribe((result) => {
           console.log(result);
           this.roomData = result[0];
           this.getroomlistservice.setData(this.roomData)
@@ -362,11 +365,10 @@ export class HomeComponent implements OnInit {
       const hours = Math.floor(i / 60);
       const minutes = i % 60;
 
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour clock
-      const formattedMinutes = minutes.toString().padStart(2, '0'); // Add leading zero
+      const formattedHours = hours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
 
-      intervals.push(`${formattedHours}:${formattedMinutes} ${ampm}`);
+    intervals.push(`${formattedHours}:${formattedMinutes}`);
     }
 
     this.times = intervals; // Assign to times array
@@ -377,19 +379,14 @@ export class HomeComponent implements OnInit {
     const hours = now.getHours();
     const minutes = now.getMinutes();
 
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour clock
-    const roundedMinutes = Math.ceil(minutes / 15) * 15; // Round up to the nearest 15 minutes
+    const roundedMinutes = Math.ceil(minutes / 30) * 30; // Round up to the nearest 15 minutes
 
-    const formattedMinutes =
-      roundedMinutes === 60
-        ? '00'
-        : roundedMinutes.toString().padStart(2, '0'); // Handle hour overflow
-
-    const formattedTime =
-      roundedMinutes === 60
-        ? `${(formattedHours % 12) + 1 || 1}:00 ${ampm}`
-        : `${formattedHours}:${formattedMinutes} ${ampm}`;
+    const adjustedHours = roundedMinutes === 60 ? (hours + 1) % 24 : hours;
+    const formattedMinutes = roundedMinutes === 60 ? '00' : roundedMinutes.toString().padStart(2, '0');
+  
+    // Format time in 24-hour format
+    const formattedTime = `${adjustedHours.toString().padStart(2, '0')}:${formattedMinutes}`;
+  
 
     this.selectedTime = formattedTime;
     console.log('time now', this.selectedTime)
