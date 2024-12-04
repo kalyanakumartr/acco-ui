@@ -3,16 +3,19 @@
 
     <div class="row app-container p-2">
       <div class="col-lg-10 offset-md-0  centerTest">
-        <img src="assets/index_logo.jpg" style="width:250px;height:100px; "> <span id="text" class="p-2">Welcome to
-          MaduraaServices</span>
-
-
-      </div>
+        <img src="assets/index_logo.jpg" style="width:250px;height:100px; "/>
+         <!-- <span id="text" class="p-2">Welcome to
+          MaduraaServices</span> -->
+           
+          <marquee width="50%" style="z-index: 2; position: absolute; left: 18px; top: 100px; font-size: 16pt;  height: 6a0px;">Welcome to
+            MaduraaServices</marquee>
+     </div>
+           
       <div style="flex: 1; text-align: right; vertical-align: bottom; margin-top:80px ">
 
         <span>
 
-          <a *ngIf="!authService.logged()"  routerLink="/login"  class="pointer">Login</a>&nbsp;
+          <a *ngIf="!authService.logged()"  routerLink="/login"  class="loginpointer">Login</a>&nbsp;
           <a *ngIf="!authService.logged() "  (click)="signup()" class="pointer" >Signup</a>&nbsp;
           <a *ngIf="authService.logged()" (click)="logout()" class="pointer" >Logout</a>
 
@@ -40,11 +43,11 @@
             <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button>
             <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
           </li>
-          <li class="nav-item active">
+<!--          <li class="nav-item active">
             <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/mybookings">BOOKINGS</button>
+              routerLink="/mybookings">BOOKINGS</button>-->
             <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
-          </li>
+      <!--    </li>-->
           <li class="nav-item active">
             <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
               routerLink="/facitilies">FACILITIES</button>
