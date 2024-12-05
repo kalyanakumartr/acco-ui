@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ChangeDetectorRef} from '@angular/core';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
-    public bookingService: BookingServiceService
-
+    public bookingService: BookingServiceService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   date1 = new Date();
@@ -357,13 +357,17 @@ export class HomeComponent implements OnInit {
   }
 
   showRoomType() {
-    this.roomTypeService.getRoomType()
+
+    this.roomTypeService.getRoomType(    )
       // .subscribe((res)=>{
-      .subscribe((result) => {
+
+      .subscribe((result) => { 
+        // this.cdr.detectChanges() 
         console.log("roomtype:", result);
         this.visibleRoom = result;
         console.log(this.visibleRoom);
       });
+      // this.cdr.detectChanges()
 
   }
 
