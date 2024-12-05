@@ -252,6 +252,7 @@ export class HomeComponent implements OnInit {
         // "<h5 style='color:red'>"++"</h5>"
         confirmButtonColor: '#964B00',
         background: '#efc96a',
+        
 
 
       })
@@ -290,9 +291,20 @@ export class HomeComponent implements OnInit {
           // "<h5 style='color:red'>"++"</h5>"
           confirmButtonColor: '#964B00',
           background: '#efc96a',
+          // confirmButtonText:'login',
 
-
+          
+          
         })
+
+      //  .then((result:any) => {
+      //           console.log('navigate check')
+      //       if (result.isConfirmed) {
+      //         // Use your navigation logic here
+      //         // window.location.href = '/login'; // Replace '/login' with your desired route
+      //          this.router.navigate(["login"]); 
+      //        }})
+        // this.router.navigate(["login"]);
       } else {
         // this.getroomlistservice.roomlist(formData.adult, formData.checkIn, formData.checkIn, formData.roomType).subscribe((res) => {
         this.getroomlistservice.roomlogic(formData.adult, checkingIn, checkingOut, formData.roomType).subscribe((result) => {
