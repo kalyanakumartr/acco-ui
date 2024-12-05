@@ -17,7 +17,8 @@ export class NavbarComponent implements OnInit {
   userDetails:any;
   loginData:any;
  
- 
+ homeurl=this.router.url;
+ isDisabled=true;
  tokenvalue:any;
  username:any;
   // getuser:GetUser[]=[];
@@ -25,7 +26,7 @@ export class NavbarComponent implements OnInit {
     private getUserService:GetUserServiceService,
     public authService:AuthServiceService){
       authService.apiData$.subscribe(data => this.loginData = data)
-      
+      console.log("URLM",this.router.url);
     }
   ngOnInit():void{
     
