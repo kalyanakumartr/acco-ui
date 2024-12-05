@@ -252,8 +252,10 @@ export class HomeComponent implements OnInit {
         // "<h5 style='color:red'>"++"</h5>"
         confirmButtonColor: '#964B00',
         background: '#efc96a',
-        
-
+      }).then((result)=>{
+        if(result.value){
+          this.router.navigate(["/login"])
+        }
 
       })
     } else {
