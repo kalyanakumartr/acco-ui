@@ -47,7 +47,7 @@
           </li>
           <!-- <a *ngIf="i.acheckin==null?!isDisabled:isDisabled" (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">/ Cancel</a> -->
           
-          <li *ngIf="homeurl=='/home' && tokenvalue!==null" [ngClass]="!isDisabled ? 'nav-item active' : 'nav-item disabled'">
+          <li *ngIf=" tokenvalue!==null" [ngClass]="!isDisabled ? 'nav-item active' : 'nav-item disabled'">
             <button   class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
               routerLink="/mybookings">BOOKINGS</button>
               

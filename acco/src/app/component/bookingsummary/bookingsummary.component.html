@@ -35,26 +35,26 @@
                         <td class="align-middle " style="border-color: #964B00;">Adults Count</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.adults}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="bookingData.child">
                         <td class="align-middle " style="border-color: #964B00;">Child Count</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.child}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="bookingData.bhk1count">
                         <td class="align-middle " style="border-color: #964B00;">1BHKCount
                         </td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.bhk1count}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="bookingData.bhk2count">
                         <td class="align-middle " style="border-color: #964B00;">2BHKCount
                         </td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.bhk2count}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="bookingData.bhk3count">
                         <td class="align-middle " style="border-color: #964B00;">3BHKCount
                         </td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.bhk3count}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="bookingData.extrabed">
                         <td class="align-middle " style="border-color: #964B00;">Extra Bed Count</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.extrabed}}</td>
                     </tr>
@@ -62,19 +62,19 @@
                         <td class="align-middle " style="border-color: #964B00;">Extra Bed Amount</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.totalbedamount}}</td>
                     </tr> -->
-                    <tr>
+                    <tr *ngIf="bookingData.discount" >
                         <td class="align-middle " style="border-color: #964B00;">Discount</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.discount}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="bookingData.maintenance">
                         <td class="align-middle " style="border-color: #964B00;">Maintenance</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.maintenance}}</td>
                     </tr>
-                     <tr>
+                     <tr >
                         <td class="align-middle " style="border-color: #964B00;">Price</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.price}}</td>
                     </tr> 
-                    <tr>
+                    <tr *ngIf="bookingData.tax">
                         <td class="align-middle " style="border-color: #964B00;">Tax</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.tax}}</td>
                     </tr>

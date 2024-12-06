@@ -252,12 +252,12 @@ export class HomeComponent implements OnInit {
   showRoomType() {
     this.roomTypeService.getRoomType()
       .subscribe((result) => {
-        // this.cdr.detectChanges() 
+        //  this.cdr.detectChanges() 
         console.log("roomtype:", result);
         this.visibleRoom = result;
         console.log(this.visibleRoom);
       });
-    // this.cdr.detectChanges()
+    //  this.cdr.detectChanges()
   }
 
   generateTimeIntervals() {
