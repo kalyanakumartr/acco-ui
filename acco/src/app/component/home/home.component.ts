@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
     const date1 = new Date();
     this.generateTimeIntervals();
     this.setCurrentTime();
-    this.showRoomType();
+   
     this.setCheckInOut(date1);
     console.log("datenow", this.selectedDate)
     this.tokenvalue = localStorage.getItem('token');
@@ -81,6 +81,9 @@ export class HomeComponent implements OnInit {
       child: ['0', [Validators.required, Validators.max(6)]],
       roomType: ['1', Validators.required],
     })
+    this.showRoomType();
+    console.log('Initial Room Type:', this.homeForm.get('roomType')?.value);
+    console.log('Form values:', this.homeForm.value);
   }
 
   setCheckInOut(date1:Date){
@@ -254,7 +257,19 @@ export class HomeComponent implements OnInit {
       .subscribe((result) => {
         //  this.cdr.detectChanges() 
         console.log("roomtype:", result);
+      
         this.visibleRoom = result;
+        // const defaultRoomType = this.visibleRoom.find((room:any) => room.roomtypeid === 1);
+        // if (defaultRoomType) {
+        //   setTimeout(() => {
+        //     this.homeForm.patchValue({ roomType: defaultRoomType.roomtypeid });
+        //     console.log('Default roomType set:', defaultRoomType.roomtypeid);
+        //   }, 0);
+        // }
+    
+        // Detect changes if necessary
+        this.cdr.detectChanges();
+      // });
         console.log(this.visibleRoom);
       });
     //  this.cdr.detectChanges()
