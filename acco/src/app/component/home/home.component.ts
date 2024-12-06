@@ -53,8 +53,12 @@ export class HomeComponent implements OnInit {
   tokenvalue: any;
   visibleRoom: any;
   roomBooking: any;
+  currentValue: any;
+  curDate:any;
+  curOutDate:any;
 
-  
+
+
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
@@ -62,12 +66,12 @@ export class HomeComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) { }
 
-  
+
   ngOnInit(): void {
     const date1 = new Date();
     this.generateTimeIntervals();
     this.setCurrentTime();
-   
+
     this.setCheckInOut(date1);
     console.log("datenow", this.selectedDate)
     this.tokenvalue = localStorage.getItem('token');
@@ -84,18 +88,54 @@ export class HomeComponent implements OnInit {
     this.showRoomType();
     console.log('Initial Room Type:', this.homeForm.get('roomType')?.value);
     console.log('Form values:', this.homeForm.value);
+//     this.currentValue = new BookingModel();
+//     this.currentValue = localStorage.getItem('currentValue');
+//     // const checkout = localStorage.getItem('checkout');
+//     // const checkintime = localStorage.getItem('checkintime');
+//     // const checkouttime = localStorage.getItem('checkouttime');
+//     // const adult = localStorage.getItem('adult');
+//     // const child = localStorage.getItem('child');
+//     // const roomtype = localStorage.getItem('roomtype');
+//      console.log("checkin",this.currentValue);
+//      const checkInCu = this.currentValue.checkIn;  // "2024-12-16"
+// const checkInTime = this.currentValue.checkInTime;  // "16:30"
+// const checkOut = this.currentValue.checkOut;  // "2024-12-17"
+// const checkOutTime = this.currentValue.checkOutTime;  // "16:30"
+// const adult = this.currentValue.adult;  // "1"
+// const child = this.currentValue.child;  // "0"
+// const roomType =this. currentValue.roomType;
+//     if (this.currentValue) {
+//       console.log("this.currentValue",checkInCu);
+//       this.Todaydate = checkInCu;
+//       this.outDate = this.currentValue.checkOut;
+//       this.selectedTime = this.currentValue.checkInTime;
+//       this.homeForm.patchValue({ adult: this.currentValue.adult, child: this.currentValue.child });
+//     }
+const storedValue = localStorage.getItem('currentValue');
+    if (storedValue) {
+      const formData = JSON.parse(storedValue);
+      console.log("formData",formData);
+      this.homeForm.patchValue(formData); 
+      this.Todaydate=formData.checkIn // Patch the form with the saved data
+      this.outDate=formData.checkOut
+    };
+  
+    localStorage.removeItem('currentValue');
+
+
+
   }
 
-  setCheckInOut(date1:Date){
-    console.log('1111',date1)
+  setCheckInOut(date1: Date) {
+    console.log('1111', date1)
 
-   const currentyear = date1.getUTCFullYear();
-   const currentmonth = date1.getUTCMonth() + 1;
-   const currentday = date1.getUTCDate();
-   const checkoutday = date1.getDate() + 1;
-   const currentmin = date1.getMinutes();
-   const currenthour = date1.getHours();
-   console.log('1111232',currentyear,currentmonth,currentday,checkoutday);
+    const currentyear = date1.getUTCFullYear();
+    const currentmonth = date1.getUTCMonth() + 1;
+    const currentday = date1.getUTCDate();
+    const checkoutday = date1.getDate() + 1;
+    const currentmin = date1.getMinutes();
+    const currenthour = date1.getHours();
+    console.log('1111232', currentyear, currentmonth, currentday, checkoutday);
 
     if (currentmonth < 10) {
       this.finalmonth = "0" + currentmonth;
@@ -112,10 +152,12 @@ export class HomeComponent implements OnInit {
     } else {
       this.finalOutday = checkoutday;
     }
-    
+
     this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
     this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
-  
+    this.curDate=this.Todaydate;
+    
+
   }
 
   getNextDate(date: string) {
@@ -127,7 +169,7 @@ export class HomeComponent implements OnInit {
 
     // Format the next date in YYYY-MM-DD format
     this.outDate = currentDate.toISOString().split('T')[0];
-
+    this.curOutDate=this.outDate
   }
 
   ReadMore: boolean = true
@@ -171,7 +213,19 @@ export class HomeComponent implements OnInit {
 
   checkAvailability() {
     console.log("formdata", this.homeForm.value);
+
     if (this.tokenvalue == null) {
+      const formValue = this.homeForm.value;
+      const jsondata = JSON.stringify(formValue);
+      localStorage.setItem('currentValue', jsondata);
+      // localStorage.setItem("checkin", formValue.checkIn);
+      // localStorage.setItem("checkout", formValue.checkOut);
+      // localStorage.setItem("checkintime", formValue.checkInTime);
+      // localStorage.setItem("checkouttime", formValue.checkOutTime);
+      // localStorage.setItem("adult", formValue.adult);
+      // localStorage.setItem("child", formValue.child);
+      // localStorage.setItem("roomtype", formValue.roomType);
+
       Swal.fire({
         text:
           " Please LOGIN if you are Existing user or SIGNUP for Newuser",
@@ -183,6 +237,7 @@ export class HomeComponent implements OnInit {
         }
       })
     } else {
+
       const formData = this.homeForm.value;
       console.log("chlid:", formData.child, formData.roomType, formData.checkIn, formData.checkOut)
       var checkingIn = `${formData.checkIn} ${formData.checkInTime}`;
@@ -248,7 +303,7 @@ export class HomeComponent implements OnInit {
 
   getCheckOut() {
     const checkinDate = this.homeForm.get('checkIn')?.value;
-    console.log("checkoutdate:",checkinDate );
+    console.log("checkoutdate:", checkinDate);
     this.getNextDate(checkinDate);
   }
 
@@ -257,19 +312,8 @@ export class HomeComponent implements OnInit {
       .subscribe((result) => {
         //  this.cdr.detectChanges() 
         console.log("roomtype:", result);
-      
         this.visibleRoom = result;
-        // const defaultRoomType = this.visibleRoom.find((room:any) => room.roomtypeid === 1);
-        // if (defaultRoomType) {
-        //   setTimeout(() => {
-        //     this.homeForm.patchValue({ roomType: defaultRoomType.roomtypeid });
-        //     console.log('Default roomType set:', defaultRoomType.roomtypeid);
-        //   }, 0);
-        // }
-    
-        // Detect changes if necessary
         this.cdr.detectChanges();
-      // });
         console.log(this.visibleRoom);
       });
     //  this.cdr.detectChanges()

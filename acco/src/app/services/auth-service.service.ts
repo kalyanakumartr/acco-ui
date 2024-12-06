@@ -113,7 +113,7 @@ export class AuthServiceService {
   logout() {
 
     localStorage.removeItem('token');
-    //  this.router.navigate(["home"])
+      this.router.navigate(["home"])
   }
 }
 

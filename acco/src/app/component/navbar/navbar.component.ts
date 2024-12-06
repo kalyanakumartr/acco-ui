@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 // import { GetUser } from 'src/app/model/getuser.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { GetUserServiceService } from 'src/app/services/get-user-service.service';
@@ -35,6 +35,7 @@ export class NavbarComponent implements OnInit {
     console.log("navtoken",this.tokenvalue)
     this. username = this.tokenvalue == null ? "Welcome" : this.loginData.username;
     console.log("name:",this.username);
+   
   }
 
   signup(){
@@ -48,8 +49,12 @@ export class NavbarComponent implements OnInit {
   //    console.log("++","logout sucessfully")
      
      this.authService.logout();
-       this.router.navigate(["home"]) 
-
+    //  window.location.reload(); 
+    this.router.navigate(["/home"]).then(() => {
+      window.location.reload();
+    });
+      //  this.router.navigate(["home"]) 
+      
     }
   
 }
