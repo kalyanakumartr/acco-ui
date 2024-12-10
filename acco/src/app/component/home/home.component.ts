@@ -54,8 +54,8 @@ export class HomeComponent implements OnInit {
   visibleRoom: any;
   roomBooking: any;
   currentValue: any;
-  curDate:any;
-  curOutDate:any;
+  minDate:any;
+  maxDate:any;
 
 
 
@@ -155,7 +155,8 @@ const storedValue = localStorage.getItem('currentValue');
 
     this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
     this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
-    this.curDate=this.Todaydate;
+    this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+    this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
     
 
   }
@@ -169,7 +170,7 @@ const storedValue = localStorage.getItem('currentValue');
 
     // Format the next date in YYYY-MM-DD format
     this.outDate = currentDate.toISOString().split('T')[0];
-    this.curOutDate=this.outDate
+   
   }
 
   ReadMore: boolean = true

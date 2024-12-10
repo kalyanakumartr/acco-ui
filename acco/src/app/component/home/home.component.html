@@ -41,7 +41,7 @@
                 <div class="row">
                   <div class="col-lg-6" style="display: flex;gap: 5px;">
                      <!-- <input formControlName="checkIn" type="datetime-local" [(ngModel)]="Todaydate" [min]="Todaydate">   -->
-                     <input formControlName="checkIn" type="date" [(ngModel)]="curDate" [min]="Todaydate" (change)="getCheckOut()" placeholder="Select Date">
+                     <input formControlName="checkIn" type="date" [(ngModel)]="Todaydate" [min]="minDate" (change)="getCheckOut()" placeholder="Select Date">
                     <select formControlName="checkInTime" [(ngModel)]="selectedTime">
                       <option *ngFor="let time of times" [value]="time">{{ time }}</option>
                     </select> 
