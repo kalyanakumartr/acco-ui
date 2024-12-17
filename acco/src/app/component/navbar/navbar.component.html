@@ -1,108 +1,77 @@
-<div class="outer">
-  <div class="container mt-2">
-
-    <div class="row app-container p-2">
-      <div class="col-lg-10 offset-md-0  centerTest">
-        <img src="assets/index_logo.jpg" style="width:250px;height:100px; "/>
-                    <span>
-          <marquee width="68%" style="z-index: 2; position: absolute; right: 30px; top: 35px; font-size: 16pt;  height: 6a0px;">
-             {{marquee}}</marquee>
-          </span>
-          <!-- Welcome to  MaduraaServices -10% off for Margali Utasavam. -->
-          
-     </div>
-    
-      <div style="flex: 1; text-align: right; vertical-align: bottom; margin-top:80px ">
-        <span id="text" class="p-2" style=" position : absolute; left: 1000px; top: 20px; font-size: 12pt;">24/7 HelpLine <br>Ph:+91 73738 26373</span> 
-
-
-<span>
-          <a *ngIf="!authService.logged()"  routerLink="/login"  class="loginpointer">Login</a>&nbsp;
-          <a *ngIf="!authService.logged() "  (click)="signup()" id="signup" class="pointer" >Signup</a>&nbsp;
-          <a *ngIf="authService.logged()" (click)="logout()" id="logout" class="pointer" >Logout</a>
-
-        </span>
-
-      </div>
-
-
-
-
+<div class="container-fluid p-3" style="background: linear-gradient(to right, #f5d28a, #fff7e6);">
+  <!-- Top Row: Logo, Marquee, and Helpline -->
+  <div class="row align-items-center justify-content-between">
+    <!-- Logo Section -->
+    <div class="col-lg-2 col-md-3 col-12 text-center text-md-left mb-2 mb-md-0">
+      <img src="assets/index_logo.jpg" class="img-fluid" alt="Logo" style="max-height: 80px;">
     </div>
 
+    <!-- Marquee Section -->
+    <div class="col-lg-7 col-md-6 col-12 text-center mb-2 mb-md-0">
+      <marquee behavior="scroll" direction="left">
+        Welcome to MaduraaServices - 10% off for Margali Utasavam.
+      </marquee>
+    </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light ">
-      <!-- <img src="assets/logo.jpg" style= "width:120px;height:40px"> -->
-      <!-- <a class="navbar-brand"></a>      -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Helpline Section -->
+    <div class="col-lg-3 col-md-3 col-12 text-md-right text-center mb-2 mb-md-0">
+      <span >
+        24/7 HelpLine<br>
+        Ph: +91 73738 26373
+      </span>
+      <!-- Login/Signup/Logout Buttons -->
+      <div class="mt-2">
+        <button *ngIf="!authService.logged()" routerLink="/login" class="btn  btn-sm mx-1">Login</button>
+        <button *ngIf="!authService.logged()" (click)="signup()" class="btn  btn-sm mx-1">Signup</button>
+        <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm mx-1">Logout</button>
+      </div>
+    </div>
+  </div>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button>
-            <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
-          </li>
-          <!-- <a *ngIf="i.acheckin==null?!isDisabled:isDisabled" (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">/ Cancel</a> -->
-          
-          <li *ngIf=" tokenvalue!==null" [ngClass]="!isDisabled ? 'nav-item active' : 'nav-item disabled'">
-            <button   class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/mybookings">BOOKINGS</button>
-              
-            <!-- <a class="nav-link" routerLink="/home" style="color:#964B00">Home <span class="sr-only">(current)</span></a> -->
-      <!--    </li>-->
-          <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/facitilies">FACILITIES</button>
-            <!-- <a class="nav-link" href="#" style="color:#964B00">Facilities</a> -->
-          </li>
+  <!-- Navigation Section -->
+  <div class="row mt-1">
+    <div class="col-12" >
+      <!-- Navbar Section -->
+      <nav class="navbar navbar-expand-lg  ">
+        <!-- Toggler Button for Mobile View -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/tariff">TARIFF</button>
-            <!-- <a class="nav-link " href="#" style="color:#964B00">Tariff</a> -->
-          </li>
-          <!-- <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/fooditem">FOOD</button>
-             <a class="nav-link " href="#" style="color:#964B00">Food</a> 
-          </li> -->
-          <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit"
-              routerLink="/placetovisit">PLACES TO VISIT</button>
-            <!-- <a class="nav-link " href="#" style="color:#964B00">Places to Visit</a> -->
-          </li>
-          <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit">TRAVEL</button>
-            <!-- <a class="nav-link " href="#" style="color:#964B00">Travel</a> -->
-          </li>
-          <li class="nav-item active">
-            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/contactus">CONTACT
-              US</button>
-            <!-- <a class="nav-link " href="#" style="color:#964B00">Contact Us</a> -->
-          </li>
-        </ul>
-
-        <div class="nav-item dropdown  ">
-          <span>{{username|titlecase}}
-
-            <i #greetings class="fa fa-fw fa-user"></i>
-          </span>
-
-
-          <!-- {{loginData.username| uppercase}} -->
-
-
-
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav text-center">
+            <li class="nav-item mx-2">
+              <a class="btn btn-sm" routerLink="/home">HOME</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="btn btn-sm" routerLink="/bookings">BOOKINGS</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="btn btn-sm" routerLink="/facilities">FACILITIES</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="btn btn-sm" routerLink="/tariff">TARIFF</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="btn  btn-sm" routerLink="/placetovisit">PLACES TO VISIT</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="btn  btn-sm" routerLink="/travel">TRAVEL</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="btn btn-sm" routerLink="/contactus">CONTACT US</a>
+            </li>
+          </ul>
         </div>
 
-
-
-      </div>
-    </nav>
-
-
+        <!-- User Icon Section -->
+        <div class="d-flex align-items-center ml-auto mr-3">
+          <i class="fa fa-user text-warning" ></i>
+          <span class="ml-2 font-weight-bold">{{ username | titlecase }}</span>
+        </div>
+      </nav>
+    </div>
   </div>
 </div>

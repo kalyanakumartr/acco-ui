@@ -6,3 +6,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --primary:linear-gradient(45deg, #efc96a, white);
+    --secondary: #efc96a;
+    --text-color: #964B00;
+    --hover: #f47a08;
+  }
+  
