@@ -1,12 +1,12 @@
 <div class="outer">
     <app-navbar></app-navbar>
-    <div class="container mt-0">
-        <img src="assets/imagescontact.jpg" style="width:100%;height:300px; ">
-    </div>
+    <div class="container-fluid">
+        <img src="assets/imagescontact.jpg" class="d-block w-100 shadowed-image" alt="Slide 1" style="height: 400px;">
+    
 
 <div>
     <div class="row">
-        <div class="col-sm-6" style="margin-left: 5%;margin-top: 3%;font-weight: bold;">
+        <div class="col-sm-6 mx-5 my-3 fw-bolder" >
             <h1>Get In Touch</h1>
             <h3>Maduraa Serviced Apartment is one of the finest accommodation service providers with fully furnished 2 & 3 BHK flats in Trichy targeting families, tourists & business communities since 2012.</h3>
             <div>
@@ -16,32 +16,32 @@
             </div>
             <div>
                 
-                <a [href]="'https://www.facebook.com/people/Maduraa-Service-Apartments/100069674340814/' " target="_blank">  <i style="font-size:25px;color:#964B00;margin-right: 5%;" class="fab fa-facebook-square" ></i></a>
-                <a [href]="'https://twitter.com/maduraatrichy' " target="_blank"> <i style="font-size:25px;color:#964B00;margin-right: 5%;" class="fab fa-twitter-square" ></i></a>
-                <a [href]="'https://www.linkedin.com/in/maduraa-trichy-45550b141/' " target="_blank">  <i style="font-size:25px;color:#964B00;margin-right: 5%;" class="fab fa-linkedin-square" ></i></a>
-               <a [href]="'https://api.whatsapp.com' " target="_blank"> <i  style="font-size:25px;color:#964B00;margin-right: 5%;" class="fab fa-whatsapp-square" ></i></a>
+                <a [href]="'https://www.facebook.com/people/Maduraa-Service-Apartments/100069674340814/' " target="_blank">  <i  class="fab fa-facebook-square" ></i></a>
+                <a [href]="'https://twitter.com/maduraatrichy' " target="_blank"> <i  class="fab fa-twitter-square" ></i></a>
+                <a [href]="'https://www.linkedin.com/in/maduraa-trichy-45550b141/' " target="_blank">  <i  class="fab fa-linkedin-square" ></i></a>
+               <a [href]="'https://api.whatsapp.com' " target="_blank"> <i   class="fab fa-whatsapp-square" ></i></a>
                 <!-- <a [href]="'http://example.org/?test=' ">whatsapp</a> -->
                 <!-- https://api.whatsapp.com/send?phone=+910000000000 -->
             </div>
            
     </div>
-    <div style="margin-left: 5%;margin-top: 3%;font-weight: bold;">
+    <div  class="mx-5 my-3 fw-bolder">
         <h1>Contact Detail</h1>
     <div>
         <div class="row">
-        <i style="font-size:25px;color:#964B00;margin-right: 5%;" class="fas fa-map-marker-alt" ></i>
+        <i  class="fas fa-map-marker-alt" ></i>
         <h2>Address</h2>
         <h4 style="margin-left: 14%;">No.37, Bharathi Street, Thiruvanai Kovil,<br>
             Trichy - 620005, Tamil Nadu, India</h4>
     </div> 
     <div class="row">
-        <i style="font-size:25px;color:#964B00;margin-right: 5%;" class="fas fa-phone" ></i>
+        <i class="fas fa-phone" ></i>
         <h2>Phone</h2><br>        
         <h4 style="margin-left: 14%;">(+91) 0431 4030469 , 223 0470<br>
             (+91) 7373 82 6373</h4>         
     </div>
     <div class="row">
-        <i style="font-size:25px;color:#964B00;margin-right: 5%;" class="fa fa-envelope" ></i>
+        <i  class="fa fa-envelope" ></i>
         <h2>Email</h2><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
@@ -52,12 +52,12 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6" style="margin-left: 5%;color:#964B00;margin-top: 3%;margin-bottom: 20px; font-weight: bold;background-color: #fce2a5;">
-      <h2 style="margin-top: 3%;">Send Us A Message</h2>
+    <div class="col-sm-6 mx-5 my-3 mb-3 text-brown" >
+      <h2  class="my-3">Send Us A Message</h2>
       <h4>Contact Us <br> Fields marked with an * are required</h4>
       <form [formGroup]="contactForm" (ngSubmit)="contactFormProcess()">
         <div class="form-group">
-          <label >Name<span class="text-danger" style="margin-left: 3%;">*</span></label>
+          <label >Name<span class="text-danger mx-1" >*</span></label>
           <input formControlName="name" type="text" class="form-control"  >
           <small *ngIf="contactForm.controls['name'].dirty && contactForm.hasError('required','name')"  
                               class="text-danger form-inline  mt-0">*Name is required</small>
@@ -65,7 +65,7 @@
                               class="text-danger form-inline  mt-0">*Name is invalid</small>
         </div>
         <div class="form-group">
-          <label >Email<span class="text-danger" style="margin-left: 3%;">*</span></label>
+          <label >Email<span class="text-danger mx-1" >*</span></label>
           <input formControlName="email"type="text" class="form-control" >
           <small *ngIf="contactForm.controls['email'].dirty && contactForm.hasError('required','email')"  
                               class="text-danger form-inline  mt-0">*Email is required</small>
@@ -89,15 +89,15 @@
                               class="text-danger form-inline  mt-0">*City is invalid</small>
           </div>
           <div class="form-group">
-            <label >Message<span class="text-danger" style="margin-left: 3%;">* </span></label>
+            <label >Message<span class="text-danger mx-1" >* </span></label>
             <textarea  formControlName="message" class="form-control"></textarea>
             <small *ngIf="contactForm.controls['message'].dirty && contactForm.hasError('required','message')"  
                               class="text-danger form-inline  mt-0">*Messsage is required</small>
           <small *ngIf="contactForm.controls['message'].dirty && contactForm.hasError('pattern','message')"  
                               class="text-danger form-inline  mt-0">*Messsage is invalid</small>
           </div>
-          <div  class="text-center">
-            <button style="margin-bottom: 30px;"  type="submit" class="btn btn-light btn-elevate mr-2 " >
+          <div  class="text-center  my-3">
+            <button   type="submit" class="btn btn-light btn-elevate mr-2 " >
                 Submit</button>
               
            </div> 
@@ -107,10 +107,11 @@
       </div>
 
     </div>
-   <div  style="margin-left: 3%;margin-top: 3%;">
+   <div  class="mx-5 my-3">
     Want to place map
    </div> 
 </div>
 
+</div>
 </div>
 </div>

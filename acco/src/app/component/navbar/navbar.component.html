@@ -32,7 +32,8 @@
   <div class="row mt-1">
     <div class="col-12" >
       <!-- Navbar Section -->
-      <nav class="navbar navbar-expand-lg  ">
+      <nav class="navbar navbar-expand-lg navbar-light  ">
+      
         <!-- Toggler Button for Mobile View -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,11 +46,11 @@
             <li class="nav-item mx-2">
               <a class="btn btn-sm" routerLink="/home">HOME</a>
             </li>
-            <li class="nav-item mx-2">
-              <a class="btn btn-sm" routerLink="/bookings">BOOKINGS</a>
+            <li class="nav-item mx-2" *ngIf=" tokenvalue!==null" [ngClass]="!isDisabled ? 'nav-item active' : 'nav-item disabled'">
+              <a  class="btn btn-sm" routerLink="/mybookings">BOOKINGS</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="btn btn-sm" routerLink="/facilities">FACILITIES</a>
+              <a class="btn btn-sm" routerLink="/facitilies">FACILITIES</a>
             </li>
             <li class="nav-item mx-2">
               <a class="btn btn-sm" routerLink="/tariff">TARIFF</a>

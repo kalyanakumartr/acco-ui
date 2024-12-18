@@ -1,6 +1,6 @@
 <div class="outer">
     <app-navbar></app-navbar>
-    <div class="container mt-0">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light ">
            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +27,10 @@
                     <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/tariff">TARIFF</button> -->
                   <a class="nav-link " href="#" style="color:#964B00" routerLink="/changepassword">Change Password</a>
                 </li>
+                <li class="nav-item active">
+                  <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" style="color:#964B00;background-color:#efc96a;margin-left: 500px;" id="btn" type="submit" routerLink="/home">Book</button> -->
+                  <a class="nav-link " href="#" style="color:#964B00;" routerLink="/home">Home</a>
+                </li>
                   
               </ul>
               
@@ -34,24 +38,24 @@
             
             </div>
           </nav>
-          <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Booking History</h4>
+          <h4 class="mt-0 pt-2 " >Booking History</h4>
           
-          <div >
+          <div class="table-responsive" >
             <table class="table table-borderless text-center" >
               <thead>
                 <tr>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">BookingId</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">From</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">To</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">Adult</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">Child</th>
-                  <th class="align-middle "style=" color:#964B00;" colspan="3">Flat Type</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">FlatNo</th>
-                  <th class="align-middle "style=" color:#964B00;" rowspan="2">Totalcost</th>
+                  <th class="align-middle " rowspan="2">BookingId</th>
+                  <th class="align-middle " rowspan="2">From</th>
+                  <th class="align-middle " rowspan="2">To</th>
+                  <th class="align-middle " rowspan="2">Adult</th>
+                  <th class="align-middle " rowspan="2">Child</th>
+                  <th class="align-middle " colspan="3">Flat Type</th>
+                  <th class="align-middle "rowspan="2">FlatNo</th>
+                  <th class="align-middle " rowspan="2">Totalcost</th>
                   
                   <!-- <th style="border-color: #964B00; color:#964B00;" scope="col">Option</th> -->
                 </tr>
-                <tr style="color: #964B00;">
+                <tr >
                     
                   <th>1BHK</th>
                   <th>2BHK</th>
@@ -60,17 +64,17 @@
               </tr>
               </thead>
               <tbody>
-                <tr style="color: #964B00;" *ngFor="let i of dataObs$ | async">
-                  <td class="align-middle " style="border-color: #964B00;">{{i.bookingid}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.adults}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.child}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.bhk1count}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.bhk2count}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.bhk3count}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.roomid}}
-                  <td class="align-middle " style="border-color: #964B00;">{{i.totalprice}}
+                <tr  *ngFor="let i of dataObs$ | async">
+                  <td class="align-middle " >{{i.bookingid}}
+                  <td class="align-middle " >{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
+                  <td class="align-middle " >{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
+                  <td class="align-middle " >{{i.adults}}
+                  <td class="align-middle " >{{i.child}}
+                  <td class="align-middle " >{{i.bhk1count}}
+                  <td class="align-middle " >{{i.bhk2count}}
+                  <td class="align-middle " >{{i.bhk3count}}
+                  <td class="align-middle " >{{i.roomid}}
+                  <td class="align-middle " >{{i.totalprice}}
                  
                   <!-- <td class="align-middle " style="border-color: #964B00;"> <a >View/</a><a  (click)="cancelBooking(i.bookingid)">Cancel</a> -->
                     

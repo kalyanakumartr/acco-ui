@@ -1,6 +1,6 @@
 <div class="outer">
     <app-navbar></app-navbar>
-    <div class="container mt-0">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +29,14 @@
                         <a class="nav-link " href="#" style="color:#964B00" routerLink="/changepassword">Change
                             Password</a>
                     </li>
+                    <li class="nav-item active">
+                        <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" style="color:#964B00;background-color:#efc96a;margin-left: 500px;" id="btn" type="submit" routerLink="/home">Book</button> -->
+                        <a class="nav-link " href="#" style="color:#964B00;" routerLink="/home">Home</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-        <h4 class="mt-0 pt-2 " style="color: #964B00; text-align: left;">Update Your Details</h4>
+        <h4 class="mt-0 pt-2 " >Update Your Details</h4>
         <div class="panel-body p-3">
             <form [formGroup]="updateForm" (ngSubmit)="updateProcess()">
                 <div class="form-group pt-0 row justify-content-around">
@@ -40,8 +44,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">FirstName<span class="text-danger">*</span></label>
-                                <input  formControlName="firstname" type="text" placeholder="FirstName">
+                                <label >FirstName<span class="text-danger">*</span></label>
+                                <input formControlName="firstname" type="text" placeholder="FirstName">
                             </div>
                         </div>
                     </div>
@@ -49,8 +53,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">LastName<span class="text-danger">*</span></label>
-                                <input formControlName="lastname"  type="text" placeholder="Lastname">
+                                <label >LastName<span class="text-danger">*</span></label>
+                                <input formControlName="lastname" type="text" placeholder="Lastname">
                             </div>
                         </div>
                     </div>
@@ -60,8 +64,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">Address1<span class="text-danger">*</span></label>
-                                <input formControlName="address1"  type="text" placeholder="Address1">
+                                <label >Address1<span class="text-danger">*</span></label>
+                                <input formControlName="address1" type="text" placeholder="Address1">
                             </div>
                         </div>
                     </div>
@@ -69,8 +73,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">Address2</label>
-                                <input formControlName="address2"  type="text" placeholder="Address2">
+                                <label >Address2</label>
+                                <input formControlName="address2" type="text" placeholder="Address2">
                             </div>
                         </div>
                     </div>
@@ -80,8 +84,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">City<span class="text-danger">*</span></label>
-                                <input formControlName="city"  type="text" placeholder="City">
+                                <label >City<span class="text-danger">*</span></label>
+                                <input formControlName="city" type="text" placeholder="City">
                             </div>
                         </div>
                     </div>
@@ -89,8 +93,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00 ">State</label>
-                                <input formControlName="state"  type="text" placeholder="State">
+                                <label >State</label>
+                                <input formControlName="state" type="text" placeholder="State">
                             </div>
                         </div>
                     </div>
@@ -100,8 +104,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">Country<span class="text-danger">*</span></label>
-                                <input formControlName="country"  type="text" placeholder="Country">
+                                <label >Country<span class="text-danger">*</span></label>
+                                <input formControlName="country" type="text" placeholder="Country">
                             </div>
                         </div>
                     </div>
@@ -109,8 +113,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">Phonenumber <span class="text-danger">*</span></label>
-                                <input formControlName="phonenumber"  type="text" placeholder="Phonenumber">
+                                <label >Phonenumber <span class="text-danger">*</span></label>
+                                <input formControlName="phonenumber" type="text" placeholder="Phonenumber">
                             </div>
                         </div>
                     </div>
@@ -120,8 +124,8 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">Email<span class="text-danger">*</span></label>
-                                <input  formControlName="email"  type="text" placeholder="Email">
+                                <label >Email<span class="text-danger">*</span></label>
+                                <input formControlName="email" type="text" placeholder="Email">
                             </div>
                         </div>
                     </div>
@@ -129,21 +133,21 @@
                         <div class="input-group mb-1">
                             <div class="input-field">
                                 <!-- <span class="fa fa-user p-2" style="color:#964B00"></span> -->
-                                <label style="color:#964B00">Username <span class="text-danger">*</span></label>
-                                <input formControlName="username"  type="text" placeholder="Username">
+                                <label >Username <span class="text-danger">*</span></label>
+                                <input formControlName="username" type="text" placeholder="Username">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div  class="text-center">
-                    <button  type="submit" class="btn btn-light btn-elevate mr-2 " >
+                <div class="text-center">
+                    <button type="submit" class="btn btn-light btn-elevate mr-2 ">
                         Update</button>
-                      <!-- <button type="button" class="btn btn-light btn-elevate mr-2  " onclick="reset()">
+                    <!-- <button type="button" class="btn btn-light btn-elevate mr-2  " onclick="reset()">
                       Reset 
                     </button>-->
-                   </div>  
+                </div>
             </form>
-            
-            </div>
+
+        </div>
     </div>
 </div>

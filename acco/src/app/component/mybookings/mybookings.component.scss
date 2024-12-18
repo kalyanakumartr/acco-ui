@@ -1,15 +1,13 @@
 .outer{
-    // height:100vh;
-     background-image: linear-gradient(45deg, #efc96a,white);
+  // height:100vh;
+   background-image: var(--primary);
 }
-.container{
-    background-color: #ffff;
-    border-radius: 0.3rem;
-    box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
-    border-radius: 4px;
-    width: 100%;
-    height:100%;
-    background-image: linear-gradient(45deg, #efc96a,white);
+.container-fluid{
+  background-color: var(--primary);
+  border-radius: 0.3rem;
+  box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+  border-radius: 4px;
+  background-color: var(--primary);
 }
 td{
     // text-decoration: underline;
@@ -17,20 +15,30 @@ td{
   }
   td a:hover{
     cursor: pointer;
-    color:  #f47a08;
+    color:  var(--hover);
+
   }
   table{
-    color:#964B00;
+    color:var(--text-color);
     //  background-color: #efc96a;
      width:100%
     // background-image: linear-gradient(45deg, #efc96a,white);
   }
   th{
-    color:#964B00;
+    color:var(--text-color);
   }
-//   ng-container{
-//     background-image: linear-gradient(45deg, #efc96a,white);
-//   }
+
 mat-paginator{
-  background-color: #efc96a;
+  background-color: var(--secondary);
+}
+
+h4{
+  color: var(--text-color); text-align: left
+}
+tr,th{
+  color:var(--text-color);
+  
+}
+td{
+  border-color: var(--text-color);
 }

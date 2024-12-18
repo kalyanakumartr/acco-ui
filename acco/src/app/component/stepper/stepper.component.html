@@ -1,12 +1,12 @@
 <div class="outer">
     <app-navbar></app-navbar>
-    <div class="container mt-0">
+    <div class="container-fluid">
         <div class="row ">
             <div class="col-sm-6 mt-2">
-                <h2 style="color:#964B00; font-weight:bold ;">Verification and Payment</h2>
+                <h2  class="text-color" >Verification and Payment</h2>
             </div>
         </div>
-        <form [formGroup]="Emailcheck" style="color: #964B00;" (ngSubmit)="HandleSubmit()">
+        <form [formGroup]="Emailcheck"  (ngSubmit)="HandleSubmit()">
             <mat-stepper style="color: #964B00;" [linear]="isLinear" #stepper>
 
                 <!-- <mat-step [stepControl]="Basicform">
@@ -59,7 +59,7 @@
 
                         <div>
                             <!-- <button mat-raised-button   style='background-color: #efc96a; color:#964B00;'matStepperPrevious>Back</button> | -->
-                            <button mat-raised-button style='background-color: #efc96a; color:#964B00;' (click)="confirmBooking()">Click to  Payment</button>
+                            <button class="btn w-20"  (click)="confirmBooking()">Click to  Payment</button>
                         </div>
                     </div>
                 </mat-step>
