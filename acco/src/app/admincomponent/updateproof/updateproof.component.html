@@ -1,15 +1,13 @@
 <div class="outer">
   <app-header></app-header>
-  <div class="container">
-
-    <!-- (ngSubmit)="roomCheckin()" -->
-    <!-- <form name="selectRoomForm"> -->
-    <div class="row">
+  <div class="container-fluid">
+    <div class="row mx-2">
       <div class="col">
+        <!-- form -->
         <form [formGroup]="selectRoomForm">
 
           <div class="form-group row">
-            <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">BookingId</label>
+            <label  for="bookingid" class="col-sm-3 col-form-label">BookingId</label>
             <div class="col-sm-5">
               <input formControlName="bookingid" type="text" readonly class="form-control-plaintext" id="bookingid"
                 value={{bookingid}}>
@@ -19,43 +17,42 @@
 
 
           <div class="form-group row">
-            <label style="color:#964B00" for="Proof" class="col-sm-2 col-form-label">Update Proof</label>
+            <label for="Proof" class="col-sm-3 col-form-label">Update Proof</label>
             <div class="col-sm-5">
 
               <input formControlName="upload" class="form-control-plaintext " type="file" id="upload"
                 (change)="onChange($event)">
 
-              <!-- <button  class="button " id="upload" (click)="uploadFileToActivity()"><i class="fa fa-fw fa-arrow-up" style="color:#964B00; "  ></i>  </button>  -->
-              <!-- <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i>                   -->
+
 
             </div>
 
           </div>
           <div class="form-group row">
-            <label style="color:#964B00" for="Proof" class="col-sm-2 col-form-label">File Name</label>
+            <label  for="Proof" class="col-sm-3 col-form-label">File Name</label>
 
-            <div class="col-sm-2" style="margin-top: 5px;">
+            <div class="col-sm-2 mt-2" >
 
-              <div><img height="100px" width="100px" src={{imageUrl}} class="images"></div>
-              <!-- <button  class="button " id="upload" (click)="uploadFileToActivity()"><i class="fa fa-fw fa-arrow-up" style="color:#964B00; "  ></i>  </button>  -->
-              <!-- <i class="fa fa-fw fa-edit" style="color:#964B00; "  ></i>                   -->
+              <div><img height="100px" width="100px" src={{imageUrl}} class="images "></div>
+
 
             </div>
 
           </div>
 
           <button [disabled]=selectRoomForm.invalid (click)="uploadFileToActivity()" type="submit"
-            class="btn btn-light btn-elevate mr-2 margin-left " style="color: #964B00;background-color:#efc96a;margin-top: 80px;">
+            class="btn btn-light btn-elevate  mt-5 mx-5 "
+            >
             Submit</button>
-          <button routerLink="/frontdesk" 
-            class="btn btn-light btn-elevate  " style="color: #964B00;background-color:#efc96a;margin-top: 80px;">
+          <button routerLink="/frontdesk" class="btn btn-light btn-elevate mt-5 "
+           >
             Back</button>
         </form>
 
       </div>
 
-      <div *ngIf="proofshow" class=" col" style="height: 400px;width: 500px;margin:10px 10px 10px 10px;">
-        <img style="height: 400px; width: 400px;" src={{imageUrl}}>
+      <div *ngIf="proofshow" class=" col my-3" >
+        <img style="height: 300px; width: 300px;" src={{imageUrl}}>
       </div>
 
     </div>

@@ -1,13 +1,12 @@
 <div class="outer">
     <app-header></app-header>
-    <div class="container">
+    <div class="container-fluid">
 
-        <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Update Flat Status</h2>
+        <h2 class="mt-1 ">Update Flat Status</h2>
 
             <form [formGroup]="editflatform">
-
                 <div class="form-group row">
-                    <label style="color:#964B00" for="flatid" class="col-sm-2 col-form-label">FlatId</label>
+                    <label  for="flatid" class="col-sm-2 col-form-label">FlatId</label>
                     <div class="col-sm-5">
                         <input formControlName="flatid" type="text" readonly class="form-control-plaintext"
                             id="flatid" value={{flatid}}>
@@ -15,7 +14,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="roomno" class="col-sm-2 col-form-label">RoomNo</label>
+                    <label  for="roomno" class="col-sm-2 col-form-label">RoomNo</label>
                     <div class="col-sm-5">
                         <input formControlName="roomno" type="text" readonly class="form-control-plaintext"
                             id="roomno" value={{roomno}}>
@@ -30,7 +29,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">FlatType</label>
+                    <label  for="bookingid" class="col-sm-2 col-form-label">FlatType</label>
                     <div class="col-sm-5">
                         <input formControlName="flattype" type="text" readonly class="form-control-plaintext"
                             id="flattype" value={{flattype}}>
@@ -46,7 +45,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">UpdateStatus</label>
+                    <label for="bookingid" class="col-sm-2 col-form-label">UpdateStatus</label>
                     <div class="col-sm-1">
                         <!-- <input formControlName="updatestatus" type="text"  class="form-control-plaintext"
                             id="updatestatus" > -->
@@ -64,7 +63,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">Reason</label>
+                    <label  for="bookingid" class="col-sm-2 col-form-label">Reason</label>
                     <div class="col-sm-5">
                        <textarea formControlName="reason" class="form-control"></textarea>
                         <small *ngIf="editflatform.controls['reason'].dirty && editflatform.hasError('required','reason')"  
@@ -75,11 +74,11 @@
                 </div>
 
                 <button [disabled]=editflatform.invalid (click)="editflatdata()" type="submit"
-                    class="btn btn-light btn-elevate mr-2 margin-left "
-                    style="color: #964B00;background-color:#efc96a;margin-top: 10px;margin-bottom: 10px;">
+                    class="btn btn-light btn-elevate mr-2 margin-left mt-5 mb-5 "
+                    >
                     Submit</button>
-                <button routerLink="/manageflats" type="submit" class="btn btn-light btn-elevate mr-2 margin-left "
-                    style="color: #964B00;background-color:#efc96a ;margin-top: 10px;margin-bottom: 10px;">
+                <button routerLink="/manageflats" type="submit" class="btn btn-light btn-elevate mr-2 mt-5 mb-5 "
+                    >
                     Back</button>
 
             </form>
