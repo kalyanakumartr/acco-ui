@@ -17,6 +17,12 @@
     font-family: Georgia, serif;
 
 }
+img {
+    max-height: 100px;
+    width: auto; /* Maintains aspect ratio */
+    display: block;
+    margin: 0 auto; /* Centers the image if needed */
+  }
 
 .btn {
     color: var(--text-color);
@@ -25,23 +31,19 @@
     font-weight: bold;
 
 }
+.btn:hover {
+    color: var(--hover);
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    transition: all 0.3s ease-in-out;
+}
 
 //css for user icon
 #icon {
     background-image: var(--primary);
 }
-
-
-.btn:hover {
-    color: var(--hover);
-    transform: scale(1.05);
-    /* Slight zoom effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Add shadow */
-    transition: all 0.3s ease-in-out;
-}
-
-
 
 span {
     color: var(--text-color);

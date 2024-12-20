@@ -31,6 +31,21 @@
 //     border: 1px solid var(--hover); /* Brown border */}
 
 
+.btn {
+    color: var(--text-color);
+    background-color: var(--secondary);
+    font-family: Georgia, serif;
+    font-weight: bold;
+
+}
+.btn:hover {
+    color: var(--hover);
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    transition: all 0.3s ease-in-out;
+}
 
 
 

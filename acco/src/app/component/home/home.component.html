@@ -44,7 +44,7 @@
               <div class="d-flex gap-2">
                 <input formControlName="checkIn" type="date" class="form-control form-style" [(ngModel)]="Todaydate"
                   [min]="minDate" (change)="getCheckOut()">
-                <select formControlName="checkInTime" class="form-control form-style">
+                <select formControlName="checkInTime" class="form-control form-style"  [(ngModel)]="selectedTime">
                   <option id="option-style" *ngFor="let time of times" [value]="time">{{ time }}</option>
                 </select>
               </div>
@@ -56,7 +56,7 @@
               <div class="d-flex gap-2">
                 <input formControlName="checkOut" type="date" class="form-control" [(ngModel)]="outDate"
                   [min]="outDate">
-                <select formControlName="checkOutTime" class="form-control">
+                <select formControlName="checkOutTime" class="form-control"  [(ngModel)]="selectedTime">
                   <option *ngFor="let timess of times" [value]="timess">{{ timess }}</option>
                 </select>
               </div>

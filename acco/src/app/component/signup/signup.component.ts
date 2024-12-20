@@ -77,29 +77,47 @@ export class SignupComponent implements OnInit {
     );
   }
 
-
-
-
   onCountryChange($event: any): void {
-    this.states = State.getStatesOfCountry(JSON.parse(this.country.nativeElement.value).isoCode);
-    this.selectedCountry = JSON.parse(this.country.nativeElement.value);
-    this.cities = this.selectedState = this.selectedCity = null;
-    console.log("country", this.selectedCountry)
+    const countryValue = this.country?.nativeElement?.value;
+    if (countryValue) {
+      this.selectedCountry = JSON.parse(countryValue);
+      this.states = State.getStatesOfCountry(this.selectedCountry.isoCode);
+      this.cities = [];
+      this.selectedState = null;
+      this.selectedCity = null;
+
+      console.log("Selected Country:", this.selectedCountry);
+      console.log("States:", this.states);
+    } else {
+      console.error("Country element or value is undefined");
+    }
   }
 
   onStateChange($event: any): void {
-    this.cities = City.getCitiesOfState(JSON.parse(this.country.nativeElement.value).isoCode, JSON.parse(this.state.nativeElement.value).isoCode)
-    this.selectedState = JSON.parse(this.state.nativeElement.value);
-    this.selectedCity = null;
-    console.log("state", this.selectedState)
+    const countryValue = this.country?.nativeElement?.value;
+    const stateValue = this.state?.nativeElement?.value;
 
+    if (countryValue && stateValue) {
+      const selectedCountry = JSON.parse(countryValue);
+      this.selectedState = JSON.parse(stateValue);
+      this.cities = City.getCitiesOfState(selectedCountry.isoCode, this.selectedState.isoCode);
+      this.selectedCity = null;
 
+      console.log("Selected State:", this.selectedState);
+      console.log("Cities:", this.cities);
+    } else {
+      console.error("Country or State element/value is undefined");
+    }
   }
 
   onCityChange($event: any): void {
-    this.selectedCity = JSON.parse(this.city.nativeElement.value)
-    console.log("city", this.selectedCity)
-
+    const cityValue = this.city?.nativeElement?.value;
+    if (cityValue) {
+      this.selectedCity = JSON.parse(cityValue);
+      console.log("Selected City:", this.selectedCity);
+    } else {
+      console.error("City element or value is undefined");
+    }
   }
 
   // const matchpassword : ValidatorFn = (control: AbstractControl):ValidationErrors|null =>{
