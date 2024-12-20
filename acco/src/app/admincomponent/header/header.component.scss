@@ -1,7 +1,9 @@
-.outer{
-    // height:100vh;
-     background-image: var(--primary);
-     min-height: 100vh; 
+.container {
+    background-color: #ffff;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0, 0, 0, 0.08)0px 1px 8px;
+    border-radius: 4px;
+    background-image: var(--primary)
 }
 .container-fluid{
     background-color:var(--primary);
@@ -48,4 +50,50 @@
 }
 #navbarDropdown{
     color:#964B00
+}
+// css for welcome to maduraservices
+#text {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    font-family: Georgia, serif;
+
+}
+
+.btn {
+    color: var(--text-color);
+    background-color: var(--secondary);
+    font-family: Georgia, serif;
+    font-weight: bold;
+
+}
+
+//css for user icon
+#icon {
+    background-image: var(--primary);
+}
+
+
+.btn:hover {
+    color: var(--hover);
+    // transform: scale(1.05);
+    /* Slight zoom effect */
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    // transition: all 0.3s ease-in-out;
+}
+
+
+
+span {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+marquee {
+    color: var(--text-color);
+    font-size: 16px;
+
 }
