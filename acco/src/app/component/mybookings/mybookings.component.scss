@@ -9,24 +9,22 @@
   border-radius: 4px;
   background-color: var(--primary);
 }
-td{
-    // text-decoration: underline;
+// td{
+//   border-color: #964B00;
    
-  }
+//   }
   td a:hover{
     cursor: pointer;
     color:  var(--hover);
 
   }
-  table{
-    color:var(--text-color);
-    //  background-color: #efc96a;
-     width:100%
-    // background-image: linear-gradient(45deg, #efc96a,white);
-  }
-  th{
-    color:var(--text-color);
-  }
+  // .table{
+  //   color:var(--text-color);
+  //     background-color: #efc96a;
+  //    width:100%;
+  //    background-image: linear-gradient(45deg, #efc96a,white);
+  // }
+
 
 mat-paginator{
   background-color: var(--secondary);
@@ -37,8 +35,11 @@ h4{
 }
 tr,th{
   color:var(--text-color);
+  border-color:var(--primary);
   
 }
-td{
+td,a{
   border-color: var(--text-color);
+  color:var(--text-color);
 }
+

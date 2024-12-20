@@ -46,7 +46,7 @@
           <tr>
             <th class="align-middle"   rowspan="2">BookingId</th>
             <th class="align-middle"   rowspan="2">From</th>
-            <th class="align-middle"   rowspan="2">To</th>
+            <th class="align-middle"  rowspan="2">To</th>
             <th class="align-middle"   rowspan="2">Adult</th>
             <th class="align-middle"   rowspan="2">Child</th>
             <th class="align-middle"   colspan="3">Flat Type</th>
@@ -56,18 +56,18 @@
           </tr>
           <tr>
                     
-            <th>1BHK</th>
-            <th>2BHK</th>
-            <th>3BHK</th>
+            <th  >1BHK</th>
+            <th  >2BHK</th>
+            <th >3BHK</th>
            
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let i of dataObs$ | async">
-            <td class="align-middle " >{{i.bookingid}}
+          <tr  *ngFor="let i of dataObs$ | async">
+            <td class="align-middle "  >{{i.bookingid}}
             <td class="align-middle " >{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
             <td class="align-middle " >{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
-            <td class="align-middle " >{{i.adults}}
+            <td class="align-middle ">{{i.adults}}
             <td class="align-middle " >{{i.child}}
             <td class="align-middle " >{{i.bhk1count}}
             <td class="align-middle " >{{i.bhk2count}}
