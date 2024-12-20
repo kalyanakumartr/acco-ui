@@ -1,3 +1,106 @@
+// // .container {
+// //     background-color: #ffff;
+// //     border-radius: 0.3rem;
+// //     box-shadow: rgba(0, 0, 0, 0.08)0px 1px 8px;
+// //     border-radius: 4px;
+// //     background-image: var(--primary)
+// // }
+// .container-fluid{
+//     background-color:var(--primary);
+//     border-radius: 0.3rem;
+//     box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+//     border-radius: 4px;
+//     background-color: var(--primary);
+// }
+// //css for nav bar
+// .navbar-light {
+//     background-color: #EFC96A;
+//     width:100%;
+//     box-sizing: border-box;
+// }
+// // css for welcome to maduraservices
+// #text{
+//     color:#964B00;
+//     font-style: italic;
+//     font-weight: bold;
+//     font-size: 40px;
+//     text-align: center;
+// }
+// // css for navbar button
+// #btn{
+//     color:#964B00;
+//      background-color:#efc96a;
+//     //  font-weight: bold
+// }
+// // .nav-item {
+// //     color:#964B00;
+// //      background-color:#efc96a;
+// // }
+// // #FBC02D
+// .btn1{
+//     margin-left: 90px;
+//     background-color:#efc96a ;
+//     color:#964B00;
+// }
+// #icon{
+//     background-image: linear-gradient(45deg, #efc96a,white);
+// }
+// .dropdown-item{
+//     color: #964B00;
+// }
+// #navbarDropdown{
+//     color:#964B00
+// }
+// // css for welcome to maduraservices
+// #text {
+//     color: var(--text-color);
+//     font-weight: bold;
+//     font-size: 40px;
+//     text-align: center;
+//     font-family: Georgia, serif;
+
+// }
+
+// .btn {
+//     color: var(--text-color);
+//     background-color: var(--secondary);
+//     font-family: Georgia, serif;
+//     font-weight: bold;
+
+// }
+
+// //css for user icon
+// #icon {
+//     background-image: var(--primary);
+// }
+
+
+// .btn:hover {
+//     color: var(--hover);
+//     // transform: scale(1.05);
+//     /* Slight zoom effect */
+//     // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+//     /* Add shadow */
+//     // transition: all 0.3s ease-in-out;
+// }
+
+
+
+// span {
+//     color: var(--text-color);
+//     font-size: 14px;
+//     font-weight: bold;
+// }
+
+// marquee {
+//     color: var(--text-color);
+//     font-size: 16px;
+
+// }
+
+
+
+//css for container
 .container {
     background-color: #ffff;
     border-radius: 0.3rem;
@@ -5,52 +108,8 @@
     border-radius: 4px;
     background-image: var(--primary)
 }
-.container-fluid{
-    background-color:var(--primary);
-    border-radius: 0.3rem;
-    box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
-    border-radius: 4px;
-    background-color: var(--primary);
-}
-//css for nav bar
-.navbar-light {
-    background-color: #EFC96A;
-    width:100%;
-    box-sizing: border-box;
-}
-// css for welcome to maduraservices
-#text{
-    color:#964B00;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 40px;
-    text-align: center;
-}
-// css for navbar button
-#btn{
-    color:#964B00;
-     background-color:#efc96a;
-    //  font-weight: bold
-}
-// .nav-item {
-//     color:#964B00;
-//      background-color:#efc96a;
-// }
-// #FBC02D
-.btn1{
-    margin-left: 90px;
-    background-color:#efc96a ;
-    color:#964B00;
-}
-#icon{
-    background-image: linear-gradient(45deg, #efc96a,white);
-}
-.dropdown-item{
-    color: #964B00;
-}
-#navbarDropdown{
-    color:#964B00
-}
+
+
 // css for welcome to maduraservices
 #text {
     color: var(--text-color);
@@ -77,11 +136,11 @@
 
 .btn:hover {
     color: var(--hover);
-    // transform: scale(1.05);
+    transform: scale(1.00);
     /* Slight zoom effect */
-    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     /* Add shadow */
-    // transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 
@@ -96,4 +155,8 @@ marquee {
     color: var(--text-color);
     font-size: 16px;
 
+}
+
+dropdown-item{
+    color: var(--text-color);
 }

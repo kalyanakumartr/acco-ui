@@ -1,11 +1,11 @@
 <!-- <div class="outer"> -->
-  <div class="container-fluid p-3" >
+  <div class="container-fluid  " >
     <!-- <div class="card"> -->
     <!-- Top Row: Logo, Marquee, and Helpline -->
   <div class="row align-items-center justify-content-between">
     <!-- Logo Section -->
-    <div class="col-lg-2 col-md-3 col-12 text-center text-md-left mb-2 mb-md-0">
-      <img src="assets/index_logo.jpg" class="img-fluid" alt="Logo" style="max-height: 100px;">
+    <div class="col-lg-3 col-md-3 col-12 text-center text-md-left mb-2 mt-1 mb-md-0">
+      <img src="assets/index_logo.jpg" class="img-fluid mt-1" alt="Logo" style="max-height: 100px;">
     </div>
 
     <!-- Marquee Section -->
@@ -16,7 +16,7 @@
     </div>
 
     <!-- Helpline Section -->
-    <div class="col-lg-3 col-md-3 col-12 text-md-right text-center mb-2 mb-md-0">
+    <div class="col-lg-2 col-md-3 col-12 text-md-right text-center mb-2 mb-md-0 mt-1">
       <span >
         24/7 HelpLine<br>
         Ph: +91 73738 26373
@@ -33,89 +33,67 @@
 <!-- Navigation Section -->
     <nav class="navbar navbar-expand-lg navbar-light ">
        <!-- Toggler Button for Mobile View -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
 <!-- Navbar Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button> -->
-            <a class="nav-link" routerLink="/manageflats" style="color:#964B00">ManageFlat</a>
+      <div class="collapse navbar-collapse  " id="navbarNav">
+        <ul class="navbar-nav ">
+          <li class="nav-item  mx-1">
+              <a class="btn btn-sm" routerLink="/manageflats" >ManageFlat</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/facitilies">FACITILIES</button> -->
-            <!-- <a class="nav-link" routerLink="/" style="color:#964B00">Bookings  -->
+          <li class="nav-item mx-0">            
             <div class="nav-item dropdown  ">
-
-              <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Bookings</a>
+              <a class="btn btn-sm " href="#" id="navbarDropdown" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Bookings <i  class="fa fa-bars"></i></a>
 
               <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="icon">
                 <a class="dropdown-item" href="#" routerLink="/walkingcurrent">Walk in Current</a>
                 <a class="dropdown-item" href="#" routerLink="/walkingfuture">Walk in Future</a>
                 <a class="dropdown-item" href="#" routerLink="/frontdesk">Guest Status</a>
                 <a class="dropdown-item" href="#" routerLink="/canceledbookingfoe">Cancel Booking</a>
-
-
               </div>
             </div>
-            <!-- </a> -->
-
           </li>
-
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >TARIFF</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Reports</a>
+          <li class="nav-item mx-1">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Reports</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >FOOD</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/role">Role</a>
+          <li class="nav-item mx-0">            
+            <a class="btn btn-sm " href="#"  routerLink="/role">Role</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >PLACES TO VISIT</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Users</a>
+          <li class="nav-item mx-1">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Users</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >TRAVEL</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">PlacetoVisit</a>
+          <li class="nav-item mx-0">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">PlacetoVisit</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Tax</a>
+          <li class="nav-item mx-1">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Tax</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Services</a>
+          <li class="nav-item mx-0">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Services</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Gallery</a>
+          <li class="nav-item mx-1">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Gallery</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Travel</a>
+          <li class="nav-item mx-0">          
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Travel</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Food</a>
+          <li class="nav-item mx-1">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Food</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Coupons</a>
+          <li class="nav-item mx-0">            
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Coupons</a>
           </li> 
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">NewsLetter</a>
+          <li class="nav-item mx-1">          
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">NewsLetter</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Banner</a>
+          <li class="nav-item mx-0">          
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Banner</a>
           </li>
-          <li class="nav-item active">
-            <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> -->
-            <a class="nav-link " href="#" style="color:#964B00" routerLink="/frontdesk">Reminder</a>
+          <li class="nav-item mx-1">           
+            <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Reminder</a>
           </li>
           <!-- <li class="nav-item active">
            <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> 
