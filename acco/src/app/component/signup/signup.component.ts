@@ -64,12 +64,8 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern("^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       username: ['', [Validators.required, Validators.pattern("^[A-Za-z0-9-,@._]*$")]],
       password: ['', [Validators.required, Validators.pattern("^[a-zA-z0-9@.&_]{3,15}$")]],
-      confirmpassword: ['', [Validators.required, Validators.pattern("^[a-zA-z0-9@.&_]{3,15}$")]],
-      // "^[a-zA-z0-9@.&_]{8,15}$"
-      // '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?_&])[A-Za-zd$@$!%*?_&].{8,15}'
+      cpassword: ['', [Validators.required, Validators.pattern("^[a-zA-z0-9@.&_]{3,15}$")]],
       roleid: this.roleid
-
-
     },
       {
         validators: matchpassword

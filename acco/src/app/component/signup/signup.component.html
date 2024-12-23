@@ -1,5 +1,5 @@
 <div class="container-fluid ">
-    <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="d-flex justify-content-center align-items-center ">
         <div class="panel border p-4 shadow-lg" style="max-width: 800px; width: 100%;">
             <div class="panel-heading text-center mb-4">
                 <h3 class="text-brown font-weight-bold">
@@ -116,7 +116,7 @@
                     <div class="row">
                         <div class="col-12 col-md-6 mb-3">
                             <label class="text-brown font-weight-bold">Username</label>
-                            <input formControlName="firstname" type="text" class="form-control" placeholder="UserName">
+                            <input formControlName="username" type="text" class="form-control" placeholder="UserName">
                             <small
                                 *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('required','firstname')"
                                 class="text-danger">*UserName is required</small>
@@ -127,6 +127,17 @@
                         <div class="col-12 col-md-6 mb-3  position-relative">
                             <label class="text-brown font-weight-bold">Password</label>
                             <input formControlName="password" [type]="type" class="form-control "
+                                placeholder="Password">
+                            <span id="icon-style" (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                            <small
+                                *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"
+                                class="text-danger">*Password is required</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="text-brown font-weight-bold">Confirm Password</label>
+                            <input formControlName="cpassword" [type]="type" class="form-control "
                                 placeholder="Password">
                             <span id="icon-style" (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
                             <small
