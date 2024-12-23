@@ -1,5 +1,5 @@
 //css for container
-.container {
+.container-fluid {
     background-color: #ffff;
     border-radius: 0.3rem;
     box-shadow: rgba(0, 0, 0, 0.08)0px 1px 8px;
@@ -21,7 +21,7 @@ img {
     max-height: 100px;
     width: auto; /* Maintains aspect ratio */
     display: block;
-    margin: 0 auto; /* Centers the image if needed */
+    margin: auto; /* Centers the image if needed */
   }
 
 .btn {

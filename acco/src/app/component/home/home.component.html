@@ -31,8 +31,8 @@
       </div>
 
       <!-- Form Section -->
-      <div class="col-lg-6 col-md-12 mt-3">
-        <h3 class="text-brown mb-3">Check Availability</h3>
+      <div class="col-lg-6 col-md-12 mb-3 mt-3 my-2 form-box-style  ">
+        <h3 class="text-brown mt-5">Check Availability</h3>
 
         <form [formGroup]="homeForm" (ngSubmit)="checkAvailability()" class="p-3   ">
 
@@ -97,14 +97,19 @@
 
             <!-- Submit Button -->
             <div class="col-md-6 d-flex align-items-end">
-              <button [disabled]="homeForm.invalid" type="submit" class="btn w-100"  >Check
+              <button [disabled]="homeForm.invalid" type="submit" class="btn w-100"  data-toggle="modal" data-target="#exampleModal">Check
                 Availability</button>
             </div>
           </div>
 
         </form>
-
       </div>
     </div>
   </div>
 </div>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->

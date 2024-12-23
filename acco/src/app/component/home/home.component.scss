@@ -9,9 +9,12 @@
     box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
     border-radius: 4px;
     background-color: var(--primary);
+    
 }
 
 .text-brown{
+    font-weight: bold;
+    font-family: Georgia, serif;
     color: var(--text-color);
 }
 .shadowed-image {
@@ -25,6 +28,18 @@
     object-fit: cover;  
 }
 
+.form-box-style{
+    background-image: var(--panel);
+    border-radius: 10px; /* Slight rounded corners */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    object-fit: cover;  
+
+
+
+}
 // .form-style:active,.form-style:focus{
 //     outline: none;
 //     box-shadow: 0 0 5px 2px var(--hover); /* Brown shadow */
@@ -80,16 +95,4 @@
   }
 h3{
     text-align: center;
-}
-.btn{
-    font-weight: bold;
-    font-family: Georgia, serif;
-    color:#964B00 ;
-    background-color: #efc96a;
-    border-radius: 15px; 
-    margin-top: 15px;
- 
-}
-.btn:hover {
-    color: #f47a08
 }

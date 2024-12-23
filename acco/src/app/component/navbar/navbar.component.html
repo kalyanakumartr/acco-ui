@@ -2,7 +2,7 @@
   <!-- Top Row: Logo, Marquee, and Helpline -->
   <div class="row align-items-center justify-content-between">
     <!-- Logo Section -->
-    <div class="col-lg-3 col-md-3 col-12 text-center text-md-left mb-2 mb-md-0">
+    <div class="col-lg-3 col-md-3 col-12 text-center text-md-left mt-3 ">
       <img src="assets/index_logo.jpg" class="img-fluid" alt="Logo" style="max-height: 100px;">
     </div>
 
@@ -14,16 +14,16 @@
     </div>
 
     <!-- Helpline Section -->
-    <div class="col-lg-2 col-md-3 col-12 text-md-right text-center mb-2 mb-md-0">
+    <div class="col-lg-2 col-md-3 col-12 text-md-right text-end mb-2 mb-md-0 mr-1">
       <span >
-        24/7 HelpLine<br>
-        Ph: +91 73738 26373
+        24*7 HelpLine<br>
+        <i class="fas fa-phone-alt"></i> +91 73738 26373
       </span>
       <!-- Login/Signup/Logout Buttons -->
       <div class="mt-2">
         <button *ngIf="!authService.logged()" routerLink="/login" class="btn  btn-sm mx-1">Login</button>
         <button *ngIf="!authService.logged()" (click)="signup()" class="btn  btn-sm mx-1">Signup</button>
-        <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm mx-1">Logout</button>
+        <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm ">Logout</button>
       </div>
     </div>
   </div>
@@ -68,9 +68,10 @@
         </div>
 
         <!-- User Icon Section -->
-        <div class="d-flex align-items-center ml-auto mr-3">
-          <i class="fa fa-user text-warning" ></i>
-          <span class="ml-2 font-weight-bold">{{ username | titlecase }}</span>
+        <div class="d-flex align-items-center mb-2 mb-md-0 mr-1">
+          <span class=" font-weight-bold">{{ username | titlecase }}</span>&nbsp;&nbsp;
+          <i class="fas fa-user-alt" style='font-size:20px;color: var(--text-color);' ></i>
+
         </div>
       </nav>
     </div>
