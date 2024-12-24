@@ -16,7 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NativeDateAdapter } from '@angular/material/core';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-
+declare var bootstrap: any;
 
 
 @Component({
@@ -216,6 +216,12 @@ const storedValue = localStorage.getItem('currentValue');
     console.log("formdata", this.homeForm.value);
 
     if (this.tokenvalue == null) {
+      const modalElement = document.getElementById('exampleModal');
+      if (modalElement) {
+        const modalInstance = new bootstrap.Modal(modalElement, {});
+        modalInstance.show();
+      }
+
       const formValue = this.homeForm.value;
       const jsondata = JSON.stringify(formValue);
       localStorage.setItem('currentValue', jsondata);
@@ -227,16 +233,16 @@ const storedValue = localStorage.getItem('currentValue');
       // localStorage.setItem("child", formValue.child);
       // localStorage.setItem("roomtype", formValue.roomType);
 
-      Swal.fire({
-        text:
-          " Please LOGIN if you are Existing user or SIGNUP for Newuser",
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
-      }).then((result) => {
-        if (result.value) {
-          this.router.navigate(["/login"])
-        }
-      })
+      // Swal.fire({
+      //   text:
+      //     " Please LOGIN if you are Existing user or SIGNUP for Newuser",
+      //   confirmButtonColor: '#964B00',
+      //   background: '#efc96a',
+      // }).then((result) => {
+      //   if (result.value) {
+      //     this.router.navigate(["/login"])
+      //   }
+      // })
     } else {
 
       const formData = this.homeForm.value;
