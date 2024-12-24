@@ -1,7 +1,7 @@
 .outer{
     // height:100vh;
      background-image: var(--primary);
-     min-height: 100vh; 
+    //  min-height: 100vh; 
 }
 .container-fluid{
     background-color: #ffff;
@@ -20,13 +20,22 @@
     mask-size: 100% 100%;
     object-fit: cover;  
 }
+.form-box-style{
+    background-image: var(--panel);
+    border-radius: 10px; /* Slight rounded corners */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    object-fit: cover;  
+}
 .card{
-    background-image: var(--primary);  
+    background-image: var(--panel);  
     width: 22rem;background-color: var(--secondary);  
    
 }
 hr{
-    width:50%;
+     width:100%;
     color:white;
     height:1px;
     background-color:white
@@ -35,7 +44,7 @@ hr{
 //     color:black;text-align: center;margin-top: 1%;
 // }
 .text-center{
-    color:var(--text-color);font-weight: bold;margin-top: 2%;
+    color:var(--text-color);font-weight: bold;
 }
 card-body{
     color:var(--text-color);
@@ -44,7 +53,10 @@ i{
     font-size:20px;
 }
 .card text-black{
-    max-width: 22rem; ;background-color:var(--secondary);
+    max-width: 22rem; ;
+    background-color:var(--secondary);
+    color:var(--text-color);
+    text-align: center;
 }
 .text-black{
     text-align: center;;

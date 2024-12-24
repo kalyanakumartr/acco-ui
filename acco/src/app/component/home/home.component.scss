@@ -1,7 +1,7 @@
 .outer{
     // height:100vh;
      background-image: var(--primary);
-     min-height: 100vh; 
+//      min-height: 100vh; 
 }
 .container-fluid{
     background-color:var(--primary);
@@ -11,6 +11,7 @@
     background-color: var(--primary);
     
 }
+
 
 .text-brown{
     font-weight: bold;
@@ -36,9 +37,6 @@
     mask-position: center;
     mask-size: 100% 100%;
     object-fit: cover;  
-
-
-
 }
 // .form-style:active,.form-style:focus{
 //     outline: none;

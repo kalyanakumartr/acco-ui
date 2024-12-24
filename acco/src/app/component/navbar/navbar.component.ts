@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
  isDisabled=true;
  tokenvalue:any;
  username:any;
- marquee="Welcome to  MaduraaServices -10% off for Margali Utasavam.";
+ marquee="Welcome to Maduraa Services -10% off for Margazhi Maha Utsavam";
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
     private getUserService:GetUserServiceService,
