@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ChangeDetectorRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
-import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
@@ -16,8 +16,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NativeDateAdapter } from '@angular/material/core';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-import 'bootstrap/dist/css/bootstrap.min.css';
- import * as bootstrap from 'bootstrap';
+import * as bootstrap from 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+//  import * as bootstrap from 'bootstrap';
 // declare var bootstrap:any;
 
 
@@ -28,6 +29,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('exampleModal')
+  modalElement!: ElementRef;
+
   homeForm!: FormGroup;
   modalForm!: FormGroup;
   selectedValue: any = '';
@@ -56,8 +60,8 @@ export class HomeComponent implements OnInit {
   visibleRoom: any;
   roomBooking: any;
   currentValue: any;
-  minDate:any;
-  maxDate:any;
+  minDate: any;
+  maxDate: any;
   private modalInstance: any;
 
 
@@ -66,7 +70,8 @@ export class HomeComponent implements OnInit {
     private roomTypeService: GetroomtypeService,
     public bookingService: BookingServiceService,
     private cdr: ChangeDetectorRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private modalService: NgbModal
   ) { }
 
 
@@ -91,38 +96,38 @@ export class HomeComponent implements OnInit {
     this.showRoomType();
     console.log('Initial Room Type:', this.homeForm.get('roomType')?.value);
     console.log('Form values:', this.homeForm.value);
-//     this.currentValue = new BookingModel();
-//     this.currentValue = localStorage.getItem('currentValue');
-//     // const checkout = localStorage.getItem('checkout');
-//     // const checkintime = localStorage.getItem('checkintime');
-//     // const checkouttime = localStorage.getItem('checkouttime');
-//     // const adult = localStorage.getItem('adult');
-//     // const child = localStorage.getItem('child');
-//     // const roomtype = localStorage.getItem('roomtype');
-//      console.log("checkin",this.currentValue);
-//      const checkInCu = this.currentValue.checkIn;  // "2024-12-16"
-// const checkInTime = this.currentValue.checkInTime;  // "16:30"
-// const checkOut = this.currentValue.checkOut;  // "2024-12-17"
-// const checkOutTime = this.currentValue.checkOutTime;  // "16:30"
-// const adult = this.currentValue.adult;  // "1"
-// const child = this.currentValue.child;  // "0"
-// const roomType =this. currentValue.roomType;
-//     if (this.currentValue) {
-//       console.log("this.currentValue",checkInCu);
-//       this.Todaydate = checkInCu;
-//       this.outDate = this.currentValue.checkOut;
-//       this.selectedTime = this.currentValue.checkInTime;
-//       this.homeForm.patchValue({ adult: this.currentValue.adult, child: this.currentValue.child });
-//     }
-const storedValue = localStorage.getItem('currentValue');
+    //     this.currentValue = new BookingModel();
+    //     this.currentValue = localStorage.getItem('currentValue');
+    //     // const checkout = localStorage.getItem('checkout');
+    //     // const checkintime = localStorage.getItem('checkintime');
+    //     // const checkouttime = localStorage.getItem('checkouttime');
+    //     // const adult = localStorage.getItem('adult');
+    //     // const child = localStorage.getItem('child');
+    //     // const roomtype = localStorage.getItem('roomtype');
+    //      console.log("checkin",this.currentValue);
+    //      const checkInCu = this.currentValue.checkIn;  // "2024-12-16"
+    // const checkInTime = this.currentValue.checkInTime;  // "16:30"
+    // const checkOut = this.currentValue.checkOut;  // "2024-12-17"
+    // const checkOutTime = this.currentValue.checkOutTime;  // "16:30"
+    // const adult = this.currentValue.adult;  // "1"
+    // const child = this.currentValue.child;  // "0"
+    // const roomType =this. currentValue.roomType;
+    //     if (this.currentValue) {
+    //       console.log("this.currentValue",checkInCu);
+    //       this.Todaydate = checkInCu;
+    //       this.outDate = this.currentValue.checkOut;
+    //       this.selectedTime = this.currentValue.checkInTime;
+    //       this.homeForm.patchValue({ adult: this.currentValue.adult, child: this.currentValue.child });
+    //     }
+    const storedValue = localStorage.getItem('currentValue');
     if (storedValue) {
       const formData = JSON.parse(storedValue);
-      console.log("formData",formData);
-      this.homeForm.patchValue(formData); 
-      this.Todaydate=formData.checkIn // Patch the form with the saved data
-      this.outDate=formData.checkOut
+      console.log("formData", formData);
+      this.homeForm.patchValue(formData);
+      this.Todaydate = formData.checkIn // Patch the form with the saved data
+      this.outDate = formData.checkOut
     };
-  
+
     localStorage.removeItem('currentValue');
 
 
@@ -160,7 +165,7 @@ const storedValue = localStorage.getItem('currentValue');
     this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
     this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
     this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
-    
+
 
   }
 
@@ -173,7 +178,7 @@ const storedValue = localStorage.getItem('currentValue');
 
     // Format the next date in YYYY-MM-DD format
     this.outDate = currentDate.toISOString().split('T')[0];
-   
+
   }
 
   ReadMore: boolean = true
@@ -220,13 +225,16 @@ const storedValue = localStorage.getItem('currentValue');
 
     if (this.tokenvalue == null) {
       console.log("form", this.homeForm.value);
-      const modalElement = document.getElementById('exampleModal');
-      if (modalElement) {
-        console.log("form1111", this.homeForm.value);
-
-        this.modalInstance = new bootstrap.Modal(modalElement);
+      if (this.modalElement) {
+        const modal = this.modalElement.nativeElement;
+        console.log(modal);
+  
+        // Initialize and show the modal using Bootstrap's native JavaScript method
+        const modalInstance = new bootstrap.Modal(modal);
+        modalInstance.show();
+      } else {
+        console.error('Modal element is not available');
       }
-
       const formValue = this.homeForm.value;
       const jsondata = JSON.stringify(formValue);
       // localStorage.setItem('currentValue', jsondata);
@@ -370,9 +378,7 @@ const storedValue = localStorage.getItem('currentValue');
   }
 
   openModal(): void {
-    if (this.modalInstance) {
-      this.modalInstance.show(); // Show the modal
-    }
+    const modalRef = this.modalService.open(this.modalElement.nativeElement);
   }
 
   closeModal(): void {
@@ -388,5 +394,5 @@ const storedValue = localStorage.getItem('currentValue');
   navigateTo(route: string) {
     this.closeModal(); // Close the modal before navigation
     this.router.navigate([route]);
-   } // Navigate to the respective route  }
+  } // Navigate to the respective route  }
 }
