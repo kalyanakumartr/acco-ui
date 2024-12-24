@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetRoomList } from 'src/app/model/getroomlist.model';
@@ -16,7 +16,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NativeDateAdapter } from '@angular/material/core';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-declare var bootstrap: any;
+import 'bootstrap/dist/css/bootstrap.min.css';
+ import * as bootstrap from 'bootstrap';
+// declare var bootstrap:any;
 
 
 @Component({
@@ -56,14 +58,15 @@ export class HomeComponent implements OnInit {
   currentValue: any;
   minDate:any;
   maxDate:any;
-
+  private modalInstance: any;
 
 
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
     private roomTypeService: GetroomtypeService,
     public bookingService: BookingServiceService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2
   ) { }
 
 
@@ -216,15 +219,17 @@ const storedValue = localStorage.getItem('currentValue');
     console.log("formdata", this.homeForm.value);
 
     if (this.tokenvalue == null) {
+      console.log("form", this.homeForm.value);
       const modalElement = document.getElementById('exampleModal');
       if (modalElement) {
-        const modalInstance = new bootstrap.Modal(modalElement, {});
-        modalInstance.show();
+        console.log("form1111", this.homeForm.value);
+
+        this.modalInstance = new bootstrap.Modal(modalElement);
       }
 
       const formValue = this.homeForm.value;
       const jsondata = JSON.stringify(formValue);
-      localStorage.setItem('currentValue', jsondata);
+      // localStorage.setItem('currentValue', jsondata);
       // localStorage.setItem("checkin", formValue.checkIn);
       // localStorage.setItem("checkout", formValue.checkOut);
       // localStorage.setItem("checkintime", formValue.checkInTime);
@@ -363,4 +368,25 @@ const storedValue = localStorage.getItem('currentValue');
   toggleTimeDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+  openModal(): void {
+    if (this.modalInstance) {
+      this.modalInstance.show(); // Show the modal
+    }
+  }
+
+  closeModal(): void {
+    if (this.modalInstance) {
+      this.modalInstance.hide(); // Hide the modal
+    }
+
+    // Remove the backdrop manually
+    const backdrops = document.querySelectorAll('.modal-backdrop');
+    backdrops.forEach((backdrop) => this.renderer.removeChild(document.body, backdrop));
+  }
+
+  navigateTo(route: string) {
+    this.closeModal(); // Close the modal before navigation
+    this.router.navigate([route]);
+   } // Navigate to the respective route  }
 }

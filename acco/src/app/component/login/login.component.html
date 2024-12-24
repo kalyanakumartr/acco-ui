@@ -17,32 +17,44 @@
                         <!-- Username Field -->
                         <div class="form-group mb-3">
 
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                              </div>
-                              
-                            <!-- <label for="mobileNumber" class="font-weight-bold">Username</label> -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="fa fa-user" style="color:var(--text-color)" ></span>
-                                </div>
-                                <input formControlName="username" type="text" class="form-control" placeholder="Username" aria-label="Username" >
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping">@</span>
+                                <input type="text" formControlName="username" class="form-control"
+                                    placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
                                 <small
                                     *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
                                     class="text-danger mt-1 d-block">
-                                    *UserName is required
+                                    *Username is required
                                 </small>
                                 <small
                                     *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
                                     class="text-danger mt-1 d-block">
-                                    *username is invalid
+                                    *Username is invalid
                                 </small>
-                              </div>
+                            </div>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group mb-3">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping">@</span>
+                                <input type="password" formControlName="password" class="form-control"
+                                    placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+                                <small
+                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','password')"
+                                    class="text-danger mt-1 d-block">
+                                    *Password is required
+                                </small>
+                                <!-- <small
+                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
+                                    class="text-danger mt-1 d-block">
+                                    *Password is incorr
+                                </small> -->
+                            </div>
+                        </div>
 
 
-                            <!-- Password Field -->
-                            <div class="form-group mt-3">
+                        <!-- <div class="form-group mt-3">
                                 <div class="input-field position-relative">
                                     <span class="fa fa-lock position-absolute"
                                         style="color: #964B00; left: 10px; top: 50%; transform: translateY(-50%);"></span>
@@ -61,28 +73,28 @@
                                     class="text-danger mt-1 d-block">
                                     *password is invalid
                                 </small>
-                            </div>
+                            </div> -->
 
-                            <!-- Forgot Password -->
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="\forgotpassword" id="forgot" style="color: #964B00;">Forgot Password?</a>
-                            </div>
-
-                            <!-- Login Button -->
-                            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-block mt-4"
-                                style="color: #964B00; background-color: #efc96a;">
-                                Login
-                            </button>
-
-                            <!-- Signup Link -->
-                            <div class="text-center pt-4 text-muted">
-                                Don't have an account?
-                                <a id="forgot" class="pointer" (click)="signup()" style="color: #964B00;">Sign up</a>
-                            </div>
+                        <!-- Forgot Password -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="\forgotpassword" id="forgot" style="color: #964B00;">Forgot Password?</a>
                         </div>
-                    </form>
-                </div>
+
+                        <!-- Login Button -->
+                        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-block mt-4"
+                            style="color: #964B00; background-color: #efc96a;">
+                            Login
+                        </button>
+
+                        <!-- Signup Link -->
+                        <div class="text-center pt-4 text-muted">
+                            Don't have an account?
+                            <a id="forgot" class="pointer" (click)="signup()" style="color: #964B00;">Sign up</a>
+                        </div>
+                
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
