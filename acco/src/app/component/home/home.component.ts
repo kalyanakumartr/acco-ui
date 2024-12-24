@@ -74,7 +74,8 @@ export class HomeComponent implements OnInit {
     private modalService: NgbModal
   ) { }
 
-
+  
+  
   ngOnInit(): void {
     const date1 = new Date();
     this.generateTimeIntervals();

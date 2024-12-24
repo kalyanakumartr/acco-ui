@@ -21,7 +21,7 @@
       </span>
       <!-- Login/Signup/Logout Buttons -->
       <div class="mt-2">
-        <button *ngIf="!authService.logged()" routerLink="/login" class="btn  btn-sm mx-1">Login</button>
+        <button *ngIf="!authService.logged()" routerLink="/login" class="btn  btn-sm mx-1" >Login</button>
         <button *ngIf="!authService.logged()" (click)="signup()" class="btn  btn-sm mx-1">Signup</button>
         <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm ">Logout</button>
       </div>

@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
  tokenvalue:any;
  username:any;
  marquee="Welcome to Maduraa Services -10% off for Margazhi Maha Utsavam";
+
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
     private getUserService:GetUserServiceService,

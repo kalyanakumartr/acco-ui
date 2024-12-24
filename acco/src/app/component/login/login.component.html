@@ -9,40 +9,50 @@
 
         <div class="container d-flex justify-content-center align-items-center ">
             <div class="card " style="width: 100%; max-width: 600px;">
-                <div class="card-header text-center">
-                    <h3 class="text-brown">Login</h3>
-                </div>
-                <div class="card-body">
+                <div class="card-header text-center form-box-style ">
+                    <h3 class="text-brown mt-2">Login</h3>
+                
+                <div class="card-body  ">
                     <form [formGroup]="loginForm" (ngSubmit)="loginProcess()">
                         <!-- Username Field -->
                         <div class="form-group mb-3">
 
                             <div class="input-group flex-nowrap">
-                                <span class="input-group-text" id="addon-wrapping">@</span>
+                                <span class="input-group-text " id="addon-wrapping"><i class="fas fa-user"></i></span>
                                 <input type="text" formControlName="username" class="form-control"
                                     placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                <small
-                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
-                                    class="text-danger mt-1 d-block">
-                                    *Username is required
-                                </small>
-                                <small
-                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
-                                    class="text-danger mt-1 d-block">
-                                    *Username is invalid
-                                </small>
+                                    
                             </div>
+                            <small
+                            *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                            class="text-danger mt-1 text-start d-block">
+                            *Username is required
+                        </small>
+                        <!-- <small
+                            *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
+                            class="text-danger mt-1 text-start d-block ">
+                            *Username is invalid
+                        </small> -->
                         </div>
 
                         <!-- Password Field -->
                         <div class="form-group mb-3">
+                             <!-- Lock Icon -->
                             <div class="input-group flex-nowrap">
-                                <span class="input-group-text" id="addon-wrapping">@</span>
+                                <span class="input-group-text " id="addon-wrapping"><i class="fas fa-lock"></i></span>
+                                <!-- Password Input Field -->
                                 <input type="password" formControlName="password" class="form-control"
-                                    placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
-                                <small
-                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','password')"
-                                    class="text-danger mt-1 d-block">
+                                    placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping" >
+                                      <!-- Eye Icon for Toggling -->
+                                    <!-- <div class="input-group-append">
+                                       
+                                        <span (click)="hideShowPass()" class="fa {{eyeIcon}}  " class="input-group-text"></span>
+                                      </div>
+                                     -->
+                            </div>
+                            <small
+                                    *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                                    class="text-danger mt-1 text-start d-block">
                                     *Password is required
                                 </small>
                                 <!-- <small
@@ -50,7 +60,6 @@
                                     class="text-danger mt-1 d-block">
                                     *Password is incorr
                                 </small> -->
-                            </div>
                         </div>
 
 
@@ -76,15 +85,17 @@
                             </div> -->
 
                         <!-- Forgot Password -->
-                        <div class="d-flex justify-content-between mt-4">
-                            <a href="\forgotpassword" id="forgot" style="color: #964B00;">Forgot Password?</a>
+                        <div class="d-flex justify-content-end mt-4 ">
+                            <a  href="\forgotpassword" id="forgot" style="color: #964B00;">Forgot Password?</a>
                         </div>
 
                         <!-- Login Button -->
-                        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-block mt-4"
-                            style="color: #964B00; background-color: #efc96a;">
-                            Login
-                        </button>
+                        <div class="d-flex justify-content-center align-items-center mt-2">
+                            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-block"
+                                    style="color: #964B00; background-color: #efc96a;">
+                                Login
+                            </button>
+                        </div>
 
                         <!-- Signup Link -->
                         <div class="text-center pt-4 text-muted">
@@ -94,6 +105,7 @@
                 
                 </form>
             </div>
+        </div>
         </div>
     </div>
 </div>

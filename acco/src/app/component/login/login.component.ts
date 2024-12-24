@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
 
   }
   hideShowPass() {
-    this.isText = !this.isText;
-    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
-    this.isText ? (this.type = 'text') : (this.type = 'password');
+    this.isText = !this.isText; // Toggle boolean
+  this.eyeIcon = this.isText ? 'fa-eye-slash' : 'fa-eye'; // Update icon class
+  this.type = this.isText ? 'text' : 'password'; // Update input type
   }
 
   loginProcess() {

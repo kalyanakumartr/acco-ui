@@ -27,8 +27,19 @@
     object-fit: cover;  
 }
 i{
-    font-size:25px;color:var(--text-color);margin-right: 5%;
+    font-size:25px;
+    // color:var(--text-color);
+    margin-right: 5%;
 }
 .text-brown{
     color:var(--text-color); font-weight: bold;background-color: var(--background);
+}
+.form-box-style{
+    background-image: var(--primary);
+    border-radius: 10px; /* Slight rounded corners */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    object-fit: cover;  
 }
