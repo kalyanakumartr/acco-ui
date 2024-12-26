@@ -57,3 +57,37 @@
     mask-size: 100% 100%;
     object-fit: cover;  
 }
+.facilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+.facility-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+}
+.facility-card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.facility-card h2 {
+  font-size: 1.5em;
+  margin: 15px 0;
+  color: var(--text-color)
+}
+.facility-card p {
+  font-size: 1em;
+  color: var(--text-color)
+}
+@media (max-width: 768px) {
+  .facilities {
+      flex-direction: column;
+      align-items: center;
+  }
+}

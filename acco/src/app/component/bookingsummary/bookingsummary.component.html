@@ -2,93 +2,97 @@
     <app-navbar></app-navbar>
     <div class="container-fluid">
         <div class="row ">
-            <div class="col-sm-6 mt-2">
-                <h2 >Booking Summary</h2>
+            <div class="header mt-2 mb-0">
+                <h2>Booking Summary</h2>
             </div>
         </div>
 
-        <div class="containertable table-responsive">
-            <table class="table table-bordered">
+        <div class=" table-responsive ">
+            <table mb-2>
                 <thead>
-                    <tr >
-                       
-                        <th style="border-color: #964B00;"  scope="col">Description</th>
-                        <th  style="border-color: #964B00;" scope="col">Value</th>
+                    <tr>
+
+                        <th style="border-color: #964B00;" scope="col">Description</th>
+                        <th style="border-color: #964B00;" scope="col">Value</th>
 
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="align-middle " >Your Checkin Date</td>
-                        <td class="align-middle ">{{bookingData.checkin | date:'dd-MM-yyyy HH:mm a'}}</td>
+                        <td class="align-middle ">Your Checkin Date</td>
+                        <td class="align-middle ">{{bookingData.checkin | date:'dd-MM-yyyy HH:mm '}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " >Your Checkout Date</td>
-                        <td class="align-middle " >{{bookingData.checkout | date:'dd-MM-yyyy HH:mm a'}}</td>
+                        <td class="align-middle ">Your Checkout Date</td>
+                        <td class="align-middle ">{{bookingData.checkout | date:'dd-MM-yyyy HH:mm '}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " >Number of Days</td>
-                        <td class="align-middle " >{{bookingData.noofdays}}</td>
+                        <td class="align-middle ">Number of Days</td>
+                        <td class="align-middle ">{{bookingData.noofdays}}</td>
                     </tr>
                     <tr>
-                        <td class="align-middle " >Adults Count</td>
-                        <td class="align-middle " >{{bookingData.adults}}</td>
+                        <td class="align-middle ">Adults Count</td>
+                        <td class="align-middle ">{{bookingData.adults}}</td>
                     </tr>
                     <tr *ngIf="bookingData.child">
-                        <td class="align-middle " >Child Count</td>
+                        <td class="align-middle ">Child Count</td>
                         <td class="align-middle ">{{bookingData.child}}</td>
                     </tr>
                     <tr *ngIf="bookingData.bhk1count">
-                        <td class="align-middle " >1BHKCount
+                        <td class="align-middle ">1BHKCount
                         </td>
-                        <td class="align-middle " >{{bookingData.bhk1count}}</td>
+                        <td class="align-middle ">{{bookingData.bhk1count}}</td>
                     </tr>
                     <tr *ngIf="bookingData.bhk2count">
-                        <td class="align-middle " >2BHKCount
+                        <td class="align-middle ">2BHKCount
                         </td>
-                        <td class="align-middle " >{{bookingData.bhk2count}}</td>
+                        <td class="align-middle ">{{bookingData.bhk2count}}</td>
                     </tr>
                     <tr *ngIf="bookingData.bhk3count">
-                        <td class="align-middle " >3BHKCount
+                        <td class="align-middle ">3BHKCount
                         </td>
-                        <td class="align-middle " >{{bookingData.bhk3count}}</td>
+                        <td class="align-middle ">{{bookingData.bhk3count}}</td>
                     </tr>
                     <tr *ngIf="bookingData.extrabed">
-                        <td class="align-middle " >Extra Bed Count</td>
-                        <td class="align-middle " >{{bookingData.extrabed}}</td>
+                        <td class="align-middle ">Extra Bed Count</td>
+                        <td class="align-middle ">{{bookingData.extrabed}}</td>
                     </tr>
                     <!-- <tr>
                         <td class="align-middle " style="border-color: #964B00;">Extra Bed Amount</td>
                         <td class="align-middle " style="border-color: #964B00;">{{bookingData.totalbedamount}}</td>
                     </tr> -->
-                    <tr *ngIf="bookingData.discount" >
-                        <td class="align-middle " >Discount</td>
-                        <td class="align-middle " >{{bookingData.discount}}</td>
+                    <tr *ngIf="bookingData.discount">
+                        <td class="align-middle ">Discount</td>
+                        <td class="align-middle ">{{bookingData.discount}}</td>
                     </tr>
                     <tr *ngIf="bookingData.maintenance">
-                        <td class="align-middle " >Maintenance</td>
-                        <td class="align-middle " >{{bookingData.maintenance}}</td>
-                    </tr>
-                     <tr >
-                        <td class="align-middle " >Price</td>
-                        <td class="align-middle " >{{bookingData.price}}</td>
-                    </tr> 
-                    <tr *ngIf="bookingData.tax">
-                        <td class="align-middle " >Tax</td>
-                        <td class="align-middle " >{{bookingData.tax}}</td>
+                        <td class="align-middle ">Maintenance</td>
+                        <td class="align-middle ">{{bookingData.maintenance}}</td>
                     </tr>
                     <tr>
-                        <td  scope="col">Invoice</td>
-                        <td  scope="col">Rs.{{bookingData.totalamount}}</td>
+                        <td class="align-middle ">Price</td>
+                        <td class="align-middle ">{{bookingData.price}}</td>
+                    </tr>
+                    <tr *ngIf="bookingData.tax">
+                        <td class="align-middle ">Tax</td>
+                        <td class="align-middle ">{{bookingData.tax}}</td>
+                    </tr>
+                    <tr>
+                        <td scope="col">Invoice</td>
+                        <td scope="col">Rs.{{bookingData.totalamount}}</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="text-center">
-                <button (click)="confirmBooking()" type="submit" class="btn btn-outline "
-                     >Click to make
-                    Payment</button>
+            <div class="text-center mt-2 mb-2 button-container">
+                <button (click)="confirmBooking()" type="submit" class="btn btn-light mr-3 me-2 ">Next</button>
+                <button routerLink="/roomlogic" type="submit" class="btn btn-light my-2 ">Back</button>
             </div>
         </div>
     </div>
+    <!-- footer -->
+    <footer class="  py-1">
+       
+        <app-footer></app-footer>
+      </footer>
 </div>

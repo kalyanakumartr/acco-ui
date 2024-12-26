@@ -1,45 +1,40 @@
-.outer{
+.outer {
     // height:100vh;
-     background-image: var(--primary);
-     height: 100%
+    background-image: var(--primary);
+    height: 100%
 }
 
-.text-brown{
-    font-weight: bold;
-    font-family: Georgia, serif;
+.text-brown {
+    // font-weight: bold;
+    // font-family: Georgia, serif;
     color: var(--text-color);
     font-size: 30px;
 
 }
 
 
-.container-fluid{
-    background-color:var(--primary);
+.container-fluid {
+    background-color: var(--primary);
     border-radius: 0.3rem;
     // box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
     border-radius: 4px;
     background-color: var(--primary);
 }
 
-
-
-
-#forget {
-    min-width: 100px;
-    margin-left: auto;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-
-
 .btn {
-    margin-top: 20px;
-    border-radius: 15px;
+    // margin-top: 20px;
+    // border-radius: 15px;
+    color: var(--text-color);
+    background-color: var(--secondary);
+}
+
+.btn:hover {
+    color: var(--hover);
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    transition: all 0.3s ease-in-out;
 }
 
 .input-field {
@@ -71,54 +66,30 @@ input[type='password'] {
     box-shadow: none;
 }
 
-img {
-    width: 130px;
-    height: 40px;
-    object-fit: cover;
-    // border-radius:10%;
-    position: relative
-}
-
-a {
-    color: #964B00;
-    // font-weight: bold ;
-    // font-size: medium;
-
-}
-
-a:hover {
-    color: #f47a08
-}
-
 .pointer {
     cursor: pointer;
+    color: var(--text-color)
 }
 
 .pointer:hover {
-    color: #f47a08;
+    color: var(--hover)
 }
 
-// .border{
-//     border-top: 1px solid #aaa;
-//     position: relative;
-// }
-// .bordert:after{
-//     content:"or connect with";
-//     position:absolute;
-//      top:-13px;
-//     left:33%;
-//     background-color: #fff;
-//     padding:0 8px;
-// }
 
-.form-box-style{
+
+.form-box-style {
     background-image: var(--panel);
-    border-radius: 10px; /* Slight rounded corners */
-    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+    border-radius: 10px;
+    /* Slight rounded corners */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
+    /* Soft shadow */
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: 100% 100%;
-    object-fit: cover;  
+    object-fit: cover;
 }
 
-
+.input-group-append .fa {
+    margin-left: 8px;
+    /* Adjust the value for more or less space */
+}

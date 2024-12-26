@@ -2,12 +2,14 @@
     <app-navbar></app-navbar>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light ">
-           
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> 
-           
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Toggler Button for Mobile View -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Corrected ID to match the data-bs-target -->
+  <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button> -->
@@ -27,10 +29,7 @@
                     <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/tariff">TARIFF</button> -->
                   <a class="nav-link " href="#" style="color:#964B00" routerLink="/changepassword">Change Password</a>
                 </li>
-                <li class="nav-item active">
-                  <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" style="color:#964B00;background-color:#efc96a;margin-left: 500px;" id="btn" type="submit" routerLink="/home">Book</button> -->
-                  <a class="nav-link " href="#" style="color:#964B00;" routerLink="/home">Home</a>
-                </li>
+                
                   
               </ul>
               
@@ -38,15 +37,18 @@
             
             </div>
           </nav>
-          <h4 class="mt-0 pt-2 " >Booking History</h4>
+          <div class="text-center" >
+            <h4 >Canceled Booking </h4>
+           <p>Review your canceled bookings and manage your records </p>
+          </div>
           
           <div class="table-responsive" >
-            <table class="table table-borderless text-center" >
+            <table  >
               <thead>
                 <tr>
                   <th class="align-middle " rowspan="2">BookingId</th>
-                  <th class="align-middle " rowspan="2">From</th>
-                  <th class="align-middle " rowspan="2">To</th>
+                  <th class="align-middle " rowspan="2">Check-In Date</th>
+                  <th class="align-middle " rowspan="2">Check-Out Date</th>
                   <th class="align-middle " rowspan="2">Adult</th>
                   <th class="align-middle " rowspan="2">Child</th>
                   <th class="align-middle " colspan="3">Flat Type</th>
@@ -66,8 +68,8 @@
               <tbody>
                 <tr  *ngFor="let i of dataObs$ | async">
                   <td class="align-middle " >{{i.bookingid}}
-                  <td class="align-middle " >{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
-                  <td class="align-middle " >{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
+                  <td class="align-middle " >{{i.checkin | date:'dd-MM-yyyy HH:mm '}}
+                  <td class="align-middle " >{{i.checkout | date:'dd-MM-yyyy HH:mm '}}
                   <td class="align-middle " >{{i.adults}}
                   <td class="align-middle " >{{i.child}}
                   <td class="align-middle " >{{i.bhk1count}}
@@ -98,4 +100,12 @@
       </div>    
   
     </div>
+     <!-- footer -->
+     <footer class="  py-1">
+      <!-- <div class="container">
+        <p class="text-black"> Stashook Technologies Private Ltd</p>
+        
+      </div> -->
+      <app-footer></app-footer>
+    </footer>
 </div>

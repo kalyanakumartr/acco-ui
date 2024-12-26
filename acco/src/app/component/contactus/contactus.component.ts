@@ -30,6 +30,58 @@ ngOnInit():void{
   })
 }
 
+// display: any;
+//     center: google.maps.LatLngLiteral = {
+//         lat: 10.857197866699392,
+//         lng: 78.70237868620065
+//     };
+//     zoom = 6;
+
+//     /*------------------------------------------
+//     --------------------------------------------
+//     moveMap()
+//     --------------------------------------------
+//     --------------------------------------------*/
+//     moveMap(event: google.maps.MapMouseEvent) {
+//         if (event.latLng != null) this.center = (event.latLng.toJSON());
+//     }
+
+//     /*------------------------------------------
+//     --------------------------------------------
+//     move()
+//     --------------------------------------------
+//     --------------------------------------------*/
+//     move(event: google.maps.MapMouseEvent) {
+//         if (event.latLng != null) this.display = event.latLng.toJSON();
+//     }
+// Set map center to Tiruchirappalli
+center: google.maps.LatLngLiteral = {
+  lat: 10.8571, // Tiruchirappalli Latitude
+  lng: 78.7023, // Tiruchirappalli Longitude
+};
+zoom = 13; // Zoom level suitable for city view
+display: google.maps.LatLngLiteral | null = null; // Display coordinates for mouse move
+
+/*------------------------------------------
+Update map center on click
+------------------------------------------*/
+moveMap(event: google.maps.MapMouseEvent): void {
+  if (event.latLng) {
+    this.center = event.latLng.toJSON();
+    this.display = event.latLng.toJSON();
+  }
+}
+
+/*------------------------------------------
+Update displayed coordinates on mouse move
+------------------------------------------*/
+move(event: google.maps.MapMouseEvent): void {
+  if (event.latLng) {
+    this.display = event.latLng.toJSON();
+  }
+}
+
+
 contactFormProcess(){
   const newuser = new UserModel() ;
   const formData = this.contactForm.value;

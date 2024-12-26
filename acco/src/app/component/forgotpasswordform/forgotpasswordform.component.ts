@@ -15,7 +15,7 @@ export class ForgotpasswordformComponent {
   eyeIcon: string = 'fa-eye-slash';
   type: string = "password";
   isText: boolean = false;
-  description="Enter your new password"
+  description="Change your Password"
   apiresult:any;
   addemail:any;
 

@@ -2,11 +2,14 @@
     <app-navbar></app-navbar>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <!-- Toggler Button for Mobile View -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Corrected ID to match the data-bs-target -->
+        <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button> -->
@@ -29,14 +32,14 @@
                         <a class="nav-link " href="#" style="color:#964B00" routerLink="/changepassword">Change
                             Password</a>
                     </li>
-                    <li class="nav-item active">
-                        <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" style="color:#964B00;background-color:#efc96a;margin-left: 500px;" id="btn" type="submit" routerLink="/home">Book</button> -->
-                        <a class="nav-link " href="#" style="color:#964B00;" routerLink="/home">Home</a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
-        <h4 class="mt-0 pt-2 " >Update Your Details</h4>
+        <div class="text-center">
+            <h4>Profile Details</h4>
+            <p>View and update your profile details to keep your information up-to-date.</p>
+          </div>
         <div class="panel-body p-3">
             <form [formGroup]="updateForm" (ngSubmit)="updateProcess()">
                 <div class="form-group pt-0 row justify-content-around">
@@ -150,4 +153,9 @@
 
         </div>
     </div>
+     <!-- footer -->
+     <footer class="  py-1">
+  
+        <app-footer></app-footer>
+      </footer>
 </div>

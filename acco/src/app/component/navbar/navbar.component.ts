@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 // import { GetUser } from 'src/app/model/getuser.model';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -19,14 +19,16 @@ export class NavbarComponent implements OnInit {
  
  homeurl=this.router.url;
  isDisabled=true;
- tokenvalue:any;
- username:any;
+ tokenvalue: string | null = null;
+  username: string = "Welcome"; 
  marquee="Welcome to Maduraa Services -10% off for Margazhi Maha Utsavam";
 
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
     private getUserService:GetUserServiceService,
-    public authService:AuthServiceService){
+    public authService:AuthServiceService,
+    private cdr: ChangeDetectorRef
+  ){
       authService.apiData$.subscribe(data => this.loginData = data)
       console.log("URLM",this.router.url);
     }
@@ -36,8 +38,18 @@ export class NavbarComponent implements OnInit {
     console.log("navtoken",this.tokenvalue)
     console.log("loginname",this.loginData.username)
 
-    this. username = this.tokenvalue == null ? "Welcome" : "Welcome"+" "+this.loginData.username;
-    console.log("name:",this.username);
+    if (!this.tokenvalue) {
+      this.username = "Welcome";
+    } else {
+      this.username = "Welcome " + (this.loginData?.username || "");
+    }
+
+    // Notify Angular of changes
+    this.cdr.detectChanges();
+    console.log("Final username:", this.username);
+  
+    // this. username = this.tokenvalue == null ? "Welcome" : "Welcome"+" "+this.loginData.username;
+    // console.log("name:",this.username);
    
   }
 

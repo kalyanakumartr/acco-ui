@@ -69,6 +69,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { FooterComponent } from './component/footer/footer.component';
 
 
 
@@ -116,6 +118,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     EditflatComponent,
     CustomercancelComponent,
     ViewcalendarComponent,
+    FooterComponent,
 
     // MatchpasswordComponent,
    
@@ -147,6 +150,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatNativeDateModule,
     NgxMaterialTimepickerModule,
     // provideNativeDateAdapter,
+    GoogleMapsModule
 
    
 

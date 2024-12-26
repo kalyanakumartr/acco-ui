@@ -72,12 +72,12 @@ export class AuthServiceService {
 
           } 
           else if (this.authresults.usertype == "Customer"&& url=="/login"){
-            Swal.fire({
-              text:
-                this.authresults.message,
-              confirmButtonColor: '#964B00',
-              background: '#efc96a',
-            });
+            // Swal.fire({
+            //   text:
+            //     this.authresults.message,
+            //   confirmButtonColor: '#964B00',
+            //   background: '#efc96a',
+            // });
             this.router.navigate(["home"])
           }
 

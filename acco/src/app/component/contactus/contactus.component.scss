@@ -1,8 +1,16 @@
 .btn{
     // background-image: linear-gradient(45deg, #9cbfe2 0%, rgb(206, 199, 223) 100%);
-    background-image: linear-gradient(45deg, #EFC96A,white);
+    background-image: var(--primary);
     margin-top: 30px;
-    color: #964B00;
+    color: var(--text-color);
+}
+.btn-light:hover {
+    color: var(--hover);
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    transition: all 0.3s ease-in-out;
 }
 .outer{
     // height:100vh;
@@ -32,7 +40,7 @@ i{
     margin-right: 5%;
 }
 .text-brown{
-    color:var(--text-color); font-weight: bold;background-color: var(--background);
+    color:var(--text-color); font-weight: bold;;
 }
 .form-box-style{
     background-image: var(--primary);
@@ -42,4 +50,68 @@ i{
     mask-position: center;
     mask-size: 100% 100%;
     object-fit: cover;  
+}
+.form-box-styleMap{
+    background-image: linear-gradient(45deg,white,white);
+    border-radius: 10px; /* Slight rounded corners */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    object-fit: cover;  
+}
+
+google-map {
+    display: block;
+    height: 450px;
+    width: 100%;
+  }
+  .info-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.info-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+.info-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    // color: var(--text-color)
+}
+.info-card p {
+    font-size: 1em;
+    color: var(--text-color)
+}
+.info-card a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.info-card a:hover {
+    text-decoration: underline;
+}
+// .info-section {
+//     flex-direction: column;
+//     align-items: center;
+// }
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.header h1 {
+    font-size: 2.5em;
+    color: var(--text-color)
+}
+.header p {
+    font-size: 1.2em;
+    color: var(--text-color)
 }

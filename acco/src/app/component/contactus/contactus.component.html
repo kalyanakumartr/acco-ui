@@ -5,58 +5,39 @@
 
         <div class="container">
             <!-- Get In Touch -->
-            <div class="row">
-                <div class="col mx-2 my-2 fw-bolder">
-                    <h1>Get In Touch</h1>
-                    <h3>Maduraa Serviced Apartment is one of the finest accommodation service providers with fully
-                        furnished 2 & 3 BHK flats in Trichy targeting families, tourists & business communities since
-                        2012.</h3>
-                    <div>
-                        <h3>
-                            If you are looking for a hotel accommodation booking and that too at a very reasonable rate,
-                            then you are at the right place.
-                        </h3>
+            <div class="row mt-2 mb-2">
+                <!-- <div class="col-sm-8">col-sm-12
+                </div> -->
+                <div class="container form-box-styleMap">
+
+                <div class="header mt-2">
+                    <h1>Contact Us</h1>
+                    <p>We're here to help you with all your service apartment needs.</p>
+                </div>
+                <div class="info-section form-box-styleMap mb-2 ">
+                    <div class="info-card ">
+                        <h3>Address</h3>
+                        <p>No.37, Bharathi Street, Thiruvanai Kovil,<br>Trichy - 620005, Tamil Nadu, India</p>
                     </div>
-                    <div>
-                        <a [href]="'https://www.facebook.com/people/Maduraa-Service-Apartments/100069674340814/' "
-                            target="_blank"> <i class="fab fa-facebook-square"></i></a>
-                        <a [href]="'https://twitter.com/maduraatrichy' " target="_blank"> <i
-                                class="fab fa-twitter-square"></i></a>
-                        <a [href]="'https://www.linkedin.com/in/maduraa-trichy-45550b141/' " target="_blank"> <i
-                                class="fab fa-linkedin"></i></a>
-                        <a [href]="'https://api.whatsapp.com' " target="_blank"> <i
-                                class="fab fa-whatsapp-square"></i></a>
-                        <!-- <a [href]="'http://example.org/?test=' ">whatsapp</a> -->
-                        <!-- https://api.whatsapp.com/send?phone=+910000000000 -->
+        
+                    <div class="info-card form-box-style">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+1234567890">(+91) 0431 4030469 , 223 0470<br> (+91) 7373 82 6373</a></p>
+                    </div>
+        
+                    <div class="info-card form-box-style">
+                        <h3>Email</h3>
+                        <p><a href="mailto:support@maduraa.in">support@maduraa.in</a></p>
                     </div>
                 </div>
-                <!-- Contact Detail -->
-                <div class="col mx-2 my-2">
-                    <h1>Contact Detail</h1>
-                    <div style="display: inline-flex; align-items: center;">
-                        <!-- <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> -->
-                        <h2 style="margin: 0;">Address</h2>
-                    </div>
-                    <h4 class="mx-1 my-1">No.37, Bharathi Street, Thiruvanai Kovil,<br>
-                        Trichy - 620005, Tamil Nadu, India</h4>
-                    <div style="display: inline-flex; align-items: center;">
-                        <!-- <i class="fas fa-phone-alt mb-1" style="margin-right: 8px;"></i> -->
-                        <h2 class="mt-1 m-0">Phone</h2>
-                    </div>
-                    <h4 class="mx-1 my-1">(+91) 0431 4030469 , 223 0470<br>
-                        (+91) 7373 82 6373</h4>
-                    <div style="display: inline-flex; align-items: center;">
-                        <!-- <i class="fa fa-envelope mb-2" style="margin-right: 8px;"></i> -->
-                        <h2 class="mt-1">Email</h2>
-                        <a class="mx-4 my-4 mt-2" href="mailto:support@maduraa.in">support@maduraa.in</a>
-                    </div>
                 </div>
-            </div>
-            <div class="row form-box-style">
+              </div>
+              
+            <div class="row form-box-styleMap">
                 <!-- message -->
                 <div class="col fw-bolder">
                     <div class=" col-sm-12 text-brown">
-                        <h2 class="my-3 mx-2">Send Us A Message</h2>
+                        <h2 class="my-3 mx-2 text-center">Send Us A Message</h2>
                         <!-- <h4>Contact Us <br> Fields marked with an * are required</h4> -->
                         <form [formGroup]="contactForm" (ngSubmit)="contactFormProcess()">
                             <div class="form-group mx-2">
@@ -110,7 +91,7 @@
                                     class="text-danger form-inline  mt-0">*Messsage is invalid</small>
                             </div>
                             <div class="text-center  my-3">
-                                <button type="submit" class="btn btn-light btn-elevate mr-2 ">
+                                <button type="submit" class="btn btn-light btn-elevate mr-2 mb-2 ">
                                     Submit</button>
 
                             </div>
@@ -119,8 +100,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    Want to place map
+                <div class="col form-box-styleMap mt-2 mb-2">
+                   <h2 class="text-center text-brown">Find Us Here</h2>
+        <google-map
+        height="450px"
+        width="100%"
+        [center]="center"
+        [zoom]="zoom"
+        (mapClick)="moveMap($event)"
+        (mapMousemove)="move($event)"
+      ></google-map>
+    
+      <!-- Display Latitude and Longitude -->
+      <div *ngIf="display">
+        <p>Latitude: {{ display.lat }}</p>
+        <p>Longitude: {{ display.lng }}</p>
+      </div>
                 </div>
 
             </div>
@@ -128,14 +123,9 @@
 
     </div>
     <!-- footer -->
-    <footer class=" text-white text-end py-1">
-        <div class="container">
-          <p class="text-black">&copy; Stashook Technologies Private Ltd</p>
-          <!-- <p>
-            <a href="/privacy-policy" class="text-black">Privacy Policy</a> | 
-            <a href="/terms" class="text-white">Terms & Conditions</a>
-          </p> -->
-        </div>
+    <footer class="  py-1">
+       
+        <app-footer></app-footer>
       </footer>
 </div>
 

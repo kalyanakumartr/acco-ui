@@ -14,11 +14,70 @@ h2{
     color:var(--text-color); font-weight:bold ;
 
 }
-th,td{
-    border-color:var(--text-color);
-    color:var(--text-color);
+// th,td{
+//     border-color:var(--text-color);
+//     color:var(--text-color);
+// }
+
+// button{
+//     color:var(--text-color) ;background-color:var(--secondary);border-radius: 15px; font-weight: bold;
+// }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    // margin-top: 20px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: white;
+    color: var(--text-color);
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1e4db;
+}
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9em;
+    }
+    th, td {
+        padding: 10px;
+    }
+}
+i{
+    color:var(--text-color)
+}
+.btn-light{
+    // background-image: linear-gradient(45deg, #9cbfe2 0%, rgb(206, 199, 223) 100%);
+    background-image: var(--primary);
+    // margin-top: 30px;
+    color: var(--text-color);
+}
+.btn-light:hover {
+    color: var(--hover);
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    transition: all 0.3s ease-in-out;
 }
 
-button{
-    color:var(--text-color) ;background-color:var(--secondary);border-radius: 15px; font-weight: bold;
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.header h2 {
+    font-size: 1.5em;
+    color:var(--text-color);
 }

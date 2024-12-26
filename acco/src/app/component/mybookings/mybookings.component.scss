@@ -30,16 +30,41 @@ mat-paginator{
   background-color: var(--secondary);
 }
 
-h4{
-  color: var(--text-color); text-align: left
+h4,p{
+  color: var(--text-color); 
 }
-tr,th{
-  color:var(--text-color);
-  border-color:var(--primary);
-  
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-td,a{
-  border-color: var(--text-color);
-  color:var(--text-color);
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
+th {
+  background-color: white;
+  color: var(--text-color);
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+tr:hover {
+  background-color: #f1e4db;
+}
+@media (max-width: 768px) {
+  table {
+      font-size: 0.9em;
+  }
+  th, td {
+      padding: 10px;
+  }
+}
+
 
