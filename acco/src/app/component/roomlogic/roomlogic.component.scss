@@ -71,14 +71,28 @@ i{
     color:var(--text-color);
 }
 
-.fixed-button {
-    position: fixed;
-    bottom: 1px; /* Adjust as needed for the desired distance from the bottom */
-    right: 10px; /* Adjust as needed for the desired distance from the right */
-    z-index: 1000; /* Ensure it stays above other content */
+// .fixed-button {
+//      position: fixed;
+//     bottom: 1px; /* Adjust as needed for the desired distance from the bottom */
+//      right: 10px; /* Adjust as needed for the desired distance from the right */
+//     z-index: 1000; /* Ensure it stays above other content */
+//   }
+
+/* Fix the button at the bottom of the viewport for mobile */
+@media (max-width: 768px) {
+    .fixed-button {
+      position: fixed;
+      bottom: 0px; /* Adjust spacing from the bottom */
+      left: 50%;
+      transform: translateX(-50%); /* Center the button horizontally */
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+  
+    .fixed-button button {
+      width: auto; /* Let the button size itself based on content */
+      padding: 0px 20px; /* Adjust padding for better touch experience */
+    }
   }
-
-
 
 
 // 

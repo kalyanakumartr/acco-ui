@@ -1,15 +1,15 @@
 <div class="outer">
     <app-navbar></app-navbar>
-    <div class="container ">
+    <div class="container-fluid ">
 
         <div class="row">
             <div class="col">
-                <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Cancellation Norms</h2>
+                <h2 class="mt-3">Cancellation Norms</h2>
 
                 <form [formGroup]="cancelform">
 
                     <div class="form-group row">
-                        <label style="color:#964B00" for="bookingid" class="col-sm-2 col-form-label">Bookingid</label>
+                        <label  for="bookingid" class="col-sm-2 col-form-label">Bookingid</label>
                         <div class="col-sm-5">
                             <input formControlName="bookingid" type="text" readonly class="form-control-plaintext"
                                 id="bookingid" value={{bookingid}}>
@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label style="color:#964B00" for="checkin" class="col-sm-2 col-form-label">Checkin</label>
+                        <label  for="checkin" class="col-sm-2 col-form-label">Checkin</label>
                         <div class="col-sm-5">
                             <input formControlName="checkin" type="text" readonly class="form-control-plaintext"
                                 id="checkin" value={{checkin}}>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label style="color:#964B00" for="checkout" class="col-sm-2 col-form-label">Checkout</label>
+                        <label  for="checkout" class="col-sm-2 col-form-label">Checkout</label>
                         <div class="col-sm-5">
                             <input formControlName="checkout" type="text" readonly class="form-control-plaintext"
                                 id="checkout" value={{checkout}}>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label style="color:#964B00" for="reason" class="col-sm-2 col-form-label">Reason</label>
+                        <label  for="reason" class="col-sm-2 col-form-label">Reason</label>
                         <div class="col-sm-5">
                             <textarea formControlName="reason" class="form-control"></textarea>
                             <small
@@ -47,35 +47,40 @@
                     </div>
 
                     <button [disabled]=cancelform.invalid (click)="cancelbooking()" type="submit"
-                        class="btn btn-light btn-elevate mr-2 margin-left "
-                        style="color: #964B00;background-color:#efc96a;margin-top: 10px;margin-bottom: 10px;">
+                        class="btn btn-light btn-elevate mr-2 mx-3"
+                       >
                         Cancel</button>
-                    <button routerLink="/mybookings" type="submit" class="btn btn-light btn-elevate mr-2 margin-left "
-                        style="color: #964B00;background-color:#efc96a ;margin-top: 10px;margin-bottom: 10px;">
+                    <button routerLink="/mybookings" type="submit" class="btn btn-light btn-elevate mr-2  "
+                        >
                         Back</button>
                 </form>
             </div>
             <div class="col">
-                <h2 style="margin-top: 5px;color:#964B00;padding-top: 3px;">Cancellation policy</h2>
-
-                <table class="table table-bordered text-center " style="width: 400px;height: 100px;">
+                <h2 class="mt-3 text-center ">Cancellation policy</h2>
+                <div class="table-responsive mb-3 mt-0">
+                <table  >
                     <thead>
-                        <tr style="color: #964B00;">
+                        <tr >
                             <th class="align-middle" rowspan="2">No</th>
                             <th class="align-middle" rowspan="2">Time of Cancellation</th>
                             <th class="align-middle" rowspan="2">Cancellation percentage</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="color: #964B00;" *ngFor="let i of cancelpolicydata let index = index;">
+                        <tr  *ngFor="let i of cancelpolicydata let index = index;">
                             <td>{{i.cancelpolicyid}}</td>
                             <td>{{i.timeofcancel}}</td>
                             <td>{{i.cancelpercentage}}</td>
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
-
+<!-- footer -->
+<footer class="  py-1">
+       
+    <app-footer></app-footer>
+  </footer>
 </div>

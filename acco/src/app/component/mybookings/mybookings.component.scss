@@ -18,18 +18,47 @@
     color:  var(--hover);
 
   }
-  // .table{
-  //   color:var(--text-color);
-  //     background-color: #efc96a;
-  //    width:100%;
-  //    background-image: linear-gradient(45deg, #efc96a,white);
-  // }
+  
 
 
-mat-paginator{
-  background-color: var(--secondary);
+@media (max-width: 768px) {
+  .fullscreen-paginator {
+    // position: fixed;       /* Fix it to the viewport */
+    top: 0;                /* Start at the top */
+    left: 0;               /* Align to the left */
+    width: 190%;           /* Full width */
+    height: 190%;          /* Full height */
+    z-index: 1000;         /* Ensure it is on top of other elements */
+    margin: 0;             /* Remove any margins */
+    padding: 0;            /* Remove any padding */
+    background-color: var(--secondary); /* Apply the desired background color */
+    box-sizing: border-box; /* Ensure padding is included in height/width */
+    overflow: hidden;      /* Prevent scrolling overflow */
+  }
+
+  /* Ensure paginator content stretches */
+  mat-paginator .mat-paginator-container {
+    height: 100%;          /* Fill the full height */
+    display: flex;         /* Use flexbox for alignment */
+    flex-direction: column; /* Stack the content */
+    justify-content: center; /* Center the paginator items vertically */
+    align-items: center;   /* Center the paginator items horizontally */
+    background-color:var(--secondary);
+  }
 }
 
+// /* Fullscreen styles for mobile */
+// @media (max-width: 768px) {
+//   .fullscreen-paginator {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 1000; /* Ensures it appears on top */
+//     overflow-y: auto;
+//   }
+// }
 h4,p{
   color: var(--text-color); 
 }
