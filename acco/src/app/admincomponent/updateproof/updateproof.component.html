@@ -1,7 +1,7 @@
 <div class="outer">
   <app-header></app-header>
   <div class="container-fluid">
-    <div class="row mx-2">
+    <div class="row mx-5 form-box-style">
       <div class="col">
         <!-- form -->
         <form [formGroup]="selectRoomForm">
@@ -41,7 +41,7 @@
           </div>
 
           <button [disabled]=selectRoomForm.invalid (click)="uploadFileToActivity()" type="submit"
-            class="btn btn-light btn-elevate  mt-5 mx-5 "
+            class="btn btn-light  mt-5 mx-3 "
             >
             Submit</button>
           <button routerLink="/frontdesk" class="btn btn-light btn-elevate mt-5 "
@@ -57,6 +57,12 @@
 
     </div>
 
-
-
+</div>
+<footer class="  py-1">
+  <!-- <div class="container">
+    <p class="text-black"> Stashook Technologies Private Ltd</p>
+    
+  </div> -->
+  <app-footer></app-footer>
+</footer>
   </div>

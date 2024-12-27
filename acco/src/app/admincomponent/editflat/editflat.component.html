@@ -1,8 +1,8 @@
 <div class="outer">
     <app-header></app-header>
     <div class="container-fluid">
-
-        <h2 class="mt-1 ">Update Flat Status</h2>
+<div class="form-box-style mt-1">
+        <h2 >Update Flat Status</h2>
 
             <form [formGroup]="editflatform">
                 <div class="form-group row">
@@ -74,16 +74,23 @@
                 </div>
 
                 <button [disabled]=editflatform.invalid (click)="editflatdata()" type="submit"
-                    class="btn btn-light btn-elevate mr-2 margin-left mt-5 mb-3 "
+                    class="btn btn-light   mt-5 mb-3 mx-3 "
                     >
                     Submit</button>
-                <button routerLink="/manageflats" type="submit" class="btn btn-light btn-elevate mr-2 mt-5 mb-3 "
+                <button routerLink="/manageflats" type="submit" class="btn btn-light  mt-5 mb-3 "
                     >
                     Back</button>
 
             </form>
        
-
+        </div>
 
     </div>
+    <footer class="  py-1">
+        <!-- <div class="container">
+          <p class="text-black"> Stashook Technologies Private Ltd</p>
+          
+        </div> -->
+        <app-footer></app-footer>
+      </footer>
 </div>

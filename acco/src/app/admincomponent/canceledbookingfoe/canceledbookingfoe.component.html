@@ -14,9 +14,9 @@
     </div>
 
     <div class="tbl-container pt-2">
-      <div class="row tbl-fixed table-responsive">
+      <div class=" table-responsive">
 
-        <table class="table table-borderless text-center">
+        <table >
 
           <thead>
             <tr>
@@ -26,8 +26,8 @@
               <th class="align-middle " rowspan="2">3BHK</th>
               <th class="align-middle " rowspan="2">Name</th>
               <th class="align-middle " rowspan="2">Phone</th>
-              <th class="align-middle " rowspan="2">CinTime</th>
-              <th class="align-middle " rowspan="2">CoutTime</th>
+              <th class="align-middle " rowspan="2">Check-In Time</th>
+              <th class="align-middle " rowspan="2">Check-OutTime</th>
             </tr>
           </thead>
           <tbody>
@@ -39,8 +39,8 @@
               <td class="align-middle ">{{i.bhk3count}}
               <td class="align-middle ">{{i.firstname | titlecase}}
               <td class="align-middle ">{{i.phonenumber}}
-              <td class="align-middle ">{{i.checkin | date:'dd-MM-yyyy HH:mm a'}}
-              <td class="align-middle ">{{i.checkout | date:'dd-MM-yyyy HH:mm a'}}
+              <td class="align-middle ">{{i.checkin | date:'dd-MM-yyyy HH:mm '}}
+              <td class="align-middle ">{{i.checkout | date:'dd-MM-yyyy HH:mm '}}
 
           </tbody>
         </table>
@@ -52,4 +52,12 @@
       </div>
     </div>
   </div>
+  <!-- footer -->
+  <footer class="  py-1">
+    <!-- <div class="container">
+      <p class="text-black"> Stashook Technologies Private Ltd</p>
+      
+    </div> -->
+    <app-footer></app-footer>
+  </footer>
 </div>

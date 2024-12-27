@@ -43,31 +43,31 @@ export class AuthServiceService {
           //  this.loggedIn.next(true);
 
           if (this.authresults.usertype == "Admin" && url=="/adminlogin") {
-            Swal.fire({
-              text:
-                this.authresults.message,
-              confirmButtonColor: '#964B00',
-              background: '#efc96a',
-            });
+            // Swal.fire({
+            //   text:
+            //     this.authresults.message,
+            //   confirmButtonColor: '#964B00',
+            //   background: '#efc96a',
+            // });
             this.router.navigate(["admincomponent"])
 
           } else if (this.authresults.usertype == "Manager") {
-            Swal.fire({
-              text:
-                this.authresults.message,
-              confirmButtonColor: '#964B00',
-              background: '#efc96a',
-            });
+            // Swal.fire({
+            //   text:
+            //     this.authresults.message,
+            //   confirmButtonColor: '#964B00',
+            //   background: '#efc96a',
+            // });
             this.router.navigate(["frontdesk"])
 
           }
           else if (this.authresults.usertype == "FrontOfficeExecutive") {
-            Swal.fire({
-              text:
-                this.authresults.message,
-              confirmButtonColor: '#964B00',
-              background: '#efc96a',
-            });
+            // Swal.fire({
+            //   text:
+            //     this.authresults.message,
+            //   confirmButtonColor: '#964B00',
+            //   background: '#efc96a',
+            // });
             this.router.navigate(["frontdesk"])
 
           } 
@@ -99,6 +99,7 @@ export class AuthServiceService {
   };
 
   setData(loginData: any) {
+    
     this.apiData.next(loginData)
   }
 
@@ -113,7 +114,7 @@ export class AuthServiceService {
   logout() {
 
     localStorage.removeItem('token');
-      this.router.navigate(["home"])
+      // this.router.navigate(["home"])
   }
 }
 

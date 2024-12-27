@@ -3,11 +3,11 @@
     <app-header></app-header>
     <div class="container-fluid">
         <div class="card ">
-            <div class="text-center ">
-                <h1>Walking in Future</h1>
+            <div class="text-center form-box-style ">
+                <h1 class="mt-2">Walking in Future</h1>
                 <form [formGroup]="walkingFutureForm" (ngSubmit)="walkingFutureFormProcess()">
                     <!-- (ngSubmit)="walkingCurrentFormProcess()"> -->
-                    <div class="form-group pt-0 row justify-content-around ">
+                    <div class="form-group pt-0 row justify-content-around mx-3">
                         <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group pt-1 row justify-content-around ">
+                    <div class="form-group pt-1 row justify-content-around mx-3">
                         <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group pt-1 row justify-content-around">
+                    <div class="form-group pt-1 row justify-content-around mx-3">
                         <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group pt-1 row justify-content-around">
+                    <div class="form-group pt-1 row justify-content-around mx-3">
                         <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group pt-1 row justify-content-around">
+                    <div class="form-group pt-1 row justify-content-around mx-3">
                         <div class="col-md-3">
                             <div class="input-group mb-1">
                                 <div class="input-field">
@@ -182,17 +182,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-10 ml-5">
+                    <div class="text-center ml-5">
 
                         <button  type="submit"
-                            class="btn btn-light btn-elevate mr-2 margin-left">
+                            class="btn btn-light  mr-2 ">
                             Submit</button>
                     </div>
                 </form>
                 <div>
                     <form [formGroup]="walkingRoomCheckFuture" (ngSubmit)="walkingFutureRoomCheckProcess()">
     
-                        <div class="form-group pt-1 row justify-content-around mt-5">
+                        <div class="form-group pt-1 row justify-content-around mt-5 mx-3">
                             <div class="col-md-5">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
@@ -219,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group pt-1 row justify-content-around">
+                        <div class="form-group pt-1 row justify-content-around mx-3">
                             <div class="col-md-5">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
@@ -271,7 +271,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group pt-1 row justify-content-around">
+                        <div class="form-group pt-1 row justify-content-around mx-3">
                             <div class="col-md-11">
                                 <div class="input-group mb-1">
                                     <div class="input-field">
@@ -293,10 +293,10 @@
     
     
     
-                        <div class="col-lg-10 ml-5">
+                        <div class="text-center mb-3">
     
                             <button  type="submit"
-                                class="btn btn-light btn-elevate mr-2 margin-left">
+                                class="btn btn-light  mr-2 ">
                                 Check Availability</button>
                         </div>
                     </form>
@@ -305,5 +305,12 @@
 
         </div>
     </div>
-
+ <!-- footer -->
+ <footer class="  py-1">
+    <!-- <div class="container">
+      <p class="text-black"> Stashook Technologies Private Ltd</p>
+      
+    </div> -->
+    <app-footer></app-footer>
+  </footer>
 </div>

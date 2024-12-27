@@ -16,6 +16,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
   userDetails:any;
   loginData:any;
+  isLoggedIn: boolean = false;
  
  homeurl=this.router.url;
  isDisabled=true;
@@ -31,12 +32,19 @@ export class NavbarComponent implements OnInit {
   ){
       authService.apiData$.subscribe(data => this.loginData = data)
       console.log("URLM",this.router.url);
+       // Subscribe to login data changes
+    authService.apiData$.subscribe((data) => {
+      this.loginData = data;
+      this.username = data ? `Welcome ${data.username}` : 'Welcome';
+      this.cdr.detectChanges();
+    });
     }
   ngOnInit():void{
     
     this.tokenvalue=localStorage.getItem('token');
     console.log("navtoken",this.tokenvalue)
     console.log("loginname",this.loginData.username)
+   
 
     if (!this.tokenvalue) {
       this.username = "Welcome";
@@ -59,16 +67,14 @@ export class NavbarComponent implements OnInit {
   
    
   logout(){
-  //   //  localStorage.removeItem('token');
-  //    this.router.navigate(["home"]) 
-  //    console.log("++","logout sucessfully")
      
      this.authService.logout();
-    //  window.location.reload(); 
+    
     this.router.navigate(["/home"]).then(() => {
+      this.cdr.detectChanges();
       window.location.reload();
     });
-      //  this.router.navigate(["home"]) 
+      
       
     }
   

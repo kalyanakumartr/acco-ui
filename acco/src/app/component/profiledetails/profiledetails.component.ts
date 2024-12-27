@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -29,9 +29,16 @@ register:any;
     private router: Router,
     private registerService:RegisterServiceService,
     public authService:AuthServiceService,
-    private getuserservice:GetUserServiceService
+    private getuserservice:GetUserServiceService,
+    private cdr: ChangeDetectorRef
     ){
-      authService.apiData$.subscribe(data => this.loginData = data)
+      this.authService.apiData$.subscribe((data) => {
+        this.loginData = data;
+        if (this.loginData) {
+          this.userid = this.loginData.userid;
+          this.getUser(this.userid);
+        }
+      });
     }
 ngOnInit():void{
 this.userid=this.loginData.userid;
@@ -119,8 +126,10 @@ subscribe( result=>{
 })
 // }
 }
+
 // setData(updateData: any) {
 //   this.apiData.next(updateData)
 // }
+
 
 }

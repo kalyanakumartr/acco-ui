@@ -5,7 +5,7 @@
                 <h3 class="text-brown font-weight-bold">
                     <span><img src="assets/index_logo.jpg" alt="Logo" class="img-fluid"
                             style="height: 55px;width: auto;"> </span>
-                    Register Yourself
+                    SignUp Yourself
                 </h3>
             </div>
             <div class="panel-body">
@@ -126,9 +126,16 @@
                         </div>
                         <div class="col-12 col-md-6 mb-3  position-relative">
                             <label class="text-brown font-weight-bold">Password</label>
-                            <input formControlName="password" [type]="type" class="form-control "
-                                placeholder="Password">
-                            <span id="icon-style" (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                            <!-- <input formControlName="password" [type]="type" class="form-control "
+                                placeholder="Password"> -->
+                                <div class="input-group flex-nowrap">
+                                <input formControlName="password" [type]="type" placeholder="Password" class="form-control ">
+                                <div class="input-group-append ">
+                                       
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}} mt-2 ml-2 " style="color:#964B00;cursor: pointer;">
+                                    </span>
+                                      </div>
+                                    </div>
                             <small
                                 *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"
                                 class="text-danger">*Password is required</small>
@@ -137,12 +144,23 @@
                     <div class="row">
                         <div class="col-12 col-md-6 mb-3">
                             <label class="text-brown font-weight-bold">Confirm Password</label>
-                            <input formControlName="cpassword" [type]="type" class="form-control "
+                            <!-- <input formControlName="cpassword" [type]="type" class="form-control "
                                 placeholder="Password">
-                            <span id="icon-style" (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                            <span id="icon-style" (click)="hideShowPass()" class="fa {{eyeIcon}}"></span> -->
+                            <div class="input-group flex-nowrap">
+                                <input formControlName="confirmpassword" [type]="type" placeholder="ConfirmPassword" class="form-control ">
+                                <div class="input-group-append ">
+                                       
+                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}} mt-2 ml-2 " style="color:#964B00;cursor: pointer;">
+                                    </span>
+                                      </div>
+                                    </div>
                             <small
-                                *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')"
-                                class="text-danger">*Password is required</small>
+                                *ngIf="signupForm.controls['confirmpassword'].dirty && signupForm.hasError('required','confirmpassword')"
+                                class="text-danger">*ConfirmPassword is required</small>
+                                <small  class="text-danger "
+                                *ngIf="signupForm.errors?.['passwordmatcherror']"> *Password does not
+                                match </small>
                         </div>
                     </div>
                     <div class="text-center">

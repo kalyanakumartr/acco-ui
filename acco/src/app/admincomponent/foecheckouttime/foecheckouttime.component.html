@@ -1,8 +1,8 @@
 <div class="outer">
   <app-header></app-header>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col">
+    <div class="row ">
+      <div class="col form-box-style mx-5">
         <!-- Column -->
         <h2 class="mt-3">Checkout Room</h2>
         <!--form-->
@@ -24,7 +24,7 @@
           </div>
 
           <!-- button -->
-          <button [disabled]=selectRoomForm.invalid type="submit" class="btn btn-light btn-elevate mr-2  my-5 mt-5">
+          <button [disabled]=selectRoomForm.invalid type="submit" class="btn btn-light  mr-2 me-3 my-5 mt-5">
 
             Submit</button>
           <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2  my-5 mt-5">
@@ -56,12 +56,12 @@
           </div>
         </div>
 
-        <button [disabled]=EBClosingForm.invalid type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
-          style="color: #964B00;background-color:#efc96a;margin-top: 80px;margin-bottom: 30px;">
+        <button [disabled]=EBClosingForm.invalid type="submit" class="btn btn-light mr-2 me-3"
+          style="margin-top: 80px;margin-bottom: 30px;">
           <!-- (click)="uploadFileToActivity()" -->
           Submit</button>
         <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
-          style="color: #964B00;background-color:#efc96a ;margin-top: 80px ;margin-bottom: 30px;">
+          style="margin-top: 80px ;margin-bottom: 30px;">
           Back</button>
         <!-- </form> -->
       </div>
@@ -75,4 +75,12 @@
             style="color: #964B00;background-color:#efc96a ;margin-top: 80px ;margin-bottom: 30px;">
             Back</button> -->
   </div>
+  <!-- footer -->
+  <footer class="  py-1">
+    <!-- <div class="container">
+      <p class="text-black"> Stashook Technologies Private Ltd</p>
+      
+    </div> -->
+    <app-footer></app-footer>
+  </footer>
 </div>
