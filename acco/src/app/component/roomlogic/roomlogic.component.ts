@@ -34,7 +34,7 @@ export class RoomlogicComponent {
     this.subscription = this.bookingService.currentValue.subscribe(data => {
       this.bookingData = data;
       console.log("booked data", this.bookingData);
-      console.log("booked data", this.bookingData.checkin);
+      console.log("booked data checkin", this.bookingData.checkin);
       console.log("mode", this.bookingData.modeoftypeid);
       console.log("room", this.bookingData.roomtypeid);
 
@@ -71,6 +71,7 @@ export class RoomlogicComponent {
     this.roomBookingSumm.modeoftypeid=this.bookingData.modeoftypeid;
     this.roomBookingSumm.totalamount=this.roomBookingSumm.price+this.roomBookingSumm.tax;
     this.bookingService.changeMessage(this.roomBookingSumm);
+    console.log("roomBookingSumm",this.roomBookingSumm)
     this.router.navigate(["bookingsummary",
 
     ]);

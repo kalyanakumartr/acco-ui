@@ -1,12 +1,39 @@
 .outer{
     // height:100vh;
-     background-image: linear-gradient(45deg, #efc96a,white);
+     background-image: var(--primary);
+     
+     align-content: center;
 }
-.container{
-    width: 900px;
-    height: 600px;
+.container-fluid{
+    background-color:var(--primary);
+    border-radius: 0.3rem;
+    box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+    border-radius: 4px;
+    background-color: var(--primary);
     text-align: center;
-    justify-content: center;
-    padding-top: 70px;
-
 }
+
+.btn-light{
+    // background-image: linear-gradient(45deg, #9cbfe2 0%, rgb(206, 199, 223) 100%);
+    background-image: var(--primary);
+    // margin-top: 30px;
+    color: var(--text-color);
+  }
+  .btn-light:hover {
+    color: var(--hover);
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow */
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-box-style{
+    background-image: var(--primary);
+    border-radius: 10px; /* Slight rounded corners */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    object-fit: cover;  
+  }
