@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
   maxDate: any;
   availableStatus!: string;
   maxAdultStatus!: string;
+  totalDays:any;
 
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
@@ -226,9 +227,9 @@ export class HomeComponent implements OnInit {
     console.log("formdata", this.homeForm.value);
     console.log("form", this.homeForm.value);
     const formdata = this.homeForm.value;
-    const checkin = formdata.checkIn.concat(formdata.checkInTime)
-    const checkout = formdata.checkOut.concat(formdata.checkOutTime)
-
+    const checkin = formdata.checkIn.concat(' ',formdata.checkInTime)
+    const checkout = formdata.checkOut.concat(' ',formdata.checkOutTime)
+    console.log("checkin checkout", checkin,checkout);
     var inDate = new Date(checkin);
     var OutDate = new Date(checkout);
     var diff = OutDate.getTime() - inDate.getTime();
@@ -239,24 +240,29 @@ export class HomeComponent implements OnInit {
     console.log("hours", hours);
     console.log("checkincheckout", checkin, checkout);
     if (hours > 2) {
-      var totalDays = days + 1
+      this.totalDays = days + 1
     } else {
-      var totalDays = days;
+      this.totalDays = days;
     }
-    console.log("toldays", totalDays)
+    console.log("toldays", this.totalDays)
 
-    if (this.tokenvalue == null) {
-      this.cdr.detectChanges();
       localStorage.setItem("checkin", checkin);
       localStorage.setItem("checkout", checkout);
       localStorage.setItem("adult", formdata.adult);
       localStorage.setItem("child", formdata.child);
       localStorage.setItem("roomtype", formdata.roomType);
+      localStorage.setItem("totaldays", this.totalDays );
+      localStorage.setItem("childage", this.ageValue);
 
-      this.getroomlistservice.checkRoomAvailability(formdata.adult, formdata.roomType, checkin, checkout)
+
+      if (this.tokenvalue == null) {
+        this.cdr.detectChanges();
+        this.getroomlistservice.checkRoomAvailability(formdata.adult, formdata.roomType, checkin, checkout)
         .subscribe(result => {
           console.log("check", result);
           const checkdata = result[0][0];
+          localStorage.setItem("availStatus", checkdata.available_status);
+
           this.availableStatus = checkdata.available_status === "Available"
             ? "Hello! We're happy to let you know that we are available."
             : "Sorry for the inconvenience, we're currently unavailable.";
@@ -290,17 +296,10 @@ export class HomeComponent implements OnInit {
               this.roomData = result[0];
               this.getroomlistservice.setData(this.roomData)
               console.log("++++roomData:", this.roomData);
-              // if (this.roomData == 0) {
-              //   Swal.fire({
-              //     confirmButtonColor: '#964B00',
-              //     background: '#efc96a',
-              //     text: "We are Sorry! currently all rooms are occupied ",
-              //   });
-              // } else {
               this.roomBooking = new BookingModel();
               this.roomBooking.checkin = checkin,
                 this.roomBooking.checkout = checkout,
-                this.roomBooking.noofdays = totalDays;
+                this.roomBooking.noofdays = this.totalDays;
               this.roomBooking.adults = formdata.adult;
               this.roomBooking.child = formdata.child;
               this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
@@ -310,8 +309,13 @@ export class HomeComponent implements OnInit {
               this.bookingService.changeMessage(this.roomBooking);
               this.router.navigate(["roomlogic",
               ]);
+              const keys = ["checkin", "checkout", "adult", "child", "roomtype", "totaldays", "childage"];
+              keys.forEach(key => localStorage.removeItem(key));
+
             });
           } else {
+            const keys = ["checkin", "checkout", "adult", "child", "roomtype", "totaldays", "childage"];
+            keys.forEach(key => localStorage.removeItem(key));
             this.cdr.detectChanges();
             const modalElement = document.getElementById('exampleModal');
             if (modalElement) {

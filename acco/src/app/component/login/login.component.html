@@ -1,53 +1,54 @@
-<div class="outer">
+<!-- <div class="outer"> -->
     <div class="container-fluid">
-        <div class="row justify-content-center p-4">
-            <div class="col-12 text-center mb-4">
-                <img src="assets/index_logo.jpg" style="width: 350px; height: 100px;">
-                <span id="text" class="d-block mt-4 text-brown">Welcome to Maduraa Services</span>
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-5 mt-5">
+                <img src="assets/index_logo.jpg" class="img-fluid" style="max-width: 300px; height: auto;" alt="Logo">
+                <span id="text" class="d-block mt-5 text-brown" style="font-size: 25px;">Welcome to Maduraa Services</span>
             </div>
         </div>
 
-        <div class="container d-flex justify-content-center align-items-center ">
+        <div class="container d-flex justify-content-center align-items-center mb-5 ">
             <div class="card " style="width: 100%; max-width: 600px;">
                 <div class="card-header text-center form-box-style ">
-                    <h3 class="text-brown mt-2">Login</h3>
-                
-                <div class="card-body  ">
-                    <form [formGroup]="loginForm" (ngSubmit)="loginProcess()">
-                        <!-- Username Field -->
-                        <div class="form-group mb-3">
+                    <h3 class="text-brown mt-2" style="font-size: 25px;">Login</h3>
 
-                            <div class="input-group flex-nowrap ">
-                                <span class="fa fa-user p-2"></span>
-                                <input formControlName="username" type="text" placeholder="UserName">
-                                    
-                            </div>
-                            <small
-                            *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
-                            class="text-danger mt-1 text-start d-block">
-                            *Username is required
-                        </small>
-                        <!-- <small
+                    <div class="card-body  ">
+                        <form [formGroup]="loginForm" (ngSubmit)="loginProcess()">
+                            <!-- Username Field -->
+                            <div class="form-group mb-3">
+
+                                <div class="input-group flex-nowrap ">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input formControlName="username" type="text" placeholder="UserName">
+
+                                </div>
+                                <small
+                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                                    class="text-danger mt-1 text-start d-block">
+                                    *Username is required
+                                </small>
+                                <!-- <small
                             *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('pattern','username')"
                             class="text-danger mt-1 text-start d-block ">
                             *Username is invalid
                         </small> -->
-                        </div>
-
-                        <!-- Password Field -->
-                        <div class="form-group mb-3">
-                             <!-- Lock Icon -->
-                             <div class="input-group flex-nowrap">
-                                <span class="fa fa-lock p-2"></span>
-                                <input formControlName="password" [type]="type" placeholder="Password">
-                                <!-- Eye Icon for Toggling -->
-                                <div class="input-group-append ">
-                                       
-                                    <span (click)="hideShowPass()" class="fa {{eyeIcon}} mt-2 ml-2 " style="color:#964B00;cursor: pointer;">
-                                    </span>
-                                      </div>
                             </div>
-                            <small
+
+                            <!-- Password Field -->
+                            <div class="form-group mb-3">
+                                <!-- Lock Icon -->
+                                <div class="input-group flex-nowrap">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input formControlName="password" [type]="type" placeholder="Password">
+                                    <!-- Eye Icon for Toggling -->
+                                    <div class="input-group-append ">
+
+                                        <span (click)="hideShowPass()" class="fa {{eyeIcon}} mt-2 ml-2 "
+                                            style="color:#964B00;cursor: pointer;">
+                                        </span>
+                                    </div>
+                                </div>
+                                <small
                                     *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
                                     class="text-danger mt-1 text-start d-block">
                                     *Password is required
@@ -57,38 +58,38 @@
                                     class="text-danger mt-1 d-block">
                                     *Password is incorr
                                 </small> -->
-                        </div>
+                            </div>
 
 
-                      
 
-                        <!-- Forgot Password -->
-                        <div class="d-flex justify-content-end mt-4 ">
-                            <a  href="\forgotpassword"  class="pointer">Forgot Password?</a>
-                        </div>
 
-                        <!-- Login Button -->
-                        <div class="d-flex justify-content-center align-items-center mt-2 ">
-                            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-light"
-                                   >
-                                Login
-                            </button>
-                        </div>
+                            <!-- Forgot Password -->
+                            <div class="d-flex justify-content-end mt-4 ">
+                                <a href="\forgotpassword" class="pointer">Forgot Password?</a>
+                            </div>
 
-                        <!-- Signup Link -->
-                        <div class="text-center pt-4 text-muted">
-                            Don't have an account?
-                            <a id="forgot" class="pointer" (click)="signup()" >Sign up</a>
-                        </div>
-                
-                </form>
+                            <!-- Login Button -->
+                            <div class="d-flex justify-content-center align-items-center mt-2 ">
+                                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-light text-brown" style="font-size: 20px;">
+                                    Continue
+                                </button>
+                            </div>
+
+                            <!-- Signup Link -->
+                            <div class="text-center pt-4 text-muted">
+                                Don't have an account?
+                                <a id="forgot" class="pointer" (click)="signup()">Sign up</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
+    <footer class="  py-2">
+
+        <app-footer></app-footer>
+    </footer>
 </div>
-<footer class="  py-1">
-  
-    <app-footer></app-footer>
-  </footer>
-</div>
+
+<!-- </div> -->
