@@ -25,6 +25,7 @@ export class AuthServiceService {
 
   ) { }
 
+
   login(data: any,url:any): Observable<any> {
     console.log("I am server");
     console.log("recieved url",url)
@@ -43,42 +44,25 @@ export class AuthServiceService {
           //  this.loggedIn.next(true);
 
           if (this.authresults.usertype == "Admin" && url=="/adminlogin") {
-            // Swal.fire({
-            //   text:
-            //     this.authresults.message,
-            //   confirmButtonColor: '#964B00',
-            //   background: '#efc96a',
-            // });
             this.router.navigate(["admincomponent"])
 
           } else if (this.authresults.usertype == "Manager") {
-            // Swal.fire({
-            //   text:
-            //     this.authresults.message,
-            //   confirmButtonColor: '#964B00',
-            //   background: '#efc96a',
-            // });
             this.router.navigate(["frontdesk"])
 
           }
           else if (this.authresults.usertype == "FrontOfficeExecutive") {
-            // Swal.fire({
-            //   text:
-            //     this.authresults.message,
-            //   confirmButtonColor: '#964B00',
-            //   background: '#efc96a',
-            // });
             this.router.navigate(["frontdesk"])
 
           } 
           else if (this.authresults.usertype == "Customer"&& url=="/login"){
-            // Swal.fire({
-            //   text:
-            //     this.authresults.message,
-            //   confirmButtonColor: '#964B00',
-            //   background: '#efc96a',
-            // });
+           const checkin= localStorage.getItem("checkin");
+           console.log("checkin from auth service",checkin);
+           if(checkin){
+            this.router.navigate(["roomlogic"])
+            localStorage.removeItem("checkin");
+           }else{
             this.router.navigate(["home"])
+           }
           }
 
         } 

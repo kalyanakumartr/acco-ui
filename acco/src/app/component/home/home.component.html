@@ -12,10 +12,12 @@
               <img src="assets/01.jpg" class="d-block w-100 shadowed-image" alt="Slide 1" style="height: 400px;">
             </div>
             <div class="carousel-item">
-              <img src="assets/hotelrooms1.jpg" class="d-block w-100 shadowed-image" alt="Slide 2" style="height: 400px;">
+              <img src="assets/hotelrooms1.jpg" class="d-block w-100 shadowed-image" alt="Slide 2"
+                style="height: 400px;">
             </div>
             <div class="carousel-item">
-              <img src="assets/hotelrooms2.jpg" class="d-block w-100 shadowed-image" alt="Slide 3" style="height: 400px;">
+              <img src="assets/hotelrooms2.jpg" class="d-block w-100 shadowed-image" alt="Slide 3"
+                style="height: 400px;">
             </div>
             <div class="carousel-item">
               <img src="assets/02.jpg" class="d-block w-100 shadowed-image" alt="Slide 4" style="height: 400px;">
@@ -44,7 +46,7 @@
               <div class="d-flex gap-2">
                 <input formControlName="checkIn" type="date" class="form-control form-style" [(ngModel)]="Todaydate"
                   [min]="minDate" (change)="getCheckOut()">
-                <select formControlName="checkInTime" class="form-control form-style"  [(ngModel)]="selectedTime">
+                <select formControlName="checkInTime" class="form-control form-style" [(ngModel)]="selectedTime">
                   <option id="option-style" *ngFor="let time of times" [value]="time">{{ time }}</option>
                 </select>
               </div>
@@ -56,7 +58,7 @@
               <div class="d-flex gap-2">
                 <input formControlName="checkOut" type="date" class="form-control" [(ngModel)]="outDate"
                   [min]="outDate">
-                <select formControlName="checkOutTime" class="form-control"  [(ngModel)]="selectedTime">
+                <select formControlName="checkOutTime" class="form-control" [(ngModel)]="selectedTime">
                   <option *ngFor="let timess of times" [value]="timess">{{ timess }}</option>
                 </select>
               </div>
@@ -97,18 +99,18 @@
 
             <!-- Submit Button -->
             <div class="col-md-6 d-flex align-items-end">
-              <button [disabled]="homeForm.invalid" type="submit" class="btn w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" >Check
+              <button [disabled]="homeForm.invalid" type="submit" class="btn w-100">Check
                 Availability</button>
             </div>
           </div>
-
+          <!--data-bs-toggle="modal" data-bs-target="#exampleModal"  -->
         </form>
       </div>
     </div>
   </div>
   <!-- footer section -->
   <footer class="  py-1">
-  
+
     <app-footer></app-footer>
   </footer>
 </div>
@@ -120,21 +122,23 @@
 <!-- Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
-          <!-- <span aria-hidden="true">&times;</span>
+        <h3 class="modal-title" id="exampleModalLabel">{{availableStatus}}<br>
+         {{maxAdultStatus}}
+        </h3>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
-      <div class="modal-body">
-        This is the modal content.
+      <div *ngIf="tokenvalue === null" class="modal-body text-brown">
+        Please log in if you are an existing user, or sign up to create a new account.
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn"(click)="navigateTo('login')" >Login</button>
-        <button type="button" class="btn" (click)="navigateTo('signup')"  >Signup</button>
-        <button type="button" class="btn" data-dismiss="modal">Close</button>
+      <div *ngIf="tokenvalue === null" class="modal-footer">
+        <button type="button" class="btn" (click)="navigateTo('login')">Login</button>
+        <button type="button" class="btn" (click)="navigateTo('signup')">Signup</button>
+        <button type="button" class="btn" data-dismiss="modal" (click)="closeModal()">Close</button>
       </div>
     </div>
   </div>

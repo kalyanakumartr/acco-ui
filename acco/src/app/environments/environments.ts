@@ -32,6 +32,7 @@ getChargedAmenities:'http://localhost:3001/booking/getChargedAmenities',
 getguestbookingstatuscancel:'http://localhost:3001/users/getguestbookingstatuscancel?checkin=',
 getroomslist:'http://localhost:3001/room/getroomslist?bookingid=',
 
+
 getroom:'http://localhost:3001/room/getroom',
 getstatus:'http://localhost:3001/room/getstatus?stastustype=',
 roomupdatestatus:'http://localhost:3001/room/roomupdatestatus',
@@ -48,4 +49,6 @@ getguestdetailmonthly:'http://localhost:3001/users/getguestdetailmonthly?checkin
 // roleapiURL:'http://192.168.1.7:3001/users/getrole',
 
 //pls give ur ipconfig no
+checkRoomAvailable:'http://localhost:3001/room/checkAvailability?roomtypeid'
+
 };

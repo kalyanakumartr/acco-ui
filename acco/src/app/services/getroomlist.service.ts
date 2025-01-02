@@ -43,4 +43,8 @@ export class GetroomlistService {
 
   }
 
+  checkRoomAvailability(adult:any,roomtype:any,checkin:any,checkout:any):Observable<any>{
+    return this.http.get(`${environment.checkRoomAvailable}`+roomtype+"&checkin="+checkin+"&checkout="+checkout+"&adults="+adult)
+  }
+
 }

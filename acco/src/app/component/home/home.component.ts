@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { NativeDateAdapter } from '@angular/material/core';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as bootstrap from 'bootstrap';
+import { Modal } from 'bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 //  import * as bootstrap from 'bootstrap';
 // declare var bootstrap:any;
@@ -62,8 +63,8 @@ export class HomeComponent implements OnInit {
   currentValue: any;
   minDate: any;
   maxDate: any;
-  private modalInstance: any;
-
+  availableStatus!: string;
+  maxAdultStatus!: string;
 
   constructor(private fb: FormBuilder, private http: HttpClient,
     private router: Router, private getroomlistservice: GetroomlistService,
@@ -74,8 +75,8 @@ export class HomeComponent implements OnInit {
     private modalService: NgbModal
   ) { }
 
-  
-  
+
+
   ngOnInit(): void {
     const date1 = new Date();
     this.generateTimeIntervals();
@@ -223,102 +224,103 @@ export class HomeComponent implements OnInit {
 
   checkAvailability() {
     console.log("formdata", this.homeForm.value);
+    console.log("form", this.homeForm.value);
+    const formdata = this.homeForm.value;
+    const checkin = formdata.checkIn.concat(formdata.checkInTime)
+    const checkout = formdata.checkOut.concat(formdata.checkOutTime)
+
+    var inDate = new Date(checkin);
+    var OutDate = new Date(checkout);
+    var diff = OutDate.getTime() - inDate.getTime();
+    var days = Math.floor(diff / (60 * 60 * 24 * 1000));
+    var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
+    console.log("diff", diff);
+    console.log("days", days);
+    console.log("hours", hours);
+    console.log("checkincheckout", checkin, checkout);
+    if (hours > 2) {
+      var totalDays = days + 1
+    } else {
+      var totalDays = days;
+    }
+    console.log("toldays", totalDays)
 
     if (this.tokenvalue == null) {
-      console.log("form", this.homeForm.value);
-      if (this.modalElement) {
-        const modal = this.modalElement.nativeElement;
-        console.log(modal);
-  
-        // Initialize and show the modal using Bootstrap's native JavaScript method
-        const modalInstance = new bootstrap.Modal(modal);
-        modalInstance.show();
-      } else {
-        console.error('Modal element is not available');
-      }
-      const formValue = this.homeForm.value;
-      const jsondata = JSON.stringify(formValue);
-      // localStorage.setItem('currentValue', jsondata);
-      // localStorage.setItem("checkin", formValue.checkIn);
-      // localStorage.setItem("checkout", formValue.checkOut);
-      // localStorage.setItem("checkintime", formValue.checkInTime);
-      // localStorage.setItem("checkouttime", formValue.checkOutTime);
-      // localStorage.setItem("adult", formValue.adult);
-      // localStorage.setItem("child", formValue.child);
-      // localStorage.setItem("roomtype", formValue.roomType);
+      this.cdr.detectChanges();
+      localStorage.setItem("checkin", checkin);
+      localStorage.setItem("checkout", checkout);
+      localStorage.setItem("adult", formdata.adult);
+      localStorage.setItem("child", formdata.child);
+      localStorage.setItem("roomtype", formdata.roomType);
 
-      // Swal.fire({
-      //   text:
-      //     " Please LOGIN if you are Existing user or SIGNUP for Newuser",
-      //   confirmButtonColor: '#964B00',
-      //   background: '#efc96a',
-      // }).then((result) => {
-      //   if (result.value) {
-      //     this.router.navigate(["/login"])
-      //   }
-      // })
-    } else {
+      this.getroomlistservice.checkRoomAvailability(formdata.adult, formdata.roomType, checkin, checkout)
+        .subscribe(result => {
+          console.log("check", result);
+          const checkdata = result[0][0];
+          this.availableStatus = checkdata.available_status === "Available"
+            ? "Hello! We're happy to let you know that we are available."
+            : "Sorry for the inconvenience, we're currently unavailable.";
+          this.maxAdultStatus = formdata.adult >= "90"
+            ? "Our property can only accommodate up to 64 persons." : "";
+          console.log("check111", this.availableStatus);
+          this.cdr.detectChanges();
+          const modalElement = document.getElementById('exampleModal');
+          if (modalElement) {
+            const modal = new Modal(modalElement);
+            modal.show();
+          }
 
-      const formData = this.homeForm.value;
-      console.log("chlid:", formData.child, formData.roomType, formData.checkIn, formData.checkOut)
-      var checkingIn = `${formData.checkIn} ${formData.checkInTime}`;
-      var checkingOut = `${formData.checkOut} ${formData.checkOutTime}`;
 
-      var inDate = new Date(checkingIn);
-      var OutDate = new Date(checkingOut);
-      var diff = OutDate.getTime() - inDate.getTime();
-      var days = Math.floor(diff / (60 * 60 * 24 * 1000));
-      var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
-      console.log("diff", diff);
-      console.log("days", days);
-      console.log("hours", hours);
-      console.log("checkincheckout", checkingIn, checkingOut);
-      if (hours > 2) {
-        var totalDays = days + 1
-      } else {
-        var totalDays = days;
-      }
-      console.log("toldays", totalDays)
-      if (days <= 0) {
-        Swal.fire({
-          text:
-            " Please verify your checkin and checkout dates",
-          // "<h5 style='color:red'>"++"</h5>"
-          confirmButtonColor: '#964B00',
-          background: '#efc96a',
-        })
-      } else {
-        this.getroomlistservice.roomlogic(formData.adult, checkingIn, checkingOut, formData.roomType).subscribe((result) => {
-          console.log(result);
-          this.roomData = result[0];
-          this.getroomlistservice.setData(this.roomData)
-          console.log("++++roomData:", this.roomData);
-          console.log("0 value:", this.roomData);
-          this.roomValue;
-          if (this.roomData == 0) {
-            Swal.fire({
-              confirmButtonColor: '#964B00',
-              background: '#efc96a',
-              text: "We are Sorry! currently all rooms are occupied ",
+        });
+    }
+    else {
+      this.getroomlistservice.checkRoomAvailability(formdata.adult, formdata.roomType, checkin, checkout)
+        .subscribe(result => {
+          console.log("check", result);
+          const checkdata = result[0][0];
+          this.availableStatus = checkdata.available_status === "Available"
+            ? "Hello! We're happy to let you know that we are available."
+            : "Sorry for the inconvenience, we're currently unavailable.";
+          this.maxAdultStatus = formdata.adult >= "90"
+            ? "Our property can only accommodate up to 64 persons." : "";
+
+          if (checkdata.available_status === "Available") {
+            this.getroomlistservice.roomlogic(formdata.adult, checkin, checkout, formdata.roomType).subscribe((result) => {
+              console.log(result);
+              this.roomData = result[0];
+              this.getroomlistservice.setData(this.roomData)
+              console.log("++++roomData:", this.roomData);
+              // if (this.roomData == 0) {
+              //   Swal.fire({
+              //     confirmButtonColor: '#964B00',
+              //     background: '#efc96a',
+              //     text: "We are Sorry! currently all rooms are occupied ",
+              //   });
+              // } else {
+              this.roomBooking = new BookingModel();
+              this.roomBooking.checkin = checkin,
+                this.roomBooking.checkout = checkout,
+                this.roomBooking.noofdays = totalDays;
+              this.roomBooking.adults = formdata.adult;
+              this.roomBooking.child = formdata.child;
+              this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
+              this.roomBooking.roomtypeid = formdata.roomType;
+              this.roomBooking.modeoftypeid = 1;
+              console.log("___+++", this.roomBooking)
+              this.bookingService.changeMessage(this.roomBooking);
+              this.router.navigate(["roomlogic",
+              ]);
             });
           } else {
-            this.roomBooking = new BookingModel();
-            this.roomBooking.checkin = checkingIn,
-              this.roomBooking.checkout = checkingOut,
-              this.roomBooking.noofdays = totalDays;
-            this.roomBooking.adults = formData.adult;
-            this.roomBooking.child = formData.child;
-            this.roomBooking.childage = this.ageValue == undefined ? 0 : this.ageValue;
-            this.roomBooking.roomtypeid = formData.roomType;
-            this.roomBooking.modeoftypeid = 1;
-            console.log("___+++", this.roomBooking)
-            this.bookingService.changeMessage(this.roomBooking);
-            this.router.navigate(["roomlogic",
-            ]);
+            this.cdr.detectChanges();
+            const modalElement = document.getElementById('exampleModal');
+            if (modalElement) {
+              const modal = new Modal(modalElement);
+              modal.show();
+            }
+  
           }
-        });
-
-      }
+        })
     }
   }
 
@@ -378,20 +380,14 @@ export class HomeComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  openModal(): void {
-    const modalRef = this.modalService.open(this.modalElement.nativeElement);
-  }
 
   closeModal(): void {
-    if (this.modalInstance) {
-      this.modalInstance.hide(); // Hide the modal
+    const modalElement = document.getElementById('exampleModal');
+    if (modalElement) {
+      const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      modal.hide();
     }
-
-    // Remove the backdrop manually
-    const backdrops = document.querySelectorAll('.modal-backdrop');
-    backdrops.forEach((backdrop) => this.renderer.removeChild(document.body, backdrop));
   }
-
   navigateTo(route: string) {
     this.closeModal(); // Close the modal before navigation
     this.router.navigate([route]);
