@@ -20,7 +20,7 @@
         <i class="fas fa-phone-alt"></i> +91 73738 26373
       </span>
       <!-- Login/Signup/Logout Buttons -->
-      <div class="mt-2">
+      <div class="mt-2" >
         <button *ngIf="!authService.logged()" routerLink="/login" class="btn  btn-sm mx-1" >Login</button>
         <button *ngIf="!authService.logged()" (click)="signup()" class="btn  btn-sm mx-1">Signup</button>
         <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm ">Logout</button>
@@ -67,7 +67,7 @@
         </div>
 
         <!-- User Icon Section -->
-        <div class="d-flex align-items-center mb-2 mb-md-0 mr-1">
+        <div class="d-flex align-items-center mb-2 mb-md-0 mr-1" *ngIf="authService.logged()">
           <span class=" font-weight-bold">{{ username | titlecase }}</span>&nbsp;&nbsp;
           <i class="fas fa-user-alt" style='font-size:20px;color: var(--text-color);' ></i>
 

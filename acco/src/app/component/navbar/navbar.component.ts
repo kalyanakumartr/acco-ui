@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
        // Subscribe to login data changes
     authService.apiData$.subscribe((data) => {
       this.loginData = data;
-      this.username = data ? `Welcome ${data.username}` : 'Welcome';
+      this.username = data ? `Welcome ${data.username}` : '';
       this.cdr.detectChanges();
     });
     }
