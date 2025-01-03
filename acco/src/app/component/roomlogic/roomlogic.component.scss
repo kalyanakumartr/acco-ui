@@ -10,7 +10,12 @@
     border-radius: 4px;
     background-color: var(--primary);
 }
-
+.text-brown {
+    font-weight: bold;
+    font-family: Georgia, serif;
+    color: var(--text-color);
+  }
+  
 table {
     width: 100%;
     border-collapse: collapse;

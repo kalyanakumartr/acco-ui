@@ -10,37 +10,37 @@
                 </div> -->
                 <div class="container form-box-styleMap">
 
-                <div class="header mt-2">
-                    <h1>Contact Us</h1>
-                    <p>We're here to help you with all your service apartment needs.</p>
-                </div>
-                <div class="info-section form-box-styleMap mb-2 ">
-                    <div class="info-card ">
-                        <h3>Address</h3>
-                        <p>No.37, Bharathi Street, Thiruvanai Kovil,<br>Trichy - 620005, Tamil Nadu, India</p>
+                    <div class="header mt-4">
+                        <h1 class="text-brown">Contact Us</h1>
+                        <p>We're here to help you with all your service apartment needs.</p>
                     </div>
-        
-                    <div class="info-card form-box-style">
-                        <h3>Phone</h3>
-                        <p><a href="tel:+1234567890">(+91) 0431 4030469 , 223 0470<br> (+91) 7373 82 6373</a></p>
-                    </div>
-        
-                    <div class="info-card form-box-style">
-                        <h3>Email</h3>
-                        <p><a href="mailto:support@maduraa.in">support@maduraa.in</a></p>
+                    <div class="info-section form-box-styleMap mb-2 ">
+                        <div class="info-card ">
+                            <h3>Address</h3>
+                            <p>No.37, Bharathi Street, Thiruvanai Kovil,<br>Trichy - 620005, Tamil Nadu, India</p>
+                        </div>
+
+                        <div class="info-card form-box-style">
+                            <h3>Phone</h3>
+                            <p><a href="tel:+1234567890">(+91) 0431 4030469 , 223 0470<br> (+91) 7373 82 6373</a></p>
+                        </div>
+
+                        <div class="info-card form-box-style">
+                            <h3>Email</h3>
+                            <p><a href="mailto:support@maduraa.in">support@maduraa.in</a></p>
+                        </div>
                     </div>
                 </div>
-                </div>
-              </div>
-              
+            </div>
+
             <div class="row form-box-styleMap">
                 <!-- message -->
                 <div class="col fw-bolder">
                     <div class=" col-sm-12 text-brown">
-                        <h2 class="my-3 mx-2 text-center">Send Us A Message</h2>
+                        <h2 class="my-3 mx-2 text-center text-brown">Send Us A Message</h2>
                         <!-- <h4>Contact Us <br> Fields marked with an * are required</h4> -->
                         <form [formGroup]="contactForm" (ngSubmit)="contactFormProcess()">
-                            <div class="form-group mx-2">
+                            <div class="form-group mx-2 mt-2">
                                 <label>Name<span class="text-danger mx-1">*</span></label>
                                 <input formControlName="name" type="text" class="form-control">
                                 <small
@@ -50,7 +50,7 @@
                                     *ngIf="contactForm.controls['name'].dirty && contactForm.hasError('pattern','name')"
                                     class="text-danger form-inline  mt-0">*Name is invalid</small>
                             </div>
-                            <div class="form-group mx-2">
+                            <div class="form-group mx-2 mt-2">
                                 <label>Email<span class="text-danger mx-1">*</span></label>
                                 <input formControlName="email" type="text" class="form-control">
                                 <small
@@ -60,7 +60,7 @@
                                     *ngIf="contactForm.controls['email'].dirty && contactForm.hasError('pattern','email')"
                                     class="text-danger form-inline  mt-0">*email is invalid</small>
                             </div>
-                            <div class="form-group mx-2">
+                            <div class="form-group mx-2 mt-2">
                                 <label>Phone</label>
                                 <input formControlName="phonenumber" type="text" class="form-control">
                                 <small
@@ -70,7 +70,7 @@
                                     *ngIf="contactForm.controls['phonenumber'].dirty && contactForm.hasError('pattern','phonenumber')"
                                     class="text-danger form-inline  mt-0">*Phonenumber is invalid</small>
                             </div>
-                            <div class="form-group mx-2">
+                            <div class="form-group mx-2 mt-2">
                                 <label>City</label>
                                 <input formControlName="city" type="text" class="form-control">
                                 <small
@@ -80,7 +80,7 @@
                                     *ngIf="contactForm.controls['city'].dirty && contactForm.hasError('pattern','city')"
                                     class="text-danger form-inline  mt-0">*City is invalid</small>
                             </div>
-                            <div class="form-group mx-2">
+                            <div class="form-group mx-2 mt-2">
                                 <label>Message<span class="text-danger mx-1">* </span></label>
                                 <textarea formControlName="message" class="form-control"></textarea>
                                 <small
@@ -90,8 +90,8 @@
                                     *ngIf="contactForm.controls['message'].dirty && contactForm.hasError('pattern','message')"
                                     class="text-danger form-inline  mt-0">*Messsage is invalid</small>
                             </div>
-                            <div class="text-center  my-3">
-                                <button type="submit" class="btn btn-light btn-elevate mr-2 mb-2 ">
+                            <div class="text-center  my-3 ">
+                                <button type="submit" class="btn btn-light btn-elevate mr-2 mb-2 text-brown">
                                     Submit</button>
 
                             </div>
@@ -101,21 +101,15 @@
                     </div>
                 </div>
                 <div class="col form-box-styleMap mt-2 mb-2">
-                   <h2 class="text-center text-brown">Find Us Here</h2>
-        <google-map
-        height="450px"
-        width="100%"
-        [center]="center"
-        [zoom]="zoom"
-        (mapClick)="moveMap($event)"
-        (mapMousemove)="move($event)"
-      ></google-map>
-    
-      <!-- Display Latitude and Longitude -->
-      <div *ngIf="display">
-        <p>Latitude: {{ display.lat }}</p>
-        <p>Longitude: {{ display.lng }}</p>
-      </div>
+                    <h2 class="text-center text-brown mt-2">Find Us Here</h2>
+                    <google-map height="450px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+                        (mapMousemove)="move($event)"></google-map>
+
+                    <!-- Display Latitude and Longitude -->
+                    <div *ngIf="display">
+                        <p>Latitude: {{ display.lat }}</p>
+                        <p>Longitude: {{ display.lng }}</p>
+                    </div>
                 </div>
 
             </div>
@@ -124,9 +118,7 @@
     </div>
     <!-- footer -->
     <footer class="  py-1">
-       
+
         <app-footer></app-footer>
-      </footer>
+    </footer>
 </div>
-
-

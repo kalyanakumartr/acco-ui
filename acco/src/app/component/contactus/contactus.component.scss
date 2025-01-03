@@ -24,6 +24,17 @@
     border-radius: 4px;
     background-color: var(--primary);
 }
+.text-brown {
+    font-weight: bold;
+    font-family: Georgia, serif;
+    color: var(--text-color);
+  }
+
+  h3,p{
+    font-family: Georgia, serif;
+    font-weight: bold;
+
+  }
 .shadowed-image {
     border-radius: 10px; /* Slight rounded corners */
     filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); /* Soft shadow */

@@ -1,29 +1,40 @@
-.outer{
+.outer {
   // height:100vh;
-   background-image: var(--primary);
+  background-image: var(--primary);
 }
-.container-fluid{
+
+.container-fluid {
   background-color: var(--primary);
   border-radius: 0.3rem;
-  box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+  box-shadow: rgba(0, 0, 0, 0.08)0px 1px 8px;
   border-radius: 4px;
   background-color: var(--primary);
 }
-// td{
-//   border-color: #964B00;
-   
-//   }
-  td a:hover{
-    cursor: pointer;
-    color:  var(--hover);
 
-  }
-  
+.text-brown {
+  font-weight: bold;
+  font-family: Georgia, serif;
+  color: var(--text-color);
+}
+.nav-link:hover{
+  color: var(--hover);
+  transform: scale(1.05);
+  /* Slight zoom effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add shadow */
+  transition: all 0.3s ease-in-out;
 
+}
 
+td a:hover {
+  cursor: pointer;
+  color: var(--hover);
 
-h4,p{
-  color: var(--text-color); 
+}
+
+h4,
+p {
+  color: var(--text-color);
 }
 
 table {
@@ -35,28 +46,34 @@ table {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-th, td {
+
+th,
+td {
   padding: 15px;
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
+
 th {
   background-color: white;
   color: var(--text-color);
 }
+
 tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
 tr:hover {
   background-color: #f1e4db;
 }
+
 @media (max-width: 768px) {
   table {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
-  th, td {
-      padding: 10px;
+
+  th,
+  td {
+    padding: 10px;
   }
 }
-
-

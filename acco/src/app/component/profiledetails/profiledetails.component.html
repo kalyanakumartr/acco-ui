@@ -9,7 +9,7 @@
         </button>
       
         <!-- Corrected ID to match the data-bs-target -->
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse text-brown" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <!-- <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" routerLink="/home">HOME</button> -->
@@ -37,8 +37,8 @@
             </div>
         </nav>
         <div class="text-center">
-            <h4>Profile Details</h4>
-            <p>View and update your profile details to keep your information up-to-date.</p>
+            <h4 class="text-brown" style="font-size: 30px;">Profile Details</h4>
+            <!-- <p>View and update your profile details to keep your information up-to-date.</p> -->
           </div>
         <div class="panel-body p-3">
             <form [formGroup]="updateForm" (ngSubmit)="updateProcess()">
@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-light btn-elevate mr-2 ">
+                    <button type="submit" class="btn btn-light btn-elevate mr-2 text-brown">
                         Update</button>
                     <!-- <button type="button" class="btn btn-light btn-elevate mr-2  " onclick="reset()">
                       Reset 

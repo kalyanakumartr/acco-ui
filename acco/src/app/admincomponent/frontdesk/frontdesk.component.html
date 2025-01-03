@@ -43,10 +43,10 @@
               <th class="align-middle " rowspan="2">3BHK</th>
               <th class="align-middle " rowspan="2">Name</th>
               <th class="align-middle " rowspan="2">Phone</th>
-              <th class="align-middle " rowspan="2">CinTime</th>
-              <th class="align-middle " rowspan="2">CoutTime</th>
-              <th class="align-middle " rowspan="2">ACInTime</th>
-              <th class="align-middle " rowspan="2">ACOutTime</th>
+              <th class="align-middle " rowspan="2">Checkin</th>
+              <th class="align-middle " rowspan="2">Checkout</th>
+              <th class="align-middle " rowspan="2">Guest Arrival</th>
+              <th class="align-middle " rowspan="2">Guest Departure</th>
               <th class="align-middle " rowspan="2">SelectRoom</th>
               <th class="align-middle " rowspan="2">Proof</th>
               <th class="align-middle " rowspan="2">Status</th>
@@ -84,7 +84,7 @@
                 <i class="fa fa-fw fa-edit" 
                   (click)=updateproof(i.bookingid)> </i>
               </td>
-              <td class="align-middle " >
+              <td class="align-middle align-items-center justify-content-center" >
                 <!-- <pclass="square1"></p> -->
                 <div [ngClass]="i.color == 'Green'?'square':i.color == 'Orange'?'square1':'square2'"></div>
           </tbody>

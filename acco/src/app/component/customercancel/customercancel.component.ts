@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -18,12 +19,15 @@ export class CustomercancelComponent {
   userid:any;
   cancelform!:FormGroup;
   cancelpolicydata:any;
+  formattedcheckin: any;
+  formattedcheckout: any ;
   
   constructor(
     private homeroute: ActivatedRoute,
     private fb: FormBuilder,
     private bookingService: BookingServiceService,
     private router: Router,
+    private datePipe: DatePipe
 
 
   ) { }
@@ -37,10 +41,13 @@ export class CustomercancelComponent {
 
     this.homeroute.params.subscribe((params: Params) =>
       this.checkin = params[('fromdate')],);
-      // console.log("type",this.flattype)
+    this.formattedcheckin = this.datePipe.transform(this.checkin, 'dd-MM-yyyy');
+
+       console.log("type",this.formattedcheckin)
 
     this.homeroute.params.subscribe((params: Params) =>
       this.checkout = params[('todate')],);
+    this.formattedcheckout = this.datePipe.transform(this.checkout, 'dd-MM-yyyy');
 
       this.homeroute.params.subscribe((params: Params) =>
       this.userid = params[('userid')],);

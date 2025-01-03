@@ -1,14 +1,14 @@
 <div class="outer">
     <app-navbar></app-navbar>
-    <div class="container-fluid">
+    <div class="container-fluid align-items-center justify-content-center">
         <div class="row ">
-            <div class="header mt-2 mb-0">
+            <div class="header mt-3 mb-0">
                 <h2>Booking Summary</h2>
             </div>
         </div>
 
-        <div class=" table-responsive ">
-            <table mb-2>
+        <div class="d-flex justify-content-center align-items-center table-responsive ">
+            <table style="max-width: 80%;" class=" table  mb-2" mb-2>
                 <thead>
                     <tr>
 
@@ -84,11 +84,12 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="text-center mt-2 mb-2 button-container">
-                <button (click)="confirmBooking()" type="submit" class="btn btn-light mr-3 me-2 ">Next</button>
-                <button routerLink="/roomlogic" type="submit" class="btn btn-light my-2 ">Back</button>
-            </div>
         </div>
+        <div class="text-center mt-2 mb-2 button-container">
+            <button (click)="confirmBooking()" type="submit" class="btn btn-light mr-3 me-2 text-brown">Next</button>
+            <button routerLink="/roomlogic" type="submit" class="btn btn-light my-2 text-brown ">Back</button>
+        </div>
+
     </div>
     <!-- footer -->
     <footer class="  py-1">
