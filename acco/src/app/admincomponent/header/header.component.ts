@@ -34,7 +34,11 @@ export class HeaderComponent implements OnInit {
     //    console.log("++","logout sucessfully")
 
     this.authService.logout();
-    this.router.navigate(["frontdesk"])
+    this.router.navigate(["/frontdesk"]).then(() => {
+      // this.cdr.detectChanges();
+      window.location.reload();
+    });
+    // this.router.navigate(["frontdesk"])
 
 
   }
