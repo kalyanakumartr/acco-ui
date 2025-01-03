@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City, Country, State } from 'country-state-city';
@@ -42,7 +42,8 @@ export class WalkingcurrentComponent implements OnInit {
     private emailservice: EmailcheckService,
     private router: Router,
     private getroomlistservice: GetroomlistService,
-    public bookingService: BookingServiceService
+    public bookingService: BookingServiceService,
+     private cdr: ChangeDetectorRef,
 
   ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
@@ -340,6 +341,7 @@ export class WalkingcurrentComponent implements OnInit {
       .subscribe((result) => {
         console.log("roomtype:", result);
         this.visibleRoom = result;
+        this.cdr.detectChanges();
         console.log("walkingcurrent", this.visibleRoom);
       });
 
