@@ -12,8 +12,17 @@
     background-color: var(--primary);
 }
 label{
-    color:var(--text-color)
+    font-weight: bold;
+    font-family: Georgia, serif;
+    color: var(--text-color);
+
 }
+.text-brown {
+    font-weight: bold;
+    font-family: Georgia, serif;
+    color: var(--text-color);
+  }
+
 .btn-light{
     // background-image: linear-gradient(45deg, #9cbfe2 0%, rgb(206, 199, 223) 100%);
     background-image: var(--primary);

@@ -10,6 +10,12 @@
    border-radius: 4px;
    background-color: var(--primary);
 }
+.text-brown {
+   font-weight: bold;
+   font-family: Georgia, serif;
+   color: var(--text-color);
+ }
+
  .square{
     height:25px;
     width:15px;
@@ -41,7 +47,8 @@ a:hover{
    color:var(--hover)
 }
 h3{
-   color:var(--text-color);  
+   color:var(--text-color); 
+   font-size: 25px; 
 }
 
 i{

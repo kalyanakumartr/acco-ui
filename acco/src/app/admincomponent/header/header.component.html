@@ -16,14 +16,14 @@
     </div>
 
     <!-- Helpline Section -->
-    <div class="col-lg-2 col-md-3 col-12 text-md-right text-center mb-2 mb-md-0 mt-1">
+    <div class="col-lg-2 col-md-3 col-12 text-md-right text-end mb-2 mb-md-0 mr-1">
       <span >
         24/7 HelpLine<br>
-        Ph: +91 73738 26373
+        <i class="fas fa-phone-alt"></i> +91 73738 26373
       </span>
       <!-- Login/Signup/Logout Buttons -->
-      <div class="mt-2 mb-2">
-        <button *ngIf="!authService.logged()" routerLink="/login" class="btn  btn-sm mx-1">Login</button>
+      <div class="mt-2 ">
+        <button *ngIf="!authService.logged()" routerLink="/adminlogin" class="btn  btn-sm mx-1">Login</button>
        
         <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm mx-1">Logout</button>
       </div>

@@ -2,9 +2,9 @@
   <app-header></app-header>
   <div class="container-fluid">
     <div class="row ">
-      <div class="col form-box-style mx-5">
+      <div class="col   mx-5 mt-2">
         <!-- Column -->
-        <h2 class="mt-3">Checkout Room</h2>
+        <h2 class="mt-3 text-brown">Checkout Log</h2>
         <!--form-->
         <form [formGroup]="selectRoomForm" (ngSubmit)="roomCheckOut()">
           <div class="form-group row">
@@ -24,10 +24,10 @@
           </div>
 
           <!-- button -->
-          <button [disabled]=selectRoomForm.invalid type="submit" class="btn btn-light  mr-2 me-3 my-5 mt-5">
+          <button [disabled]=selectRoomForm.invalid type="submit" class="btn btn-light  mr-2 me-3 my-5 mt-5 text-brown">
 
             Submit</button>
-          <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2  my-5 mt-5">
+          <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2  my-5 mt-5 text-brown">
             Back</button>
         </form>
 
@@ -56,11 +56,11 @@
           </div>
         </div>
 
-        <button [disabled]=EBClosingForm.invalid type="submit" class="btn btn-light mr-2 me-3"
+        <button [disabled]=EBClosingForm.invalid type="submit" class="btn btn-light mr-2 me-3 text-brown"
           style="margin-top: 80px;margin-bottom: 30px;">
           <!-- (click)="uploadFileToActivity()" -->
           Submit</button>
-        <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2 margin-left"
+        <button routerLink="/frontdesk" type="submit" class="btn btn-light btn-elevate mr-2 margin-left text-brown"
           style="margin-top: 80px ;margin-bottom: 30px;">
           Back</button>
         <!-- </form> -->

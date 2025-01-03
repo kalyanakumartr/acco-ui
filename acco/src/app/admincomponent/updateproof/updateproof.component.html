@@ -1,7 +1,7 @@
 <div class="outer">
   <app-header></app-header>
   <div class="container-fluid">
-    <div class="row mx-5 form-box-style">
+    <div class="row mx-5  p-2">
       <div class="col">
         <!-- form -->
         <form [formGroup]="selectRoomForm">
@@ -41,10 +41,10 @@
           </div>
 
           <button [disabled]=selectRoomForm.invalid (click)="uploadFileToActivity()" type="submit"
-            class="btn btn-light  mt-5 mx-3 "
+            class="btn btn-light  mt-5 mx-3 text-brown"
             >
             Submit</button>
-          <button routerLink="/frontdesk" class="btn btn-light btn-elevate mt-5 "
+          <button routerLink="/frontdesk" class="btn btn-light btn-elevate mt-5 text-brown"
            >
             Back</button>
         </form>

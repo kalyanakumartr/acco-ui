@@ -1,23 +1,23 @@
 <div class="outer">
   <app-header></app-header>
   <div class="container-fluid">
-    <div class="row d-flex justify-content-between" >
+    <div class="row d-flex justify-content-between " >
       <div class="col-lg-3 mt-3" >
-        <h3 class=" font-weight-bold">Guests Status</h3>
+        <h3 class=" text-brown mx-2">Guests Status</h3>
       </div>
-      <div class="col-lg-4 mt-3 d-flex justify-content-center" >
+      <div class="col-lg-6 mt-3 d-flex justify-content-center" >
         <p class="square mx-0 " ></p>
-        <span  class="mx-2 mt-1">Completed</span>
+        <span  class="mx-2 mt-1 text-brown">Completed</span>
 
         <p class="square1 mx-0" ></p>
-        <span class="mx-2 mt-1" >TimeLeft</span>
+        <span class="mx-2 mt-1  text-brown" >TimeLeft</span>
 
         <p class="square2 mx-0" ></p>
-        <span  class="mx-2 mt-1" >TimeOut</span>
+        <span  class="mx-2 mt-1 text-brown" >TimeOut</span>
 
       </div>
-      <div class="col-lg-4 mt-3 mx-3 " >
-        <label >Date</label>&nbsp;&nbsp;
+      <div class="col-lg-3 mt-3  " >
+        <label class="text-brown"  >Date</label>&nbsp;&nbsp;
         <input type="date" #input [(ngModel)]="TodayDate" (change)="calggapi(input.value)" >&nbsp;&nbsp;&nbsp;
         <span class="mx-3">
           <a  routerLink="/viewcalendar" class="pointer" >ViewCalendar</a>
@@ -26,7 +26,7 @@
       </div>
      
     </div>
-    <div class="tbl-container pt-2">
+    <div class="tbl-container ">
       <div class=" table-responsive">
         
         <table >
