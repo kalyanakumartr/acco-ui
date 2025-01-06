@@ -184,15 +184,19 @@ export class WalkingcurrentComponent implements OnInit {
 
 
   walkingRoomCheckProcess() {
+    
     const formData = this.walkingRoomCheck.value;
-    this.booking.checkin = formData.checkin;
-    this.booking.checkout = formData.checkout;
+    const checkin = formData.checkIn.concat(' ',formData.checkInTime)
+    const checkout = formData.checkOut.concat(' ',formData.checkOutTime)
+    console.log("checkin checkout", checkin,checkout);
+    this.booking.checkin = checkin;
+    this.booking.checkout = checkout;
     this.booking.adults = formData.adult;
     this.booking.child = formData.children;
     this.booking.roomtypeid = formData.roomtype;
     this.booking.modeoftypeid = 2
-    var inDate = new Date(formData.checkin);
-    var OutDate = new Date(formData.checkout);
+    var inDate = new Date(checkin);
+    var OutDate = new Date(checkout);
     var diff=OutDate.getTime() - inDate.getTime();
     var days = Math.floor(diff / (60 * 60 * 24 * 1000));
     var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
@@ -218,7 +222,7 @@ export class WalkingcurrentComponent implements OnInit {
       })
     } else if (this.walkingRoomCheck.valid) {
       console.log("123", this.booking);
-      this.getroomlistservice.roomlogic(formData.adult,formData.checkin,formData.checkout,formData.roomtype).subscribe((result) => {
+      this.getroomlistservice.roomlogic(formData.adult,checkin,checkout,formData.roomtype).subscribe((result) => {
         console.log(result);
         this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
@@ -467,7 +471,7 @@ export class WalkingcurrentComponent implements OnInit {
 
 
     // this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
-    // this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    //  this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
     // this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
     // this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
 
