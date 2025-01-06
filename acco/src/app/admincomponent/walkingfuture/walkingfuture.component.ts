@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -31,8 +32,13 @@ export class WalkingfutureComponent implements OnInit {
   roomBookingSum: any
   userData: any;
   walkingRoomCheckFuture!: FormGroup;
-  Todaydate = "2023-03-12"
-  outDate = "2023-03-12"
+  Todaydate = "12-09-2024";
+  outDate = "12-09-2024";
+  times: string[] = [];
+  selectedTime: any;
+  minDate: any;
+  maxDate: any;
+
   isDisabled: boolean = false;
 
   constructor(private fb: FormBuilder,
@@ -41,7 +47,8 @@ export class WalkingfutureComponent implements OnInit {
     private emailservice: EmailcheckService,
     private router: Router,
     private getroomlistservice: GetroomlistService,
-    public bookingService: BookingServiceService
+    public bookingService: BookingServiceService,
+    private datePipe: DatePipe
 
   ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
@@ -72,6 +79,12 @@ export class WalkingfutureComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    const date1 = new Date();
+    this.setCheckInOut(date1);
+    this.generateTimeIntervals();
+    this.setCurrentTime();
+    this.getNextDate(date1);
 
     this.showRoomType();
     if (this.currentmonth < 10) {
@@ -120,8 +133,10 @@ export class WalkingfutureComponent implements OnInit {
     });
 
     this.walkingRoomCheckFuture = this.fb.group({
-      checkin: ['', Validators.required,],
-      checkout: ['', Validators.required,],
+      checkIn: ['', Validators.required],
+      checkInTime: ['', Validators.required],
+      checkOut: ['', Validators.required],
+      checkOutTime: ['', Validators.required],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       children: ['0', [Validators.required, Validators.max(6)]],
       roomtype: ['1', Validators.required,],
@@ -210,17 +225,20 @@ export class WalkingfutureComponent implements OnInit {
 
 
 
-  checkphone(value: any) {
+  checkPhoneNumber(value: any) {
 
 
     console.log("email", value)
     this.walkingFutureForm.reset();
-    Swal.fire({
-      text: "Phonenumber not Registered",
-      confirmButtonColor: '#964B00',
-      background: '#efc96a',
-    });
+    // Swal.fire({
+    //   text: "Phonenumber not Registered",
+    //   confirmButtonColor: '#964B00',
+    //   background: '#efc96a',
+    // });
     this.emailservice.emailverify(value).subscribe((result) => {
+      const response=result;
+      console.log("response", response)
+      if(response?.result){
       this.userData = result.result[0];
       console.log("userdata", this.userData)
       // Swal.fire(" phonenumber is  register");
@@ -254,13 +272,18 @@ export class WalkingfutureComponent implements OnInit {
       const jsondata = JSON.stringify(currentuser);
       localStorage.setItem('currentuserid', jsondata);
       Swal.fire({
-        text: result.message,
+        text: response?.message,
         confirmButtonColor: '#964B00',
         background: '#efc96a',
       });
 
-
-
+    }
+    Swal.fire({
+      text: response?.message || 'Something went wrong!',
+      // icon: 'error',
+      confirmButtonColor: '#964B00',
+      background: '#efc96a',
+    });
     })
   }
 
@@ -390,6 +413,97 @@ export class WalkingfutureComponent implements OnInit {
     // this.selectedAge.push(value)
     //  console.log("age:", this.selectedAge);
   }
+
+
+
+  getCheckOut() {
+    const checkinDate = this.walkingRoomCheckFuture.get('checkIn')?.value;
+    console.log("checkoutdate:", checkinDate);
+    this.getNextDate(checkinDate);
+  }
+
+  getNextDate(date: any) {
+    // Parse the date string to a Date object
+    const currentDate = new Date(date);
+
+    // Add one day (in milliseconds)
+    currentDate.setDate(currentDate.getDate() + 1);
+
+    // Format the next date in YYYY-MM-DD format
+    this.outDate = currentDate.toISOString().split('T')[0];
+    console.log('in getNextDate ' ,this.outDate)
+
+  }
+
+
+  generateTimeIntervals() {
+    const intervals: string[] = [];
+    const start = 0; // Start at 12:00 AM
+    const end = 24 * 60; // End at 11:59 PM
+    const step = 30; // Interval in minutes
+
+    for (let i = start; i < end; i += step) {
+      const hours = Math.floor(i / 60);
+      const minutes = i % 60;
+
+      const formattedHours = hours.toString().padStart(2, '0');
+      const formattedMinutes = minutes.toString().padStart(2, '0');
+
+      intervals.push(`${formattedHours}:${formattedMinutes}`);
+    }
+
+    this.times = intervals; // Assign to times array
+  }
+  setCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    const roundedMinutes = Math.ceil(minutes / 30) * 30; // Round up to the nearest 15 minutes
+
+    const adjustedHours = roundedMinutes === 60 ? (hours + 1) % 24 : hours;
+    const formattedMinutes = roundedMinutes === 60 ? '00' : roundedMinutes.toString().padStart(2, '0');
+    // Format time in 24-hour format
+    const formattedTime = `${adjustedHours.toString().padStart(2, '0')}:${formattedMinutes}`;
+    this.selectedTime = formattedTime;
+    console.log('time now', this.selectedTime)
+  }
+  setCheckInOut(date1: Date) {
+    console.log('1111', date1)
+
+    const currentyear = date1.getUTCFullYear();
+    const currentmonth = date1.getUTCMonth() + 1;
+    const currentday = date1.getUTCDate();
+    const checkoutday = date1.getDate() + 1;
+    const currentmin = date1.getMinutes();
+    const currenthour = date1.getHours();
+    console.log('1111232', currentyear, currentmonth, currentday, checkoutday);
+
+    if (currentmonth < 10) {
+      this.finalmonth = "0" + currentmonth;
+    } else {
+      this.finalmonth = currentmonth;
+    }
+    if (currentday < 10) {
+      this.finalday = "0" + currentday;
+    } else {
+      this.finalday = currentday;
+    }
+    if (checkoutday < 10) {
+      this.finalOutday = "0" + checkoutday;
+    } else {
+      this.finalOutday = checkoutday;
+    }
+
+    this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+    this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+    this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+
+
+  }
+
+
 
 
 }
