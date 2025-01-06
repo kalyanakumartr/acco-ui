@@ -40,7 +40,7 @@ export class WalkingcurrentComponent implements OnInit {
   selectedTime: any;
   minDate: any;
   maxDate: any;
-
+  isDateReadOnly: boolean = true; 
 
 
   constructor(private fb: FormBuilder,
@@ -109,6 +109,9 @@ export class WalkingcurrentComponent implements OnInit {
       // roleid: 3
     });
 
+
+
+    
     this.walkingRoomCheck = this.fb.group({
       checkIn: ['', Validators.required],
       checkInTime: ['', Validators.required],
@@ -123,7 +126,7 @@ export class WalkingcurrentComponent implements OnInit {
 
   }
 
-
+ 
   onCountryChange($event: any): void {
     this.states = State.getStatesOfCountry(JSON.parse(this.country.nativeElement.value).isoCode);
     this.selectedCountry = JSON.parse(this.country.nativeElement.value);
@@ -231,8 +234,8 @@ export class WalkingcurrentComponent implements OnInit {
       });
     
     this.roomBookingSum = new BookingModel();
-    this.roomBookingSum.checkin = formData.checkin,
-    this.roomBookingSum.checkout = formData.checkout,
+    this.roomBookingSum.checkin = checkin,
+    this.roomBookingSum.checkout = checkout,
     this.roomBookingSum.noofdays = totalDays;
     this.roomBookingSum.adults = formData.adult;
     this.roomBookingSum.child = formData.children;
@@ -465,15 +468,15 @@ export class WalkingcurrentComponent implements OnInit {
       this.finalOutday = checkoutday;
     }
 
-    this.Todaydate =  this.finalday + "-" + this.finalmonth + "-" + currentyear
-    this.outDate = this.finalOutday + "-" + this.finalmonth + "-" + currentyear
-    this.minDate = this.finalday + "-" + this.finalmonth + "-" + currentyear
+    // this.Todaydate =  this.finalday + "-" + this.finalmonth + "-" + currentyear
+    // this.outDate = this.finalOutday + "-" + this.finalmonth + "-" + currentyear
+    // this.minDate = this.finalday + "-" + this.finalmonth + "-" + currentyear
 
 
-    // this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
-    //  this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
-    // this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
-    // this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+     this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+    this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
 
 
   }

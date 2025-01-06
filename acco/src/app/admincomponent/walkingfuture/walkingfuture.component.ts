@@ -357,6 +357,8 @@ export class WalkingfutureComponent implements OnInit {
 }
 
 
+
+
   showRoomType() {
     this.roomTypeService.getRoomType()
       // .subscribe((res)=>{
