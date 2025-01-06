@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -31,10 +32,16 @@ export class WalkingcurrentComponent implements OnInit {
   roomData: any;
   roomBookingSum: any
   
-  Todaydate = "2023-03-12"
-  outDate = "2023-03-12"
+  Todaydate = "12-09-2024"
+  outDate = "12-09-2024"
   userData: any;
   walkingRoomCheck!: FormGroup;
+  times: string[] = [];
+  selectedTime: any;
+  minDate: any;
+  maxDate: any;
+
+
 
   constructor(private fb: FormBuilder,
     private roomTypeService: GetroomtypeService,
@@ -44,6 +51,7 @@ export class WalkingcurrentComponent implements OnInit {
     private getroomlistservice: GetroomlistService,
     public bookingService: BookingServiceService,
      private cdr: ChangeDetectorRef,
+     private datePipe: DatePipe
 
   ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
@@ -72,27 +80,15 @@ export class WalkingcurrentComponent implements OnInit {
   selectedCity: any;
 
   ngOnInit(): void {
+    const date1 = new Date();
+    this.setCheckInOut(date1);
+    this.generateTimeIntervals();
+    this.setCurrentTime();
+    this.getNextDate(date1);
+
+
 
     this.showRoomType();
-    if (this.currentmonth < 10) {
-      this.finalmonth = "0" + this.currentmonth;
-    } else {
-      this.finalmonth = this.currentmonth;
-    }
-    if (this.currentday < 10) {
-      this.finalday = "0" + this.currentday;
-    } else {
-      this.finalday = this.currentday;
-    }
-    if (this.checkoutday < 10) {
-      this.finalOutday = "0" + this.checkoutday;
-    } else {
-      this.finalOutday = this.checkoutday;
-    }
-
-    this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday + " " + this.currenthour + ":" + this.currentmin;
-    this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday + " " + this.currenthour + ":" + this.currentmin;
-
 
     this.walkingCurrentForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern("^[a-zA-Z]{3,15}$")]],
@@ -114,8 +110,10 @@ export class WalkingcurrentComponent implements OnInit {
     });
 
     this.walkingRoomCheck = this.fb.group({
-      checkin: ['', Validators.required,],
-      checkout: ['', Validators.required,],
+      checkIn: ['', Validators.required],
+      checkInTime: ['', Validators.required],
+      checkOut: ['', Validators.required],
+      checkOutTime: ['', Validators.required],
       adult: ['1', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       children: ['0', [Validators.required, Validators.max(6)]],
       roomtype: ['1', Validators.required,],
@@ -195,10 +193,6 @@ export class WalkingcurrentComponent implements OnInit {
     this.booking.modeoftypeid = 2
     var inDate = new Date(formData.checkin);
     var OutDate = new Date(formData.checkout);
-
-    // var noofdays = (OutDate.getTime() - inDate.getTime()) / (1000 * 3600 * 24);
-    // console.log("nnnnn", noofdays);
-
     var diff=OutDate.getTime() - inDate.getTime();
     var days = Math.floor(diff / (60 * 60 * 24 * 1000));
     var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
@@ -211,11 +205,6 @@ export class WalkingcurrentComponent implements OnInit {
     }else{
       var totalDays=days;
     }
-// if(this.booking.roomtypeid==1){
-//   var noofdays=totalDays;
-// }else {
-//   var noofdays=1;
-// }
     console.log("booking", this.booking);
     if(days<=0){
       Swal.fire({
@@ -273,25 +262,26 @@ export class WalkingcurrentComponent implements OnInit {
   // }
   //   }
 
-  checkemail(value: any) {
+  checkPhoneNumber(value: any) {
 
-
-    console.log("email", value)
+    console.log("phone number", value)
      this.walkingCurrentForm.reset();
-    Swal.fire({
-            text: "Phonenumber not Registered",
-            confirmButtonColor: '#964B00',
-            background: '#efc96a',
-          });
+    // Swal.fire({
+    //         text: "Phonenumber not Registered",
+    //         confirmButtonColor: '#964B00',
+    //         background: '#efc96a',
+    //       });
     this.emailservice.emailverify(value).subscribe((result) => {
+      const response=result;
+      console.log("response", response)
+      if(response?.result){
       this.userData = result.result[0];
       console.log("userdata", this.userData)
       Swal.fire({
-        text: result.message,
+        text: response?.message,
         confirmButtonColor: '#964B00',
         background: '#efc96a',
       });
-      // Swal.fire(" phonenumber is  register");
       this.walkingCurrentForm.controls['email'].setValue(this.userData.email);
       this.walkingCurrentForm.controls['firstname'].setValue(this.userData.firstname);
       this.walkingCurrentForm.controls['lastname'].setValue(this.userData.lastname);
@@ -302,7 +292,6 @@ export class WalkingcurrentComponent implements OnInit {
       this.walkingCurrentForm.controls['country'].setValue(this.userData.country);
       this.walkingCurrentForm.controls['pincode'].setValue(this.userData.pincode);
       this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
-      // localStorage.clear();
       localStorage.removeItem('currentuserid');
 
       const currentuser = new UserModel();
@@ -321,12 +310,14 @@ export class WalkingcurrentComponent implements OnInit {
 
       const jsondata = JSON.stringify(currentuser);
       localStorage.setItem('currentuserid', jsondata);
-      // Swal.fire({
-      //   text: result.message,
-      //   confirmButtonColor: '#964B00',
-      //   background: '#efc96a',
-      // });
-
+    }else{
+      Swal.fire({
+        text: response?.message || 'Something went wrong!',
+        // icon: 'error',
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+      });
+    }
 
 
     })
@@ -392,6 +383,99 @@ export class WalkingcurrentComponent implements OnInit {
     // this.selectedAge.push(value)
     //  console.log("age:", this.selectedAge);
   }
+
+  getCheckOut() {
+    const checkinDate = this.walkingRoomCheck.get('checkIn')?.value;
+    console.log("checkoutdate:", checkinDate);
+    this.getNextDate(checkinDate);
+  }
+
+  getNextDate(date: any) {
+    // Parse the date string to a Date object
+    const currentDate = new Date(date);
+
+    // Add one day (in milliseconds)
+    currentDate.setDate(currentDate.getDate() + 1);
+
+    // Format the next date in YYYY-MM-DD format
+    this.outDate = currentDate.toISOString().split('T')[0];
+    console.log('in getNextDate ' ,this.outDate)
+
+  }
+
+
+  generateTimeIntervals() {
+    const intervals: string[] = [];
+    const start = 0; // Start at 12:00 AM
+    const end = 24 * 60; // End at 11:59 PM
+    const step = 30; // Interval in minutes
+
+    for (let i = start; i < end; i += step) {
+      const hours = Math.floor(i / 60);
+      const minutes = i % 60;
+
+      const formattedHours = hours.toString().padStart(2, '0');
+      const formattedMinutes = minutes.toString().padStart(2, '0');
+
+      intervals.push(`${formattedHours}:${formattedMinutes}`);
+    }
+
+    this.times = intervals; // Assign to times array
+  }
+  setCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    const roundedMinutes = Math.ceil(minutes / 30) * 30; // Round up to the nearest 15 minutes
+
+    const adjustedHours = roundedMinutes === 60 ? (hours + 1) % 24 : hours;
+    const formattedMinutes = roundedMinutes === 60 ? '00' : roundedMinutes.toString().padStart(2, '0');
+    // Format time in 24-hour format
+    const formattedTime = `${adjustedHours.toString().padStart(2, '0')}:${formattedMinutes}`;
+    this.selectedTime = formattedTime;
+    console.log('time now', this.selectedTime)
+  }
+  setCheckInOut(date1: Date) {
+    console.log('1111', date1)
+
+    const currentyear = date1.getUTCFullYear();
+    const currentmonth = date1.getUTCMonth() + 1;
+    const currentday = date1.getUTCDate();
+    const checkoutday = date1.getDate() + 1;
+    console.log('1111232', currentyear, currentmonth, currentday, checkoutday);
+
+    if (currentmonth < 10) {
+      this.finalmonth = "0" + currentmonth;
+    } else {
+      this.finalmonth = currentmonth;
+    }
+    if (currentday < 10) {
+      this.finalday = "0" + currentday;
+    } else {
+      this.finalday = currentday;
+    }
+    if (checkoutday < 10) {
+      this.finalOutday = "0" + checkoutday;
+    } else {
+      this.finalOutday = checkoutday;
+    }
+
+    this.Todaydate =  this.finalday + "-" + this.finalmonth + "-" + currentyear
+    this.outDate = this.finalOutday + "-" + this.finalmonth + "-" + currentyear
+    this.minDate = this.finalday + "-" + this.finalmonth + "-" + currentyear
+
+
+    // this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+    // this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    // this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
+    // this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+
+
+  }
+
+
+
 
 }
 
