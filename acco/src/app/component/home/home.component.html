@@ -70,7 +70,7 @@
             <!-- Adults -->
             <div class="col-md-6">
               <label class="text-brown font-weight-bold">Adult</label>
-              <input formControlName="adult" type="number" class="form-control" value="1" min="1">
+              <input formControlName="adult" type="number" class="form-control text-center" value="1" min="1">
               <small *ngIf="homeForm.controls['adult'].dirty && homeForm.hasError('required','adult')"
                 class="text-danger">*Required</small>
             </div>
@@ -78,8 +78,29 @@
             <!-- Children -->
             <div class="col-md-6">
               <label class="text-brown font-weight-bold">Child (0-9 Years)</label>
-              <input formControlName="child" type="number" class="form-control" min="0" max="6"
-                (change)="ValueEntered(childVal.value)" #childVal>
+              <!-- <input formControlName="child" type="number" class="form-control" min="0" max="6"
+                (change)="ValueEntered(childVal.value)" #childVal> -->
+                <input formControlName="children" (change)="ValueEntered(childVal.value)" #childVal
+                                    (click)="clickon()" placeholder="Children" type="number" value="0" min="0" max="6"
+                                    class="form-control  text-center" />
+                                <!-- <span class="text-danger">* </span> -->
+                                <ng-container *ngIf="visible">
+                                    <div class="card mt-2" style="width: 15rem;margin-left: 20px;">
+                                        <ul class="list-group list-group-flush">
+                                            <li *ngFor="let array of samArray;let i = index" class="list-group-item">Age
+                                                of Child{{array}}
+                                                <select style="margin-left: 10px;" #age
+                                                    (change)="onSelected(age.value,array)">
+                                                    <!-- #age (change)="onSelected(age.value)" -->
+                                                    <option>--</option>
+                                                    <option *ngFor="let item of childAge ;let z = index" [value]="item">
+                                                        {{item}}</option>
+                                                </select>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </ng-container>
             </div>
           </div>
 

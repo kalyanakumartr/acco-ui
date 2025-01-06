@@ -87,24 +87,24 @@ export class WalkingfutureComponent implements OnInit {
     this.getNextDate(date1);
 
     this.showRoomType();
-    if (this.currentmonth < 10) {
-      this.finalmonth = "0" + this.currentmonth;
-    } else {
-      this.finalmonth = this.currentmonth;
-    }
-    if (this.currentday < 10) {
-      this.finalday = "0" + this.currentday;
-    } else {
-      this.finalday = this.currentday;
-    }
-    if (this.checkoutday < 10) {
-      this.finalOutday = "0" + this.checkoutday;
-    } else {
-      this.finalOutday = this.checkoutday;
-    }
+    // if (this.currentmonth < 10) {
+    //   this.finalmonth = "0" + this.currentmonth;
+    // } else {
+    //   this.finalmonth = this.currentmonth;
+    // }
+    // if (this.currentday < 10) {
+    //   this.finalday = "0" + this.currentday;
+    // } else {
+    //   this.finalday = this.currentday;
+    // }
+    // if (this.checkoutday < 10) {
+    //   this.finalOutday = "0" + this.checkoutday;
+    // } else {
+    //   this.finalOutday = this.checkoutday;
+    // }
 
-    this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday + " " + this.currenthour + ":" + this.currentmin;
-    this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday + " " + this.currenthour + ":" + this.currentmin;
+    // this.Todaydate = this.currentyear + "-" + this.finalmonth + "-" + this.finalday + " " + this.currenthour + ":" + this.currentmin;
+    // this.outDate = this.currentyear + "-" + this.finalmonth + "-" + this.finalOutday + " " + this.currenthour + ":" + this.currentmin;
 
 
 
