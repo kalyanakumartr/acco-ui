@@ -1,4 +1,4 @@
-<div class="outer">
+<!-- <div class="outer">
     <app-navbar></app-navbar>
     <div class="container-fluid">
         <div class="row ">
@@ -45,7 +45,7 @@
                          
                         </div>
                     </div> 
-                </mat-step>-->
+                </mat-step>
                 <mat-step [stepControl]="PaymentForm" label="Payment Information">
                     <div formGroupName="Payment">
                         <mat-label>Your Amount to be Paid</mat-label>
@@ -54,11 +54,11 @@
                             <mat-radio-button value="1">oncash</mat-radio-button><br>
                             <!-- <mat-radio-button value="2">Paytm</mat-radio-button><br>
                             <mat-radio-button value="3">GPay</mat-radio-button><br>
-                            <mat-radio-button value="4">PhonePe</mat-radio-button><br> -->
+                            <mat-radio-button value="4">PhonePe</mat-radio-button><br> 
                         </mat-radio-group>
 
                         <div>
-                            <!-- <button mat-raised-button   style='background-color: #efc96a; color:#964B00;'matStepperPrevious>Back</button> | -->
+                            <!-- <button mat-raised-button   style='background-color: #efc96a; color:#964B00;'matStepperPrevious>Back</button> |
                             <button mat-raised-button style='background-color: #efc96a; color:#964B00;' (click)="confirmBooking()">Click to  Payment</button>
                         </div>
                     </div>
@@ -66,4 +66,41 @@
             </mat-stepper>
         </form>
     </div>
+</div> -->
+
+
+
+<div class="outer">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-sm-12 text-center mt-2 text-brown">
+                <h2  class="text-color" >Verification and Payment</h2>
+            </div>
+            <!-- radio button -->
+            <div class="form-box-style mt-2 ">
+                <h2 class="mx-3 mt-2">Your Amount to be Paid</h2>
+                <div class="form-check mx-5" style="position: relative; display: inline-block;">
+                    <input class="form-check-input text-middle" type="radio" name="flexRadioDefault" id="flexRadioDefault1">                    
+                    <label class="form-check-label" for="flexRadioDefault1">                         
+                        <img src="assets/qrcode.png" style="width:200px;height:200px; ">
+                    </label>
+                  </div>
+                  <!-- button -->
+                  <div class="mt-2 mb-4 text-center">
+                        <button class="btn btn-light  w-20 me-2 text-brown"  (click)="confirmBooking()">Click to  Payment</button>
+                        <button routerLink="/bookingsummary" type="submit" class="btn btn-light btn-elevate mr-2  my-2 text-brown">
+                            Back </button>
+                </div>
+            </div>
+           
+           
+        </div>
+       
+    </div>
+     <!-- footer -->
+     <footer class="  py-1">
+  
+        <app-footer></app-footer>
+      </footer>
 </div>

@@ -148,7 +148,7 @@
                                 <label for="checkIn" class="text-brown font-weight-bold">Check-In</label>
                                 <div class="d-flex gap-2">
                                   <input formControlName="checkIn"  class="form-control form-style" [(ngModel)]="Todaydate"
-                                    [min]="minDate" >
+                                    [min]="minDate"  >
                                   <select formControlName="checkInTime" class="form-control form-style" [(ngModel)]="selectedTime">
                                     <option id="option-style" *ngFor="let time of times" [value]="time">{{ time }}</option>
                                   </select>
