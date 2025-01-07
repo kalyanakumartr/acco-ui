@@ -58,7 +58,7 @@ export class AuthServiceService {
             this.router.navigate(["frontdesk"])
 
           }
-          else if (this.authresults.usertype == "FrontOfficeExecutive") {
+          else if (this.authresults.usertype == "FrontOfficeExecutive" && url == "/adminlogin") {
             this.router.navigate(["frontdesk"])
 
           }

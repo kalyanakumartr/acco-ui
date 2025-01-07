@@ -2,7 +2,7 @@
   <app-header></app-header>
   <div class="container-fluid">
     <div class="row " >
-      <div class="col   mx-5 mt-2">
+      <div class="col   mx-1 mt-2 form-box-style">
         <!-- Column -->
         <h2 class="mt-3 text-brown">Select Room</h2>
         <!-- form -->
@@ -39,7 +39,7 @@
         </form>
 
       </div>
-      <div class="col mt-2" *ngIf="roomtypeid == 2?!isDisabled:isDisabled">
+      <div class="col mt-2 form-box-style" *ngIf="roomtypeid == 2?!isDisabled:isDisabled">
         <!-- Column -->
         <h2 class="mt-3 text-brown" >EB Reading</h2>
         <form [formGroup]="EBReadingForm" (ngSubmit)="EBReading()">
