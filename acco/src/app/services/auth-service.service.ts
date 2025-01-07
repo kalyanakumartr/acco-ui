@@ -54,7 +54,7 @@ export class AuthServiceService {
           if (this.authresults.usertype == "Admin" && url == "/adminlogin") {
             this.router.navigate(["admincomponent"])
 
-          } else if (this.authresults.usertype == "Manager") {
+          } else if (this.authresults.usertype == "Manager" && url == "/adminlogin") {
             this.router.navigate(["frontdesk"])
 
           }
