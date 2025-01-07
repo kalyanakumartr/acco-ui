@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City, Country, State } from 'country-state-city';
@@ -12,6 +12,7 @@ import { GetroomlistService } from 'src/app/services/getroomlist.service';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 import Swal from 'sweetalert2';
+import { Modal } from 'bootstrap';
 
 
 
@@ -21,6 +22,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./walkingfuture.component.scss']
 })
 export class WalkingfutureComponent implements OnInit {
+
+  @ViewChild('exampleModal')
+  modalElement!: ElementRef;
   walkingFutureForm!: FormGroup;
   user = new UserModel();
   submitted = false;
@@ -48,7 +52,8 @@ export class WalkingfutureComponent implements OnInit {
     private router: Router,
     private getroomlistservice: GetroomlistService,
     public bookingService: BookingServiceService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private cdr: ChangeDetectorRef,
 
   ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
@@ -76,6 +81,8 @@ export class WalkingfutureComponent implements OnInit {
   selectedCountry: any;
   selectedState: any;
   selectedCity: any;
+  availableStatus!: string;
+  maxAdultStatus!: string;
 
 
   ngOnInit(): void {
@@ -319,25 +326,36 @@ export class WalkingfutureComponent implements OnInit {
       }
 
     console.log("booking", this.booking);
-    if(days<=0){
-      Swal.fire({
-        text:
-          " Please verify your checkin and checkout dates",
-        // "<h5 style='color:red'>"++"</h5>"
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
+    // if(days<=0){
+    //   Swal.fire({
+    //     text:
+    //       " Please verify your checkin and checkout dates",
+    //     // "<h5 style='color:red'>"++"</h5>"
+    //     confirmButtonColor: '#964B00',
+    //     background: '#efc96a',
 
 
-      })
-    } else if (this.walkingRoomCheckFuture.valid) {
+    //   })
+     if (this.walkingRoomCheckFuture.valid) {
       console.log("123", this.booking);
+      this.getroomlistservice.checkRoomAvailability(formData.adult, formData.roomType, checkin, checkout)
+      .subscribe(result => {
+        console.log("check", result);
+        const checkdata = result[0][0];
+        this.availableStatus = checkdata.available_status === "Available"
+          ? "Hello! We're happy to let you know that we are available."
+          : "Sorry for the inconvenience, we're currently unavailable.";
+        this.maxAdultStatus = formData.adult >= "90"
+          ? "Our property can only accommodate up to 64 persons." : "";
+          if (checkdata.available_status === "Available") { 
       this.getroomlistservice.roomlogic(formData.adult, checkin, checkout,formData.roomtype).subscribe((result) => {
         console.log(result);
         this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
-      });
+      
+    
    
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = checkin,
@@ -352,9 +370,28 @@ export class WalkingfutureComponent implements OnInit {
 
     console.log("___+++", this.roomBookingSum)
     this.bookingService.changeMessage(this.roomBookingSum);
-    this.router.navigate(["roomlogic"])
+    this.router.navigate(["foeroomlogic"])
+  });
+}else{
+  
+  this.cdr.detectChanges();
+  const modalElement = document.getElementById('exampleModal');
+  if (modalElement) {
+    const modal = new Modal(modalElement);
+    modal.show();
   }
+
 }
+})
+}
+}
+    
+    
+
+
+  
+  
+  
 
 
 
@@ -508,7 +545,16 @@ export class WalkingfutureComponent implements OnInit {
 
   }
 
+  
 
+
+  closeModal(): void {
+    const modalElement = document.getElementById('exampleModal');
+    if (modalElement) {
+      const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      modal.hide();
+    }
+  }
 
 
 }

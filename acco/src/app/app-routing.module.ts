@@ -40,6 +40,8 @@ import { FoecheckouttimeComponent } from './admincomponent/foecheckouttime/foech
 import { EditflatComponent } from './admincomponent/editflat/editflat.component';
 import { CustomercancelComponent } from './component/customercancel/customercancel.component';
 import { ViewcalendarComponent } from './admincomponent/viewcalendar/viewcalendar.component';
+import { FoeroomlogicComponent } from './admincomponent/foeroomlogic/foeroomlogic.component';
+import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/foebookingsummary.component';
 // import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 
@@ -85,6 +87,8 @@ const routes: Routes = [
    {path:'editflat',component:EditflatComponent},
    {path:'customercancel',component:CustomercancelComponent},
    {path:'viewcalendar',component:ViewcalendarComponent},
+   {path:'foeroomlogic',component:FoeroomlogicComponent},
+   {path:'foebookingsummary',component:FoebookingsummaryComponent},
 
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

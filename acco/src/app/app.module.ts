@@ -71,6 +71,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FooterComponent } from './component/footer/footer.component';
+import { FoeroomlogicComponent } from './admincomponent/foeroomlogic/foeroomlogic.component';
+import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/foebookingsummary.component';
 
 
 
@@ -119,6 +121,8 @@ import { FooterComponent } from './component/footer/footer.component';
     CustomercancelComponent,
     ViewcalendarComponent,
     FooterComponent,
+    FoeroomlogicComponent,
+    FoebookingsummaryComponent,
 
     // MatchpasswordComponent,
    

@@ -11,7 +11,7 @@ import { EmailcheckService } from 'src/app/services/emailcheck.service';
 import { GetroomlistService } from 'src/app/services/getroomlist.service';
 import { GetroomtypeService } from 'src/app/services/getroomtype.service';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
-
+import { Modal } from 'bootstrap';
 
 import Swal from 'sweetalert2';
 
@@ -22,6 +22,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./walkingcurrent.component.scss']
 })
 export class WalkingcurrentComponent implements OnInit {
+  @ViewChild('exampleModal')
+  modalElement!: ElementRef;
   walkingCurrentForm!: FormGroup;
   user = new UserModel();
   submitted = false;
@@ -41,7 +43,8 @@ export class WalkingcurrentComponent implements OnInit {
   minDate: any;
   maxDate: any;
   isDateReadOnly: boolean = true; 
-
+  availableStatus!: string;
+  maxAdultStatus!: string;
 
   constructor(private fb: FormBuilder,
     private roomTypeService: GetroomtypeService,
@@ -51,7 +54,8 @@ export class WalkingcurrentComponent implements OnInit {
     private getroomlistservice: GetroomlistService,
     public bookingService: BookingServiceService,
      private cdr: ChangeDetectorRef,
-     private datePipe: DatePipe
+     private datePipe: DatePipe,
+   
 
   ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
@@ -213,25 +217,34 @@ export class WalkingcurrentComponent implements OnInit {
       var totalDays=days;
     }
     console.log("booking", this.booking);
-    if(days<=0){
-      Swal.fire({
-        text:
-          " Please verify your checkin and checkout dates",
-        // "<h5 style='color:red'>"++"</h5>"
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
-
-
-      })
-    } else if (this.walkingRoomCheck.valid) {
+    if (this.walkingRoomCheck.valid) {
       console.log("123", this.booking);
+      console.log("123", this.booking);
+      this.getroomlistservice.checkRoomAvailability(formData.adult, formData.roomType, checkin, checkout)
+      .subscribe(result => {
+        console.log("check", result);
+        const checkdata = result[0][0];
+        this.availableStatus = checkdata.available_status === "Available"
+          ? "Hello! We're happy to let you know that we are available."
+          : "Sorry for the inconvenience, we're currently unavailable.";
+        this.maxAdultStatus = formData.adult >= "90"
+          ? "Our property can only accommodate up to 64 persons." : "";
+          // this.cdr.detectChanges();
+          // const modalElement = document.getElementById('exampleModal');
+          // if (modalElement) {
+          //   const modal = new Modal(modalElement);
+          //   modal.show();
+          // }
+          if (checkdata.available_status === "Available") { 
+          
+  
       this.getroomlistservice.roomlogic(formData.adult,checkin,checkout,formData.roomtype).subscribe((result) => {
         console.log(result);
         this.roomData = result[0];
         this.getroomlistservice.setData(this.roomData)
         console.log("++++roomData:", this.roomData);
         console.log("0 value:", this.roomData);
-      });
+      
     
     this.roomBookingSum = new BookingModel();
     this.roomBookingSum.checkin = checkin,
@@ -246,28 +259,24 @@ export class WalkingcurrentComponent implements OnInit {
 
     console.log("___+++", this.roomBookingSum)
     this.bookingService.changeMessage(this.roomBookingSum);
-    this.router.navigate(["roomlogic"])
-  }
+    this.router.navigate(["foeroomlogic"])
+  });
+ }else{
+  
+   
+    this.cdr.detectChanges();
+    const modalElement = document.getElementById('exampleModal');
+    if (modalElement) {
+      const modal = new Modal(modalElement);
+      modal.show();
+    }
+  
+ }
+})
+}
 }
 
-  // Swal.fire("Success");
-  // if(this.walkingcurrentForm.valid){
-  //   console.log(this.user);
 
-  //   this.WalkingcurentService.register(newuser).    
-  //   subscribe( result=>{
-
-  //      console.log(result);
-  //       // alert("login sucessful"); 
-  //       this.WalkincurrentForm.reset();
-  //       Swal.fire(" Registered Successfully");
-
-
-  //       // this.router.navigate(["signup"])
-
-  //   })
-  // }
-  //   }
 
   checkPhoneNumber(value: any) {
 
@@ -481,7 +490,13 @@ export class WalkingcurrentComponent implements OnInit {
 
   }
 
-
+closeModal(): void {
+    const modalElement = document.getElementById('exampleModal');
+    if (modalElement) {
+      const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      modal.hide();
+    }
+  }
 
 
 }
