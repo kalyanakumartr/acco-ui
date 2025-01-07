@@ -48,7 +48,7 @@
                 </table>
             </div>
                 <div class="text-center  my-3 ">
-                    <button routerLink="/home" type="submit" class="btn btn-light  mr-2 mb-2 text-brown">
+                    <button [routerLink]="bookingData.modeoftypeid == 2 ? '/walkingcurrent' : '/walkingfuture'" type="submit" class="btn btn-light  mr-2 mb-2 text-brown">
                         Back </button>
 
                 </div>

@@ -15,6 +15,7 @@ export class FoeroomlogicComponent {
   bookingData: any;
   optiontype: any;
   roomBookingSumm:any;
+  navigateToCurrent = true; 
 
   constructor(
     private getroomlistservice: GetroomlistService,
