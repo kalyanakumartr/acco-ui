@@ -62,7 +62,9 @@
           </thead>
           <tbody>
             <tr  *ngFor="let i of dataObs$ | async">
-              <td class="align-middle " >{{i.bookingid}}
+              <td class="align-middle " >
+                <a href="#" data-bs-toggle="modal" data-bs-target="#bookingModal" (click)="setBookingData(i)">{{i.bookingid}}</a>
+              </td>
               <td class="align-middle " >{{i.roomnos==0?"":i.roomnos}}
               <td class="align-middle ">{{i.bhk1count}}
               <td class="align-middle " >{{i.bhk2count}}
@@ -116,3 +118,99 @@
     <app-footer></app-footer>
   </footer>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title text-brown mx-5" id="bookingModalLabel">BookingId: {{selectedBooking?.bookingid}}</h2>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div >
+        <table class="table table-striped">
+          <!-- <thead>
+            <tr>
+              <th title="Description of the data">Customer</th>
+              <th title="Value of the data">Information</th>
+            </tr>
+          </thead> -->
+          <tbody>
+            <tr>
+              <th>First Name</th>
+              <td>{{selectedBooking?.firstname}}</td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td>{{selectedBooking?.lastname}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{selectedBooking?.email}}</td>
+            </tr>
+            <tr>
+              <th>Phone Number</th>
+              <td>{{selectedBooking?.phonenumber}}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{selectedBooking?.address1}}, {{selectedBooking?.address2}}</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>{{selectedBooking?.city}}</td>
+            </tr>
+            <tr>
+              <th>State</th>
+              <td>{{selectedBooking?.state}}</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <td>{{selectedBooking?.country}}</td>
+            </tr>
+            <tr>
+              <th>Check-In</th>
+              <td>{{selectedBooking?.checkin | date: 'medium'}}</td>
+            </tr>
+            <tr>
+              <th>Check-Out</th>
+              <td>{{selectedBooking?.checkout | date: 'medium'}}</td>
+            </tr>
+            <tr *ngIf="selectedBooking?.bhk1count">
+              <th>1BHK</th>
+              <td>{{selectedBooking?.bhk1count }}</td>
+            </tr>
+            <tr *ngIf="selectedBooking?.bhk2count">
+              <th>2BHK</th>
+              <td>{{selectedBooking?.bhk2count }}</td>
+            </tr>
+            <tr *ngIf="selectedBooking?.bhk3count">
+              <th>3BHK</th>
+              <td>{{selectedBooking?.bhk3count }}</td>
+            </tr>
+            <tr>
+              <th>Adults</th>
+              <td>{{selectedBooking?.adults}}</td>
+            </tr>
+            <tr>
+              <th>Children</th>
+              <td>{{selectedBooking?.child}}</td>
+            </tr>
+            <tr>
+              <th>Price</th>
+              <td>{{selectedBooking?.price | currency}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-light" (click)="printBookingDetails()">Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

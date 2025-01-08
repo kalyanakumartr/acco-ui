@@ -39,7 +39,7 @@
 //       //  align-items: self-end;
 //      }
 a{
-   color:var(--text-color); 
+   // color:var(--text-color); 
    font-weight: bold ;
    font-size: medium;
 }
@@ -87,6 +87,30 @@ table {
    th, td {
        padding: 10px;
    }
+ }
+
+ .table-striped td, 
+.table-striped th {
+  color: var(--text-color);
+  // background-image: var(--panel);
+}
+.modal-body{
+  background-image: var(--primary);
+}
+
+.btn-light{
+   // background-image: linear-gradient(45deg, #9cbfe2 0%, rgb(206, 199, 223) 100%);
+   background-image: var(--primary);
+   // margin-top: 30px;
+   color: var(--text-color);
+ }
+ .btn-light:hover {
+   color: var(--hover);
+   transform: scale(1.05);
+   /* Slight zoom effect */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   /* Add shadow */
+   transition: all 0.3s ease-in-out;
  }
  
  
