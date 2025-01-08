@@ -84,9 +84,9 @@
                             <div class="col-12 col-md-6 mb-3">
                                 <label class="text-brown font-weight-bold">Country</label>
                                 <select formControlName="country" #country class="form-select"
-                                    (change)="onCountryChange($event)">
+                                    (change)="onCountryChange()">
                                     <option [value]="null">-- Select Your Country --</option>
-                                    <option *ngFor="let country of countries" [value]="country | json">{{ country.name
+                                    <option *ngFor="let country of countries" [value]="country |json" [ngValue]="country.name">{{ country.name
                                         }}
                                     </option>
                                 </select>
@@ -100,9 +100,9 @@
                             <div class="col-12 col-md-6 mb-3">
                                 <label class="text-brown font-weight-bold">State</label>
                                 <select formControlName="state" #state class="form-select"
-                                    (change)="onStateChange($event)">
+                                    (change)="onStateChange()">
                                     <option [value]="null">-- Select Your State --</option>
-                                    <option *ngFor="let state of states" [value]="state | json">{{ state.name }}
+                                    <option *ngFor="let state of states" [value]="state| json" [ngValue]="state.name" >{{ state.name }}
                                     </option>
                                 </select>
                                 <small
@@ -112,9 +112,9 @@
                             <div class="col-12 col-md-6 mb-3">
                                 <label class="text-brown font-weight-bold">City</label>
                                 <select formControlName="city" #city class="form-select"
-                                    (change)="onCityChange($event)">
+                                    (change)="onCityChange()">
                                     <option [value]="null">-- Select Your City --</option>
-                                    <option *ngFor="let city of cities" [value]="city | json">{{ city.name }}</option>
+                                    <option *ngFor="let city of cities" [value]="city | json" [ngValue]="city.name">{{ city.name }}</option>
                                 </select>
                                 <small
                                     *ngIf="walkingCurrentForm.controls['city'].dirty && walkingCurrentForm.hasError('required','city')"
@@ -132,11 +132,11 @@
                             </div>
                         </div>
                         <div class="text-brown mb-5 mt-5">
-                            <button type="submit" class="btn btn-light me-3 mr-3 text-center text-brown"
+                            <button type="button"  class="btn btn-light me-3 mr-3 text-center text-brown"
                                 (click)="checkPhoneNumber(phone.value)">
                                 Verify PhoneNumber</button>
 
-                            <button type="submit" class="btn btn-light  mr-3 text-center text-brown">
+                            <button [disabled]="walkingCurrentForm.invalid" type="submit" class="btn btn-light  mr-3 text-center text-brown">
                                 Submit</button>
                         </div>
                     </form>
@@ -223,7 +223,7 @@
                             <!-- Submit Button -->
                             <div class="col-12 col-md-6 mb-3 mt-4 d-flex align-items-start">
                                 <label class="text-brown "></label>
-                                <button type="submit" class="btn btn-light w-150 text-brown ">
+                                <button [disabled]="walkingCurrentForm.invalid || walkingRoomCheck.invalid" type="submit" class="btn btn-light w-150 text-brown ">
                                    Check Availability</button>
                             </div>
 

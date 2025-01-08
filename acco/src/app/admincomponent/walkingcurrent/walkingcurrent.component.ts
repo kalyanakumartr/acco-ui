@@ -33,6 +33,9 @@ export class WalkingcurrentComponent implements OnInit {
   booking = new BookingModel();
   roomData: any;
   roomBookingSum: any
+
+  countryyyy!: { "isoCode": "IN", "name": "India" }
+
   
   Todaydate = "12-09-2024"
   outDate = "12-09-2024"
@@ -84,6 +87,8 @@ export class WalkingcurrentComponent implements OnInit {
   selectedCity: any;
 
   ngOnInit(): void {
+    console.log('countriess',this.countries)
+ 
     const date1 = new Date();
     this.setCheckInOut(date1);
     this.generateTimeIntervals();
@@ -131,26 +136,49 @@ export class WalkingcurrentComponent implements OnInit {
   }
 
  
-  onCountryChange($event: any): void {
+  onCountryChange(): void {
     this.states = State.getStatesOfCountry(JSON.parse(this.country.nativeElement.value).isoCode);
     this.selectedCountry = JSON.parse(this.country.nativeElement.value);
     this.cities = this.selectedState = this.selectedCity = null;
-    console.log("country", this.selectedCountry)
-  }
+    console.log("country", this.selectedCountry);
 
-  onStateChange($event: any): void {
+    // const selectedCountry = this.walkingCurrentForm.get('country')?.value;
+    // if (selectedCountry) {
+    //   console.log('country',selectedCountry)
+    //   this.selectedCountry = JSON.parse(selectedCountry);
+    //   console.log('country111',selectedCountry)
+
+    //   this.states = State.getStatesOfCountry(this.selectedCountry.isoCode);
+    //   this.walkingCurrentForm.get('state')?.reset();
+    //   this.walkingCurrentForm.get('city')?.reset();
+    //   this.cities = [];
+    //   this.selectedState = null;
+    //   this.selectedCity = null;
+    }
+  
+
+  onStateChange(): void {
     this.cities = City.getCitiesOfState(JSON.parse(this.country.nativeElement.value).isoCode, JSON.parse(this.state.nativeElement.value).isoCode)
     this.selectedState = JSON.parse(this.state.nativeElement.value);
     this.selectedCity = null;
     console.log("state", this.selectedState)
 
+    // const selectedState = this.walkingCurrentForm.get('state')?.value;
+    // if (selectedState) {
+    //   this.selectedState = JSON.parse(selectedState);
+    //   this.cities = City.getCitiesOfState(this.selectedCountry.isoCode, this.selectedState.isoCode);
+    //   this.walkingCurrentForm.get('city')?.reset();
+    //   this.selectedCity = null;
+    // }
+
 
   }
 
-  onCityChange($event: any): void {
-    this.selectedCity = JSON.parse(this.city.nativeElement.value)
-    console.log("city", this.selectedCity)
-
+  onCityChange(): void {
+    const selectedCity = this.walkingCurrentForm.get('city')?.value;
+    if (selectedCity) {
+      this.selectedCity = JSON.parse(selectedCity);
+    }
   }
 
 
@@ -281,7 +309,7 @@ export class WalkingcurrentComponent implements OnInit {
   checkPhoneNumber(value: any) {
 
     console.log("phone number", value)
-     this.walkingCurrentForm.reset();
+    //  this.walkingCurrentForm.reset();
     // Swal.fire({
     //         text: "Phonenumber not Registered",
     //         confirmButtonColor: '#964B00',
@@ -303,9 +331,9 @@ export class WalkingcurrentComponent implements OnInit {
       this.walkingCurrentForm.controls['lastname'].setValue(this.userData.lastname);
       this.walkingCurrentForm.controls['address1'].setValue(this.userData.address1);
       this.walkingCurrentForm.controls['address2'].setValue(this.userData.address2);
-      this.walkingCurrentForm.controls['city'].setValue(this.userData.city);
-      this.walkingCurrentForm.controls['state'].setValue(this.userData.state);
-      this.walkingCurrentForm.controls['country'].setValue(this.userData.country);
+       this.walkingCurrentForm.get('city')?.setValue(this.userData.city);
+       this.walkingCurrentForm.get('state')?.setValue(this.userData.state);
+      this.walkingCurrentForm.get('country')?.setValue(this.userData.country);
       this.walkingCurrentForm.controls['pincode'].setValue(this.userData.pincode);
       this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
       localStorage.removeItem('currentuserid');

@@ -4,9 +4,9 @@
     <nav class="navbar navbar-expand-lg navbar-light ">
       <!-- Toggler Button for Mobile View -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
       <div class="collapse navbar-collapse text-brown" id="navbarNav">
         <ul class="navbar-nav mr-auto ">
@@ -37,59 +37,56 @@
     </div>
 
     <div class="tbl-container pt-2">
-    <div class="table-responsive">
+      <div class="table-responsive">
 
-      <table>
-        <thead>
-          <tr>
-            <th class="align-middle" rowspan="2">BookingId</th>
-            <th class="align-middle" rowspan="2">Check-In </th>
-            <th class="align-middle" rowspan="2">Check-Out </th>
-            <th class="align-middle" rowspan="2">Adult Count</th>
-            <th class="align-middle" rowspan="2">Child Count</th>
-            <th class="align-middle" colspan="3">Flat Type</th>
-            <th class="align-middle" rowspan="2">Allotted Flat</th>
-            <th class="align-middle" rowspan="2">Total Paid</th>
-            <th class="align-middle" rowspan="2">Option</th>
-          </tr>
-          <tr>
+        <table>
+          <thead>
+            <tr>
+              <th class="align-middle" rowspan="2">BookingId</th>
+              <th class="align-middle" rowspan="2">Check-In </th>
+              <th class="align-middle" rowspan="2">Check-Out </th>
+              <th class="align-middle" rowspan="2">Adult Count</th>
+              <th class="align-middle" rowspan="2">Child Count</th>
+              <th class="align-middle" colspan="3">Flat Type</th>
+              <th class="align-middle" rowspan="2">Allotted Flat</th>
+              <th class="align-middle" rowspan="2">Total Paid</th>
+              <th class="align-middle" rowspan="2">Option</th>
+            </tr>
+            <tr>
 
-            <th>1BHK</th>
-            <th>2BHK</th>
-            <th>3BHK</th>
+              <th>1BHK</th>
+              <th>2BHK</th>
+              <th>3BHK</th>
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let i of dataObs$ | async">
-            <td class="align-middle "> 
-              <!-- <a (click)="bookingview(i)" style="text-decoration: underline;color:blue">{{i.bookingid}}</a> -->
-              <a href="#" data-bs-toggle="modal" data-bs-target="#bookingModal" (click)="setBookingData(i)">{{i.bookingid}}</a>
-            </td>
-            <td class="align-middle ">{{i.checkin | date:'dd-MM-yyyy HH:mm '}}
-            <td class="align-middle ">{{i.checkout | date:'dd-MM-yyyy HH:mm '}}
-            <td class="align-middle ">{{i.adults}}
-            <td class="align-middle ">{{i.child}}
-            <td class="align-middle ">{{i.bhk1count}}
-            <td class="align-middle ">{{i.bhk2count}}
-            <td class="align-middle ">{{i.bhk3count}}
-            <td class="align-middle ">{{i.roomid}}
-            <td class="align-middle ">{{i.totalprice}}
-            <td class="align-middle ">
-              <!-- <a (click)="bookingview(i)">View </a> -->
-              <a *ngIf="i.acheckin==null?!isDisabled:isDisabled"
-                (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">Cancel</a>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of dataObs$ | async">
+              <td class="align-middle ">
+                <!-- <a (click)="bookingview(i)" style="text-decoration: underline;color:blue">{{i.bookingid}}</a> -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                  (click)="setBookingData(i)">{{i.bookingid}}</a>
+              </td>
+              <td class="align-middle ">{{i.checkin | date:'dd-MM-yyyy HH:mm '}}
+              <td class="align-middle ">{{i.checkout | date:'dd-MM-yyyy HH:mm '}}
+              <td class="align-middle ">{{i.adults}}
+              <td class="align-middle ">{{i.child}}
+              <td class="align-middle ">{{i.bhk1count}}
+              <td class="align-middle ">{{i.bhk2count}}
+              <td class="align-middle ">{{i.bhk3count}}
+              <td class="align-middle ">{{i.roomid}}
+              <td class="align-middle ">{{i.totalprice}}
+              <td class="align-middle ">
+                <!-- <a (click)="bookingview(i)">View </a> -->
+                <a *ngIf="i.acheckin==null?!isDisabled:isDisabled" data-bs-toggle="modal" data-bs-target="#cancelModal"
+                  (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">Cancel</a>
 
-
-
-        </tbody>
-
-      </table>
+          </tbody>
+        </table>
       </div>
       <div class="page">
 
-        <mat-paginator #paginator [pageSizeOptions]="[5,10,15]" [pageSize]="5" showFirstLastButtons
-       >
+        <mat-paginator #paginator [pageSizeOptions]="[5,10,15]" [pageSize]="5" showFirstLastButtons>
         </mat-paginator>
       </div>
 
@@ -97,12 +94,75 @@
   </div>
   <!-- footer -->
   <footer class="  py-1">
-  
+
     <app-footer></app-footer>
   </footer>
 </div>
 
-<!-- Modal -->
+<!-- cancel booking Modal -->
+
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-brown" id="exampleModalLabel">Booking Cancellation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table >
+          <thead>
+              <tr >
+                  <th class="align-middle" rowspan="2">No</th>
+                  <th class="align-middle" rowspan="2">Time of Cancellation</th>
+                  <th class="align-middle" rowspan="2">Cancellation percentage</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr  *ngFor="let i of cancelpolicydata let index = index;">
+                  <td>{{i.cancelpolicyid}}</td>
+                  <td>{{i.timeofcancel}}</td>
+                  <td>{{i.cancelpercentage}}</td>
+              </tr>
+          </tbody>
+      </table>
+
+        <hr>
+        <form >
+          <div class="mb-3">
+            <label for="bookingid" class="col-form-label">Bookingid</label>
+            <input formControlName="bookingid" readonly type="text" class="form-control" id="bookingid"
+              value={{bookingid}}>
+          </div>
+          <div class="mb-3">
+            <label for="checkin" class="col-form-label">Checkin</label>
+            <input formControlName="checkin" readonly type="text" class="form-control" id="checkin"
+              [ngModel]=formattedcheckin>
+          </div>
+          <div class="mb-3">
+            <label for="checkout" class="col-form-label">Checkout</label>
+            <input formControlName="checkout" readonly type="text" class="form-control" id="checkout"
+              [ngModel]=formattedcheckout>
+          </div>
+          <div class="mb-3">
+            <label for="reason" class="col-form-label">Reason</label>
+            <textarea formControlName="reason" class="form-control"></textarea>
+            <small *ngIf="cancelform.controls['reason'].dirty && cancelform.hasError('required','reason')"
+              class="text-danger form-inline  mt-0">*Messsage is required</small>
+          </div>
+          <button  [disabled]=cancelform.invalid (click)="cancelbooking()" type="submit" class="btn text-brown">Sumbit Cancellation</button>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary text-brown" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+<!-- booking id Modal -->
 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -111,69 +171,69 @@
         <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div >
-        <table class="table table-striped">
-          <!-- <thead>
+        <div>
+          <table class="table table-striped">
+            <!-- <thead>
             <tr>
               <th title="Description of the data">Customer</th>
               <th title="Value of the data">Information</th>
             </tr>
           </thead> -->
-          <tbody>
-            <tr>
-              <th>First Name</th>
-              <td>{{selectedBooking?.firstname}}</td>
-            </tr>
-            <tr>
-              <th>Last Name</th>
-              <td>{{selectedBooking?.lastname}}</td>
-            </tr>
-            <tr>
-              <th>Email</th>
-              <td>{{selectedBooking?.email}}</td>
-            </tr>
-            <tr>
-              <th>Phone Number</th>
-              <td>{{selectedBooking?.phonenumber}}</td>
-            </tr>
-            <tr>
-              <th>Address</th>
-              <td>{{selectedBooking?.address1}}, {{selectedBooking?.address2}}</td>
-            </tr>
-            <tr>
-              <th>City</th>
-              <td>{{selectedBooking?.city}}</td>
-            </tr>
-            <tr>
-              <th>State</th>
-              <td>{{selectedBooking?.state}}</td>
-            </tr>
-            <tr>
-              <th>Country</th>
-              <td>{{selectedBooking?.country}}</td>
-            </tr>
-            <tr>
-              <th>Check-In</th>
-              <td>{{selectedBooking?.checkin | date: 'medium'}}</td>
-            </tr>
-            <tr>
-              <th>Check-Out</th>
-              <td>{{selectedBooking?.checkout | date: 'medium'}}</td>
-            </tr>
-            <tr>
-              <th>Adults</th>
-              <td>{{selectedBooking?.adults}}</td>
-            </tr>
-            <tr>
-              <th>Children</th>
-              <td>{{selectedBooking?.child}}</td>
-            </tr>
-            <tr>
-              <th>Price</th>
-              <td>{{selectedBooking?.price | currency}}</td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <th>First Name</th>
+                <td>{{selectedBooking?.firstname}}</td>
+              </tr>
+              <tr>
+                <th>Last Name</th>
+                <td>{{selectedBooking?.lastname}}</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>{{selectedBooking?.email}}</td>
+              </tr>
+              <tr>
+                <th>Phone Number</th>
+                <td>{{selectedBooking?.phonenumber}}</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>{{selectedBooking?.address1}}, {{selectedBooking?.address2}}</td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td>{{selectedBooking?.city}}</td>
+              </tr>
+              <tr>
+                <th>State</th>
+                <td>{{selectedBooking?.state}}</td>
+              </tr>
+              <tr>
+                <th>Country</th>
+                <td>{{selectedBooking?.country}}</td>
+              </tr>
+              <tr>
+                <th>Check-In</th>
+                <td>{{selectedBooking?.checkin | date: 'medium'}}</td>
+              </tr>
+              <tr>
+                <th>Check-Out</th>
+                <td>{{selectedBooking?.checkout | date: 'medium'}}</td>
+              </tr>
+              <tr>
+                <th>Adults</th>
+                <td>{{selectedBooking?.adults}}</td>
+              </tr>
+              <tr>
+                <th>Children</th>
+                <td>{{selectedBooking?.child}}</td>
+              </tr>
+              <tr>
+                <th>Price</th>
+                <td>{{selectedBooking?.price | currency}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="modal-footer">

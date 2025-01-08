@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -21,45 +23,45 @@ export class MybookingsComponent implements OnInit {
   // public apiData1$ = this.apiData1.asObservable();
 
   userid: any;
+  bookingid: any
   loginData: any;
   bookingData: any;
   roomBooking: any;
   cancelResult: any;
-
+  cancelform!: FormGroup;
+  formattedcheckin: any;
+  formattedcheckout: any;
   booking: MyBooking[] = [];
   public databookingData = new MatTableDataSource<MyBooking>();
-
   dataObs$!: Observable<any>;
   isDisabled: boolean = false;
-  //  endDate: Date = new Date('April  30, 2024 00:00:00');
-  // //  outDate: Date = new Date('April  30, 2024 00:00:00');
-  //  today = new Date();
+  cancelpolicydata: any;
+  selectedBooking: any = null;
+
 
   constructor(private roleService: RoleService,
     public authService: AuthServiceService,
     private getuserservice: GetUserServiceService,
     private bookingService: BookingServiceService,
     private router: Router,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private datePipe: DatePipe
+
   ) {
     authService.apiData$.subscribe(data => this.loginData = data)
-
-
   }
 
   @ViewChild('paginator')
   paginator!: MatPaginator;
-
-
   PageSizes = [5, 10, 15];
-
-
 
   ngAfterViewInit() {
     this.databookingData.paginator = this.paginator;
-
   }
+
   ngOnInit(): void {
+    this._changeDetectorRef.detectChanges();
     this.userid = this.loginData.userid;
     console.log("id:", this.userid);
 
@@ -69,13 +71,18 @@ export class MybookingsComponent implements OnInit {
     // if (this.endDate < this.today ) {
     //   this.isDisabled = false;
     // }
+    this.cancelform = this.fb.group({
+      bookingid: ["", Validators.required],
+      checkin: ["", Validators.required],
+      checkout: ["", Validators.required],
+      reason: ['', Validators.required],
+    })
 
 
   }
   getMyBooking(userid: any) {
     // this.bookingData.clear();
     this.getuserservice.myBooking(userid)
-      // .subscribe((res)=>{
       .subscribe((result) => {
         console.log(result);
         this.databookingData.data = result;
@@ -84,24 +91,61 @@ export class MybookingsComponent implements OnInit {
         this.bookingData = result;
         // this.getuserservice.setData(this.bookingData)
         console.log("(((((", this.bookingData);
-
-       
-
       });
 
   }
 
 
-  cancelBooking(id: any, checkin: any, checkout: any) {
-    // this.cancelResult="";
 
-    this.router.navigate(["customercancel", {
-      id: id,
-      fromdate: checkin,
-      todate: checkout,
-      userid: this.userid
-    }])
+  cancelBooking(id: any, checkin: any, checkout: any) {
+    this.cancellationpolicy();
+
+    this.bookingid = id;
+    this.formattedcheckin = this.datePipe.transform(checkin, 'dd-MM-yyyy');
+    this.formattedcheckout = this.datePipe.transform(checkout, 'dd-MM-yyyy');
+    this.cancelform.patchValue({
+      bookingid: id,
+      checkin: checkin,
+      checkout: checkout,
+      reason: ''
+    });
+
+
   }
+
+  cancelbooking() {
+
+    console.log("cancel");
+    const book = new BookingModel();
+    const formData = this.cancelform.value;
+
+    book.bookingid = this.bookingid;
+    book.userid = this.userid;
+    book.commands = formData.reason;
+    book.statusid = "10";
+    console.log("book", book)
+
+    this.bookingService.bookingCancel(book).subscribe((result: any) => {
+      console.log("res", result);
+      // this.cancelResult=result;
+      Swal.fire({
+        text: result.message,
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+      });
+      this.router.navigate(["cancelbooking",
+
+      ]);
+    })
+  }
+
+  cancellationpolicy() {
+    this.bookingService.getcancelpolicy().subscribe(result => {
+      console.log("res", result);
+      this.cancelpolicydata = result;
+    })
+  }
+
 
   //   console.log("cancel");
   //   const book = new BookingModel();
@@ -161,11 +205,10 @@ export class MybookingsComponent implements OnInit {
   }
 
 
-  selectedBooking: any = null;
 
-setBookingData(booking: any) {
-  this.selectedBooking = booking;
-}
+  setBookingData(booking: any) {
+    this.selectedBooking = booking;
+  }
 
 }
 
