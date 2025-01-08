@@ -28,6 +28,11 @@ export class FrontdeskComponent implements OnInit {
   checkout: any;
   public databookingData = new MatTableDataSource<any>();
   dataObs$!: Observable<any>;
+
+  phoneColors: { [key: string]: string } = {}; // Map of phone numbers to colors
+  colorPalette: string[] = ['#FFB6C1', '#ADD8E6', '#90EE90', '#FFA07A', '#DDA0DD'];
+  colorIndex: number = 0;
+
   constructor(private getguestdetail: GetguestdetailService, private router: Router,
     private _changeDetectorRef: ChangeDetectorRef,
   ) {
@@ -72,6 +77,18 @@ export class FrontdeskComponent implements OnInit {
       this.guestData = res[0]
       this.databookingData.data = res[0];
       console.log("guestdata", this.guestData);
+      const phoneCounts: { [key: string]: number } = {};
+      this.guestData.forEach((item:any) => {
+        phoneCounts[item.phonenumber] = (phoneCounts[item.phonenumber] || 0) + 1;
+      });
+
+      for (const phone in phoneCounts) {
+        if (phoneCounts[phone] > 1 && !this.phoneColors[phone]) {
+          // Assign a color only if it's a duplicate and hasn't been assigned yet
+          this.phoneColors[phone] = this.colorPalette[this.colorIndex];
+          this.colorIndex = (this.colorIndex + 1) % this.colorPalette.length; // Cycle through colors
+        }
+      }
     });
     //  this.bookingid=this.guestData.bookingid;
     //  this.checkin=this.guestData.checkin;
@@ -80,7 +97,9 @@ export class FrontdeskComponent implements OnInit {
   }
 
 
-
+  getPhoneColor(phone: string): string {
+    return this.phoneColors[phone] || 'transparent'; // Default to no color for non-duplicates
+  }
 
 
 

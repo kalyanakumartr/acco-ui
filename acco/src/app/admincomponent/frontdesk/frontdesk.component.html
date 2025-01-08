@@ -70,7 +70,7 @@
               <td class="align-middle " >{{i.bhk2count}}
               <td class="align-middle " >{{i.bhk3count}}
               <td class="align-middle " >{{i.firstname | titlecase}}
-              <td class="align-middle " >{{i.phonenumber}}
+              <td class="align-middle "  [ngStyle]="{ 'color': getPhoneColor(i.phonenumber) }" >{{i.phonenumber}}
               <td class="align-middle " >{{i.checkin | date:'dd-MM-yyyy HH:mm '}}
               <td class="align-middle " >{{i.checkout | date:'dd-MM-yyyy HH:mm '}}
               <td class="align-middle " >{{i.acheckin | date:'dd-MM-yyyy HH:mm '}}
