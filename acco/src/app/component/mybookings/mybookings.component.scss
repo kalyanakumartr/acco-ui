@@ -29,6 +29,7 @@
 td a:hover {
   cursor: pointer;
   color: var(--hover);
+  
 
 }
 
@@ -76,4 +77,32 @@ tr:hover {
   td {
     padding: 10px;
   }
+}
+
+.table-striped td, 
+.table-striped th {
+  color: var(--text-color);
+  // background-image: var(--panel);
+}
+.modal-body{
+  background-image: var(--primary);
+}
+// .table-bordered {
+//   margin: 0;
+//   font-size: 14px;
+// }
+
+.btn-light{
+  // background-image: linear-gradient(45deg, #9cbfe2 0%, rgb(206, 199, 223) 100%);
+  background-image: var(--primary);
+  // margin-top: 30px;
+  color: var(--text-color);
+}
+.btn-light:hover {
+  color: var(--hover);
+  transform: scale(1.05);
+  /* Slight zoom effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add shadow */
+  transition: all 0.3s ease-in-out;
 }

@@ -160,10 +160,15 @@ export class MybookingsComponent implements OnInit {
     this.dataObs$ = this.databookingData.connect();
   }
 
+
+  selectedBooking: any = null;
+
+setBookingData(booking: any) {
+  this.selectedBooking = booking;
+}
+
 }
 
 
-// function data(value: string): void {
-//   throw new Error('Function not implemented.');
-// }
+
 

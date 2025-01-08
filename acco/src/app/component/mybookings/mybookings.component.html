@@ -62,7 +62,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let i of dataObs$ | async">
-            <td class="align-middle ">{{i.bookingid}}
+            <td class="align-middle "> 
+              <!-- <a (click)="bookingview(i)" style="text-decoration: underline;color:blue">{{i.bookingid}}</a> -->
+              <a href="#" data-bs-toggle="modal" data-bs-target="#bookingModal" (click)="setBookingData(i)">{{i.bookingid}}</a>
+            </td>
             <td class="align-middle ">{{i.checkin | date:'dd-MM-yyyy HH:mm '}}
             <td class="align-middle ">{{i.checkout | date:'dd-MM-yyyy HH:mm '}}
             <td class="align-middle ">{{i.adults}}
@@ -73,9 +76,9 @@
             <td class="align-middle ">{{i.roomid}}
             <td class="align-middle ">{{i.totalprice}}
             <td class="align-middle ">
-              <a (click)="bookingview(i)">View </a>
+              <!-- <a (click)="bookingview(i)">View </a> -->
               <a *ngIf="i.acheckin==null?!isDisabled:isDisabled"
-                (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">/ Cancel</a>
+                (click)=" cancelBooking(i.bookingid,i.checkin,i.checkout)">Cancel</a>
 
 
 
@@ -97,4 +100,85 @@
   
     <app-footer></app-footer>
   </footer>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title text-brown mx-5" id="bookingModalLabel">BookingId: {{selectedBooking?.bookingid}}</h2>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div >
+        <table class="table table-striped">
+          <!-- <thead>
+            <tr>
+              <th title="Description of the data">Customer</th>
+              <th title="Value of the data">Information</th>
+            </tr>
+          </thead> -->
+          <tbody>
+            <tr>
+              <th>First Name</th>
+              <td>{{selectedBooking?.firstname}}</td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td>{{selectedBooking?.lastname}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{selectedBooking?.email}}</td>
+            </tr>
+            <tr>
+              <th>Phone Number</th>
+              <td>{{selectedBooking?.phonenumber}}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{selectedBooking?.address1}}, {{selectedBooking?.address2}}</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>{{selectedBooking?.city}}</td>
+            </tr>
+            <tr>
+              <th>State</th>
+              <td>{{selectedBooking?.state}}</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <td>{{selectedBooking?.country}}</td>
+            </tr>
+            <tr>
+              <th>Check-In</th>
+              <td>{{selectedBooking?.checkin | date: 'medium'}}</td>
+            </tr>
+            <tr>
+              <th>Check-Out</th>
+              <td>{{selectedBooking?.checkout | date: 'medium'}}</td>
+            </tr>
+            <tr>
+              <th>Adults</th>
+              <td>{{selectedBooking?.adults}}</td>
+            </tr>
+            <tr>
+              <th>Children</th>
+              <td>{{selectedBooking?.child}}</td>
+            </tr>
+            <tr>
+              <th>Price</th>
+              <td>{{selectedBooking?.price | currency}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
