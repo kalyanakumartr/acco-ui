@@ -16,6 +16,8 @@ export class SpinnerComponent {
   }
 
   ngOnInit() {
+    this.cdRef.detectChanges();
+
     this.init();
   }
 

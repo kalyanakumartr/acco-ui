@@ -1,6 +1,16 @@
-<div class="container">
+<!-- <div class="container">
     <div class="page-overlay-wrapper" *ngIf="showSpinner">
         <div class="spinner"><mat-spinner class="mat-spinner-color"></mat-spinner>
         </div>
     </div>
-</div>
+</div> -->
+
+<div class="spinner-container"  *ngIf="showSpinner">
+    <div class="spinner-content " >
+      <img src="assets/index_logo.jpg" alt="Logo" class="spinner-logo">
+      <p class="spinner-text text-brown">
+        Please Wait<span class="dots">.</span>
+      </p>
+      <!-- <div class="spinner"></div> -->
+    </div>
+  </div>
