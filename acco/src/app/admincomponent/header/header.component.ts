@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     
     this.roleId=localStorage.getItem('roleid');
     console.log("+++roleid",this.roleId);
-    this. username = this.roleId == 1 ?"Hi Admin":this.roleId == 4?"Hi Frontoffice":"Hi Manager";
+    this. username = this.roleId == 1 ?"Welcome Admin":this.roleId == 4?"Welcome Frontoffice":this.roleId == 3?"Welcome Manager":"";
     console.log("name:", this.loginData.username);
     console.log("name:",this.username);
   }

@@ -283,11 +283,13 @@ printBookingDetails(): void {
           <p style="margin-top: 20px;"><strong>Address 1:</strong> ${this.selectedBooking.address1}</p>
           <p style="margin-top: 20px;"><strong>Address 2:</strong> ${this.selectedBooking.address2}</p>
           <p style="margin-top: 20px;"><strong>Adults:</strong> ${this.selectedBooking.adults}</p>
-          <p style="margin-top: 20px;"><strong>City:</strong> ${this.selectedBooking.city}</p>
+         <p style="margin-top: 20px;"><strong>Child:</strong> ${this.selectedBooking.child}</p>
+         
          
         </div>
 
-        <div style="width: 45%; margin-top: 35px;">
+        <div style="width: 45%; margin-top: 40px;">
+         <p style="margin-top: 20px;"><strong>City:</strong> ${this.selectedBooking.city}</p>
          <p style="margin-top: 20px;"><strong>State:</strong> ${this.selectedBooking.state}</p>
           <p style="margin-top: 20px;"><strong>Country:</strong> ${this.selectedBooking.country}</p>
           <!-- Conditionally add BHK counts -->
