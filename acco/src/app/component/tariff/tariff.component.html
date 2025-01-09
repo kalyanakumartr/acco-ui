@@ -1,5 +1,7 @@
 <div class="outer">
-  <app-navbar></app-navbar>
+  <app-navbar *ngIf="roleid==3"></app-navbar>
+  <app-header *ngIf="roleid==4"></app-header>
+
   <div class="container-fluid">
     <!-- <div class="row "> -->
       <!-- Image Section -->

@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./tariff.component.scss']
 })
 export class TariffComponent {
+  roleid: any
 
+  ngOnInit(): void {
+    this.roleid = localStorage.getItem('roleid');
+    console.log('roleid', this.roleid);
+
+  }
 }

@@ -35,22 +35,15 @@ export class ViewcalendarComponent implements OnInit {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     dateClick: (arg) => this.handleDateClick(arg),
-    events:[
-      { title: 'event 1', date: '2024-05-01',color:"#FF7043" },
-      { title: 'event 2', date: '2024-05-01',color:"#BF360C" },
-      { title: 'event 2', date: '2024-05-01',color:"#795548" },
-      { title: 'event 1', date: '2024-05-02',color:"#FF7043" },
-      { title: 'event 2', date: '2024-05-02',color:"#BF360C" },
-      { title: 'event 2', date: '2024-05-02',color:"#795548" },
-    ]
-    // this.LoadEvents.bind(this)
-    //  this.calenderItem
-    // [
-      
-      // {
-      //    title: 'event 1', date: '2024-05-01' },
-      // { title: 'event 2', date: '2019-04-02' }
-   // ]
+    // events:[
+    //   { title: 'event 1', date: '2024-05-01',color:"#FF7043" },
+    //   { title: 'event 2', date: '2024-05-01',color:"#BF360C" },
+    //   { title: 'event 2', date: '2024-05-01',color:"#795548" },
+    //   { title: 'event 1', date: '2024-05-02',color:"#FF7043" },
+    //   { title: 'event 2', date: '2024-05-02',color:"#BF360C" },
+    //   { title: 'event 2', date: '2024-05-02',color:"#795548" },
+    // ]
+    events: this.LoadEvents.bind(this),    //  this.calenderItem
   };
 
   handleDateClick(arg: DateClickArg) {
