@@ -101,7 +101,7 @@
 
 <!-- cancel booking Modal -->
 
-<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal " id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -127,35 +127,35 @@
       </table>
 
         <hr>
-        <form >
           <div class="mb-3">
-            <label for="bookingid" class="col-form-label">Bookingid</label>
-            <input formControlName="bookingid" readonly type="text" class="form-control" id="bookingid"
+            <label for="bookingid" class="col-form-label text-brown">Bookingid</label>
+            <input  readonly type="text" class="form-control" id="bookingid"
               value={{bookingid}}>
           </div>
           <div class="mb-3">
-            <label for="checkin" class="col-form-label">Checkin</label>
-            <input formControlName="checkin" readonly type="text" class="form-control" id="checkin"
+            <label for="checkin" class="col-form-label text-brown">Checkin</label>
+            <input  readonly type="text" class="form-control" id="checkin"
               [ngModel]=formattedcheckin>
           </div>
           <div class="mb-3">
-            <label for="checkout" class="col-form-label">Checkout</label>
-            <input formControlName="checkout" readonly type="text" class="form-control" id="checkout"
+            <label for="checkout" class="col-form-label text-brown">Checkout</label>
+            <input  readonly type="text" class="form-control" id="checkout"
               [ngModel]=formattedcheckout>
           </div>
+          <form (ngSubmit)="cancelbooking()">
           <div class="mb-3">
-            <label for="reason" class="col-form-label">Reason</label>
-            <textarea formControlName="reason" class="form-control"></textarea>
-            <small *ngIf="cancelform.controls['reason'].dirty && cancelform.hasError('required','reason')"
-              class="text-danger form-inline  mt-0">*Messsage is required</small>
+            <label for="reason" class="col-form-label text-brown">Reason</label>
+            <textarea name="reason"  [(ngModel)]="formData.reason"  required  class="form-control"></textarea>
+            <!-- <small *ngIf="cancelform.controls['reason'].dirty && cancelform.hasError('required','reason')"
+              class="text-danger form-inline  mt-0">*Messsage is required</small> -->
           </div>
-          <button  [disabled]=cancelform.invalid (click)="cancelbooking()" type="submit" class="btn text-brown">Sumbit Cancellation</button>
 
 
-        </form>
+        </form> 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary text-brown" data-bs-dismiss="modal">Close</button>
+        <button [disabled]="!formData.reason" (click)="cancelbooking()" type="submit" class="btn text-brown">Submit Cancellation</button>
+        <button type="button" class="btn text-brown" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -163,7 +163,7 @@
 
 
 <!-- booking id Modal -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">

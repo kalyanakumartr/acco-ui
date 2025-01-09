@@ -106,7 +106,7 @@ this.endDate = '"' + this.end + '"'
         for(let i of this.calenderItem.tit){
           events.push({
             // id: val.bhk2count,
-            title:  i.title,
+            title: i.title,
             date: i.date,
             color: i.color
             // .slice(0,10)

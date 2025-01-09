@@ -1,9 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import Modal from 'bootstrap/js/dist/modal';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { BookingModel } from 'src/app/model/booking.model';
 import { MyBooking } from 'src/app/model/mybooking.model';
@@ -19,6 +20,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./mybookings.component.scss']
 })
 export class MybookingsComponent implements OnInit {
+
+  @ViewChild('exampleModal')
+  modalElement!: ElementRef;
+
   // private apiData1 = new BehaviorSubject<any>(null);
   // public apiData1$ = this.apiData1.asObservable();
 
@@ -28,7 +33,8 @@ export class MybookingsComponent implements OnInit {
   bookingData: any;
   roomBooking: any;
   cancelResult: any;
-  cancelform!: FormGroup;
+  cancelform= { bookingid: '', checkin: '', checkout: ''};
+  formData = { reason: ''};
   formattedcheckin: any;
   formattedcheckout: any;
   booking: MyBooking[] = [];
@@ -37,6 +43,7 @@ export class MybookingsComponent implements OnInit {
   isDisabled: boolean = false;
   cancelpolicydata: any;
   selectedBooking: any = null;
+  isModalOpen = false;
 
 
   constructor(private roleService: RoleService,
@@ -71,12 +78,12 @@ export class MybookingsComponent implements OnInit {
     // if (this.endDate < this.today ) {
     //   this.isDisabled = false;
     // }
-    this.cancelform = this.fb.group({
-      bookingid: ["", Validators.required],
-      checkin: ["", Validators.required],
-      checkout: ["", Validators.required],
-      reason: ['', Validators.required],
-    })
+    // this.cancelform = this.fb.group({
+    //   bookingid: ["", Validators.required],
+    //   checkin: ["", Validators.required],
+    //   checkout: ["", Validators.required],
+    //   reason: ['', Validators.required],
+    // })
 
 
   }
@@ -98,30 +105,25 @@ export class MybookingsComponent implements OnInit {
 
 
   cancelBooking(id: any, checkin: any, checkout: any) {
+
     this.cancellationpolicy();
 
     this.bookingid = id;
     this.formattedcheckin = this.datePipe.transform(checkin, 'dd-MM-yyyy');
     this.formattedcheckout = this.datePipe.transform(checkout, 'dd-MM-yyyy');
-    this.cancelform.patchValue({
-      bookingid: id,
-      checkin: checkin,
-      checkout: checkout,
-      reason: ''
-    });
+    this.cancelform={bookingid: id, checkin: checkin, checkout: checkout,}
 
 
   }
 
   cancelbooking() {
-
-    console.log("cancel");
+    this.isModalOpen = true;
+    console.log("cancel",this.formData.reason);
     const book = new BookingModel();
-    const formData = this.cancelform.value;
 
     book.bookingid = this.bookingid;
     book.userid = this.userid;
-    book.commands = formData.reason;
+    book.commands = this.formData.reason;
     book.statusid = "10";
     console.log("book", book)
 
@@ -133,10 +135,16 @@ export class MybookingsComponent implements OnInit {
         confirmButtonColor: '#964B00',
         background: '#efc96a',
       });
-      this.router.navigate(["cancelbooking",
+      this.closeCancelModal();
+      // this.router.navigate(["cancelbooking",
 
-      ]);
+      // ]);
     })
+  }
+
+  closeCancelModal(): void {
+    this.isModalOpen = false;
+    this.formData = { reason: '' }; // Reset form
   }
 
   cancellationpolicy() {
