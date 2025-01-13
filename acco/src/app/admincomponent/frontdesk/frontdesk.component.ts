@@ -277,11 +277,12 @@ printBookingDetails(): void {
       <div style="display: flex; justify-content: space-between; padding: 20px;">
         <div style="width: 45%; padding-right: 20px;">
           <h3>Booking ID: ${this.selectedBooking.bookingid}</h3>
-          <p style="margin-top: 20px;"><strong>First Name:</strong> ${this.selectedBooking.firstname}</p>
-          <p style="margin-top: 20px;"><strong>Last Name:</strong> ${this.selectedBooking.lastname}</p>
+          <p style="margin-top: 20px;"><strong>FirstName:</strong> ${this.selectedBooking.firstname}</p>
+          <p style="margin-top: 20px;"><strong>LastName:</strong> ${this.selectedBooking.lastname}</p>
           <p style="margin-top: 20px;"><strong>Email:</strong> ${this.selectedBooking.email}</p>
           <p style="margin-top: 20px;"><strong>Address 1:</strong> ${this.selectedBooking.address1}</p>
           <p style="margin-top: 20px;"><strong>Address 2:</strong> ${this.selectedBooking.address2}</p>
+           <p style="margin-top: 20px;"><strong>phoneNumber:</strong> ${this.selectedBooking.phonenumber}</p>
           <p style="margin-top: 20px;"><strong>Adults:</strong> ${this.selectedBooking.adults}</p>
          <p style="margin-top: 20px;"><strong>Child:</strong> ${this.selectedBooking.child}</p>
          
