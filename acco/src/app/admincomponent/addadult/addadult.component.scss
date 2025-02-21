@@ -2,7 +2,9 @@
   // height:100vh;
   background-image: var(--primary);
 }
-
+#submit{
+  margin-right: 10px;
+}
 
 .container {
   background-color: var(--primary);
@@ -87,11 +89,19 @@ input {
   color: red;
 }
 
+hr,i{
+  color:var(--text-color);
+}
 input[type='text'],input[type='password']{
   border:none;
   outline:none;
   box-shadow: none;
   width:100%
+}
+.fa-trash{
+  border: none;
+  outline: none;
+
 }
 .fa-eye-slash.btn {
   border: none;

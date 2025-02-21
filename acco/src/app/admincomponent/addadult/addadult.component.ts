@@ -1,7 +1,4 @@
-// import { MyLogic } from './../../model/logic.model';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser'
-// import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,6 +17,7 @@ export class AddadultComponent implements OnInit {
   @ViewChild('paginator')
   paginator!: MatPaginator;
 
+  formData = { price: '',bed:'',noofrooms:'',bhktype1:'',bhktype2:'',bhktype3:'',optionType:'',roomTypeId:'',adultnumber:''};
 
   PageSizes = [5, 10, 15];
   adultForm!: FormGroup;
@@ -54,6 +52,14 @@ export class AddadultComponent implements OnInit {
   }
 
   addadult() {
+
+
+  }
+
+  deladult(){
+
+  }
+  editadult(){
 
   }
 

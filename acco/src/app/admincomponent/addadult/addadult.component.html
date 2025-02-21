@@ -42,8 +42,25 @@
           <td class="align-middle ">{{i.bed}} </td>
 
           <td class="align-middle ">{{i.Price}} </td>
-          <td><button data-bs-toggle="modal" data-bs-target="#addAdultEditModal" (click)="addAdultEditData()">
-              Edid</button><button>Del</button></td>
+
+          <td><button style="border: none;" id="submit" class="col-me-3" data-bs-toggle="modal" data-bs-target="#addAdultEditModal" (click)="addAdultEditData()">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+              <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+            </svg> -->
+
+            <i class="fa fa-fw fa-edit" (click)="editadult()">
+            </i>
+            </button>
+            <button style="border: none;">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg> -->
+
+            <i class="fas fa-trash" (click)="deladult()">
+            </i>
+
+          </button></td>
 
           <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#bookingModal"
           (click)="setBookingData(i)">{{i.bookingid}}</a>
@@ -74,32 +91,133 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 text-brown" id="exampleModalLabel">Add Adult List</h1>
-        <div class="modal-body">
-
-        <div class="row">
-          <div class="col-12 col-md-4 mb-2">
-            <label class="text-brown font-weight-bold">Adult Number</label>
-            <input type="text" class="form-control" placeholder="Adult Number">
-          </div>
-
-
-          <div class="col-12 col-md-4 mb-2">
-            <label class="text-brown font-weight-bold">RoomTypeId</label>
-            <input type="text" class="form-control" placeholder="RoomTypeId">
-            <!-- <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('required','roomTypeId')"
-              class="text-danger">*RoomTypeId is required</small>
-            <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('pattern','roomTypeId')"
-              class="text-danger">*RoomTypeId is invalid</small> -->
-          </div>
-
-
-
-
-
-
-        </div>        </div>
-
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <form (ngSubmit)="addadult()">
+          <div class="row">
+            <div class="col-12 col-md-4 mb-2">
+              <label class="text-brown font-weight-bold">Adult Number</label>
+              <input name="adultnumber" [(ngModel)]="formData.adultnumber" type="text" class="form-control"
+                placeholder="Adult Number">
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <label class="text-brown font-weight-bold">RoomTypeId</label>
+              <input type="text" class="form-control" [(ngModel)]="formData.roomTypeId" placeholder="RoomTypeId">
+              <!-- <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('required','roomTypeId')"
+              class="text-danger">*RoomTypeId is required</small> -->
+              <!-- <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('pattern','roomTypeId')" -->
+              <!-- class="text-danger">*RoomTypeId is invalid</small> -->
+            </div>
+
+            <div class="col-12 col-md-4 mb-3">
+              <label class="text-brown font-weight-bold">Option Type</label>
+
+              <select [(ngModel)]="formData.optionType" #country class="form-select" >
+                <option [value]="null">Option Type</option>
+                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
+                <option value="0">R1</option>
+                <option value="1">O1</option>
+                <!-- </option> -->
+
+              </select>
+              <!-- <small *ngIf="adultForm.controls['optionType'].dirty && adultForm.hasError('required','optionType')"
+                  class="text-danger">*optionType is required</small> -->
+            </div>
+            <div class="row">
+
+
+            <div class="col-12 col-md-4 mb-3">
+              <label class="text-brown font-weight-bold">BHKTYPE-1</label>
+
+              <select [(ngModel)]="formData.bhktype1" #country class="form-select">
+                <option [value]="null">Rooms</option>
+                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <!-- </option> -->
+
+              </select>
+              <!-- <small *ngIf="adultForm.controls['bhktype1'].dirty && adultForm.hasError('required','bhktype1')"
+                  class="text-danger">*BhkType1 is required</small> -->
+            </div>
+
+
+
+            <div class="col-12 col-md-4 mb-3">
+              <label class="text-brown font-weight-bold">BHKTYPE-2</label>
+
+              <select   [(ngModel)]="formData.bhktype2" class="form-select">
+                <option [value]="null">Rooms</option>
+                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <!-- </option> -->
+
+              </select>
+              <!-- <small *ngIf="adultForm.controls['bhktype2'].dirty && adultForm.hasError('required','bhktype2')"
+      class="text-danger">*BhkType2 is required</small> -->
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+              <label class="text-brown font-weight-bold">BHKTYPE-3</label>
+
+              <select [(ngModel)]="formData.bhktype3" class="form-select">
+                <option [value]="null">Rooms</option>
+                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <!-- </option> -->
+
+              </select>
+              <!-- <small *ngIf="adultForm.controls['bhktype3'].dirty && adultForm.hasError('required','bhktype3')"
+      class="text-danger">*BhkType3 is required</small> -->
+            </div>
+
+            </div>
+          <div class="row">
+            <div class="col-12 col-md-4 mb-3 p4">
+              <label class="text-brown font-weight-bold">No Of Rooms</label>
+
+              <select  [(ngModel)]="formData.noofrooms" class="form-select">
+                <option [value]="null">Rooms</option>
+                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <!-- </option> -->
+              </select>
+              <!-- <small *ngIf="adultForm.controls['noofrooms'].dirty && adultForm.hasError('required','noofrooms')"
+                class="text-danger">*No Of Rooms is required</small> -->
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+              <label class="text-brown font-weight-bold">Bed</label>
+
+              <input type="text" [(ngModel)]="formData.bed" class="form-control" placeholder="Total Beds Number">
+
+              <!-- <small *ngIf="adultForm.controls['bed'].dirty && adultForm.hasError('required','bed')"
+                class="text-danger">*No of Beds is required</small> -->
+            </div>
+
+            <div class="col-12 col-md-4 mb-3">
+              <label class="text-brown font-weight-bold">PRICE</label>
+              <input [(ngModel)]="formData.price" type="text" class="form-control" placeholder="Price">
+
+              <!-- <small *ngIf="adultForm.controls['price'].dirty && adultForm.hasError('required','price')"
+                class="text-danger">*Price is required</small> -->
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button  (click)="addadult()" type="submit"
+              class="btn text-brown">Submit</button>
+            <button type="button" class="btn text-brown" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+
+
     </div>
+
   </div>
 </div>

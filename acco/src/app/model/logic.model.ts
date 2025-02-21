@@ -8,5 +8,6 @@ export class MyLogic{
     noofrooms!:string;
     bed!:string;
     price!:string;
+
     }
 
