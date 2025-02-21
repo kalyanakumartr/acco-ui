@@ -73,6 +73,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { FooterComponent } from './component/footer/footer.component';
 import { FoeroomlogicComponent } from './admincomponent/foeroomlogic/foeroomlogic.component';
 import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/foebookingsummary.component';
+import { AddadultComponent } from './admincomponent/addadult/addadult.component';
 
 
 
@@ -86,7 +87,7 @@ import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/f
     HomeComponent,
     FacitiliesComponent,
     HeaderComponent,
-    BookingComponent,   
+    BookingComponent,
     RoleComponent,
     RoomtypeComponent,
     FooditemComponent,
@@ -123,9 +124,9 @@ import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/f
     FooterComponent,
     FoeroomlogicComponent,
     FoebookingsummaryComponent,
-
+    AddadultComponent
     // MatchpasswordComponent,
-   
+
   ],
   imports: [
     BrowserModule,
@@ -156,7 +157,7 @@ import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/f
     // provideNativeDateAdapter,
     GoogleMapsModule
 
-   
+
 
   ],
   providers: [DatePipe,

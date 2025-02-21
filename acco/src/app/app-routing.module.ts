@@ -44,20 +44,21 @@ import { FoeroomlogicComponent } from './admincomponent/foeroomlogic/foeroomlogi
 import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/foebookingsummary.component';
 // import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
+import { AddadultComponent } from './admincomponent/addadult/addadult.component';
 
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'adminlogin',component:LoginComponent},
   {path:'excelcreate',component:ExcelcreateComponent},
-  {path:'home',component:HomeComponent},  
+  {path:'home',component:HomeComponent},
   {path:'signup',component:SignupComponent},
   {path:'facitilies',component:FacitiliesComponent},
   {path:'header',component:HeaderComponent},
-  {path:'booking',component:BookingComponent},  
-  {path:'fooditem',component:FooditemComponent},  
+  {path:'booking',component:BookingComponent},
+  {path:'fooditem',component:FooditemComponent},
   {path:'role',component:RoleComponent},
-  {path:'roomtype',component:RoomtypeComponent}, 
+  {path:'roomtype',component:RoomtypeComponent},
   {path:'bookingsummary',component:BookingsummaryComponent},
   {path:'stepper',component:StepperComponent},
   {path:'admincomponent',component:AdminComponent},
@@ -89,7 +90,7 @@ const routes: Routes = [
    {path:'viewcalendar',component:ViewcalendarComponent},
    {path:'foeroomlogic',component:FoeroomlogicComponent},
    {path:'foebookingsummary',component:FoebookingsummaryComponent},
-
+   {path:'addadult',component:AddadultComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

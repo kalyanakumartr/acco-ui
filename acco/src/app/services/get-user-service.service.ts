@@ -18,8 +18,8 @@ export class GetUserServiceService {
     console.log("getuser check purpose");
     // return this.httpClient.get<Role[]>(`${environment.roleapiUrl}`);
     return this.http.get<any>(`${environment.getuserURL}`);
-    
-    
+
+
   }
 
   getUserById(id: any):Observable<any>{
@@ -29,26 +29,26 @@ export class GetUserServiceService {
     //   this.bookingdata = result;
     //   console.log("databook",this.bookingdata)
     //   this.setData(this.bookingdata)
-      
+
     // }))
   }
   // setData(bookingdata: any) {
   //   this.apiData.next(bookingdata)
   // }
   myBooking(id: any): Observable<any>{
-    console.log("getMybooking");     
+    console.log("getMybooking");
     return this.http.get<any>(`${environment.getbookingwithuseridonly}`+id);
   }
 
-  
+
 
   changePassword(user:UserModel):Observable<UserModel>{
-    console.log("I am changepasword");    
+    console.log("I am changepasword");
     return this.http.post<UserModel>(`${environment.changepassword}`,user);
   }
 
   canceledBooking(id: any): Observable<any>{
-    console.log("getMybooking");     
+    console.log("getMybooking");
     return this.http.get<any>(`${environment.getcanceledbooking}`+id);
   }
 }

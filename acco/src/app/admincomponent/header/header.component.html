@@ -11,7 +11,7 @@
     <!-- Marquee Section -->
     <div class="col-lg-7 col-md-6 col-12 text-center mb-2 mb-md-0">
       <marquee behavior="scroll" direction="left">
-        Welcome to Maduraa Services 
+        Welcome to Maduraa Services
       </marquee>
     </div>
 
@@ -25,12 +25,12 @@
       <!-- Login/Signup/Logout Buttons -->
       <div class="mt-2 ">
         <button *ngIf="!authService.logged()" routerLink="/adminlogin" class="btn  btn-sm mx-1">Login</button>
-       
+
         <button *ngIf="authService.logged()" (click)="logout()" class="btn  btn-sm mx-1">Logout</button>
       </div>
     </div>
   </div>
-    
+
 <!-- Navigation Section -->
     <nav class="navbar navbar-expand-lg navbar-light ">
        <!-- Toggler Button for Mobile View -->
@@ -44,7 +44,7 @@
           <li class="nav-item  mx-1">
               <a class="btn btn-sm" routerLink="/manageflats" >ManageFlat</a>
           </li>
-          <li class="nav-item mx-0">            
+          <li class="nav-item mx-0">
             <div class="nav-item dropdown  ">
               <a class="btn btn-sm " href="#" id="navbarDropdown" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">Bookings <i  class="fa fa-bars"></i></a>
@@ -57,50 +57,55 @@
               </div>
             </div>
           </li>
-          <li class="nav-item mx-1">           
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Reports</a>
           </li>
-          <li class="nav-item mx-0">            
+          <li class="nav-item mx-0">
             <a class="btn btn-sm " href="#"  routerLink="/role">Role</a>
           </li>
-          <li class="nav-item mx-1">           
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Users</a>
           </li>
-          <li class="nav-item mx-0">           
+          <li class="nav-item mx-0">
             <a class="btn btn-sm " href="#"  routerLink="/tariff">Tarriff</a>
           </li>
-          <li class="nav-item mx-1">           
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Tax</a>
           </li>
-          <li class="nav-item mx-0">           
+          <li class="nav-item mx-0">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Services</a>
           </li>
-          <li class="nav-item mx-1">           
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Gallery</a>
           </li>
-          <li class="nav-item mx-0">          
+          <li class="nav-item mx-0">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Travel</a>
           </li>
-          <li class="nav-item mx-1">           
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Food</a>
           </li>
-          <li class="nav-item mx-0">            
+          <li class="nav-item mx-0">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Coupons</a>
-          </li> 
-          <li class="nav-item mx-1">          
+          </li>
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">NewsLetter</a>
           </li>
-          <li class="nav-item mx-0">          
+          <li class="nav-item mx-0">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Banner</a>
           </li>
-          <li class="nav-item mx-1">           
+          <li class="nav-item mx-1">
             <a class="btn btn-sm " href="#"  routerLink="/frontdesk">Reminder</a>
           </li>
+
+          <li class="nav-item mx-0">
+            <a class="btn btn-sm " href="#"  routerLink="/addadult">AddAdult</a>
+          </li>
+
           <!-- <li class="nav-item active">
-           <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button> 
+           <button class="btn btn-outline my-2 my-sm-0 mr-sm-2" id="btn" type="submit" >CONTACT US</button>
             <a (click)="logout()" class="nav-link " href="#" style="color:#964B00">Logout</a>
           </li> -->
-          
+
         </ul>
 
       </div>
@@ -110,19 +115,19 @@
     <!-- </div> -->
     <!-- <div class="row" >
     <div class="col-sm-6" >
-     
+
         <img src="assets/01.jpg" style= "width:550px;height:400px; ">
-    
+
     </div>
     <div class="col-sm-6" >
-        
+
             <h1 style="color:#964B00"> Check Availability</h1>
-        
+
     </div>
     </div>
     <div class="Footer">
     <div class="card">
-        
+
     </div>
     </div> -->
   </div>

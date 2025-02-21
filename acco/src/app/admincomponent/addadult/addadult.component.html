@@ -1,0 +1,105 @@
+<div class="text-center">
+  <app-header></app-header>
+
+  <h4 class="text-brown" style="font-size: 30px;">Logic History</h4>
+  <!-- <p>Review your past bookings in an organized format.</p> -->
+  <h4 class="text-brown" style="font-size: 30px;">Add Adult</h4>
+
+</div>
+<!-- <div class="text-right"> -->
+<!-- </div> -->
+<div class="tbl-container pt-2">
+  <div class="table-responsive">
+
+    <table>
+      <thead>
+        <tr>
+          <th class="align-middle" rowspan="2">Adults</th>
+          <th class="align-middle" rowspan="2">RoomTypeId </th>
+          <th class="align-middle" rowspan="2">OptionType </th>
+          <th class="align-middle" rowspan="2">BHK1</th>
+          <th class="align-middle" rowspan="2">BHK2</th>
+          <th class="align-middle" rolspan="3">BHK3</th>
+          <th class="align-middle" rowspan="2">No Of Rooms</th>
+          <th class="align-middle" rowspan="2">Bed</th>
+          <th class="align-middle" rowspan="2">Price</th>
+          <th class="align-middle" rowspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of dataObs$ | async">
+          <td class="align-middle ">{{i.adult}}</td>
+          <td class="align-middle ">{{i.roomtypeid}} </td>
+          <td class="align-middle ">{{i.optiontype}} </td>
+          <td class="align-middle ">{{i.bhktype1}} </td>
+
+          <td class="align-middle ">{{i.bhktype2}} </td>
+
+          <td class="align-middle ">{{i.bhktype3}} </td>
+
+          <td class="align-middle ">{{i.noofrooms}} </td>
+
+          <td class="align-middle ">{{i.bed}} </td>
+
+          <td class="align-middle ">{{i.Price}} </td>
+          <td><button data-bs-toggle="modal" data-bs-target="#addAdultEditModal" (click)="addAdultEditData()">
+              Edid</button><button>Del</button></td>
+
+          <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#bookingModal"
+          (click)="setBookingData(i)">{{i.bookingid}}</a>
+     -->
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="page">
+
+    <mat-paginator #paginator [pageSizeOptions]="[5,10,15]" [pageSize]="5" showFirstLastButtons>
+
+    </mat-paginator>
+  </div>
+
+</div>
+
+<footer class="  py-1">
+
+  <app-footer></app-footer>
+</footer>
+
+
+<div class="modal fade" id="addAdultEditModal" tabindex="-1" aria-labelledby="bookingModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-brown" id="exampleModalLabel">Add Adult List</h1>
+        <div class="modal-body">
+
+        <div class="row">
+          <div class="col-12 col-md-4 mb-2">
+            <label class="text-brown font-weight-bold">Adult Number</label>
+            <input type="text" class="form-control" placeholder="Adult Number">
+          </div>
+
+
+          <div class="col-12 col-md-4 mb-2">
+            <label class="text-brown font-weight-bold">RoomTypeId</label>
+            <input type="text" class="form-control" placeholder="RoomTypeId">
+            <!-- <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('required','roomTypeId')"
+              class="text-danger">*RoomTypeId is required</small>
+            <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('pattern','roomTypeId')"
+              class="text-danger">*RoomTypeId is invalid</small> -->
+          </div>
+
+
+
+
+
+
+        </div>        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
