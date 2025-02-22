@@ -1,11 +1,8 @@
-import { MyLogic } from 'src/app/model/logic.model';
-// import { LogicServiceService } from './logic-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../environments/environments';
-import { BookingModel } from '../model/booking.model';
-// import { MyLogic } from '../model/logic.model';
+import { MyLogic } from '../model/logic.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +22,8 @@ export class LogicService {
 
   addadult():Observable<any>{
     console.log("Add Adult Service ");
-  return this.http.post<any>(`${environment.addadult}`,MyLogic);
-
+  return this.http.post<any>(`${environment.addadult}`,{MyLogic});
+console.log("Got Service");
   }
 
   changeMessage(logic:any)

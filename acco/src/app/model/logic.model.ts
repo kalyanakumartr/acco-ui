@@ -1,13 +1,13 @@
 export class MyLogic{
-    adult!:string;
-    roomtypeid!:string;
-    optiontype!:String;
-    bhktype1!:string;
-    bhktype2!:string;
-    bhktype3!:string;
-    noofrooms!:string;
-    bed!:string;
-    price!:string;
+    adult!:number;
+    roomtypeid!:number;
+    optiontype!:string;
+    bhktype1!:number;
+    bhktype2!:number;
+    bhktype3!:number;
+    noofrooms!:number;
+    bed!:number;
+    price!:number;
 
     }
 

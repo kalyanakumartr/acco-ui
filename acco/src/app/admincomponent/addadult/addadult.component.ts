@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { MyLogic } from 'src/app/model/logic.model';
 import { LogicService } from 'src/app/services/logic-service.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -17,7 +18,9 @@ export class AddadultComponent implements OnInit {
   @ViewChild('paginator')
   paginator!: MatPaginator;
 
-  formData = { price: '',bed:'',noofrooms:'',bhktype1:'',bhktype2:'',bhktype3:'',optionType:'',roomTypeId:'',adultnumber:''};
+  // formData = { price: 0,bed:0,noofrooms:0,bhktype1:0,bhktype2:0,bhktype3:0,optionType:'',roomTypeId:0,adultnumber:1};
+
+  isModalOpen=false;
 
   PageSizes = [5, 10, 15];
   adultForm!: FormGroup;
@@ -25,6 +28,7 @@ export class AddadultComponent implements OnInit {
 
   logic: MyLogic[] = [];
   // login.length
+  logicdata=new MyLogic();
   public dataLogicData = new MatTableDataSource<MyLogic>();
 
   dataObs$!: Observable<any>;
@@ -52,8 +56,43 @@ export class AddadultComponent implements OnInit {
   }
 
   addadult() {
+    console.log("Welcome to add adult service ");
+    this.isModalOpen=true;
+    const logic=new MyLogic();
+    // logic.adult integ
+    // logic.roomtypeid=parseInt;
+    const formData = this.adultForm.value;
+    logic.adult=formData.adultnumber;
+    logic.roomtypeid=formData.roomTypeId;
+    // logic.optiontype=formData.optionType;
+    // logic.bhktype1=formData.bhktype1;
+    // logic.bhktype2=formData.bhktype2;
+    // logic.bhktype3=formData.bhktype3;
+    // logic.bed=formData.bed;
+    // logic.noofrooms=formData.noofrooms;
+    // logic.price=formData.price;
+        console.log("Logic formdata",logic);
+        // console.log(result);
+        console.log("url",    this.getlogicService.addadult());
+        this.getlogicService.addadult()
+
+    .subscribe((result:any)=>
+    {
+      console.log("res",result);
+      Swal.fire({
+        text: result.message,
+        confirmButtonColor: '#964B00',
+        background: '#efc96a',
+      });
+      this.closeCancelModal();
+      // this.router.navigate(["cancelbooking",
+    })
+  }
 
 
+  closeCancelModal(): void {
+    this.isModalOpen = false;
+    // this.formData = { bed: '' }; // Reset form
   }
 
   deladult(){

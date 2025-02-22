@@ -3,7 +3,10 @@
 
   <h4 class="text-brown" style="font-size: 30px;">Logic History</h4>
   <!-- <p>Review your past bookings in an organized format.</p> -->
-  <h4 class="text-brown" style="font-size: 30px;">Add Adult</h4>
+  <a href="#" class="btn btn-sm btn-light-primary ms-2" data-bs-toggle="modal" data-bs-target="#addAdultEditModal" (click)="addAdultEditData()">Add
+    Adult
+  </a>
+
 
 </div>
 <!-- <div class="text-right"> -->
@@ -98,118 +101,91 @@
           <div class="row">
             <div class="col-12 col-md-4 mb-2">
               <label class="text-brown font-weight-bold">Adult Number</label>
-              <input name="adultnumber" [(ngModel)]="formData.adultnumber" type="text" class="form-control"
+              <input name="adultnumber" formControlName="adultnumber"  type="text"
                 placeholder="Adult Number">
             </div>
             <div class="col-12 col-md-4 mb-2">
               <label class="text-brown font-weight-bold">RoomTypeId</label>
-              <input type="text" class="form-control" [(ngModel)]="formData.roomTypeId" placeholder="RoomTypeId">
-              <!-- <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('required','roomTypeId')"
-              class="text-danger">*RoomTypeId is required</small> -->
-              <!-- <small *ngIf="adultForm.controls['roomTypeId'].dirty && adultForm.hasError('pattern','roomTypeId')" -->
-              <!-- class="text-danger">*RoomTypeId is invalid</small> -->
+              <input type="text" name="roomTypeId" formControlName="roomTypeId"    >
             </div>
-
             <div class="col-12 col-md-4 mb-3">
               <label class="text-brown font-weight-bold">Option Type</label>
 
-              <select [(ngModel)]="formData.optionType" #country class="form-select" >
+              <select name="optionType"  >
                 <option [value]="null">Option Type</option>
-                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
                 <option value="0">R1</option>
                 <option value="1">O1</option>
-                <!-- </option> -->
+
 
               </select>
-              <!-- <small *ngIf="adultForm.controls['optionType'].dirty && adultForm.hasError('required','optionType')"
-                  class="text-danger">*optionType is required</small> -->
             </div>
+
             <div class="row">
 
 
-            <div class="col-12 col-md-4 mb-3">
-              <label class="text-brown font-weight-bold">BHKTYPE-1</label>
+              <div class="col-12 col-md-4 mb-3">
+                <label class="text-brown font-weight-bold">BHKTYPE-1</label>
 
-              <select [(ngModel)]="formData.bhktype1" #country class="form-select">
-                <option [value]="null">Rooms</option>
-                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <!-- </option> -->
+                <select name="bhktype1">
+                  <option [value]="null">Rooms</option>
+                   <option value="0">0</option>
+                  <option value="1">1</option>
 
-              </select>
-              <!-- <small *ngIf="adultForm.controls['bhktype1'].dirty && adultForm.hasError('required','bhktype1')"
-                  class="text-danger">*BhkType1 is required</small> -->
+                </select>
+                </div>
+
+
+
+              <div class="col-12 col-md-4 mb-3">
+                <label class="text-brown font-weight-bold">BHKTYPE-2</label>
+
+                <select  name="bhktype2">
+                  <option [value]="null">Rooms</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+
+                </select>
+                </div>
+              <div class="col-12 col-md-4 mb-3">
+                <label class="text-brown font-weight-bold">BHKTYPE-3</label>
+
+                <select name="bhktype3"   >
+                  <option [value]="null">Rooms</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+
+                </select>
+                </div>
+
+              </div>
+            <div class="row">
+              <div class="col-12 col-md-4 mb-3 p4">
+                <label class="text-brown font-weight-bold">No Of Rooms</label>
+
+                <select name="noofrooms"  >
+                  <option [value]="null">Rooms</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                 </div>
+              <div class="col-12 col-md-4 mb-3">
+                <label class="text-brown font-weight-bold">Bed</label>
+
+                <input name="bed" type="text"    placeholder="Total Beds Number">
+
+                </div>
+
+              <div class="col-12 col-md-4 mb-3">
+                <label class="text-brown font-weight-bold">PRICE</label>
+                <input name="price"  type="text"  class="form-control" placeholder="Price">
+
+                </div>
             </div>
 
-
-
-            <div class="col-12 col-md-4 mb-3">
-              <label class="text-brown font-weight-bold">BHKTYPE-2</label>
-
-              <select   [(ngModel)]="formData.bhktype2" class="form-select">
-                <option [value]="null">Rooms</option>
-                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <!-- </option> -->
-
-              </select>
-              <!-- <small *ngIf="adultForm.controls['bhktype2'].dirty && adultForm.hasError('required','bhktype2')"
-      class="text-danger">*BhkType2 is required</small> -->
-            </div>
-            <div class="col-12 col-md-4 mb-3">
-              <label class="text-brown font-weight-bold">BHKTYPE-3</label>
-
-              <select [(ngModel)]="formData.bhktype3" class="form-select">
-                <option [value]="null">Rooms</option>
-                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <!-- </option> -->
-
-              </select>
-              <!-- <small *ngIf="adultForm.controls['bhktype3'].dirty && adultForm.hasError('required','bhktype3')"
-      class="text-danger">*BhkType3 is required</small> -->
-            </div>
-
-            </div>
-          <div class="row">
-            <div class="col-12 col-md-4 mb-3 p4">
-              <label class="text-brown font-weight-bold">No Of Rooms</label>
-
-              <select  [(ngModel)]="formData.noofrooms" class="form-select">
-                <option [value]="null">Rooms</option>
-                <!-- <option *ngFor="let country of countries" [value]="country | json">{{ country.name }} -->
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <!-- </option> -->
-              </select>
-              <!-- <small *ngIf="adultForm.controls['noofrooms'].dirty && adultForm.hasError('required','noofrooms')"
-                class="text-danger">*No Of Rooms is required</small> -->
-            </div>
-            <div class="col-12 col-md-4 mb-3">
-              <label class="text-brown font-weight-bold">Bed</label>
-
-              <input type="text" [(ngModel)]="formData.bed" class="form-control" placeholder="Total Beds Number">
-
-              <!-- <small *ngIf="adultForm.controls['bed'].dirty && adultForm.hasError('required','bed')"
-                class="text-danger">*No of Beds is required</small> -->
-            </div>
-
-            <div class="col-12 col-md-4 mb-3">
-              <label class="text-brown font-weight-bold">PRICE</label>
-              <input [(ngModel)]="formData.price" type="text" class="form-control" placeholder="Price">
-
-              <!-- <small *ngIf="adultForm.controls['price'].dirty && adultForm.hasError('required','price')"
-                class="text-danger">*Price is required</small> -->
-            </div>
-          </div>
           </div>
           <div class="modal-footer">
-            <button  (click)="addadult()" type="submit"
-              class="btn text-brown">Submit</button>
+            <button  (click)="addadult()" type="submit" class="btn text-brown">Submit</button>
             <button type="button" class="btn text-brown" data-bs-dismiss="modal">Close</button>
           </div>
 
