@@ -6,6 +6,10 @@
   margin-right: 10px;
 }
 
+.btn-close{
+  text-align:right;
+  padding-left: -30px;
+}
 .container {
   background-color: var(--primary);
   border-radius: 0.3rem;
@@ -13,7 +17,7 @@
   border-radius: 4px;
 }
 
-.h3 {
+h3 {
   color: var(--text-color);
   font-weight: bolder;
   font-family: Georgia, serif;

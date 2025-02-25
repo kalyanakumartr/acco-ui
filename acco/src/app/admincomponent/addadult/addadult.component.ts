@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import * as bootstrap from 'bootstrap';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { MyLogic } from 'src/app/model/logic.model';
 import { LogicService } from 'src/app/services/logic-service.service';
@@ -20,7 +21,7 @@ export class AddadultComponent implements OnInit {
 
   // formData = { price: 0,bed:0,noofrooms:0,bhktype1:0,bhktype2:0,bhktype3:0,optionType:'',roomTypeId:0,adultnumber:1};
 
-  isModalOpen=false;
+  isModalOpen = false;
 
   PageSizes = [5, 10, 15];
   adultForm!: FormGroup;
@@ -28,7 +29,7 @@ export class AddadultComponent implements OnInit {
 
   logic: MyLogic[] = [];
   // login.length
-  logicdata=new MyLogic();
+  logicdata = new MyLogic();
   public dataLogicData = new MatTableDataSource<MyLogic>();
 
   dataObs$!: Observable<any>;
@@ -36,69 +37,70 @@ export class AddadultComponent implements OnInit {
   constructor(private router: Router,
     private _changeDetectorRef: ChangeDetectorRef,
     private getlogicService: LogicService,
+    private fb: FormBuilder
 
   ) {
 
   }
-
-
-
-
-  ngAfterViewInit() {
+ngAfterViewInit() {
     this.dataLogicData.paginator = this.paginator;
-
   }
-
   ngOnInit(): void {
     // this.setPagination(this.logicData);
     this.getLogic();
+    this.adultForm = this.fb.group({
+      adult: ['', [
+        Validators.required,
+        Validators.maxLength(2),
+        // Validators.pattern('^[a-zA-Z .-]+$') // Only letters, spaces, periods, and hyphens
+      ]],
+      roomtypeid: ['', [Validators.required]],
+      optiontype: ['', [Validators.required]],
+      bhktype1: ['', [Validators.required]],
+      bhktype2: ['', [Validators.required]],
+      bhktype3: ['', [Validators.required]],
+      noofrooms: ['', [Validators.required]],
+      bed: ['', [Validators.required]],
+     price : ['', [Validators.required]]
 
-  }
 
-  addadult() {
-    console.log("Welcome to add adult service ");
-    this.isModalOpen=true;
-    const logic=new MyLogic();
-    // logic.adult integ
-    // logic.roomtypeid=parseInt;
-    const formData = this.adultForm.value;
-    logic.adult=formData.adultnumber;
-    logic.roomtypeid=formData.roomTypeId;
-    // logic.optiontype=formData.optionType;
-    // logic.bhktype1=formData.bhktype1;
-    // logic.bhktype2=formData.bhktype2;
-    // logic.bhktype3=formData.bhktype3;
-    // logic.bed=formData.bed;
-    // logic.noofrooms=formData.noofrooms;
-    // logic.price=formData.price;
-        console.log("Logic formdata",logic);
-        // console.log(result);
-        console.log("url",    this.getlogicService.addadult());
-        this.getlogicService.addadult()
-
-    .subscribe((result:any)=>
-    {
-      console.log("res",result);
-      Swal.fire({
-        text: result.message,
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
-      });
-      this.closeCancelModal();
-      // this.router.navigate(["cancelbooking",
     })
+
   }
 
 
+  addAdultMember() {
+    console.log("Welcome to Add Ts File Customer");
+    if (this.adultForm.valid) {
+      console.log(this.adultForm.valid);
+      const newAdultMember = this.adultForm.value;  // Get form data
+      console.log('New Member:', newAdultMember);
+
+      this.getlogicService.addadult(newAdultMember).subscribe(
+        (response) => {
+          console.log('Adult added successfully:', response);
+          this.adultForm.reset();
+          // const modalElement = document.getElementById('newAdultMemberModal');
+          // const modal = bootstrap.Modal.getInstance(modalElement as Element);
+          // modal?.hide();
+          // this.isModalOpen = false;
+
+        },
+        (error) => {
+          console.log('Error adding member:', error);
+        }
+      )
+    }
+  }
   closeCancelModal(): void {
     this.isModalOpen = false;
     // this.formData = { bed: '' }; // Reset form
   }
 
-  deladult(){
+  deladult() {
 
   }
-  editadult(){
+  editadult() {
 
   }
 
@@ -107,20 +109,20 @@ export class AddadultComponent implements OnInit {
       .subscribe((result) => {
         console.log("Result", result);
         this.dataLogicData.data = result;
-console.log(  "datalogicData",      this.dataLogicData.data = result);
-// )
-        this.logicData= result;
+        console.log("datalogicData", this.dataLogicData.data = result);
+        // )
+        this.logicData = result;
         this.setPagination(this.logicData);
         // this.getuserservice.setData(this.bookingData)
         console.log("(((((", this.logicData);
-  });
+      });
 
   }
 
   setPagination(data: any) {
     console.log("++++1111", MyLogic)
     this.dataLogicData = new MatTableDataSource<any>(data);
-        this.dataLogicData.paginator = this.paginator;
+    this.dataLogicData.paginator = this.paginator;
     this.dataObs$ = this.dataLogicData.connect();
     console.log("this.dataObs", this.dataObs$)
 
@@ -139,8 +141,8 @@ console.log(  "datalogicData",      this.dataLogicData.data = result);
   //       console.log("(((((", this.bookingData);
 
 
-addAdultEditData(){
+  addAdultEditData() {
 
-}
+  }
 
 }
