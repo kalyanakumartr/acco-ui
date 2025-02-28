@@ -12,7 +12,7 @@
                     <select formControlName="bhk" class="form-control"  (change)="updateFormData()">
                         <option value="0">--Select--</option>
                         <option *ngFor="let i of bhklist">
-                          {{i}}
+                          {{ i }}
                         </option>
                       </select>
                 </div>
@@ -21,7 +21,7 @@
                     <select formControlName="personcount" class="form-control" (change)="updateFormData()">
                         <option value="0">--Select--</option>
                         <option *ngFor="let i of personCount">
-                          {{i}}
+                          {{ i }}
                         </option>
                       </select>
                 </div>
@@ -31,14 +31,14 @@
                 <div class="col-md-3">
                     <label class="text-brown font-weight-bold">Daily Tariff</label>
                     <input formControlName="dailytariff" class="form-control text-center" [value]="selectedData?.dailytariff || 1">
-                    <small *ngIf="tariffForm.controls['daily'].dirty && tariffForm.hasError('required','daily')"
+                    <small *ngIf="tariffForm.controls['dailytariff'].dirty && tariffForm.hasError('required','dailytariff')"
                         class="text-danger">*Required</small>
                 </div>
 
                 <div class="col-md-3">
                     <label class="text-brown font-weight-bold">Monthly Tariff</label>
                     <input formControlName="monthlytariff" class="form-control text-center" [value]="selectedData?.monthlytariff || 1" >
-                    <small *ngIf="tariffForm.controls['monthly'].dirty && tariffForm.hasError('required','monthly')"
+                    <small *ngIf="tariffForm.controls['monthlytariff'].dirty && tariffForm.hasError('required','monthlytariff')"
                         class="text-danger">*Required</small>
                 </div>
             </div>
@@ -53,7 +53,7 @@
 
                 <div class="col-md-3">
                     <label class="text-brown font-weight-bold">Description</label>
-                    <input formControlName="description" type="textArea" class="form-control text-center" value="1" min="1">
+                    <input formControlName="description" type="textArea" class="form-control text-center">
                     <small
                         *ngIf="tariffForm.controls['description'].dirty && tariffForm.hasError('required','description')"
                         class="text-danger">*Required</small>
