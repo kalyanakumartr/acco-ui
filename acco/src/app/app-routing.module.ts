@@ -45,6 +45,7 @@ import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/f
 // import { CanceledbookingfoeComponent } from './admincomponent/canceledbookingfoe/canceledbookingfoe.component';
 // import { PlacetovisitComponent } from './component/placetovisit/placetovisit.component';
 import { AddadultComponent } from './admincomponent/addadult/addadult.component';
+import { EdittariffComponent } from './admincomponent/edittariff/edittariff.component';
 
 
 const routes: Routes = [
@@ -91,6 +92,8 @@ const routes: Routes = [
    {path:'foeroomlogic',component:FoeroomlogicComponent},
    {path:'foebookingsummary',component:FoebookingsummaryComponent},
    {path:'addadult',component:AddadultComponent},
+   {path:'edittariff',component:EdittariffComponent},
+
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

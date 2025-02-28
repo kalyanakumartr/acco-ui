@@ -18,49 +18,14 @@
   
     
 <div class="pricing-table mb-3">
-  <div class="pricing-card">
-      <h2>1 BHK one person</h2>
-      <p class="price">Rs 1,299  <span>/ day</span></p>
-      <!-- <p class="price">Rs 1,599  <span>/ day</span><span>- Double Occupancy</span></p>      
-      <p class="price">Rs 1,899  <span>/ day</span><span>- Triple Occupancy</span></p> -->
-      <p class="price">Rs 19,999 <span>/ month</span></p>
+  <div *ngFor="let tariff of tariffData" class="pricing-card">
+      <h2>{{tariff.title}}</h2>
+      <p class="price">Rs {{tariff.dailytariff}} <span>/ day</span></p>
+      <p class="price">Rs {{tariff.monthlytariff}} <span>/ month</span></p>
       <p>Perfect for solo travelers or couples.</p>
-      <!-- <button>Book Now</button> -->
-  </div>
-  <div class="pricing-card">
-    <h2>1 BHK two persons</h2>
-    <!-- <p class="price">Rs 1,299  <span>/ day</span><span>- Single Occupancy</span></p> -->
-    <p class="price">Rs 1,599  <span>/ day</span></p>      
-    <!-- <p class="price">Rs 1,899  <span>/ day</span><span>- Triple Occupancy</span></p> -->
-    <!-- <p class="price">Rs 19,999 <span>/ month</span></p> -->
-    <p>Perfect for solo travelers or couples.</p>
-    <!-- <button>Book Now</button> -->
-</div>
-<div class="pricing-card">
-  <h2>1 BHK three persons</h2>
-  <!-- <p class="price">Rs 1,299  <span>/ day</span><span>- Single Occupancy</span></p> -->
-  <!-- <p class="price">Rs 1,599  <span>/ day</span></p>       -->
-  <p class="price">Rs 1,899  <span>/ day</span><span>- Triple Occupancy</span></p>
-  <!-- <p class="price">Rs 19,999 <span>/ month</span></p> -->
-  <p>Perfect for solo travelers or couples.</p>
-  <!-- <button>Book Now</button> -->
-</div>
-
-  <div class="pricing-card">
-      <h2>2 BHK</h2>
-      <p class="price">Rs 2,899 <span>/ day</span></p>
-      <p class="price">Rs 24,999<span>/ month</span></p>
-      <p>Great for small families or groups.</p>
-      <!-- <button>Book Now</button> -->
   </div>
 
-  <div class="pricing-card ">
-      <h2>3 BHK</h2>
-      <p class="price">Rs 3,599 <span>/ day</span></p>
-      <p class="price">Rs 29,999 <span>/ month</span></p>
-      <p>Ideal for larger families or business groups.</p>
-      <!-- <button>Book Now</button> -->
-  </div>
+
 </div>
 
    </div>

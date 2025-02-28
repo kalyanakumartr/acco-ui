@@ -74,6 +74,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { FoeroomlogicComponent } from './admincomponent/foeroomlogic/foeroomlogic.component';
 import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/foebookingsummary.component';
 import { AddadultComponent } from './admincomponent/addadult/addadult.component';
+import { EdittariffComponent } from './admincomponent/edittariff/edittariff.component';
 
 
 
@@ -124,7 +125,8 @@ import { AddadultComponent } from './admincomponent/addadult/addadult.component'
     FooterComponent,
     FoeroomlogicComponent,
     FoebookingsummaryComponent,
-    AddadultComponent
+    AddadultComponent,
+    EdittariffComponent
     // MatchpasswordComponent,
 
   ],

@@ -45,6 +45,9 @@ getebdata:'http://localhost:3001/eb/getebdata',
 updateebreading:'http://localhost:3001/eb/updateebreading',
 getebreading:'http://localhost:3001/eb/getebreading?bookingid=',
 getguestdetailmonthly:'http://localhost:3001/users/getguestdetailmonthly?checkin=',
+
+gettariffamount:'http://localhost:3001/users/gettariff',
+updateTariff:'http://localhost:3001/users/updatetariff',
 // getroomlistURL:'http://localhost:3001/users/getroomlist?adults='$adultNumber
 
 // baseURL:'assets/',

@@ -86,7 +86,7 @@
                                 <select formControlName="country" #country class="form-select"
                                     (change)="onCountryChange()">
                                     <option [value]="null">-- Select Your Country --</option>
-                                    <option *ngFor="let country of countries" [value]="country |json" [ngValue]="country.name">{{ country.name
+                                    <option *ngFor="let country of countries" [value]="country |json" >{{ country.name |json
                                         }}
                                     </option>
                                 </select>
@@ -102,7 +102,7 @@
                                 <select formControlName="state" #state class="form-select"
                                     (change)="onStateChange()">
                                     <option [value]="null">-- Select Your State --</option>
-                                    <option *ngFor="let state of states" [value]="state| json" [ngValue]="state.name" >{{ state.name }}
+                                    <option *ngFor="let state of states" [value]="state| json"  >{{ state.name }}
                                     </option>
                                 </select>
                                 <small

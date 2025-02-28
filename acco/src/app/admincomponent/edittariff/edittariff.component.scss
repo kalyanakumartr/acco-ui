@@ -1,0 +1,18 @@
+.outer{
+    // height:100vh;
+     background-image: var(--primary);
+     min-height: 100vh; 
+ }
+ .container-fluid{
+    background-color:var(--primary);
+    border-radius: 0.3rem;
+    box-shadow: rgba(0,0,0,0.08)0px 1px 8px;
+    border-radius: 4px;
+    background-color: var(--primary);
+ }
+ .text-brown {
+    font-weight: bold;
+    font-family: Georgia, serif;
+    color: var(--text-color);
+  }
+ 

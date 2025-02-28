@@ -1,0 +1,69 @@
+<div class="outer">
+    <app-header></app-header>
+    <div class="container-fluid">
+        <h3 class=" text-brown mx-2">Customize Tariff</h3>
+
+        <form [formGroup]="tariffForm" (ngSubmit)="customizetariff()" class="p-3   ">
+
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="text-brown font-weight-bold">BHK</label>
+                    <select formControlName="bhk" class="form-control"  (change)="updateFormData()">
+                        <option value="0">--Select--</option>
+                        <option *ngFor="let i of bhklist">
+                          {{i}}
+                        </option>
+                      </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="text-brown font-weight-bold">Person Count</label>
+                    <select formControlName="personcount" class="form-control" (change)="updateFormData()">
+                        <option value="0">--Select--</option>
+                        <option *ngFor="let i of personCount">
+                          {{i}}
+                        </option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="text-brown font-weight-bold">Daily Tariff</label>
+                    <input formControlName="dailytariff" class="form-control text-center" [value]="selectedData?.dailytariff || 1">
+                    <small *ngIf="tariffForm.controls['daily'].dirty && tariffForm.hasError('required','daily')"
+                        class="text-danger">*Required</small>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="text-brown font-weight-bold">Monthly Tariff</label>
+                    <input formControlName="monthlytariff" class="form-control text-center" [value]="selectedData?.monthlytariff || 1" >
+                    <small *ngIf="tariffForm.controls['monthly'].dirty && tariffForm.hasError('required','monthly')"
+                        class="text-danger">*Required</small>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="text-brown font-weight-bold">Title</label>
+                    <input formControlName="title" type="textarea" class="form-control text-center">
+                    <small *ngIf="tariffForm.controls['title'].dirty && tariffForm.hasError('required','title')"
+                        class="text-danger">*Required</small>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="text-brown font-weight-bold">Description</label>
+                    <input formControlName="description" type="textArea" class="form-control text-center" value="1" min="1">
+                    <small
+                        *ngIf="tariffForm.controls['description'].dirty && tariffForm.hasError('required','description')"
+                        class="text-danger">*Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-end">
+                <button  type="submit" class="btn btn-light w-100">Submit</button>
+              </div>
+
+        </form>
+    </div>
+</div>

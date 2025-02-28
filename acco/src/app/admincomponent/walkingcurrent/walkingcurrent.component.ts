@@ -36,7 +36,7 @@ export class WalkingcurrentComponent implements OnInit {
 
   countryyyy!: { "isoCode": "IN", "name": "India" }
 
-  
+
   Todaydate = "12-09-2024"
   outDate = "12-09-2024"
   userData: any;
@@ -45,7 +45,7 @@ export class WalkingcurrentComponent implements OnInit {
   selectedTime: any;
   minDate: any;
   maxDate: any;
-  isDateReadOnly: boolean = true; 
+  isDateReadOnly: boolean = true;
   availableStatus!: string;
   maxAdultStatus!: string;
 
@@ -56,9 +56,9 @@ export class WalkingcurrentComponent implements OnInit {
     private router: Router,
     private getroomlistservice: GetroomlistService,
     public bookingService: BookingServiceService,
-     private cdr: ChangeDetectorRef,
-     private datePipe: DatePipe,
-   
+    private cdr: ChangeDetectorRef,
+    private datePipe: DatePipe,
+
 
   ) { getroomlistservice.apiRoom$.subscribe(data => this.roomData = data) }
 
@@ -85,10 +85,11 @@ export class WalkingcurrentComponent implements OnInit {
   selectedCountry: any;
   selectedState: any;
   selectedCity: any;
+  choosenCountry:any;
 
   ngOnInit(): void {
-    console.log('countriess',this.countries)
- 
+    console.log('countriess', this.countries)
+
     const date1 = new Date();
     this.setCheckInOut(date1);
     this.generateTimeIntervals();
@@ -120,7 +121,7 @@ export class WalkingcurrentComponent implements OnInit {
 
 
 
-    
+
     this.walkingRoomCheck = this.fb.group({
       checkIn: ['', Validators.required],
       checkInTime: ['', Validators.required],
@@ -135,9 +136,13 @@ export class WalkingcurrentComponent implements OnInit {
 
   }
 
- 
+
   onCountryChange(): void {
+    console.log("countryyyyyy", this.country.nativeElement.value);
+
     this.states = State.getStatesOfCountry(JSON.parse(this.country.nativeElement.value).isoCode);
+    console.log("stateesss", this.states);
+
     this.selectedCountry = JSON.parse(this.country.nativeElement.value);
     this.cities = this.selectedState = this.selectedCity = null;
     console.log("country", this.selectedCountry);
@@ -154,8 +159,8 @@ export class WalkingcurrentComponent implements OnInit {
     //   this.cities = [];
     //   this.selectedState = null;
     //   this.selectedCity = null;
-    }
-  
+  }
+
 
   onStateChange(): void {
     this.cities = City.getCitiesOfState(JSON.parse(this.country.nativeElement.value).isoCode, JSON.parse(this.state.nativeElement.value).isoCode)
@@ -219,11 +224,11 @@ export class WalkingcurrentComponent implements OnInit {
 
 
   walkingRoomCheckProcess() {
-    
+
     const formData = this.walkingRoomCheck.value;
-    const checkin = formData.checkIn.concat(' ',formData.checkInTime)
-    const checkout = formData.checkOut.concat(' ',formData.checkOutTime)
-    console.log("checkin checkout", checkin,checkout);
+    const checkin = formData.checkIn.concat(' ', formData.checkInTime)
+    const checkout = formData.checkOut.concat(' ', formData.checkOutTime)
+    console.log("checkin checkout", checkin, checkout);
     this.booking.checkin = checkin;
     this.booking.checkout = checkout;
     this.booking.adults = formData.adult;
@@ -232,77 +237,77 @@ export class WalkingcurrentComponent implements OnInit {
     this.booking.modeoftypeid = 2
     var inDate = new Date(checkin);
     var OutDate = new Date(checkout);
-    var diff=OutDate.getTime() - inDate.getTime();
+    var diff = OutDate.getTime() - inDate.getTime();
     var days = Math.floor(diff / (60 * 60 * 24 * 1000));
     var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
     console.log("diff", diff);
     console.log("days", days);
     console.log("hours", hours);
 
-    if(hours>2){
-      var totalDays=days+1
-    }else{
-      var totalDays=days;
+    if (hours > 2) {
+      var totalDays = days + 1
+    } else {
+      var totalDays = days;
     }
     console.log("booking", this.booking);
     if (this.walkingRoomCheck.valid) {
       console.log("123", this.booking);
       console.log("123", this.booking);
       this.getroomlistservice.checkRoomAvailability(formData.adult, formData.roomType, checkin, checkout)
-      .subscribe(result => {
-        console.log("check", result);
-        const checkdata = result[0][0];
-        this.availableStatus = checkdata.available_status === "Available"
-          ? "Hello! We're happy to let you know that we are available."
-          : "Sorry for the inconvenience, we're currently unavailable.";
-        this.maxAdultStatus = formData.adult >= "90"
-          ? "Our property can only accommodate up to 64 persons." : "";
+        .subscribe(result => {
+          console.log("check", result);
+          const checkdata = result[0][0];
+          this.availableStatus = checkdata.available_status === "Available"
+            ? "Hello! We're happy to let you know that we are available."
+            : "Sorry for the inconvenience, we're currently unavailable.";
+          this.maxAdultStatus = formData.adult >= "90"
+            ? "Our property can only accommodate up to 64 persons." : "";
           // this.cdr.detectChanges();
           // const modalElement = document.getElementById('exampleModal');
           // if (modalElement) {
           //   const modal = new Modal(modalElement);
           //   modal.show();
           // }
-          if (checkdata.available_status === "Available") { 
-          
-  
-      this.getroomlistservice.roomlogic(formData.adult,checkin,checkout,formData.roomtype).subscribe((result) => {
-        console.log(result);
-        this.roomData = result[0];
-        this.getroomlistservice.setData(this.roomData)
-        console.log("++++roomData:", this.roomData);
-        console.log("0 value:", this.roomData);
-      
-    
-    this.roomBookingSum = new BookingModel();
-    this.roomBookingSum.checkin = checkin,
-    this.roomBookingSum.checkout = checkout,
-    this.roomBookingSum.noofdays = totalDays;
-    this.roomBookingSum.adults = formData.adult;
-    this.roomBookingSum.child = formData.children;
-    this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;
-    this.roomBookingSum.roomtypeid = formData.roomtype;
-    this.roomBookingSum.modeoftypeid = 2;
+          if (checkdata.available_status === "Available") {
 
 
-    console.log("___+++", this.roomBookingSum)
-    this.bookingService.changeMessage(this.roomBookingSum);
-    this.router.navigate(["foeroomlogic"])
-  });
- }else{
-  
-   
-    this.cdr.detectChanges();
-    const modalElement = document.getElementById('exampleModal');
-    if (modalElement) {
-      const modal = new Modal(modalElement);
-      modal.show();
+            this.getroomlistservice.roomlogic(formData.adult, checkin, checkout, formData.roomtype).subscribe((result) => {
+              console.log(result);
+              this.roomData = result[0];
+              this.getroomlistservice.setData(this.roomData)
+              console.log("++++roomData:", this.roomData);
+              console.log("0 value:", this.roomData);
+
+
+              this.roomBookingSum = new BookingModel();
+              this.roomBookingSum.checkin = checkin,
+                this.roomBookingSum.checkout = checkout,
+                this.roomBookingSum.noofdays = totalDays;
+              this.roomBookingSum.adults = formData.adult;
+              this.roomBookingSum.child = formData.children;
+              this.roomBookingSum.childage = this.ageValue == undefined ? 0 : this.ageValue;
+              this.roomBookingSum.roomtypeid = formData.roomtype;
+              this.roomBookingSum.modeoftypeid = 2;
+
+
+              console.log("___+++", this.roomBookingSum)
+              this.bookingService.changeMessage(this.roomBookingSum);
+              this.router.navigate(["foeroomlogic"])
+            });
+          } else {
+
+
+            this.cdr.detectChanges();
+            const modalElement = document.getElementById('exampleModal');
+            if (modalElement) {
+              const modal = new Modal(modalElement);
+              modal.show();
+            }
+
+          }
+        })
     }
-  
- }
-})
-}
-}
+  }
 
 
 
@@ -316,52 +321,65 @@ export class WalkingcurrentComponent implements OnInit {
     //         background: '#efc96a',
     //       });
     this.emailservice.emailverify(value).subscribe((result) => {
-      const response=result;
+      const response = result;
       console.log("response", response)
-      if(response?.result){
-      this.userData = result.result[0];
-      console.log("userdata", this.userData)
-      Swal.fire({
-        text: response?.message,
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
-      });
-      this.walkingCurrentForm.controls['email'].setValue(this.userData.email);
-      this.walkingCurrentForm.controls['firstname'].setValue(this.userData.firstname);
-      this.walkingCurrentForm.controls['lastname'].setValue(this.userData.lastname);
-      this.walkingCurrentForm.controls['address1'].setValue(this.userData.address1);
-      this.walkingCurrentForm.controls['address2'].setValue(this.userData.address2);
-       this.walkingCurrentForm.get('city')?.setValue(this.userData.city);
-       this.walkingCurrentForm.get('state')?.setValue(this.userData.state);
-      this.walkingCurrentForm.get('country')?.setValue(this.userData.country);
-      this.walkingCurrentForm.controls['pincode'].setValue(this.userData.pincode);
-      this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
-      localStorage.removeItem('currentuserid');
+      if (response?.result) {
+        this.userData = result.result[0];
+        console.log("userdata", this.userData)
+        Swal.fire({
+          text: response?.message,
+          confirmButtonColor: '#964B00',
+          background: '#efc96a',
+        });
+        this.walkingCurrentForm.controls['email'].setValue(this.userData.email);
+        this.walkingCurrentForm.controls['firstname'].setValue(this.userData.firstname);
+        this.walkingCurrentForm.controls['lastname'].setValue(this.userData.lastname);
+        this.walkingCurrentForm.controls['address1'].setValue(this.userData.address1);
+        this.walkingCurrentForm.controls['address2'].setValue(this.userData.address2);
+        //  this.walkingCurrentForm.get('city')?.setValue(this.userData.city);
+        //  this.walkingCurrentForm.get('state')?.setValue(this.userData.state);
+        this.choosenCountry= this.countries.filter(
+          (country) => country.name === this.userData.country
+        );
+        console.log(' choosen country',this.choosenCountry[0] )
+        this.walkingCurrentForm.get('country')?.setValue(this.choosenCountry.name);
+        // this.selectedCountry = JSON.parse(this.country.nativeElement.value);
+        console.log(this.country,'++++country++++',this.country.nativeElement.value);
 
-      const currentuser = new UserModel();
-      currentuser.userid = this.userData.userid;
-      currentuser.firstname = this.userData.firstname;
-      currentuser.lastname = this.userData.lastname;
-      currentuser.phonenumber = this.userData.phonenumber;
-      currentuser.email = this.userData.email;
-      currentuser.pincode = this.userData.pincode;
-      currentuser.address1 = this.userData.address1;
-      currentuser.address2 = this.userData.address2;
-      currentuser.city = this.userData.city;
-      currentuser.state = this.userData.state;
-      currentuser.country = this.userData.country;
+        // this.onCountryChange();
+         alert(this.userData.state+'state'+this.states);
+        this.walkingCurrentForm.get('state')?.setValue(this.userData.state);
+        this.onStateChange();
+        this.walkingCurrentForm.get('city')?.setValue(this.userData.city);
+        // this.onCityChange()
+        this.walkingCurrentForm.controls['pincode'].setValue(this.userData.pincode);
+        this.walkingCurrentForm.controls['phonenumber'].setValue(this.userData.phonenumber);
+        localStorage.removeItem('currentuserid');
+
+        const currentuser = new UserModel();
+        currentuser.userid = this.userData.userid;
+        currentuser.firstname = this.userData.firstname;
+        currentuser.lastname = this.userData.lastname;
+        currentuser.phonenumber = this.userData.phonenumber;
+        currentuser.email = this.userData.email;
+        currentuser.pincode = this.userData.pincode;
+        currentuser.address1 = this.userData.address1;
+        currentuser.address2 = this.userData.address2;
+        currentuser.city = this.userData.city;
+        currentuser.state = this.userData.state;
+        currentuser.country = this.userData.country;
 
 
-      const jsondata = JSON.stringify(currentuser);
-      localStorage.setItem('currentuserid', jsondata);
-    }else{
-      Swal.fire({
-        text: response?.message || 'Something went wrong!',
-        // icon: 'error',
-        confirmButtonColor: '#964B00',
-        background: '#efc96a',
-      });
-    }
+        const jsondata = JSON.stringify(currentuser);
+        localStorage.setItem('currentuserid', jsondata);
+      } else {
+        Swal.fire({
+          text: response?.message || 'Something went wrong!',
+          // icon: 'error',
+          confirmButtonColor: '#964B00',
+          background: '#efc96a',
+        });
+      }
 
 
     })
@@ -423,7 +441,7 @@ export class WalkingcurrentComponent implements OnInit {
 
     console.log("rrr", arr[0]);
     this.ageValue = Object.values(arr[0]);
-    console.log("age++", this.ageValue) 
+    console.log("age++", this.ageValue)
     // this.selectedAge.push(value)
     //  console.log("age:", this.selectedAge);
   }
@@ -443,7 +461,7 @@ export class WalkingcurrentComponent implements OnInit {
 
     // Format the next date in YYYY-MM-DD format
     this.outDate = currentDate.toISOString().split('T')[0];
-    console.log('in getNextDate ' ,this.outDate)
+    console.log('in getNextDate ', this.outDate)
 
   }
 
@@ -511,14 +529,14 @@ export class WalkingcurrentComponent implements OnInit {
 
 
     this.Todaydate = currentyear + "-" + this.finalmonth + "-" + this.finalday
-     this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
+    this.outDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
     this.minDate = currentyear + "-" + this.finalmonth + "-" + this.finalday
     this.maxDate = currentyear + "-" + this.finalmonth + "-" + this.finalOutday
 
 
   }
 
-closeModal(): void {
+  closeModal(): void {
     const modalElement = document.getElementById('exampleModal');
     if (modalElement) {
       const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
