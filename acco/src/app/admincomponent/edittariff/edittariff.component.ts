@@ -82,6 +82,7 @@ export class EdittariffComponent {
     this.tariffService.updateTariff(formvalue)
       .subscribe((result) => {
         console.log(result);
+        this.tariffForm.reset();
       })
   }
 
