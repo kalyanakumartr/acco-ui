@@ -13,8 +13,8 @@ export class EdittariffComponent {
   tariffData: any[] = [];
   bhklist: any[] = [];
   personCount: any[] = [];
-  selectedData: any={};
-  selectedPerson:any='';
+  selectedData: any = {};
+  selectedPerson: any = '';
 
 
 
@@ -26,11 +26,13 @@ export class EdittariffComponent {
     this.tariffForm = this.fb.group({
       bhk: ['', Validators.required],
       personcount: ['', Validators.required],
-      dailytariff: ['', Validators.required],
-      monthlytariff: ['', Validators.required],
+      dailytariff: [this.selectedData?.dailytariff || '', Validators.required],
+      monthlytariff: [this.selectedData?.monthlytariff || '', Validators.required],
       title: ['', Validators.required,],
       description: ['', Validators.required,],
-    })
+    });
+    this.updateFormData();
+
   }
 
   gettariff() {
@@ -38,11 +40,11 @@ export class EdittariffComponent {
       .subscribe((result) => {
         console.log('tariff result', result);
         this.tariffData = result;
-        this.bhklist =this.filterBhk();
+        this.bhklist = this.filterBhk();
         this.personCount = this.filterPersonCount();
-        console.log('filtered',this.bhklist ,this.personCount)
-    
-    
+        console.log('filtered', this.bhklist, this.personCount)
+
+
       })
   }
 
@@ -56,28 +58,31 @@ export class EdittariffComponent {
 
   updateFormData() {
     this.selectedPerson = this.tariffForm.get('personcount')?.value;;
-    console.log('selected-----',this.selectedPerson);
+    console.log('selected-----', this.selectedPerson);
 
     this.selectedData = this.tariffData.find(
-      (data:any)=>data.personcount === this.selectedPerson
+      (data: any) => data.personcount === this.selectedPerson
     );
-    console.log('selected data',this.selectedData);
+    console.log('selected data', this.selectedData);
     if (this.selectedData) {
       this.tariffForm.patchValue({
-        daily: this.selectedData.dailytariff,
-        monthly: this.selectedData.monthlytariff,
-        title:this.selectedData.title,
-        description:this.selectedData.description
+        dailytariff: this.selectedData.dailytariff,
+        monthlytariff: this.selectedData.monthlytariff,
+        title: this.selectedData.title,
+        description: this.selectedData.description
       });
+      console.log('selected data', this.selectedData);
+ 
     }
   }
 
   customizetariff() {
-  console.log(this.tariffForm.value);
-  this.tariffService.updateTariff(this.tariffForm.value)
-  .subscribe((result)=>{
-    console.log(result);
-  })
+    console.log(this.tariffForm.value);
+    const formvalue = this.tariffForm.value;
+    this.tariffService.updateTariff(formvalue)
+      .subscribe((result) => {
+        console.log(result);
+      })
   }
 
 }
