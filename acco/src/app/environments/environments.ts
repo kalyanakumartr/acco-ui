@@ -24,7 +24,7 @@ export const environment = {
     roomtype: `${ip}/room/roomtype`,
     updateuser: `${ip}/users/updateuser`,
     addcontact: `${ip}/users/addcontact`,
-    getlogic: `${ip}/logic/getlogicall`,
+    getlogic: `${ip}/logic/getlogic?adult='`,
     addadult: `${ip}/logic/addadult`,
     // `${ip}/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut`,
     actualcheckout: `${ip}/booking/actualcheckout`,
