@@ -17,12 +17,12 @@ export class NavbarComponent implements OnInit {
   userDetails:any;
   loginData:any;
   isLoggedIn: boolean = false;
- 
+
  homeurl=this.router.url;
  isDisabled=true;
  tokenvalue: string | null = null;
-  username: string = "Welcome"; 
- marquee="Welcome to Maduraa Services -10% off for Margazhi Maha Utsavam";
+  username: string = "Welcome";
+ marquee="Welcome to Maduraa Services";
 
   // getuser:GetUser[]=[];
   constructor(private http: HttpClient, private router: Router,
@@ -40,11 +40,11 @@ export class NavbarComponent implements OnInit {
     });
     }
   ngOnInit():void{
-    
+
     this.tokenvalue=localStorage.getItem('token');
     console.log("navtoken",this.tokenvalue)
     console.log("loginname",this.loginData.username)
-   
+
 
     if (!this.tokenvalue) {
       this.username = "Welcome";
@@ -55,27 +55,27 @@ export class NavbarComponent implements OnInit {
     // Notify Angular of changes
     this.cdr.detectChanges();
     console.log("Final username:", this.username);
-  
+
     // this. username = this.tokenvalue == null ? "Welcome" : "Welcome"+" "+this.loginData.username;
     // console.log("name:",this.username);
-   
+
   }
 
   signup(){
     this.router.navigate(["signup",{roleid:3}])
   }
-  
-   
+
+
   logout(){
-     
+
      this.authService.logout();
-    
+
     this.router.navigate(["/home"]).then(() => {
       this.cdr.detectChanges();
       window.location.reload();
     });
-      
-      
+
+
     }
-  
+
 }
