@@ -37,7 +37,8 @@ export class AddadultComponent implements OnInit {
   constructor(private router: Router,
     private _changeDetectorRef: ChangeDetectorRef,
     private getlogicService: LogicService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
 
   ) {
 
@@ -80,10 +81,13 @@ ngAfterViewInit() {
         (response) => {
           console.log('Adult added successfully:', response);
           this.adultForm.reset();
-          // const modalElement = document.getElementById('newAdultMemberModal');
-          // const modal = bootstrap.Modal.getInstance(modalElement as Element);
-          // modal?.hide();
+          const modalElement = document.getElementById('newAdultMemberModal');
+          const modal = bootstrap.Modal.getInstance(modalElement as Element);
+          modal?.hide();
+          this.router.navigate(["addadult"]);
+
           // this.isModalOpen = false;
+          // this.cdr.detectChanges();
 
         },
         (error) => {
@@ -91,6 +95,12 @@ ngAfterViewInit() {
         }
       )
     }
+  }
+
+title: string="Add Adult";
+  Changetitle(newTitle:string){
+    this.title=newTitle;
+    document.title=newTitle;
   }
   closeCancelModal(): void {
     this.isModalOpen = false;

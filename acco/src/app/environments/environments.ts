@@ -24,7 +24,7 @@ export const environment = {
     roomtype: `${ip}/room/roomtype`,
     updateuser: `${ip}/users/updateuser`,
     addcontact: `${ip}/users/addcontact`,
-    getlogic: `${ip}/logic/getlogic?adult='`,
+    getlogic: `${ip}/logic/getlogic?adult=`,
     addadult: `${ip}/logic/addadult`,
     // `${ip}/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut`,
     actualcheckout: `${ip}/booking/actualcheckout`,
@@ -48,12 +48,12 @@ export const environment = {
     getguestdetailmonthly: `${ip}/users/getguestdetailmonthly?checkin=`,
     gettariffamount: `${ip}/users/gettariff`,
     updateTariff: `${ip}/users/updatetariff`,
-    checkRoomAvailable: `${ip}/room/checkAvailability?roomtypeid`
+    checkRoomAvailable: `${ip}/room/checkAvailability?roomtypeid=`
   };
 
 
 
-  
+
 // export const environment={
 // roleapiUrl:'${ip}/users/getrole',
 // authURL:`${ip}/authentication/auth`,
