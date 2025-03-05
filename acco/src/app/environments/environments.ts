@@ -24,7 +24,8 @@ export const environment = {
     roomtype: `${ip}/room/roomtype`,
     updateuser: `${ip}/users/updateuser`,
     addcontact: `${ip}/users/addcontact`,
-    getlogic: `${ip}/logic/getlogic?adult=`,
+//muthu change below add all
+    getlogic: `${ip}/logic/getlogicall?adult=`,
     addadult: `${ip}/logic/addadult`,
     updateadult: `${ip}/logic/updateadult`,
     // `${ip}/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut`,
