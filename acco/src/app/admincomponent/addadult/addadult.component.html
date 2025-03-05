@@ -4,13 +4,12 @@
   <h4 class="text-brown" style="font-size: 30px;">Adult Rooms Tarrif History</h4>
   <!-- <p>Review your past bookings in an organized format.</p> -->
   <a href="#" class="btn btn-ms btn-light-primary mx-2" data-bs-toggle="modal" data-bs-target="#newAdultMemberModal"
-    (click)="addAdultMember()">Adult Rooms Tarrif
+    (click)="addAdultMember()" (click)="Changetitle('Create') ">Adult Rooms Tarrif
   </a>
 
 
 </div>
-<!-- <div class="text-right"> -->
-<!-- </div> -->
+
 <div class="tbl-container pt-2">
   <div class="table-responsive">
 
@@ -52,7 +51,7 @@
               <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
             </svg> -->
 
-              <i class="fa fa-fw fa-edit" (click)="editadult()">
+              <i class="fa fa-fw fa-edit" (click)="Changetitle('Edit') " data-bs-toggle="modal" data-bs-target="#newAdultMemberModal">
               </i>
             </button>
             <button style="border: none;">
@@ -101,7 +100,8 @@
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header">
-        <h3 class="col-12 modal-title text-center" id="newMemberModalLabel">Add Adult Rooms Tarrif</h3>
+
+        <h3 class="col-12 modal-title text-center" id="newMemberModalLabel">{{title}} Rooms Tarrif</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <!-- Modal Body -->
@@ -242,7 +242,7 @@
           </div> -->
           <div class="modal-footer">
             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-            <button [disabled]="adultForm.invalid" type="submit" class="btn btn-primary">Save</button>
+            <button [disabled]="adultForm.invalid" type="submit" class="btn btn-primary" onclick="Changetitle('Add Adult')">Save</button>
           </div>
 
         </form>
