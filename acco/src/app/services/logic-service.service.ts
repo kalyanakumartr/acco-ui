@@ -27,6 +27,13 @@ export class LogicService {
 console.log("Got Service");
   }
 
+
+  updateadult(MyLogic:any):Observable<any>{
+    console.log("Update Adult Service  Service ");
+  return this.http.post<any>(`${environment.updateadult}`,MyLogic);
+console.log("Got Service");
+  }
+
   changeMessage(logic:any)
       {
         console.log("i am in Logic service")

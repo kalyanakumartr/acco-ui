@@ -26,6 +26,7 @@ export const environment = {
     addcontact: `${ip}/users/addcontact`,
     getlogic: `${ip}/logic/getlogic?adult=`,
     addadult: `${ip}/logic/addadult`,
+    updateadult: `${ip}/logic/updateadult`,
     // `${ip}/logic/getlogic?adult="+adult+"&checkin="+checkIn+"&checkout="+checkOut`,
     actualcheckout: `${ip}/booking/actualcheckout`,
     cancelpolicy: `${ip}/booking/cancelpolicy`,
