@@ -82,23 +82,23 @@ export class AddadultComponent implements OnInit {
 
 
   loadData() {
-      //  this.getlogicService.logic()
-      //   .subscribe((result) => {
-      //     console.log("Result", result);
-      //     this.dataLogicData.data = result;
-      //     console.log("datalogicData", this.dataLogicData.data = result);
-      //     // )
-      //     this.logicData = result;
-      //     this.setPagination(this.logicData);
-      //     // this.getuserservice.setData(this.bookingData)
-      //     console.log("(((((", this.logicData);
-      //   });
+    //  this.getlogicService.logic()
+    //   .subscribe((result) => {
+    //     console.log("Result", result);
+    //     this.dataLogicData.data = result;
+    //     console.log("datalogicData", this.dataLogicData.data = result);
+    //     // )
+    //     this.logicData = result;
+    //     this.setPagination(this.logicData);
+    //     // this.getuserservice.setData(this.bookingData)
+    //     console.log("(((((", this.logicData);
+    //   });
 
     console.log("Load Data St  in init stage");
     this.getlogicService.logic().subscribe({
       next: (result) => {
         this.dataSource = result;
-        console.log("datasource",this.dataSource);
+        console.log("datasource", this.dataSource);
       },
       error: (err) => {
         console.error('Error fetching users:', err);
@@ -114,18 +114,23 @@ export class AddadultComponent implements OnInit {
     console.log("Welcome to Add Ts File Customer");
     if (this.adultForm.valid) {
       if (this.adultForm.controls['logicid'].value > 0) {
-        console.log("Get if  Logic ID>0");
-        this.getlogicService.updateadult(this.adultForm.valid).subscribe({
+        console.log("Get if  Logic ID>0", this.adultForm.controls['logicid'].value);
+        const newAdultMember = this.adultForm.value;  // Get form data
+        console.log('New Update Member:', newAdultMember);
+        this.getlogicService.updateadult(newAdultMember).subscribe({
           next: (response: any) => {
             console.log('Success:', response);
+            this.adultForm.reset();
+            this.isModalOpen = false;
           },
           error: (err: any) => {
-
             console.error('Error:', err);
           }
         });
       } else {
-        this.getlogicService.addadult(this.adultForm.valid).subscribe({
+        const newAdultMember = this.adultForm.value;  // Get form data
+        console.log('New Else Member:', newAdultMember);
+        this.getlogicService.addadult(newAdultMember).subscribe({
           next: (response: any) => {
             console.log('Success:', response);
           },
@@ -138,105 +143,107 @@ export class AddadultComponent implements OnInit {
   }
 
 
-    editAdult(element: any): void {
-          console.log("element", element);
-        // this.adultForm.patchValue({adult: element.adult,roomtypeid: element.roomtypeid, optiontype: element.optiontype,
-        //     bhktype1: element.bhktype1, bhktype2: element.bhktype2, bhktype3: element.bhktype3, noofrooms: element.noofrooms,
-        //     bed: element.bed, price: element.Price});
-      this.adultForm.setValue({
-        logicid: element.logicid, adult: element.adult, roomtypeid: element.roomtypeid, optiontype: element.optiontype,
-        bhktype1: element.bhktype1, bhktype2: element.bhktype2, bhktype3: element.bhktype3, noofrooms: element.noofrooms,
-        bed: element.bed, price: element.Price
-      });
+  editAdult(element: any): void {
+    console.log("element", element);
+    this.adultForm.patchValue({
+      adult: element.adult, roomtypeid: element.roomtypeid, optiontype: element.optiontype,
+      bhktype1: element.bhktype1, bhktype2: element.bhktype2, bhktype3: element.bhktype3, noofrooms: element.noofrooms,
+      bed: element.bed, price: element.Price
+    });
+    // this.adultForm.setValue({
+    //   logicid: element.logicid, adult: element.adult, roomtypeid: element.roomtypeid, optiontype: element.optiontype,
+    //   bhktype1: element.bhktype1, bhktype2: element.bhktype2, bhktype3: element.bhktype3, noofrooms: element.noofrooms,
+    //   bed: element.bed, price: element.Price
+    // });
 
-
-    }
-
-    // addAdultMember() {
-    //   console.log("Welcome to Add Ts File Customer");
-    //   if (this.adultForm.valid) {
-    //     if(this.adultForm.controls["logicid"].value>0){
-    //     console.log(this.adultForm.valid);
-    //     const newAdultMember = this.adultForm.value;  // Get form data
-    //     console.log('New Member:', newAdultMember);
-
-    //     this.getlogicService.addadult(newAdultMember).subscribe(
-    //       (response) => {
-    //         console.log('Adult added successfully:', response);
-    //         this.adultForm.reset();
-    //         const modalElement = document.getElementById('newAdultMemberModal');
-    //         const modal = bootstrap.Modal.getInstance(modalElement as Element);
-    //         modal?.hide();
-    //         this.router.navigate(["addadult"]);
-
-    //         // this.isModalOpen = false;
-    //         // this.cdr.detectChanges();
-
-    //       },
-    //       (error) => {
-    //         console.log('Error adding member:', error);
-    //       }
-    //     )
-    //   }
-    // }
-
-
-    title: string = "Add Adult";
-    Changetitle(newTitle: string) {
-      this.title = newTitle;
-      document.title = newTitle;
-    }
-    closeCancelModal(): void {
-      this.isModalOpen = false;
-      // this.formData = { bed: '' }; // Reset form
-    }
-
-    deladult() {
-
-    }
-    editadult() {
-
-    }
-
-    getLogic() {
-      this.getlogicService.logic()
-        .subscribe((result) => {
-          console.log("Result", result);
-          this.dataLogicData.data = result;
-          console.log("datalogicData", this.dataLogicData.data = result);
-          // )
-          this.logicData = result;
-          this.setPagination(this.logicData);
-          // this.getuserservice.setData(this.bookingData)
-          console.log("Logic Data", this.logicData);
-        });
-
-    }
-
-    setPagination(data: any) {
-      console.log("++++1111", MyLogic)
-      this.dataLogicData = new MatTableDataSource<any>(data);
-      this.dataLogicData.paginator = this.paginator;
-      this.dataObs$ = this.dataLogicData.connect();
-      console.log("this.dataObs", this.dataObs$)
-
-    }
-
-    // getMyBooking(userid: any) {
-    //   // this.bookingData.clear();
-    //   this.getuserservice.myBooking(userid)
-    //     // .subscribe((res)=>{
-    //     .subscribe((result) => {
-    //       console.log(result);
-    //       this.databookingData.data = result;
-    //       console.log("))))00000", this.databookingData.data)
-    //       this.bookingData = result;
-    //       // this.getuserservice.setData(this.bookingData)
-    //       console.log("(((((", this.bookingData);
-
-
-    addAdultEditData() {
-
-    }
 
   }
+
+  // addAdultMember() {
+  //   console.log("Welcome to Add Ts File Customer");
+  //   if (this.adultForm.valid) {
+  //     if(this.adultForm.controls["logicid"].value>0){
+  //     console.log(this.adultForm.valid);
+  //     const newAdultMember = this.adultForm.value;  // Get form data
+  //     console.log('New Member:', newAdultMember);
+
+  //     this.getlogicService.addadult(newAdultMember).subscribe(
+  //       (response) => {
+  //         console.log('Adult added successfully:', response);
+  //         this.adultForm.reset();
+  //         const modalElement = document.getElementById('newAdultMemberModal');
+  //         const modal = bootstrap.Modal.getInstance(modalElement as Element);
+  //         modal?.hide();
+  //         this.router.navigate(["addadult"]);
+
+  //         // this.isModalOpen = false;
+  //         // this.cdr.detectChanges();
+
+  //       },
+  //       (error) => {
+  //         console.log('Error adding member:', error);
+  //       }
+  //     )
+  //   }
+  // }
+
+
+  title: string = "Add Adult";
+  Changetitle(newTitle: string) {
+    this.title = newTitle;
+    document.title = newTitle;
+  }
+  closeCancelModal(): void {
+    this.isModalOpen = false;
+    // this.formData = { bed: '' }; // Reset form
+  }
+
+  deladult() {
+
+  }
+  editadult() {
+
+  }
+
+  getLogic() {
+    this.getlogicService.logic()
+      .subscribe((result) => {
+        console.log("Result", result);
+        this.dataLogicData.data = result;
+        console.log("datalogicData", this.dataLogicData.data = result);
+        // )
+        this.logicData = result;
+        this.setPagination(this.logicData);
+        // this.getuserservice.setData(this.bookingData)
+        console.log("Logic Data", this.logicData);
+      });
+
+  }
+
+  setPagination(data: any) {
+    console.log("++++1111", MyLogic)
+    this.dataLogicData = new MatTableDataSource<any>(data);
+    this.dataLogicData.paginator = this.paginator;
+    this.dataObs$ = this.dataLogicData.connect();
+    console.log("this.dataObs", this.dataObs$)
+
+  }
+
+  // getMyBooking(userid: any) {
+  //   // this.bookingData.clear();
+  //   this.getuserservice.myBooking(userid)
+  //     // .subscribe((res)=>{
+  //     .subscribe((result) => {
+  //       console.log(result);
+  //       this.databookingData.data = result;
+  //       console.log("))))00000", this.databookingData.data)
+  //       this.bookingData = result;
+  //       // this.getuserservice.setData(this.bookingData)
+  //       console.log("(((((", this.bookingData);
+
+
+  addAdultEditData() {
+
+  }
+
+}

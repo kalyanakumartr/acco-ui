@@ -28,9 +28,9 @@ console.log("Got Service");
   }
 
 
-  updateadult(MyLogic:any):Observable<any>{
+  updateadult(data:any):Observable<any>{
     console.log("Update Adult Service  Service ");
-  return this.http.post<any>(`${environment.updateadult}`,MyLogic);
+  return this.http.post<any>(`${environment.updateadult}`,data);
 console.log("Got Service");
   }
 
