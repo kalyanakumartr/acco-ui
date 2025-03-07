@@ -13,14 +13,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './admincomponent/header/header.component';
 import { BookingComponent } from './admincomponent/booking/booking.component';
 import { DatePipe } from '@angular/common';
-import{MatTableModule} from '@angular/material/table';
-import{MatPaginatorModule} from '@angular/material/paginator';
-import{MatInputModule} from '@angular/material/input';
-import{MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import{MatSortModule} from '@angular/material/sort';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { RoleComponent } from './admincomponent/role/role.component';
 import { RoomtypeComponent } from './component/roomtype/roomtype.component';
 import { FooditemComponent } from './component/fooditem/fooditem.component';
@@ -45,7 +45,7 @@ import { RoomfromwalkinComponent } from './admincomponent/roomfromwalkin/roomfro
 import { BookingdetailsComponent } from './component/bookingdetails/bookingdetails.component';
 import { ContactusComponent } from './component/contactus/contactus.component';
 import { ForgotpasswordotpComponent } from './component/forgotpasswordotp/forgotpasswordotp.component';
-import { NgOtpInputModule } from  'ng-otp-input';
+import { NgOtpInputModule } from 'ng-otp-input';
 import { ForgotpasswordstepperComponent } from './component/forgotpasswordstepper/forgotpasswordstepper.component';
 import { ForgotpasswordformComponent } from './component/forgotpasswordform/forgotpasswordform.component';
 import { UpdateproofComponent } from './admincomponent/updateproof/updateproof.component';
@@ -76,6 +76,8 @@ import { FoebookingsummaryComponent } from './admincomponent/foebookingsummary/f
 import { AddadultComponent } from './admincomponent/addadult/addadult.component';
 import { EdittariffComponent } from './admincomponent/edittariff/edittariff.component';
 
+import { MatCardModule } from '@angular/material/card';
+
 
 
 @NgModule({
@@ -86,6 +88,7 @@ import { EdittariffComponent } from './admincomponent/edittariff/edittariff.comp
     SignupComponent,
     NavbarComponent,
     HomeComponent,
+
     FacitiliesComponent,
     HeaderComponent,
     BookingComponent,
@@ -139,6 +142,7 @@ import { EdittariffComponent } from './admincomponent/edittariff/edittariff.comp
     MatProgressSpinnerModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatCardModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -164,12 +168,12 @@ import { EdittariffComponent } from './admincomponent/edittariff/edittariff.comp
   ],
   providers: [DatePipe,
     {
-    provide:HTTP_INTERCEPTORS,
-    useClass:GetdetailsInterceptor,
-    multi:true
-  }
-],
- schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      provide: HTTP_INTERCEPTORS,
+      useClass: GetdetailsInterceptor,
+      multi: true
+    }
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
