@@ -13,6 +13,7 @@ import { MyLogic } from 'src/app/model/logic.model';
 import { LogicService } from 'src/app/services/logic-service.service';
 import Swal from 'sweetalert2';
 import { DataSource } from '@angular/cdk/collections';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-addadult',
@@ -80,7 +81,17 @@ export class AddadultComponent implements OnInit {
 
   }
 
+  closeModal(): void {
+    const modalElement = document.getElementById('newAdultMemberModal');
+    if (modalElement) {
+      const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      modalElement.classList.remove("modal-backdrop fade show");
+      modal.hide();
 
+
+
+    }
+  }
   loadData() {
     //  this.getlogicService.logic()
     //   .subscribe((result) => {
@@ -119,9 +130,10 @@ export class AddadultComponent implements OnInit {
         console.log('New Update Member:', newAdultMember);
         this.getlogicService.updateadult(newAdultMember).subscribe({
           next: (response: any) => {
-            console.log('Success:', response);
+            console.log('Add Adult Success:', response);
             this.adultForm.reset();
-            this.isModalOpen = false;
+            this.closeModal();
+
           },
           error: (err: any) => {
             console.error('Error:', err);
@@ -133,6 +145,9 @@ export class AddadultComponent implements OnInit {
         this.getlogicService.addadult(newAdultMember).subscribe({
           next: (response: any) => {
             console.log('Success:', response);
+            this.adultForm.reset();
+            this.closeModal();
+
           },
           error: (err: any) => {
             console.error('Error:', err);
@@ -146,7 +161,7 @@ export class AddadultComponent implements OnInit {
   editAdult(element: any): void {
     console.log("element", element);
     this.adultForm.patchValue({
-      adult: element.adult, roomtypeid: element.roomtypeid, optiontype: element.optiontype,
+      logicid: element.logicid, adult: element.adult, roomtypeid: element.roomtypeid, optiontype: element.optiontype,
       bhktype1: element.bhktype1, bhktype2: element.bhktype2, bhktype3: element.bhktype3, noofrooms: element.noofrooms,
       bed: element.bed, price: element.Price
     });
@@ -195,6 +210,7 @@ export class AddadultComponent implements OnInit {
   }
   closeCancelModal(): void {
     this.isModalOpen = false;
+    alert("Cancel");
     // this.formData = { bed: '' }; // Reset form
   }
 
